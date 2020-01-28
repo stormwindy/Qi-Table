@@ -28,8 +28,8 @@ For venv:
 ```
 $ git clone https://github.com/stormwindy/qi-table
 $ cd qi-table
-$ python3 -m venv .
-$ source bin/activate
+$ python3 -m venv env
+$ source env/bin/activate
 $ pip install -r requirements.txt --verbose
 ```
 
