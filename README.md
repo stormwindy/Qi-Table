@@ -18,7 +18,7 @@ To get started:
 
 ```
 $ git clone https://github.com/stormwindy/qi-table
-$ cd qi-tables
+$ cd qi-table
 $ virtualenv env_qi -p python3
 $ source activate env_qi/bin/activate
 $ pip install -r requirements.txt --verbose
