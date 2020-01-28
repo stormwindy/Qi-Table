@@ -24,6 +24,15 @@ $ source activate env_qi/bin/activate
 $ pip install -r requirements.txt --verbose
 ```
 
+For venv:
+```
+$ git clone https://github.com/stormwindy/qi-table
+$ cd qi-table
+$ python3 -m venv .
+$ source bin/activate
+$ pip install -r requirements.txt --verbose
+```
+
 N.B. We'll be using virtual environments to avoid polluting your global python
 install and to ensure we're all running the same version of Python.
 
