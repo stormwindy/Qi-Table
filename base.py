@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 import math
-from typing import 
+from typing import
 
 class Point2:
     """
@@ -35,6 +35,14 @@ class Point2:
                 math.pow( self.x - point.y, 2) +
                 math.pow( self.y - point.y, 2)
         )
+
+    def get_x(self) -> float:
+
+        return self.x
+
+    def get_y(self) -> float:
+
+        return self.y
 
 
 class Rectangle:
