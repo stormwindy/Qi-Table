@@ -4,7 +4,8 @@ from ar_markers import detect_markers
 def get_markers(numOfMarkers):
     print('Press "q" to quit')
     capture = cv2.VideoCapture(1)
-
+    # capture.set(3, 1920)
+    # capture.set(4, 1080)
     if capture.isOpened():  # try to get the first frame
         frame_captured, frame = capture.read()
     else:
