@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 import math
-from typing import 
+from typing import List
 
 class Point2:
     """
@@ -92,4 +92,29 @@ class Table:
         :type geometry: Rectangle
         """
         self.geometry = geometry
+
+
+class Room:
+    """
+    Room class, containing room geometry info, tables, and obstacles
+    """
+
+    geometry  = None
+    obstacles = []
+    tables    = []
+
+    def __init__(self, geometry: Rectangle, obstacles: List[Rectangle], tables: List[Table]):
+        """
+        Initialize the room
+
+        :param geometry: Room geometry
+        :type geometry: Rectangle
+        :param obstacles: Obstacles in the room
+        :type obstacles: List[Rectangle]
+        :param tables: Tables in the room
+        :type tables: List[Table]
+        """
+        self.geometry = geometry
+        self.obstacles = obstacles
+        self.tables = tables
 
