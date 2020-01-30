@@ -1,6 +1,6 @@
 # qi-specific
 env_*/
-
+.idea/
 # PYTHON
 
 # Byte-compiled / optimized / DLL files
