@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 import math
-from typing import
+from typing import *
 
 class Point2:
     """
@@ -10,7 +10,7 @@ class Point2:
     x = None
     y = None
 
-    def __init__(self, x: float, y: float) -> Point2:
+    def __init__(self, x: float, y: float) -> None:
         """
         Point2 constructor
 
@@ -23,7 +23,7 @@ class Point2:
         self.x = x
         self.y = y
 
-    def distanceTo(self, point: Point2) -> float:
+    def distanceTo(self, point: 'Point2') -> float:
         """
         distanceTo: Calculate the L2 norm from this point to another
 
@@ -36,15 +36,6 @@ class Point2:
                 math.pow( self.y - point.y, 2)
         )
 
-    def get_x(self) -> float:
-
-        return self.x
-
-    def get_y(self) -> float:
-
-        return self.y
-
-
 class Rectangle:
     """
     Rectangle: The base class for all rectangles (e.g. tables, obstacles, etc.)
@@ -54,7 +45,7 @@ class Rectangle:
     position    = None
     orientation = None
 
-    def __init__(self, width: float, height: float, position: Point2, orientation: float):
+    def __init__(self, width: float, height: float, position: Point2, orientation: float) -> None:
         """
         Constructor method for Rectangles. 
 
@@ -72,7 +63,7 @@ class Rectangle:
         self.position = position
         self.orientation = orientation
 
-    def intersects(self, rect: Rectangle) -> bool:
+    def intersects(self, rect: 'Rectangle') -> bool:
         """
         Helper function to determine if this rectangle intersects another (for
         pathfinding, etc.)
@@ -92,7 +83,7 @@ class Table:
     """
     geometry = None
     
-    def __init__(self, geometry: Rectangle):
+    def __init__(self, geometry: Rectangle) -> None:
         """
         Initialize the table.
 
