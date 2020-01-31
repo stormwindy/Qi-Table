@@ -1,11 +1,10 @@
 #! /usr/bin/env python
 
 import numpy as np
-import math
 import numpy.linalg as la
 from pathfinding.core.grid import Grid
 from base import *
-from sympy import Polygon, Line
+from sympy import Polygon
 
 class Path:
 
@@ -30,16 +29,16 @@ class Path:
     # TO DO:
     initial_orientation = None
     goal_orientation = None
-    goal_center_pos = table_center(goal_ar1, goal_ar2)
+    # goal_center_pos = table_center(goal_ar1, goal_ar2)
 
     # initial_center_pos = table_center(ar1, ar2)
     # distance = initial_center_pos.distanceTo(goal_center_pos)
 
 
-    initial_rectangle =  Rectangle(table_width, table_height, table_center(ar1, ar2), initial_orientation)
-    initial_table = Table(initial_rectangle)
-    goal_rectangle = Rectangle(table_width, table_height, goal_center_pos, goal_orientation)
-    goal_table = Table(goal_rectangle)
+    # initial_rectangle =  Rectangle(table_width, table_height, table_center(ar1, ar2), initial_orientation)
+    # initial_table = Table(initial_rectangle)
+    # goal_rectangle = Rectangle(table_width, table_height, goal_center_pos, goal_orientation)
+    # goal_table = Table(goal_rectangle)
 
     x_axis_x1 = 0
     x_axis_y1 = 0
@@ -62,15 +61,24 @@ class Path:
     # number_of_cells_x = math.floor(room_width / table_width)
     # number_of_cells_y = math.floor(room_height / table_height)
     # number_of_cells = math.max(number_of_cells_x, number_of_cells_y)
+
+    # TO DO
+    # fix this as the number of cells along the width of the room and the height of the room must differ
+    # if we want to achieve square grid cells
     number_of_cells = 50
-    grid = Grid(np.zeros(number_of_cells, number_of_cells, number_of_cells))
+    cell_size = room_width / number_of_cells
+    grid_matrix = np.zeros(number_of_cells, number_of_cells)
+    grid = Grid(grid_matrix)
 
-    def vectorFromPoints(self, point1: Point2, point2: Point2):
+    # type vector
+    Vector = np.array()
 
-        x1 = point1.get_x()
-        y1 = point1.get_y()
-        x2 = point1.get_x()
-        y2 = point2.get_y()
+    def vectorFromPoints(self, point1: Point2, point2: Point2) -> Vector:
+
+        x1 = point1.x
+        y1 = point1.y
+        x2 = point1.x
+        y2 = point2.y
         return np.array([x2-x1, y2-y1])
 
     def angleBetweenVectors(self, v1, v2) -> float:
@@ -87,27 +95,73 @@ class Path:
         return self.angleBetweenVectors(horizontal_vector, v)
 
     def angleToVertical(self, point1: Point2, point2: Point2) -> float:
-        
+
         vertical_vector = self.vectorFromPoints(self.y_axis1, self.y_axis2)
         v = self.vectorFromPoints(point1, point2)
         return self.angleBetweenVectors(vertical_vector, v)
 
-    def updateGrid(self, table: Table) -> None:
+    # TO DO:
+    # def updateGrid(self, table: Table) -> None:
 
-        pass
+    def updateGrid(self, left1: Point2, left2: Point2, right1: Point2, right2: Point2) -> None:
+
+        grid_matrix = np.zeros(self.grid_matrix)
+
+        table_pol = Polygon((left1.x, left1.y), (right1.x, right1.y), (right2.x, right2.y), (left2.x, left2.y))
+
+        left1_cell  = self.gridPosition(left1)
+        left2_cell  = self.gridPosition(left2)
+        right1_cell = self.gridPosition(right1)
+        right2_cell = self.gridPosition(right2)
+
+        # rectangle formed from grid cells which encloses the shape of the table
+        left_top     = (left1_cell[0] * self.cell_size, left1_cell[1] * self.cell_size)
+        left_bottom  = (left1_cell[0] * self.cell_size, (left1_cell[1] + 1) * self.cell_size)
+        right_top    = ((right1_cell[0] + 1) * self.cell_size, (right2_cell[1] + 1) * self.cell_size)
+        right_bottom = ((right2_cell[0] + 1) * self.cell_size, right1_cell[1] * self.cell_size)
+
+        current_pos = left_top
+        current_cell = left1_cell
+        count = 0
+
+        while current_pos[1] <= right_bottom[1]:
+            while current_pos[0] <= right_top[0]:
+                if table_pol.encloses(current_pos):
+                    np.put(grid_matrix, current_cell, 1)
+                current_cell = np.put(current_cell, 0, current_cell[0] + 1)
+                current_pos = (current_pos[0] + self.cell_size, current_pos[1])
+            count = count + 1
+            current_pos = (left_top[0], current_pos + self.cell_size)
+            current_cell = (left1_cell[0] + count, left1_cell[1] + count)
+
+        print(grid_matrix)
 
 
-    def gridPosition(self, point: Point2):
+
+
+
+
+
+
+
+    Cell = np.array()
+
+    def gridPosition(self, point: Point2) -> Cell:
         """
         gridPosition: Compute in which grid the given point is
 
         :param point:
         :type point: Point2
-        :rtype: array
+        :rtype: Cell
         """
-        cell_size = self.room_width / self.number_of_cells
-        cell_x = math.floor(point.get_x / cell_size) - 1
-        cell_y = math.floor(point.get_y / cell_size) - 1
+
+        cell_x = math.floor(point.x / self.cell_size) - 1
+        cell_y = math.floor(point.y / self.cell_size) - 1
         return np.array([cell_x, cell_y])
 
+    def table_centre(self, ar1: Point2, ar2: Point2) -> Point2:
 
+        x = (ar1.x + ar2.x) / 2
+        y = (ar1.y + ar2.y) / 2
+        table_centre_pos = Point2(x, y)
+        return table_centre_pos
