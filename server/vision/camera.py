@@ -20,10 +20,10 @@ class Camera:
         self.capture.set(4, 1080)
 
     '''
-    Use this method to get the positions of individual markers.
     Do NOT use this method outside this module, use the get_pos() method instead.
+    For testing, set the display flag to True to display a live video feed.
     '''
-    def get_markers_pos(self, num_of_markers: int, display: bool = False) -> Dict[int, Tuple[int]]:
+    def __markers_pos(self, num_of_markers: int, display: bool = False) -> Dict[int, Tuple[int]]:
         cap = self.capture
         # Check if the camera is opened and try to get the first frame
         if cap.isOpened():
@@ -35,7 +35,7 @@ class Camera:
         # Format: {marker's ID: marker's location}
         pos = dict()
         print('Vision: start markers recognition.')
-        while frame_captured:
+        while frame_captured and len(pos) < num_of_markers:  # Break when all markers are recognized.
             markers = detect_markers(frame)
             for marker in markers:
                 if marker.id not in pos:
@@ -46,15 +46,13 @@ class Camera:
             # if the display flag is set to true.
             if display:
                 cv2.imshow('Test Frame', frame)
+                # Break when 'q' is pressed (& 0xFF required for 64-bit architecture)
                 if cv2.waitKey(1) & 0xFF == ord('q'):
                     break
             else:
                 time.sleep(0.01)
-
-            # Break when all markers are recognized.
-            if len(pos) >= num_of_markers:
-                break
             frame_captured, frame = cap.read()
+
         if len(pos) < num_of_markers:
             raise MarkerRecognitionFailure()
         return pos
@@ -70,7 +68,7 @@ class Camera:
         counter = 5
         while counter:
             try:
-                markers_pos = self.get_markers_pos(2*num_of_surfaces, display)
+                markers_pos = self.__markers_pos(2*num_of_surfaces, display)
                 break
             except MarkerRecognitionFailure:
                 counter -= 1
