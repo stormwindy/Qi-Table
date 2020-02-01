@@ -22,4 +22,5 @@ E.g. to generate marker with id 5-20:
 for i in range(5, 21):
     generate_marker(i)
 '''
-generate_marker(5)
+if __name__ == '__main__':
+    generate_marker(5)
