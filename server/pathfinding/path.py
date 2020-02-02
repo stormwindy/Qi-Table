@@ -61,10 +61,6 @@ class Path:
     # x_axis = Line((x_axis_x1, x_axis_y1), (x_axis_x2, x_axis_y2))
     # y_axis = Line((y_axis_x1, y_axis_y1), (y_axis_x2, y_axis_y2))
 
-    # number_of_cells_x = floor(room_width / table_width)
-    # number_of_cells_y = floor(room_height / table_height)
-    # number_of_cells = math.max(number_of_cells_x, number_of_cells_y)
-
     # TO DO
     # fix this as the number of cells along the width of the room and the height of the room must differ
     # if we want to achieve square grid cells
@@ -74,9 +70,6 @@ class Path:
 
     # type vector
     Vector = np.array([])
-
-    # def __init__(self):
-    #     pass
 
     def vectorFromPoints(self, point1: Point2, point2: Point2) -> Vector:
 
@@ -107,60 +100,55 @@ class Path:
     # TO DO:
     # def updateGrid(self, table: Table) -> None:
 
-    def updateGrid(self, left1: Point2, left2: Point2, right1: Point2, right2: Point2) -> None:
+    def table_to_grid(self, p1: Point2, p2: Point2, p3: Point2, p4: Point2) -> None:
 
+        # TO DO:
+        # when we have multiple tables move this out of the function
         self.grid_matrix.fill(0)
 
-        table_pol = Polygon((left1.x, left1.y), (right1.x, right1.y), (right2.x, right2.y), (left2.x, left2.y))
+        table_pol = Polygon((p1.x, p1.y), (p3.x, p3.y), (p4.x, p4.y), (p2.x, p2.y))
 
-        left1_cell = self.gridPosition(left1)
-        left2_cell = self.gridPosition(left2)
-        right1_cell = self.gridPosition(right1)
-        right2_cell = self.gridPosition(right2)
+        p1_cell = self.grid_position(p1)
+        p2_cell = self.grid_position(p2)
+        p3_cell = self.grid_position(p3)
+        p4_cell = self.grid_position(p4)
 
-        # rectangle formed from grid cells which encloses the shape of the table
-        left_top = (left1_cell[0] * self.cell_size, left1_cell[1] * self.cell_size)
-        left_bottom = (left1_cell[0] * self.cell_size, (left1_cell[1] + 1) * self.cell_size)
-        right_bottom = ((right1_cell[0] + 1) * self.cell_size, (right2_cell[1] + 1) * self.cell_size)
-        right_top = ((right2_cell[0] + 1) * self.cell_size, right1_cell[1] * self.cell_size)
-
-        current_pos = left_top
-        current_cell = left1_cell
-        print(current_cell)
         count = 0
 
-        while current_pos[1] <= right_bottom[1]:
-            while current_pos[0] <= right_top[0]:
-                print(current_cell)
-                if table_pol.encloses_point(current_pos):
-
+        max_y = max([p1_cell[0], p2_cell[0], p3_cell[0], p4_cell[0]])
+        max_x = max([p1_cell[1], p2_cell[1], p3_cell[1], p4_cell[1]])
+        min_y = min([p1_cell[0], p2_cell[0], p3_cell[0], p4_cell[0]])
+        min_x = min([p1_cell[1], p2_cell[1], p3_cell[1], p4_cell[1]])
+        current_cell = (min_y, min_x)
+        while current_cell[0] <= max_y:
+            while current_cell[1] <= max_x:
+                # print(current_cell)
+                if table_pol.encloses_point((current_cell[1], current_cell[0] + 1)) \
+                        or table_pol.encloses_point((current_cell[1] + 1, current_cell[0] + 1)) \
+                        or table_pol.encloses_point((current_cell[1], current_cell[0])) \
+                        or table_pol.encloses_point((current_cell[1] + 1, current_cell[0])):
                     i = current_cell[0]
                     j = current_cell[1]
                     self.grid_matrix[i][j] = 1
-                current_cell = (current_cell[0] + 1, current_cell[1])
-                i = current_pos[0] + self.cell_size
-                j = current_pos[1]
-                current_pos = (i, j)
+                current_cell = (current_cell[0], current_cell[1] + 1)
             count = count + 1
-            current_pos = (left_top[0], current_pos[1] + self.cell_size)
-            current_cell = (left1_cell[0] + count, left1_cell[1] + count)
+            current_cell = (min_y + count, min_x)
 
         print(self.grid_matrix)
 
-    Cell = np.array([])
-
-    def gridPosition(self, point: Point2) -> Cell:
+    def grid_position(self, point: Point2) -> tuple:
         """
         gridPosition: Compute in which grid the given point is
 
         :param point:
         :type point: Point2
-        :rtype: Cell
+        :rtype: tuple
         """
 
-        cell_x = floor(point.x / self.cell_size) - 1
-        cell_y = floor(point.y / self.cell_size) - 1
-        return np.array([cell_x, cell_y])
+        cell_x = floor(point.x / self.cell_size)
+        cell_y = floor(point.y / self.cell_size)
+        # print((cell_y, cell_x))
+        return (cell_y, cell_x)
 
     def table_centre(self, ar1: Point2, ar2: Point2) -> Point2:
 
@@ -169,11 +157,15 @@ class Path:
         table_centre_pos = Point2(x, y)
         return table_centre_pos
 
+    def update_grid(self) -> None:
+        pass
+
+
 if __name__ == "__main__":
     p1 = Point2(2, 2)
-    p2 = Point2(2, 5)
-    p3 = Point2(7, 2)
+    p2 = Point2(7, 2)
+    p3 = Point2(2, 5)
     p4 = Point2(7, 5)
 
     p = Path()
-    p.updateGrid(p1, p2, p3, p4)
+    p.table_to_grid(p1, p2, p3, p4)
