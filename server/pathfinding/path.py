@@ -9,7 +9,8 @@ from pathfinding.core.grid import Grid
 from pathfinding.finder.a_star import AStarFinder
 from sympy import Polygon
 
-sys.path.append('..\\..\\')
+sys.path.append('..\\..\\') #this is for windows
+# sys.path.append('..//..//') #this is for linux/iOS
 from base import *
 
 
@@ -185,8 +186,10 @@ class Path:
 
         initial_pos = Point2(1, 1)
         goal_pos = Point2(8, 8)
-        start = grid.node(initial_pos.y - 1, initial_pos.x - 1)
-        goal = grid.node(goal_pos.y - 1, goal_pos.x - 1)
+        initial_cell = self.grid_position(initial_pos)
+        start = grid.node(initial_cell[0], initial_cell[1])
+        goal_cell = self.grid_position(goal_pos)
+        goal = grid.node(goal_cell[0], goal_cell[1])
 
         finder = AStarFinder(diagonal_movement=DiagonalMovement.always)
         path, runs = finder.find_path(start, goal, grid)
