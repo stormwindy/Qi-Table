@@ -4,7 +4,9 @@ import numpy as np
 import numpy.linalg as la
 import sys
 from math import floor, ceil
-# from pathfinding.core.grid import Grid
+from pathfinding.core.diagonal_movement import DiagonalMovement
+from pathfinding.core.grid import Grid
+from pathfinding.finder.a_star import AStarFinder
 from sympy import Polygon
 
 sys.path.append('..\\..\\')
@@ -32,8 +34,11 @@ class Path:
 
     # TO DO:
     initial_orientation = None
-    goal_orientation = None
+    goal_orientations = None # dictionary which maps table id to its goal position
     # goal_center_pos = table_center(goal_ar1, goal_ar2)
+
+
+    number_of_tables = None
 
     # initial_center_pos = table_center(ar1, ar2)
     # distance = initial_center_pos.distanceTo(goal_center_pos)
@@ -65,8 +70,7 @@ class Path:
     # fix this as the number of cells along the width of the room and the height of the room must differ
     # if we want to achieve square grid cells
     cell_size = 1  # cell size = 1cm
-    grid_matrix = np.zeros([ceil(room_width / cell_size), ceil(room_height / cell_size)])
-    # grid = Grid(grid_matrix)
+    grid_matrix = np.empty([ceil(room_width / cell_size), ceil(room_height / cell_size)])
 
     # type vector
     Vector = np.array([])
@@ -104,7 +108,7 @@ class Path:
 
         # TO DO:
         # when we have multiple tables move this out of the function
-        self.grid_matrix.fill(0)
+        self.grid_matrix.fill(1)
 
         table_pol = Polygon((p1.x, p1.y), (p3.x, p3.y), (p4.x, p4.y), (p2.x, p2.y))
 
@@ -129,7 +133,7 @@ class Path:
                         or table_pol.encloses_point((current_cell[1] + 1, current_cell[0])):
                     i = current_cell[0]
                     j = current_cell[1]
-                    self.grid_matrix[i][j] = 1
+                    self.grid_matrix[i][j] = 0
                 current_cell = (current_cell[0], current_cell[1] + 1)
             count = count + 1
             current_cell = (min_y + count, min_x)
@@ -158,7 +162,43 @@ class Path:
         return table_centre_pos
 
     def update_grid(self) -> None:
+
+        # c = Camera(1)
+        # pos = c.get_pos(2) where 2 is the number of tables in the room
+        # print(pos) e.g. {3: ((555, 674), (999, 611)), 1: ((397, 861), (163, 484))}
+        # c.release()
+
+        # TO DO
+        #
+
         pass
+
+    def find(self):#, initial_pos: Point2, goal_pos: Point2):
+
+
+        # c = Camera(1)
+        # pos = c.get_pos(2) where 2 is the number of tables in the room
+        # print(pos) e.g. {3: ((555, 674), (999, 611)), 1: ((397, 861), (163, 484))}
+        # c.release()
+
+        grid = Grid(matrix=self.grid_matrix)
+
+        initial_pos = Point2(1, 1)
+        goal_pos = Point2(8, 8)
+        start = grid.node(initial_pos.y - 1, initial_pos.x - 1)
+        goal = grid.node(goal_pos.y - 1, goal_pos.x - 1)
+
+        finder = AStarFinder(diagonal_movement=DiagonalMovement.always)
+        path, runs = finder.find_path(start, goal, grid)
+        #path is list of tuples starting from initial position (-1) and ending in goal position (-1)
+        print(path)
+        print(runs)
+        print(grid.grid_str(path=path, start=start, end=goal))
+
+    def assign_goal(self, Table, goal_positions) -> None:
+        pass
+
+
 
 
 if __name__ == "__main__":
@@ -169,3 +209,4 @@ if __name__ == "__main__":
 
     p = Path()
     p.table_to_grid(p1, p2, p3, p4)
+    p.find()
