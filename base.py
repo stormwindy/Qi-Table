@@ -1,8 +1,12 @@
 #! /usr/bin/env python
 
 import math
+<<<<<<< HEAD
 import numpy as np
 from typing import List
+=======
+from typing import *
+>>>>>>> 5fd4dcbbe1dfc852da78218ca0a838f0834c16f5
 
 class Point2:
     """
@@ -11,7 +15,11 @@ class Point2:
     x = None
     y = None
 
+<<<<<<< HEAD
     def __init__(self, x: float, y: float) -> 'Point2':
+=======
+    def __init__(self, x: float, y: float) -> None:
+>>>>>>> 5fd4dcbbe1dfc852da78218ca0a838f0834c16f5
         """
         Point2 constructor
 
@@ -24,6 +32,7 @@ class Point2:
         self.x = x
         self.y = y
 
+<<<<<<< HEAD
     def as_row_vec(self):
         """
         Return a copy of the vec as a row vector
@@ -38,6 +47,8 @@ class Point2:
         """
         return np.array([[self.x,self.y]]).T
 
+=======
+>>>>>>> 5fd4dcbbe1dfc852da78218ca0a838f0834c16f5
     def distanceTo(self, point: 'Point2') -> float:
         """
         distanceTo: Calculate the L2 norm from this point to another
@@ -51,7 +62,6 @@ class Point2:
                 math.pow( self.y - point.y, 2)
         )
 
-
 class Rectangle:
     """
     Rectangle: The base class for all rectangles (e.g. tables, obstacles, etc.)
@@ -61,7 +71,7 @@ class Rectangle:
     position    = None
     orientation = None
 
-    def __init__(self, width: float, height: float, position: Point2, orientation: float):
+    def __init__(self, width: float, height: float, position: Point2, orientation: float) -> None:
         """
         Constructor method for Rectangles.
 
@@ -98,8 +108,13 @@ class Table:
     Base table class, including geometry information, world pos, device ID, etc.
     """
     geometry = None
+<<<<<<< HEAD
 
     def __init__(self, geometry: Rectangle):
+=======
+    
+    def __init__(self, geometry: Rectangle) -> None:
+>>>>>>> 5fd4dcbbe1dfc852da78218ca0a838f0834c16f5
         """
         Initialize the table.
 
