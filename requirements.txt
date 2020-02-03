@@ -1,1 +1,3 @@
 numpy
+sympy
+pathfinding
