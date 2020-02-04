@@ -42,10 +42,15 @@ class Rectangle:
     """
     width       = None
     height      = None
-    position    = None
+    central_position    = None
     orientation = None
+    lef1 = None # upper left corner
+    left2 = None
+    right1 = None # upper right corner
+    right2 = None
 
-    def __init__(self, width: float, height: float, position: Point2, orientation: float) -> None:
+    def __init__(self, width: float, height: float, central_position: Point2, orientation: float,
+                 left1: Point2, left2: Point2, right1: Point2, right2: Point2) -> None:
         """
         Constructor method for Rectangles.
 
@@ -60,8 +65,12 @@ class Rectangle:
         """
         self.width    = width
         self.height   = height
-        self.position = position
+        self.central_position = position
         self.orientation = orientation
+        self.left1 = left1
+        self.left2 = left2
+        self.right1 = right1
+        self.right2 = right2
 
     def intersects(self, rect: 'Rectangle') -> bool:
         """
@@ -82,8 +91,9 @@ class Table:
     Base table class, including geometry information, world pos, device ID, etc.
     """
     geometry = None
+    table_id = None
 
-    def __init__(self, geometry: Rectangle) -> None:
+    def __init__(self, geometry: Rectangle, table_id: int) -> None:
         """
         Initialize the table.
 
@@ -91,3 +101,4 @@ class Table:
         :type geometry: Rectangle
         """
         self.geometry = geometry
+        self.table_id = table_id
