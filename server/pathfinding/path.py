@@ -3,7 +3,7 @@
 import numpy as np
 import numpy.linalg as la
 import sys
-from math import floor, ceil
+from math import floor, ceil, degrees
 from pathfinding.core.diagonal_movement import DiagonalMovement
 from pathfinding.core.grid import Grid
 from pathfinding.finder.a_star import AStarFinder
@@ -80,7 +80,7 @@ class Path:
 
         x1 = point1.x
         y1 = point1.y
-        x2 = point1.x
+        x2 = point2.x
         y2 = point2.y
         return np.array([x2 - x1, y2 - y1])
 
@@ -88,7 +88,7 @@ class Path:
 
         cos_a = np.dot(v1, v2)
         sin_a = la.norm(np.cross(v1, v2))
-        return np.arctan2(sin_a, cos_a)
+        return math.degrees(np.arctan2(sin_a, cos_a))
 
     def angleToHorizontal(self, point1: Point2, point2: Point2) -> float:
 
@@ -213,3 +213,5 @@ if __name__ == "__main__":
     p = Path()
     p.table_to_grid(p1, p2, p3, p4)
     p.find()
+
+    print(p.angleToHorizontal(p1, p4))
