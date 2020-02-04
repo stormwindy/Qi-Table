@@ -65,7 +65,7 @@ class Rectangle:
         """
         self.width    = width
         self.height   = height
-        self.central_position = position
+        self.central_position = central_position
         self.orientation = orientation
         self.left1 = left1
         self.left2 = left2
