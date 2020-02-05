@@ -13,7 +13,7 @@ sys.path.append('..//..//')
 from base import *
 
 
-class Path:
+class Path_meg:
     # table initial coordinates
     # get from the vision & calculate another 2
     # initial_top_left_corner = Point2(0, 20)
@@ -79,7 +79,7 @@ class Path:
 
         x1 = point1.x
         y1 = point1.y
-        x2 = point1.x
+        x2 = point2.x
         y2 = point2.y
         return np.array([x2 - x1, y2 - y1])
 
@@ -87,13 +87,14 @@ class Path:
 
         cos_a = np.dot(v1, v2)
         sin_a = la.norm(np.cross(v1, v2))
-        return np.arctan2(sin_a, cos_a)
+        return math.degrees(np.arctan2(sin_a, cos_a))
 
     def angleToHorizontal(self, point1: Point2, point2: Point2) -> float:
 
         horizontal_vector = self.vectorFromPoints(self.x_axis1, self.x_axis2)
         v = self.vectorFromPoints(point1, point2)
-        return self.angleBetweenVectors(horizontal_vector, v)
+        print(self.angleBetweenVectors(v,horizontal_vector))
+        return self.angleBetweenVectors(v,horizontal_vector)
 
     def angleToVertical(self, point1: Point2, point2: Point2) -> float:
 
@@ -173,6 +174,49 @@ class Path:
 
         pass
 
+    def coordinate(self, theta : float, d : float, start_point : Point2 ) -> Point2:
+        x = start_point.x + (d* np.cos(np.radians(theta)))
+
+        y = start_point.y + (d* np.sin(np.radians(theta)))
+        p = Point2(x,y)
+        return p
+
+    def form_table(self, ar1 : Point2, ar2 : Point2, table_id : int) -> Table:
+        p = Path_meg()
+        # to make sure the ar1 tag corresponds to the left and ar2 to the right
+        #might not need this if the tags are always returned in a left to right manner
+        if(ar1.x > ar2.x):
+            t = ar1
+            ar1 = ar2
+            ar2 = t
+
+        width = 2
+        height = 2
+        central_position = p.table_centre(ar1, ar2)
+        if(ar1.y < ar2.y):
+            orientation =  p.angleToHorizontal(ar1,ar2)
+        elif(ar1.y >= ar2.y):
+            orientation = -1 * p.angleToHorizontal(ar1,ar2)
+
+        # orientation is positive if AR vector points towards bottom right
+        # orientation is negative if AR vector points towards upper right
+        # eg: orientation = -30 ; angle = 60
+        #     orientation = 30 ; angle = 120
+        angle = 90 + orientation
+        print("orientation  = ", orientation)
+        print("angle = ", angle)
+
+        left1 = p.coordinate((180+angle), (width/2), ar1)
+        right1 = p.coordinate((180+angle), (width / 2), ar2)
+        left2 = p.coordinate(angle, (width/2), ar1)
+        right2 = p.coordinate(angle, (width/2), ar2)
+
+        geometry = Rectangle( width, height, central_position, orientation, left1, left2, right1, right2)
+
+        table = Table(geometry,table_id)
+        return table
+
+
     def find(self):#, initial_pos: Point2, goal_pos: Point2):
 
 
@@ -200,7 +244,20 @@ class Path:
 
     def assign_goal(self, Table, goal_positions) -> None:
         pass
+    def get_table_attributes(selfself , table :Table):
 
+        print(table.geometry.width)
+        print(table.geometry.height)
+        print(table.geometry.central_position.x , table.geometry.central_position.y)
+        print(table.geometry.orientation)
+
+        print(table.geometry.left1.x, table.geometry.left1.y)
+        print(table.geometry.left2.x, table.geometry.left2.y)
+
+        print(table.geometry.right1.x, table.geometry.right1.y)
+        print(table.geometry.right2.x, table.geometry.right2.y)
+
+        print(table.table_id)
 
 
 
@@ -210,6 +267,34 @@ if __name__ == "__main__":
     p3 = Point2(2, 5)
     p4 = Point2(7, 5)
 
-    p = Path()
+    p = Path_meg()
     p.table_to_grid(p1, p2, p3, p4)
+    a= p.vectorFromPoints(p1,p2)
+    b=p.vectorFromPoints(p2, p4)
+    c=p.vectorFromPoints(p2, p3)
+    d=p.vectorFromPoints(p3, p2)
+    print(a)
+    print(b)
+    print(c)
+    print(d)
+    # main 0 -->
+    p.angleToHorizontal(p1,p2)
+    # 180 <--
+    p.angleToHorizontal(p2,p1)
+
+    p.angleToHorizontal(p2, p4)
+    p.angleToHorizontal(p4, p2)
+
+    p.angleToHorizontal(p2, p3)
+    # main - left to right up
+    p.angleToHorizontal(p3, p2)
+    #main - left ot right down
+    p.angleToHorizontal(p1, p4)
+
     p.find()
+    ar1 = Point2(1,1)
+    ar2 = Point2(3,3)
+    table = p.form_table(ar1,ar2, 1)
+
+
+
