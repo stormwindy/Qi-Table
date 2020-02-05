@@ -110,7 +110,7 @@ if __name__ == '__main__':
     c = Camera(1)
     t2 = time.time()
     print(t2 - t1)
-    print(c.get_pos(2))
+    print(c.get_pos(20, True))
     t3 = time.time()
     print(t3 - t2)
     print(c.capture.isOpened())
