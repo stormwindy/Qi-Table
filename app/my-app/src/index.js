@@ -64,11 +64,29 @@ class SettingsView extends React.Component{
 }
 
 class LayoutCard extends React.Component{
+    constructor(props){
+        super(props);
+        this.handleClick = this.handleClick.bind(this)
+    }
+    handleClick(e){
+        alert("Moving into layout " + this.props.name);
+        /*
+        fetch('http://127.0.0.1:5000/move', {
+            method: 'post',
+            body: JSON.stringify({layoutID: "aaa"})
+        })//.then(res => res.json())
+        .then(
+           (result) => alert('Success'),
+           (error) => alert('Error')
+        )
+        */
+    }
+
     render(){
         return(
             <div>
             <p>Layout {this.props.name}</p>
-            <button onClick={() => alert("Moving into layout " + this.props.name + "...")}>Choose this layout!</button>
+            <button onClick={this.handleClick}>Choose this layout!</button>
             </div>
         )
     }
