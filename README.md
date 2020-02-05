@@ -17,10 +17,19 @@ Suggested coding standard follows ["Embedded C Coding Standard"](https://dl.drop
 To get started:
 
 ```
-$ git clone https://github.com/stormwindy/qi-tables
-$ cd qi-tables
+$ git clone https://github.com/stormwindy/qi-table
+$ cd qi-table
 $ virtualenv env_qi -p python3
-$ source activate env_qi/bin/activate
+$ source env_qi/bin/activate
+$ pip install -r requirements.txt --verbose
+```
+
+For venv:
+```
+$ git clone https://github.com/stormwindy/qi-table
+$ cd qi-table
+$ python3 -m venv env
+$ source env/bin/activate
 $ pip install -r requirements.txt --verbose
 ```
 
