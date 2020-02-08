@@ -69,17 +69,18 @@ class LayoutCard extends React.Component{
         this.handleClick = this.handleClick.bind(this)
     }
     handleClick(e){
-        alert("Moving into layout " + this.props.name);
-        /*
         fetch('http://127.0.0.1:5000/move', {
-            method: 'post',
-            body: JSON.stringify({layoutID: "aaa"})
-        })//.then(res => res.json())
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({layoutID: this.props.name})
+            //body: "aaaaaa"
+        }).then(res => res.json())
         .then(
-           (result) => alert('Success'),
+           (result) => alert(result.text),
            (error) => alert('Error')
         )
-        */
     }
 
     render(){
