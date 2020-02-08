@@ -2,4 +2,4 @@ numpy
 
 # For vision
 ar-markers
-opencv-python
+opencv-python==4.1.0.25
