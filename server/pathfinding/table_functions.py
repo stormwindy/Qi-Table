@@ -18,6 +18,8 @@ room_width = 25
 room_height = 15
 cell_size = 1
 
+"""can we make these variable names a little more intuitive? Like bottom_left, top_right etc to represent 
+the room from a top down view? """
 x_axis_x1 = 0
 x_axis_y1 = 0
 x_axis_x2 = room_width
