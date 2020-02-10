@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 from ar_markers import detect_markers
 import time
 from typing import Dict, Tuple
@@ -88,6 +89,17 @@ class Camera:
                           'check markers ID correctness.')
                     raise e
         return pos
+
+    '''
+    Return one frame from the camera feed
+    '''
+    def get_image(self) -> np.ndarray:
+        cap = self.capture
+        frame_captured, frame = cap.read()
+        if frame_captured:
+            return frame
+        else:
+            return np.nan
 
     # Release the video capture.
     def release(self):
