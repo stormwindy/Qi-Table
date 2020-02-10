@@ -3,3 +3,8 @@ numpy
 # For vision
 ar-markers
 opencv-python==4.1.0.25
+
+# for application
+flask
+Flask-CORS
+
