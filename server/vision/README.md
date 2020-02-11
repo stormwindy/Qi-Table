@@ -17,7 +17,9 @@ need to ensure before using this module:
 
 1. The AR markers are placed on a rectangular surface according to specification and are of suitable size.
 Two markers should be placed on each surface like so:
+
 <img src="markers/table1.png" alt="Table with ID 1" width="400"/>
+
 The left marker has ID 1 and the right marker has ID 2. The whole surface is identified with the ID of
 the left marker, i.e. ID 1. The left marker ID should always be odd and the corresponding right marker
 should have an ID value 1 more than the left.
@@ -63,11 +65,17 @@ To initilize an object, do:
 r = Room(0)         
 ```
 A frame will be taken using the camera, and a pop-up canvas will occur. E.g.
+
 <img src="saved/mo1.png" width="400"/>
-Remember that obstacles are represented using polygons, you will need to mark all the vertices of the polygon by **Double-Clicking the Left Mouse Button** (every time you double-click, a red circle will appear):
+
+Remember that obstacles are represented using polygons, you will need to mark all the vertices of the polygon by **Double-Clicking the Left Mouse Button** (every time you double-click, a red circle will appear, not so obvious in the image below):
+
 <img src="saved/mo2.png" width="400"/>
+
 Press 'n' (stands for 'new') when you are finished with marking an obstacle, the edges of the polygon you just marked will appear, and you can start marking your next obstacle:
+
 <img src="saved/mo3.png" width="400"/>
+
 Once you are done marking, press 'q' to quit. 
 
 The obstacles are stored in a dictionary:
