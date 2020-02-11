@@ -39,3 +39,38 @@ install and to ensure we're all running the same version of Python.
 Base classes for the table/chairs are in `./base.py`. These should be used
 wherever possible to maintain code interoperability.
 
+## App Setup
+
+The frontend is currently using https://create-react-app.dev/ and is not hosted on the server that it communicates with.
+
+To start the app:
+
+```
+$ cd app
+$ cd my-app
+$ npm start
+```
+To connect, open localhost:3000 in your browser, though it should open automatically. For the app to function correctly, you need to also start the server:
+
+```
+$ source env_qi/bin/activate
+$ cd app
+$ flask run
+```
+This will open the server at localhost:5000, though you don't need this information to use the app
+
+Note that there is currently no way to delete layouts from the database. You can do this manually by opening layouts.db in sqlite3 (this should come installed on Mac, not sure about Windows):
+
+```
+$ cd app
+$ sqlite3 layouts.db
+```
+
+If you know SQL feel free to play around with it. If you just want to delete the saved layouts:
+
+```
+> delete from positions;
+> delete from layouts;
+```
+
+
