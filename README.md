@@ -69,8 +69,8 @@ $ sqlite3 layouts.db
 If you know SQL feel free to play around with it. If you just want to delete the saved layouts:
 
 ```
->>> delete from positions;
->>> delete from layouts;
+> delete from positions;
+> delete from layouts;
 ```
 
 
