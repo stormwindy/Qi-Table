@@ -2,6 +2,7 @@
 
 import math
 import numpy as np
+from uuid import uuid4
 from typing import List
 
 class Point2:
@@ -98,6 +99,7 @@ class Table:
     Base table class, including geometry information, world pos, device ID, etc.
     """
     geometry = None
+    id       = None
 
     def __init__(self, geometry: Rectangle):
         """
@@ -107,6 +109,24 @@ class Table:
         :type geometry: Rectangle
         """
         self.geometry = geometry
+        self.id       = uuid4()
+
+
+class GoalState:
+    """
+    Describes a goal position for a room, essentially a mapping of id -> Geometry.
+
+    This is readonly! (e.g. generated once by the App controller and sent to vision controller
+    """
+    endstates = None
+    
+    def __init__(self, endstates):
+        self.endstates = endstates
+
+    def __getattr__(self, key):
+        if not key in self.endstates:
+            raise AttributeError('Key {} does ont exists on this endstate descriptor!')
+        return self.endstates[key]
 
 
 class Room:
