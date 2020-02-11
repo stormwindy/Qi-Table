@@ -45,6 +45,14 @@ class Room:
         cv2.polylines(self.frame_obst, vertices, True, (0, 0, 255), thickness=3)
 
     '''
+    Draw path from nodes' locations - numpy 3d array:
+    [[[x, y],..., [   ]],  <- path1
+     [[    ],..., [   ]]]  <- path2
+    '''
+    def draw_path(self, vertices: np.ndarray) -> None:
+        cv2.polylines(self.frame_obst, vertices, False, (0, 255, 0), thickness=3)
+
+    '''
     A window will pop up for manual obstacle marking.
     Select obstacle vertices one by one by double-clicking 
     mouse left button. Press 'n' to start mark a new obstacle.
@@ -106,6 +114,7 @@ if __name__ == '__main__':
     r = Room('room0')
     # r = Room(0)
     t2 = time.time()
+    r.draw_path(np.array([[[500,100],[500,600], [600,600]]]))
     print(t2-t1)
     r.show(True)
     t3 = time.time()
