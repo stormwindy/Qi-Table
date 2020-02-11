@@ -95,7 +95,8 @@ class Camera:
     '''
     def get_image(self) -> np.ndarray:
         cap = self.capture
-        frame_captured, frame = cap.read()
+        for _ in range(5):
+            frame_captured, frame = cap.read()
         if frame_captured:
             return frame
         else:
