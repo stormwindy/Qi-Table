@@ -1,5 +1,9 @@
 numpy
 
+# for integration
+aiohttp[speedups]
+wirepickle
+
 # For vision
 ar-markers
 opencv-python==4.1.0.25
