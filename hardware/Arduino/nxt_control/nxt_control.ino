@@ -7,7 +7,7 @@
 
 int i = 0;
 SoftwareSerial mySerial =  SoftwareSerial(rxPin, txPin);
-void setup(){
+void setupMotors(){
   Serial.println("PRINT ");
   pinMode(rxPin, INPUT);
   pinMode(txPin, OUTPUT);
@@ -41,7 +41,7 @@ int curDir = 5;
  * As of now both checks software calls from moveDirection var, and serial port 115200
  * to set directoin. Default speed is 50%.
  */
-void loop() {
+void moveMotors() {
   if (Serial.available()) 
   {
     rx_byte = Serial.read();
@@ -66,17 +66,17 @@ void loop() {
     {
       moveDirection = 1;
     }
-    //Letter q/Q. Stop movement.
-    else if(rx_byte == 113 || rx_byte == 81)
+    //Any other character is STOP.
+    else 
     {
       moveDirection = 5;
     }
   }
   if (curDir == moveDirection) {return;}
   curDir = moveDirection;
+  //Letter W/w. Move forward
   if (moveDirection == 2)
   {
-    Serial.println("Forward move start.");
     motorForward(0, power);
     motorForward(1, power);
   } 
