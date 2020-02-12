@@ -1,13 +1,10 @@
-#ifndef COMMS_CPP
-#define COMMS_CPP
-
 #include "Arduino.h"
 #include "Comms.h"
 
-const byte numChars = 32;
-char receivedChars[numChars]; // an array to store the received data
+const byte Comms::numChars = 32;
+char Comms::receivedChars[numChars]; // an array to store the received data
 
-bool newData = false;
+bool Comms::newData = false;
 
 void Comms::setupComms() 
 {
@@ -47,6 +44,7 @@ void Comms::recvWithEndMarker()
       receivedChars[ndx] = '\0'; // terminate the string
       ndx = 0;
       newData = true;
+      Serial.println(receivedChars[ndx]);
     }
   }
 }
@@ -56,10 +54,9 @@ void Comms::showNewData()
 {
   if (newData == true) 
   {
-    Serial.print("Current packer: ");
+    Serial.print("Current packet: ");
     Serial.println(receivedChars);
     newData = false;
   }
 }
 
-#endif

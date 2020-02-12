@@ -13,8 +13,8 @@ class Comms
 
     private:
         const static byte numChars;
-        char static receivedChars[]; // an array to store the received data
-        bool static newData;
+        static char receivedChars[]; // an array to store the received data
+        static bool newData;
         static void recvWithEndMarker();
 };
 #endif
