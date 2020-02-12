@@ -1,6 +1,6 @@
 #include "Arduino.h"
 #include "Comms.h"
-//Trial
+
 class Comms
 {
 const byte numChars = 32;
