@@ -18,6 +18,13 @@ room_width = 25
 room_height = 15
 cell_size = 1
 
+""" Smilte: I've fixed y axis coordinates i think it is correct now, pls delete this afterwards """
+
+x_axis_left = Point2(0, 0)
+x_axis_right = Point2(room_width, 0)
+y_axis_left = Point2(0, 0)
+y_axis_right = Point2(0, room_height)
+
 # type vector
 Vector = np.array([])
 
