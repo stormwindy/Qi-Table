@@ -9,7 +9,7 @@ import numpy.linalg as la
 import sys
 
 sys.path.append("..\\..\\")
-from base import Table, Point2
+from base import Table, Point2, Rectangle
 
 # maps table id with the list of tuples representing the grid cells that the table occupies
 occupied_cells = dict()
@@ -18,30 +18,13 @@ room_width = 25
 room_height = 15
 cell_size = 1
 
-x_axis_x1 = 0
-x_axis_y1 = 0
-x_axis_x2 = room_width
-x_axis_y2 = 0
-y_axis_x1 = 0
-y_axis_y1 = room_height
-y_axis_x2 = room_width
-y_axis_y2 = room_height
-
-x_axis1 = Point2(0, 0)
-x_axis2 = Point2(room_width, 0)
-y_axis1 = Point2(0, room_height)
-y_axis2 = Point2(room_width, room_height)
-
 # type vector
 Vector = np.array([])
 
 
 def vectorFromPoints(point1: Point2, point2: Point2) -> Vector:
-    x1 = point1.x
-    y1 = point1.y
-    x2 = point2.x
-    y2 = point2.y
-    return np.array([x2 - x1, y2 - y1])
+
+    return np.array([point2.x - point1.x, point2.y - point1.y])
 
 
 def angleBetweenVectors(v1, v2) -> float:
@@ -51,12 +34,14 @@ def angleBetweenVectors(v1, v2) -> float:
 
 
 def angleToHorizontal(point1: Point2, point2: Point2) -> float:
+    x_axis1, x_axis2= Point2(0, 0), Point2(room_width, 0)
     horizontal_vector = vectorFromPoints(x_axis1, x_axis2)
     v = vectorFromPoints(point1, point2)
     return angleBetweenVectors(horizontal_vector, v)
 
 
 def angleToVertical(point1: Point2, point2: Point2) -> float:
+    y_axis1, y_axis2 = Point2(0, room_height), Point2(room_width, room_height)
     vertical_vector = vectorFromPoints(y_axis1, y_axis2)
     v = vectorFromPoints(point1, point2)
     return angleBetweenVectors(vertical_vector, v)
@@ -71,6 +56,9 @@ def table_to_grid(table: Table, itself: bool, grid_matrix):
     p2 = table.geometry.left2
     p3 = table.geometry.right1
     p4 = table.geometry.right2
+
+    print("table id", table.table_id)
+    print(p1.x, p2.x, p3.x, p4.x)
 
     table_pol = Polygon((p1.x, p1.y), (p3.x, p3.y), (p4.x, p4.y), (p2.x, p2.y))
 
@@ -141,3 +129,50 @@ def table_centre(ar1: Point2, ar2: Point2) -> Point2:
 
 def table_occupied_cells(table: Table) -> List:
     return occupied_cells[table.table_id]
+
+def form_table(ar1 : Point2, ar2 : Point2, table_id : int) -> Table:
+
+    # to make sure the ar1 tag corresponds to the left and ar2 to the right
+    #might not need this if the tags are always returned in a left to right manner
+    if(ar1.x > ar2.x):
+        t = ar1
+        ar1 = ar2
+        ar2 = t
+
+    width = 2
+    height = 2
+    central_position = table_centre(ar1, ar2)
+    if(ar1.y < ar2.y):
+        orientation =  angleToHorizontal(ar1,ar2)
+    elif(ar1.y >= ar2.y):
+        orientation = -1 * angleToHorizontal(ar1,ar2)
+
+    # orientation is positive if AR vector points towards bottom right
+    # orientation is negative if AR vector points towards upper right
+    # eg: orientation = -30 ; angle = 60
+    #     orientation = 30 ; angle = 120
+    angle = 90 + orientation
+    print("orientation  = ", orientation)
+    print("angle = ", angle)
+
+    left1 = coordinate((180+angle), (width/2), ar1)
+    right1 = coordinate((180+angle), (width / 2), ar2)
+    left2 = coordinate(angle, (width/2), ar1)
+    right2 = coordinate(angle, (width/2), ar2)
+
+    geometry = Rectangle( width, height, central_position, orientation, left1, left2, right1, right2)
+
+    table = Table(geometry,table_id)
+    return table
+
+def coordinate(theta: float, d: float, start_point: Point2) -> Point2:
+    x = start_point.x + (d * np.cos(np.radians(theta)))
+
+    y = start_point.y + (d * np.sin(np.radians(theta)))
+    p = Point2(x, y)
+    return p
+
+def diagonal(table: Table) -> float:
+
+    rectangle = table.geometry
+    return rectangle.left1.distanceTo(rectangle.right2)
