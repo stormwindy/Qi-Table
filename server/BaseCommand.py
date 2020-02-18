@@ -45,7 +45,7 @@ class BaseCommand:
         self.leftMarker = markerDict[0][0]
         self.rightMarker = markerDict[0][1]
 
-    def inRange(self, rx: int, ry: int):
+    def inRange(self, rx: int, ry: int) -> bool:
         if rx - 10 < self.sx and self.sx < rx + 10 and ry - 10 < self.sy and self.sy < ry + 10: return True
         return False
 
@@ -57,13 +57,13 @@ class BaseCommand:
             # TODO: TURN RIGHT.
             pass
 
-    def getDistCurTarget(self, rx: int, ry: int):
+    def getDistCurTarget(self, rx: int, ry: int) -> float:
         return math.sqrt((rx - self.sy)**2 + (ry - self.sy)**2)
 
-    def calcOrientation(self):
+    def calcOrientation(self) -> float:
         return self.getDirection(self.leftMarker, self.rightMarker)
 
-    def getDirection(self, source: Tuple[int], target: Tuple[int]):
+    def getDirection(self, source: Tuple[int], target: Tuple[int]) -> float :
         latLeft = math.radians(source[1])
         latRight = math.radians(target[1])
         x = math.cos(latRight) * math.sin(math.radians(target[0] - source[0]))
