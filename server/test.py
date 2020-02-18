@@ -53,9 +53,9 @@ draw_rect(0, 0, 1920, 1080)
 draw_rect(1000, 200, 300, 300)
 draw_rect(1500, 700, 50, 50)
 # start, goal
-sx, sy, gx, gy = 20.0, 20.0, 1850.0, 950.0
+sx, sy, gx, gy = 20.0, 20.0, 1750.0, 740.0
 
-grid_size = 30.0
+grid_size = 100.0
 robot_radius = 15.0
 
 ###

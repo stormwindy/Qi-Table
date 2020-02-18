@@ -251,7 +251,7 @@ def main():
     sy = 10.0  # [m]
     gx = 50.0  # [m]
     gy = 50.0  # [m]
-    grid_size = 2.0  # [m]
+    grid_size = 10.0  # [m]
     robot_radius = 1.0  # [m]
 
     # set obstable positions
