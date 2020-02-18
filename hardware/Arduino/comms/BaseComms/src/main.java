@@ -27,12 +27,12 @@ public class main {
 	
 	//forward: in binary 010, in decimal 2
 	private final static byte forward = 2;
-	//backwards: in binary 001, in decimal 2
+	//backwards: in binary 001, in decimal 1
 	private final static byte backwards = 1;
 	//left: in binary 011, in decimal 3
 	private final static byte left = 3;
 	//right: in binary 100, in decimal 4
-	private final static byte right = 1;
+	private final static byte right = 4 ;
 	
 	
 	public static void main(String[] args) {

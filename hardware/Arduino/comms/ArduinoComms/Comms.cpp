@@ -5,10 +5,10 @@ const byte Comms::numChars = 32;
 char Comms::receivedChars[numChars]; // an array to store the received data
 
 bool Comms::newData = false;
-
+int Comms::lastIndex = 0;
 void Comms::setupComms() 
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.println("<Arduino comms is ready>");
 }
 
@@ -17,6 +17,15 @@ char* Comms::getPacket()
 {
   recvWithEndMarker();
   return receivedChars;
+}
+
+char Comms::getCommand()
+{
+  recvWithEndMarker();
+  //if (packet == NULL) {return NULL;}
+  showNewData();
+  newData = false;
+  return receivedChars[lastIndex - 1];
 }
 
 //Loads a data packet into a char array. Packets have to be terminated with end marker.
@@ -36,15 +45,14 @@ void Comms::recvWithEndMarker()
       if (ndx >= numChars) 
       {
         Serial.write("Exceeded packet size limit.");
-        ndx = numChars - 1;
       }
     }
     else 
     {
       receivedChars[ndx] = '\0'; // terminate the string
+      lastIndex = ndx;
       ndx = 0;
       newData = true;
-      Serial.println(receivedChars[ndx]);
     }
   }
 }
@@ -55,8 +63,7 @@ void Comms::showNewData()
   if (newData == true) 
   {
     Serial.print("Current packet: ");
-    Serial.println(receivedChars);
-    newData = false;
+    Serial.println(receivedChars[lastIndex - 1]);
   }
 }
 
