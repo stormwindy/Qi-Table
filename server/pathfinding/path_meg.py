@@ -246,16 +246,16 @@ class Path_meg:
         pass
     def get_table_attributes(selfself , table :Table):
 
-        print(table.geometry.width)
-        print(table.geometry.height)
-        print(table.geometry.central_position.x , table.geometry.central_position.y)
-        print(table.geometry.orientation)
+        print("width",table.geometry.width)
+        print("height",table.geometry.height)
+        print("central_position",table.geometry.central_position.x , table.geometry.central_position.y)
+        print("orientation",table.geometry.orientation)
 
-        print(table.geometry.left1.x, table.geometry.left1.y)
-        print(table.geometry.left2.x, table.geometry.left2.y)
+        print("left1",table.geometry.left1.x, table.geometry.left1.y)
+        print("left2",table.geometry.left2.x, table.geometry.left2.y)
 
-        print(table.geometry.right1.x, table.geometry.right1.y)
-        print(table.geometry.right2.x, table.geometry.right2.y)
+        print("right1",table.geometry.right1.x, table.geometry.right1.y)
+        print("right2",table.geometry.right2.x, table.geometry.right2.y)
 
         print(table.table_id)
 

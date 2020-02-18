@@ -44,7 +44,7 @@ class Rectangle:
     height      = None
     central_position    = None
     orientation = None
-    lef1 = None # upper left corner
+    left1 = None # upper left corner
     left2 = None
     right1 = None # upper right corner
     right2 = None

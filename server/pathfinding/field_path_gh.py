@@ -13,15 +13,16 @@ https://www.cs.cmu.edu/~motionplanning/lecture/Chap4-Potential-Field_howie.pdf
 
 import numpy as np
 import matplotlib.pyplot as plt
-from .table_functions import *
+#from table_functions import *
+from base import *
 
 # Parameters
 KP = 5.0  # attractive potential gain
 ETA = 100.0  # repulsive potential gain
 # AREA_WIDTH = 30.0  # potential area width [m]
 
-ROOM_WIDTH = 70;
-ROOM_HEIGHT = 50;
+ROOM_WIDTH = 70
+ROOM_HEIGHT = 50
 
 # camera = Camera(1)
 
@@ -249,7 +250,7 @@ def main():
     grid_size = 0.5  # potential grid size [m]
     robot_radius = 3.0  # robot radius [m]
 
-    ox = [15.0, 5.0, 20.0, 25.0]  # obstacle x position list [m]
+    ox = [15.0, 5.0, 20.0, 25.0, ]  # obstacle x position list [m]
     oy = [25.0, 15.0, 26.0, 25.0]  # obstacle y position list [m]
 
     if show_animation:
