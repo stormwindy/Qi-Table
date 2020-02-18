@@ -1,5 +1,8 @@
+import sys
+import os
+sys.path.append("../../")
 import cv2
-from camera import Camera
+from server.vision.camera import Camera
 import time
 from collections import defaultdict
 import pickle
@@ -29,8 +32,9 @@ class Room:
             camera.release()
         # str param should be file names to read in
         elif isinstance(param, str):
-            self.frame_orig = cv2.imread('saved/' + param + '.png')
-            self.obsts = pickle.load(open('saved/' + param + '.p', "rb"))
+            dirname = os.path.dirname(__file__)
+            self.frame_orig = cv2.imread(os.path.join(dirname, 'saved/', param +'.png'))
+            self.obsts = pickle.load(open(os.path.join(dirname, 'saved/', param +'.p'), "rb"))
             self.frame_obst = self.frame_orig.copy()
             self.draw_poly(np.array([np.array(v) for v in self.obsts.values()]))
         else:
@@ -86,8 +90,9 @@ class Room:
     Serialize and save the frames and the obstacles.
     '''
     def serialize(self, index=0) -> None:
-        cv2.imwrite('saved/room' + str(index) + '.png', self.frame_orig)
-        cv2.imwrite('saved/room' + str(index) + '_obst.png', self.frame_obst)
+        dirname = os.path.dirname(__file__)
+        cv2.imwrite(os.path.join(dirname, 'saved', 'room' + str(index) + '.png'), self.frame_orig)
+        cv2.imwrite(os.path.join(dirname, 'saved', 'room' + str(index) + '_obst.png'), self.frame_obst)
         pickle.dump(self.obsts, open('saved/room' + str(index) + '.p', "wb"))
 
     '''

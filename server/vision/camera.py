@@ -1,3 +1,5 @@
+import sys
+sys.path.append("../../")
 import cv2
 import numpy as np
 from ar_markers import detect_markers
