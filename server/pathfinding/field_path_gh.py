@@ -252,25 +252,29 @@ def my_potential_field_planning(self, table, gx, gy, ox, oy, reso):
         orientation = table.geometry.orientation
 
         # id = table.table_id
+        # if not angle == orientation :
+        #   send direction to robot to rotate
         #     # OR INSTEAD OF BELLOW while not (angle >= orientation - 1 and angle <= orientation + 1) : #added 1s for errors???
-        # while not angle == orientation :
-        #     #send direction to robot to rotate
-        #     pos = self.camera.get_pos(1)
-        #     ar1, ar2 = pos[id]
-        #     table = form_table(ar1, ar2)
-        #     orientation = table.geometry.orientation
-        #     would be good to have function get_orientation() probs easy to extract that part from form_table
-        #     orientation = get_orientation()
+        #   while not angle == orientation :
+        #       pos = self.camera.get_pos(1)
+        #       ar1, ar2 = pos[id]
+        #       table = form_table(ar1, ar2)
+        #       orientation = table.geometry.orientation
+        #       would be good to have function get_orientation() probs easy to extract that part from form_table
+        #       orientation = get_orientation()
+        #     stop the rotation
 
         # table.orientation = angle # or new orientation
 
-        # while not (xp > sx - 0.5 and xp < sx + 0.5 and yp > sy - 0.5 and yp < sy + 0.5) :
+        # if not xp == sx and xy == sy :
         #     send directions to the table to move forwards or backwards
-        #     pos = self.camera.get_pos(1)
-        #     ar1, ar2 = pos[id]
-        #     new_centre = table_centre(ar1, ar2)
-        #     sx = new_centre.x
-        #     sy = new_centre.y
+        #   while not (xp > sx - 0.5 and xp < sx + 0.5 and yp > sy - 0.5 and yp < sy + 0.5) :
+        #       pos = self.camera.get_pos(1)
+        #       ar1, ar2 = pos[id]
+        #       new_centre = table_centre(ar1, ar2)
+        #       sx = new_centre.x
+        #       sy = new_centre.y
+        #   stop the movement
 
         # table.geometry.x = sx
         # table.geometry.y = sy
