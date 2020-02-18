@@ -36,9 +36,18 @@ class Room:
             self.frame_orig = cv2.imread(os.path.join(dirname, 'saved/', param +'.png'))
             self.obsts = pickle.load(open(os.path.join(dirname, 'saved/', param +'.p'), "rb"))
             self.frame_obst = self.frame_orig.copy()
-            self.draw_poly(np.array([np.array(v) for v in self.obsts.values()]))
+            # Uncomment the line below to draw polygons instead
+            # self.draw_poly(np.array([np.array(v) for v in self.obsts.values()]))
+            self.draw_rect(np.array([np.array(v) for v in self.obsts.values()]))
         else:
             raise TypeError('vision.room.__init__: please pass either an int or a str')
+
+    '''
+    Draw a rectangles given a list of opposite vertices
+    '''
+    def draw_rect(self, pts_arr: np.ndarray) -> None:
+        for pts in pts_arr:
+            cv2.rectangle(self.frame_obst, tuple(pts[0]), tuple(pts[1]), (0, 0, 255), thickness=3)
 
     '''
     Draw polygons from vertices' locations - numpy 3d array:
@@ -79,7 +88,9 @@ class Room:
             cv2.imshow('mark_obst', self.frame_obst)
             k = cv2.waitKey(1) & 0xFF
             if k == ord('n'):
-                self.draw_poly(np.array([obsts[obst_index]]))
+                # Uncomment the line below if polygons are wanted
+                # self.draw_poly(np.array([obsts[obst_index]]))
+                self.draw_rect(np.array([obsts[obst_index]]))
                 obst_index += 1
             elif k == ord('q'):
                 break
