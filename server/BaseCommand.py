@@ -10,12 +10,7 @@ from server.pathfinding.planner import AStarPlanner
 class BaseCommand:
     def __init__(self):
         self.cam = Camera(0)
-        room = Room('room0')
-        markerDict = self.cam.get_pos(1, True)
-        self.leftMarker = markerDict[0][0]
-        self.rightMarker = markerDict[0][1]
-        self.sx = self.leftMarker[0] + self.rightMarker[0]
-        self.sy = self.leftMarker[1] + self.rightMarker[1]
+        self.getPos()
         self.angle = self.calcOrientation()
         self.gx = 1500
         self.gy = 1500
@@ -44,6 +39,8 @@ class BaseCommand:
         markerDict = self.cam.get_pos(1, True)
         self.leftMarker = markerDict[0][0]
         self.rightMarker = markerDict[0][1]
+        self.sx = (1920 - self.leftMarker[0]) + (1920 - self.rightMarker[0])
+        self.sy = self.leftMarker[1] + self.rightMarker[1]
 
     def inRange(self, rx: int, ry: int) -> bool:
         if rx - 10 < self.sx and self.sx < rx + 10 and ry - 10 < self.sy and self.sy < ry + 10: return True
@@ -74,26 +71,28 @@ class BaseCommand:
 
     def getPath(self, sx: int, sy: int, gx: int, gy: int) -> Tuple[list, list]:
         ox, oy = [], []
-        def draw_rect(x, y, lside, sside):
-            # bot
-            for xx in range(lside):
-                ox.append(x + xx)
-                oy.append(y)
-            for xx in range(lside):
-                ox.append(x + xx)
-                oy.append(y + sside - 1)
-            for yy in range(sside):
-                oy.append(y + yy)
-                ox.append(x)
-            for yy in range(sside):
-                oy.append(y + yy)
-                ox.append(x + lside - 1)
+        def drawRect(point0: Tuple[int, int], point1: Tuple[int, int]) -> None:
+            side = abs(point0[0] - point1[0])
+            base = abs(point0[1] - point1[1])
+            for xx in range(base):
+                ox.append(point0[0] + xx)
+                oy.append(point0[1])
+            for xx in range(base):
+                ox.append(point0[0] + xx)
+                oy.append(point0[1] + side - 1)
+            for yy in range(side):
+                oy.append(point0[1] + yy)
+                ox.append(point0[0])
+            for yy in range(side):
+                oy.append(point0[1] + yy)
+                ox.append(point0[0] + base - 1)
 
-        draw_rect(200, 300, 100, 200)
-        draw_rect(600, 700, 200, 200)
-        draw_rect(0, 0, 1920, 1080)
-        draw_rect(1000, 200, 300, 300)
-        draw_rect(1500, 700, 50, 50)
+
+        drawRect((200, 300), (300, 400))
+        drawRect((600, 700), (800, 900))
+        drawRect((0, 0), (1920, 1080))
+        drawRect((1000, 200), 1300, 500)
+        drawRect((1500, 700), (1550, 750))
         # start, goal
         grid_size = 100.0
         robot_radius = 15.0
