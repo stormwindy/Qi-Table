@@ -16,7 +16,7 @@ class BaseComms:
     def __init__(self):
         self.ser = serial.Serial('/dev/ttyACM0', 115200)
 
-    def whichCommandNumber(key) -> chr:
+    def _whichCommandNumber(key) -> chr:
         switcher = {
             'w':1,
             's':2,
@@ -27,7 +27,7 @@ class BaseComms:
         return switcher.get(key)+'/n'
 
 
-    def getKey(self):
+    def _getKey(self):
         key = ''
         while not(key=='w' or key=='a' or key=='s' or key=='d' or key=='p'):
             key = input().lower()
@@ -36,11 +36,11 @@ class BaseComms:
         return key
 
 
-    def keyboardControl(self):
+    def _keyboardControl(self):
         key = self.getKey()
         return self.whichCommandNumber(key)
 
-    def transmit(self, command = None):
+    def _transmit(self, command : chr = None):
         print(self.ser.name)
         if command:
             command += '\n'
@@ -50,3 +50,23 @@ class BaseComms:
                 command = self.whichCommandNumber()
                 command += '\n'
                 self.ser.write(command)
+
+    '''
+    Interfacing methods for turning. If you are planning to transmit something other than following, add your own 
+    public method. DO NOT use previous methods in this file outside of this class.
+    '''
+
+    def turnRight(self):
+        self._transmit('4')
+
+    def turnLeft(self):
+        self._transmit('3')
+
+    def goForward(self):
+        self._transmit('2')
+
+    def goBackward(self):
+        self._transmit('1')
+
+    def stop(self):
+        self._transmit('0')

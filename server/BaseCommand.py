@@ -5,6 +5,7 @@ from typing import Tuple
 from server.vision.camera import Camera
 from server.vision.room import Room
 from server.pathfinding.planner import AStarPlanner
+from server.BaseComms import BaseComms
 
 
 class BaseCommand:
@@ -14,24 +15,26 @@ class BaseCommand:
         self.angle = self.calcOrientation()
         self.gx = 1500
         self.gy = 1500
+        self.comms = BaseComms()
 
     def move(self):
         rx, ry = self.getPath(self.sx, self.sy, self.gx, self.gy)
         for i in range(len(rx)):
             minDist = self.getDistCurTarget(rx[i], ry[i])
-            direction = self.getDirection((self.sx, self.sy), (rx[i], ry[i]))
             self.correctOrientation(rx[i], ry[i])
-            #TODO: stop
+            self.comms.stop()
 
             while not self.inRange(rx[i], ry[i]):
                 self.getPos()
                 distance = self.getDistCurTarget(rx[i], ry[i])
+
                 if distance > minDist:
                     self.correctOrientation()
-                    #TODO: Stop
+                    self.comms.stop()
+
                 minDist = distance
-                #TODO: move forward
-            #TODO: Stop
+                self.comms.goForward()
+            self.comms.stop()
 
             #self.correctOrientation(rx[i], ry[i])
 
@@ -51,8 +54,7 @@ class BaseCommand:
         while direction - 2 > self.angle and self.angle > direction + 2:
             self.getPos()
             self.angle = self.calcOrientation()
-            # TODO: TURN RIGHT.
-            pass
+            self.comms.turnRight()
 
     def getDistCurTarget(self, rx: int, ry: int) -> float:
         return math.sqrt((rx - self.sy)**2 + (ry - self.sy)**2)
