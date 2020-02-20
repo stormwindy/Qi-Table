@@ -2,8 +2,7 @@
 
 adding negative fields to the paths that are already moving
 
-Potential Field based path planner
-
+Potential Field based path pl
 author: Atsushi Sakai (@Atsushi_twi)
 
 Ref:
