@@ -1,5 +1,6 @@
 import sys
-sys.path.append("../../")
+import os
+sys.path.append(os.path.abspath(__file__ + '/../../..'))
 import cv2
 import numpy as np
 from ar_markers import detect_markers

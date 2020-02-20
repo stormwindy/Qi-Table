@@ -68,11 +68,11 @@ A frame will be taken using the camera, and a pop-up canvas will occur. E.g.
 
 <img src="saved/mo1.png" width="400"/>
 
-Remember that obstacles are represented using polygons, you will need to mark all the vertices of the polygon by **Double-Clicking the Left Mouse Button** (every time you double-click, a red circle will appear, not so obvious in the image below):
+Remember that obstacles are represented using rectangles, you will need to mark 2 opposite vertices by **Double-Clicking the Left Mouse Button** (every time you double-click, a red circle will appear, not so obvious in the image below):
 
 <img src="saved/mo2.png" width="400"/>
 
-Press 'n' (stands for 'new') when you are finished with marking an obstacle, the edges of the polygon you just marked will appear, and you can start marking your next obstacle:
+Press 'n' (stands for 'new') when you are finished with marking an obstacle, the edges of the rectangle you just marked will appear, and you can start marking your next obstacle:
 
 <img src="saved/mo3.png" width="400"/>
 
@@ -81,10 +81,10 @@ Once you are done marking, press 'q' to quit.
 The obstacles are stored in a dictionary:
 ```
  obstacle ID: List of vertices
-{0: [[x, y], ..., [   ]],
- 1: [[    ], ..., [   ]],
- .......................,
- n: [[    ], ..., [   ]]}
+{0: [[x, y], [   ]],
+ 1: [[    ], [   ]],
+ ..................,
+ n: [[    ], [   ]]}
 ```
 
 You can:
