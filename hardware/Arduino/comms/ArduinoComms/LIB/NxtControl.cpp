@@ -42,8 +42,8 @@ void NxtControl::setDirection(char dir, int powerInput)
     power = powerInput; 
   }
   
-//  if (curDir == moveDirection) {return;}
-//  curDir = moveDirection;
+  if (curDir == moveDirection) {return;}
+  curDir = moveDirection;
   //Letter W/w. Move forward
   if (NxtControl::moveDirection == '2')
   {
