@@ -13,9 +13,12 @@ https://www.cs.cmu.edu/~motionplanning/lecture/Chap4-Potential-Field_howie.pdf
 
 import numpy as np
 import matplotlib.pyplot as plt
-from table_functions import *
+#from table_functions import *
 
 import sys
+
+from server.pathfinding.table_functions import *
+
 sys.path.append("..\\..\\")
 from base import Table, Point2, Rectangle
 from server.vision.camera import Camera
@@ -29,7 +32,7 @@ ETA = 100.0  # repulsive potential gain
 ROOM_WIDTH = 70;
 ROOM_HEIGHT = 50;
 
-camera = Camera(1)
+camera = Camera(0)
 
 
 def calc_attractive_potential(x, y, gx, gy):
@@ -162,7 +165,7 @@ def my_potential_field_planning(ar1, ar2, gx, gy, ox, oy, reso):
 
         table.orientation = angle # or new orientation
 
-        if not xp == sx and xy == sy :
+        if not xp == sx and yp == sy :
             # TO-DO: send directions to the table to move forwards or backwards
           while not (xp > sx - 0.5 and xp < sx + 0.5 and yp > sy - 0.5 and yp < sy + 0.5) :
               pos = camera.get_pos(1)

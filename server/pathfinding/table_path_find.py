@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 KP = 5.0  # attractive potential gain
 ETA = 100.0  # repulsive potential gain
 #AREA_WIDTH = 30.0  # potential area width [m]
-
+cell_path = []  # cell_path = [ (ix1,iy1), (ix2,iy2) ... ] sequence of cell movements
 
 room_width = 25
 room_height = 15
@@ -59,15 +59,16 @@ def calc_potential_field_nextcell(cell_x, cell_y , gx, gy, ox, oy, reso , rr, nm
     # create 3 x 3 matrix to only represent the gird cells around the table centre position
     #we are assuming that current_x and current_y are cell position and not coordinates, therefore we need to convert it
     nlist = []
-    minp = float(inf)
+    minp = float("inf")
     minix, miniy = -1, -1
     for ix in range((cell_x - 1), (cell_x+2)):
         for iy in range((cell_y - 1), (cell_y+2)):
-            print(' x y = ', ix, iy)
+            print(' ix iy = ', ix, iy)
+            x = ix /
             ug = calc_attractive_potential(x, y, gx, gy)
             uo = calc_repulsive_potential(x, y, ox, oy, rr)
             uf = ug + uo
-            nmap[ix][iy] = uf #adds the nrighbour potentials to the room map/grid
+            nmap[ix][iy] = uf #adds the neighbour potentials to the room map/grid
             nlist.append(uf)  #adds the neighbour potentials to a list  (8 elements)
             if ix >= room_x or iy >= room_y:
                 p = float("inf")  # outside area
@@ -150,7 +151,7 @@ def path_sequence(sx, sy, gx, gy, reso, rr):
         ix , iy = minix , miniy
         xp = minix * reso
         yp = miniy * reso
-        coord_path.append((minx, miny))
+        coord_path.append((xp, yp))
         d = np.hypot(gx - xp, gy - yp)
         #rx and ry are the same as coord_path = [ (x1,y1), (x2,y2) ... ]
         # rx.append(xp)
@@ -181,9 +182,8 @@ def main():
 
 
     grid_size = 1
-    cell_path = []  # cell_path = [ (ix1,iy1), (ix2,iy2) ... ] sequence of cell movements
 
-    
+
     ox = [15.0, 5.0, 20.0, 25.0]  # obstacle x position list [m]
     oy = [25.0, 15.0, 26.0, 25.0]  # obstacle y position list [m]
 
