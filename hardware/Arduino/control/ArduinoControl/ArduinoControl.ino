@@ -1,17 +1,19 @@
 #include "SDPArduino.h"
-#include "Comms.h"
-#include "NxtControl.h"
+//#include "Comms.h"
+//#include "NxtControl.h"
 #include <Wire.h>
 #include <SoftwareSerial.h>
+#include <string.h>
 #define rxPin 10
 #define txPin 11
 
-const byte numChars = 32;
+const byte numChars = 3;
 char receivedChars[numChars]; // an array to store the received data
 char moveDirection = '5';
 char curDir = '5';
 bool newData = false;
 int lastIndex = 0;
+String commands = "012345";
 //SoftwareSerial ss(10, 11);
 //Comms comms;
 //NxtControl nxt(&ss);
@@ -36,7 +38,6 @@ void loop()
   delay(200);
   setDirection(commandChar, 75);
   moveMotors();
-  delay(200);
 }
 
 char getCommand()
@@ -45,7 +46,6 @@ char getCommand()
   //if (packet == NULL) {return NULL;}
   //showNewData();
   newData = false;
-  delay(200);
   return receivedChars[lastIndex - 1];
 }
 
@@ -58,7 +58,7 @@ void recvWithEndMarker()
   while (Serial.available() > 0 && newData == false) {
     rc = Serial.read();
     
-    if (rc != endMarker) 
+    if (rc != endMarker && commands.indexOf(rc) != -1 ) 
     {
       receivedChars[ndx] = rc;
       ndx++;
@@ -73,7 +73,7 @@ void recvWithEndMarker()
       receivedChars[ndx] = '\0'; // terminate the string
       lastIndex = ndx;
       ndx = 0;
-      delay(2000);
+      delay(100);
       newData = true;
     }
   }
