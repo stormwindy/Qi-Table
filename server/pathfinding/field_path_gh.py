@@ -41,8 +41,8 @@ def calc_potential_field(gx, gy, ox, oy, reso, rr):
     # xw = int(round((maxx - minx) / reso))
     # yw = int(round((maxy - miny) / reso))
 
-    xw = int(round(ROOM_WIDTH / reso)) # potential field size width
-    yw = int(round(ROOM_HEIGHT / reso)) # potential field height
+    xw = int(round(ROOM_WIDTH / reso)) # potential field size width. Number of grids along x axis?
+    yw = int(round(ROOM_HEIGHT / reso)) # potential field height. Number of grids along y axis?
 
     # calc each potential
     pmap = [[0.0 for i in range(yw)] for i in range(xw)]
@@ -108,14 +108,16 @@ def get_motion_model():
 def my_get_motion_model():
     # changed to a list of tuples in order to form a dictionary
     # dx, dy
-    motion = [(1, 0),
-              (0, 1),
-              (-1, 0),
-              (0, -1),
-              (-1, -1),
-              (-1, 1),
-              (1, -1),
-              (1, 1)]
+    motion = [(1, 0),  # right
+              (0, 1),  # up
+              (-1, 0),  #left
+              (0, -1),  # down
+              (-1, -1),  # diagonal down-left
+              (-1, 1),  # diagonal up-left
+              (1, -1),  # diagonal down-right
+              (1, 1)]  # diagonal up-right 
+    
+    # I think this is correct direction wise? - Sean
 
     # direction of movements depending on which motion is selected for the next step
     # probably will need to change values!!! also values depend on the reference frame we will be using
@@ -127,10 +129,10 @@ def my_get_motion_model():
 
     return motion, motion_angles
 
-def potential_field_planning(sx, sy, gx, gy, ox, oy, reso, rr):
+def potential_field_planning(sx, sy, gx, gy, ox, oy, reso, rr):  # First function called in the process
 
     # calc potential field
-    pmap = calc_potential_field(gx, gy, ox, oy, reso, rr)
+    pmap = calc_potential_field(gx, gy, ox, oy, reso, rr)  #Calls top function in file which populates
 
     # search path
     d = np.hypot(sx - gx, sy - gy)
@@ -288,14 +290,14 @@ def my_potential_field_planning(self, table, gx, gy, ox, oy, reso):
     return rx, ry
 
 
-def draw_heatmap(data):
+def draw_heatmap(data):  # Populates the graphic 
     data = np.array(data).T
     plt.pcolor(data, vmax=100.0, cmap=plt.cm.Blues)
 
 
 def main():
     print("potential_field_planning start")
-    #
+    # Begins process
     sx = 5.3  # start x position [m]
     sy = 10.0  # start y positon [m]
     gx = 30.7  # goal x position [m]
