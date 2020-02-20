@@ -17,6 +17,9 @@ class BaseCommand:
         self.gy = 1500
         self.comms = BaseComms()
 
+    '''
+    Main control loop that moves the robot around. Outer for loop divides path into subtasks to direct the robot.
+    '''
     def move(self):
         rx, ry = self.getPath(self.sx, self.sy, self.gx, self.gy)
         for i in range(len(rx)):
@@ -38,6 +41,10 @@ class BaseCommand:
 
             #self.correctOrientation(rx[i], ry[i])
 
+    '''
+    Updates the position information of the object.
+    '''
+
     def getPos(self):
         markerDict = self.cam.get_pos(1, True)
         self.leftMarker = markerDict[0][0]
@@ -45,10 +52,17 @@ class BaseCommand:
         self.sx = (1920 - self.leftMarker[0]) + (1920 - self.rightMarker[0])
         self.sy = self.leftMarker[1] + self.rightMarker[1]
 
+    '''
+    Checks if the target is in acceptable range. If so returns true.
+    '''
+
     def inRange(self, rx: int, ry: int) -> bool:
         if rx - 10 < self.sx and self.sx < rx + 10 and ry - 10 < self.sy and self.sy < ry + 10: return True
         return False
 
+    '''
+    Code that allows robot to correct its direction as it travels accross the field.
+    '''
     def correctOrientation(self, rx: int, ry: int):
         direction = self.getDirection((self.sx, self.sy), (rx, ry))
         while direction - 2 > self.angle and self.angle > direction + 2:
@@ -62,6 +76,10 @@ class BaseCommand:
     def calcOrientation(self) -> float:
         return self.getDirection(self.leftMarker, self.rightMarker)
 
+
+    '''
+    Gets direction of an object/target given two points with respect to principle axis. 0 points to "EAST"/"Right"
+    '''
     def getDirection(self, source: Tuple[int], target: Tuple[int]) -> float :
         latLeft = math.radians(source[1])
         latRight = math.radians(target[1])
