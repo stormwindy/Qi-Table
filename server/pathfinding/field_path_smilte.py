@@ -18,18 +18,18 @@ from table_functions import *
 import sys
 sys.path.append("..\\..\\")
 from base import Table, Point2, Rectangle
-from server.vision.camera import Camera
+# from server.vision.camera import Camera
 
 # TO DO: set up these as command line arguments
 # Parameters
-KP = 5.0  # attractive potential gain
+KP = 110.0  # attractive potential gain
 ETA = 100.0  # repulsive potential gain
 
 # TO DO: set up these as command line arguments
 ROOM_WIDTH = 70;
 ROOM_HEIGHT = 50;
 
-camera = Camera(1)
+# camera = Camera(1)
 
 
 def calc_attractive_potential(x, y, gx, gy):
@@ -94,6 +94,7 @@ def calc_potential_field_for_table(sx, sy, gx, gy, ox, oy, rr):
             uf = ug + uo
             pmap[x][y] = uf
 
+    # print(pmap)
     return pmap
 
 def my_potential_field_planning(ar1, ar2, gx, gy, ox, oy, reso):
@@ -139,6 +140,7 @@ def my_potential_field_planning(ar1, ar2, gx, gy, ox, oy, reso):
                 miniy = iny
                 # get the direction the robot needs to move to
                 dir = motion[i]
+        print("dir: ", dir)
         ix = minix
         iy = miniy
         xp = ix * reso
@@ -152,30 +154,39 @@ def my_potential_field_planning(ar1, ar2, gx, gy, ox, oy, reso):
           # TO-DO: send direction to robot to rotate
             # OR INSTEAD OF BELLOW while not (angle >= orientation - 1 and angle <= orientation + 1) : #added 1s for errors???
           while not angle == orientation :
-              pos = camera.get_pos(1)
-              ar1, ar2 = pos[id]
-              table = form_table(ar1, ar2)
-              orientation = table.geometry.orientation
+
+              #this is for testing
+            orientation = angle
+
+              # pos = camera.get_pos(1)
+              # ar1, ar2 = pos[id]
+              # table = form_table(ar1, ar2, id)
+              # orientation = table.geometry.orientation
               # would be good to have function get_orientation() probs easy to extract that part from form_table
-              orientation = get_orientation()
+              # orientation = get_orientation()
             # TO-DO: stop the rotation
+        table.geometry.orientation = orientation
 
-        table.orientation = angle # or new orientation
-
-        if not xp == sx and xy == sy :
+        if not xp == sx and yp == sy :
             # TO-DO: send directions to the table to move forwards or backwards
           while not (xp > sx - 0.5 and xp < sx + 0.5 and yp > sy - 0.5 and yp < sy + 0.5) :
-              pos = camera.get_pos(1)
-              ar1, ar2 = pos[id]
-              new_centre = table_centre(ar1, ar2)
-              sx = new_centre.x
-              sy = new_centre.y
+
+              # for testing
+                sx = xp
+                sy = yp
+              # pos = camera.get_pos(1)
+              # ar1, ar2 = pos[id]
+              # new_centre = table_centre(ar1, ar2)
+              # sx = new_centre.x
+              # sy = new_centre.y
+              # table = form_table(ar1, ar2, id)
           # TO-DO: stop the movement
 
-        # table.geometry.x = sx
-        # table.geometry.y = sy
+        table.geometry.x = sx
+        table.geometry.y = sy
 
         d = np.hypot(gx - xp, gy -yp)
+        print(d)
         rx.append(xp)
         ry.append(yp)
 
@@ -183,6 +194,17 @@ def my_potential_field_planning(ar1, ar2, gx, gy, ox, oy, reso):
     print (rx, ry)
     return rx, ry
 
+# def manually_update_ar_tags_rotation(ar1 : Point2, ar2 : Point2) :
+#
+#     return ar1, ar2
+#
+#
+# def manually_update_ar_tags_move_forward(ar1 : Point2, ar2 : Point2, forward : bool) :
+#
+#     if forward :
+#         return ar1, ar2
+#     else :
+#         return ar1, ar2
 
 def main():
     print("potential_field_planning start")
@@ -192,8 +214,11 @@ def main():
     grid_size = 0.5  # potential grid size [m]
 
     # TO-DO: coordinates need to be taken from camera
-    ox = [15.0, 5.0, 20.0, 25.0]  # obstacle x position list [m]
-    oy = [25.0, 15.0, 26.0, 25.0]  # obstacle y position list [m]
+    # ox = [15.0, 5.0, 20.0, 25.0]  # obstacle x position list [m]
+    # oy = [25.0, 15.0, 26.0, 25.0]  # obstacle y position list [m]
+
+    ox = [50.0, 10.0]
+    oy = [50.0, 25.0]
 
     ar1 = Point2(5, 15)
     ar2 = Point2(20, 15)
