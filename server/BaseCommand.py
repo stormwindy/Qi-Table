@@ -11,7 +11,7 @@ from server.BaseComms import BaseComms
 import cv2
 
 class BaseCommand:
-    def __init__(self, interface):
+    def __init__(self, interface, show=False):
         self.cam = Camera(interface)
         self.room = Room('room0')
         self.getPos()
@@ -21,8 +21,19 @@ class BaseCommand:
         self.gy = 246
         self.comms = BaseComms()
         self.rx, self.ry = self.getPath(self.sx, self.sy, self.gx, self.gy)
-        # self.display()
+        if show:
+            self.show()
         self.move()
+
+    def show(self):
+        cap = self.cam.capture
+        fp, frame = cap.read()
+        while fp:
+            cv2.polylines(frame, np.array([self.room.obsts]), False, (0, 255, 0), thickness=3)
+            cv2.imshow('fame', frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
+            fp, frame = cap.read()
 
 
     '''
@@ -164,4 +175,4 @@ class BaseCommand:
 
 
 if __name__ == '__main__':
-    bc = BaseCommand(0)
+    bc = BaseCommand(0, True)
