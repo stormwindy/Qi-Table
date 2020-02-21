@@ -12,6 +12,7 @@ from server.BaseComms import BaseComms
 class BaseCommand:
     def __init__(self):
         self.cam = Camera(0)
+        self.room = Room('room0')
         self.getPos()
         self.angle = self.calcOrientation()
         self.gx = 1500
@@ -46,8 +47,8 @@ class BaseCommand:
         markerDict = self.cam.get_pos(1, True)
         self.leftMarker = markerDict[0][0]
         self.rightMarker = markerDict[0][1]
-        self.leftMarker = (1920 - self.leftMarker[0], self.leftMarker[1])
-        self.rightMarker = (1920 - self.rightMarker[0], self.rightMarker[1])
+        # self.leftMarker = (1920 - self.leftMarker[0], self.leftMarker[1])
+        # self.rightMarker = (1920 - sself.rightMarker[0], self.rightMarker[1])
         self.sx = (self.leftMarker[0] + self.rightMarker[0]) / 2
         self.sy = (self.leftMarker[1] + self.rightMarker[1]) / 2
 
@@ -111,15 +112,14 @@ class BaseCommand:
                 oy.append(point0[1] + yy)
                 ox.append(point0[0] + base - 1)
 
+        #Draw obstacles
+        for pt1, pt2 in self.room.obsts.values():
+            drawRect(pt1, pt2)
 
-        drawRect((200, 300), (300, 400))
-        drawRect((600, 700), (800, 900))
-        drawRect((0, 0), (1920, 1080))
-        drawRect((1000, 200), 1300, 500)
-        drawRect((1500, 700), (1550, 750))
         # start, goal
-        grid_size = 100.0
-        robot_radius = 15.0
+        grid_size = 32.0
+        #Change margin of +10 if needed.
+        robot_radius = 140.0
 
         ###
         # t1 = time.time()
