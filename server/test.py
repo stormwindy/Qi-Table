@@ -61,20 +61,7 @@ def draw_rect(pt1, pt2):
         oy.append(bl_y + j)
 
 
-def draw_rect_(x, y, lside, sside):
-    #bot
-    for xx in range(lside):
-        ox.append(x + xx)
-        oy.append(y)
-    for xx in range(lside):
-        ox.append(x + xx)
-        oy.append(y + sside - 1)
-    for yy in range(sside):
-        oy.append(y + yy)
-        ox.append(x)
-    for yy in range(sside):
-        oy.append(y + yy)
-        ox.append(x + lside - 1)
+
 for pt1, pt2 in r.obsts.values():
     draw_rect(pt1, pt2)
 # start, goal
