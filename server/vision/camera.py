@@ -44,7 +44,6 @@ class Camera:
         while frame_captured and len(pos) < num_of_markers:  # Break when all markers are recognized.
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             corners, ids, rejectedImgPoints = cv2.aruco.detectMarkers(frame, self.dictionary)
-            print(corners, ids)
             if ids is not None:
                 for i in range(len(ids)):
                     pos[ids[i][0]] = corners[i][0]
