@@ -7,9 +7,11 @@ from server.pathfinding.planner import AStarPlanner
 import matplotlib.pyplot as plt
 import time
 
-r = Room('room0')  # Load saved room and obstacles
-# r = Room(0)        # Take a picture of the room and mark obstacles manually
 
+
+
+r = Room('room0')  # Load saved room and obstacles
+# r = Room(1)        # Take a picture of the room and mark obstacles manually
 # ox, oy = AStarPlanner.vertices_to_lines(r.obsts)
 # add border
 ox, oy = [], []
@@ -34,7 +36,32 @@ when tuning the grid_size and robot_radius
 serialized, so don't worry about that. Or you can change planner.py's constructor
 so it can load serialized objects (preferably simliar to how I did in room.py)
 '''
-def draw_rect(x, y, lside, sside):
+
+def draw_rect(pt1, pt2):
+    # Bottom left
+    bl_x, bl_y = pt1[0], pt1[1]
+    # Top right
+    tr_x, tr_y = pt2[0], pt2[1]
+
+    # Horizontal side length
+    hside = tr_x - bl_x + 1
+    # Vertical side length
+    vside = tr_y - bl_y + 1
+
+    # Insert the coordinates to ox, oy
+    for i in range(hside):  # Top and bottom sides
+        ox.append(bl_x + i)
+        oy.append(bl_y)
+        ox.append(bl_x + i)
+        oy.append(tr_y)
+    for j in range(vside):
+        ox.append(bl_x)
+        oy.append(bl_y + j)
+        ox.append(tr_x)
+        oy.append(bl_y + j)
+
+
+def draw_rect_(x, y, lside, sside):
     #bot
     for xx in range(lside):
         ox.append(x + xx)
@@ -48,23 +75,21 @@ def draw_rect(x, y, lside, sside):
     for yy in range(sside):
         oy.append(y + yy)
         ox.append(x + lside - 1)
-draw_rect(200, 300, 100, 200)
-draw_rect(600, 700, 200, 200)
-draw_rect(0, 0, 1920, 1080)
-draw_rect(1000, 200, 300, 300)
-draw_rect(1500, 700, 50, 50)
+for pt1, pt2 in r.obsts.values():
+    draw_rect(pt1, pt2)
 # start, goal
-sx, sy, gx, gy = 20.0, 20.0, 1850.0, 950.0
+sx, sy, gx, gy = 1150.0, 560.0, 750.0, 875.0
 
-grid_size = 30.0
-robot_radius = 15.0
+
+grid_size = 32.0
+robot_radius = 130.0
 
 ###
-
+plt.imshow(r.frame_orig)
 plt.plot(ox, oy, ".k")
 plt.plot(sx, sy, "og")
 plt.plot(gx, gy, "xb")
-plt.grid(True)
+plt.grid(False)
 plt.axis("equal")
 
 t1 = time.time()
