@@ -22,8 +22,6 @@ void setup()
 {
   Serial.begin(9600);
   SDPsetup();
-  delay(100);
-  delay(100);
   //comms.setupComms();
   //nxt.setupMotors();
   Serial.println("Hello world");
@@ -35,7 +33,6 @@ void loop()
 {
   char commandChar = getCommand();
   //comms.showNewData();
-  delay(200);
   setDirection(commandChar, 75);
   moveMotors();
 }
@@ -73,13 +70,12 @@ void recvWithEndMarker()
       receivedChars[ndx] = '\0'; // terminate the string
       lastIndex = ndx;
       ndx = 0;
-      delay(100);
       newData = true;
     }
   }
 }
 
-int power = 75;
+int power = 35;
 void setDirection(char dir, int powerInput)
 {
   if (dir != moveDirection)
