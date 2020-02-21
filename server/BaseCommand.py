@@ -74,7 +74,8 @@ class BaseCommand:
         return math.sqrt((rx - self.sy)**2 + (ry - self.sy)**2)
 
     def calcOrientation(self) -> float:
-        return self.getDirection(self.leftMarker, self.rightMarker)
+        #TODO check if this works.
+        return self.getDirection(self.leftMarker, self.rightMarker) - 90
 
 
     '''

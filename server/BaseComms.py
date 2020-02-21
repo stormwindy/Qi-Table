@@ -14,7 +14,7 @@ import serial
 class BaseComms:
 
     def __init__(self):
-        self.ser = serial.Serial('/dev/ttyACM0', 115200)
+        self.ser = serial.Serial('/dev/cu.usbmodem0000011', 115200)
 
     def _whichCommandNumber(key) -> chr:
         switcher = {
@@ -44,7 +44,7 @@ class BaseComms:
         print(self.ser.name)
         if command:
             command += '\n'
-            self.ser.write(command)
+            self.ser.write(command.encode())
         else:
             while(1):
                 command = self.whichCommandNumber()
@@ -69,4 +69,4 @@ class BaseComms:
         self._transmit('1')
 
     def stop(self):
-        self._transmit('0')
+        self._transmit('5')

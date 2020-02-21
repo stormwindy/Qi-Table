@@ -123,10 +123,10 @@ Test run.
 '''
 if __name__ == '__main__':
     t1 = time.time()
-    c = Camera(1)
+    c = Camera(0)
     t2 = time.time()
     print(t2 - t1)
-    print(c.get_pos(20, True))
+    print(c.get_pos(2, True))
     t3 = time.time()
     print(t3 - t2)
     print(c.capture.isOpened())
