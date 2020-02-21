@@ -8,7 +8,7 @@ from server.vision.camera import Camera
 from server.vision.room import Room
 from server.pathfinding.planner import AStarPlanner
 from server.BaseComms import BaseComms
-
+import cv2
 
 class BaseCommand:
     def __init__(self, interface):
@@ -20,25 +20,31 @@ class BaseCommand:
         self.gx = 795
         self.gy = 246
         self.comms = BaseComms()
+        self.rx, self.ry = self.getPath(self.sx, self.sy, self.gx, self.gy)
+        # self.display()
         self.move()
+
 
     '''
     Main control loop that moves the robot around. Outer for loop divides path into subtasks to direct the robot.
     '''
     def move(self):
-        rx, ry = self.getPath(self.sx, self.sy, self.gx, self.gy)
+        rx, ry = self.rx, self.ry
+        print(len(rx))
         for i in range(len(rx)):
             minDist = self.getDistCurTarget(rx[i], ry[i])
             #print(self.getDirection((self.sx, self.sy), (rx[i], ry[i])))
             self.correctOrientation(rx[i], ry[i])
 
-            # while not self.inRange(rx[i], ry[i]):
-            #     self.getPos()
-            #     distance = self.getDistCurTarget(rx[i], ry[i])
-            #     self.correctOrientation(rx[i], ry[i])
-            #
-            #     minDist = distance
-            #     self.comms.goForward()
+            while not self.inRange(rx[i], ry[i]):
+                self.getPos()
+                distance = self.getDistCurTarget(rx[i], ry[i])
+                # self.correctOrientation(rx[i], ry[i])
+                time.sleep(0.3)
+                minDist = distance
+                self.comms.goForward()
+                time.sleep(0.5)
+                self.comms.stop()
             self.comms.stop()
 
             #self.correctOrientation(rx[i], ry[i])
@@ -60,7 +66,7 @@ class BaseCommand:
     '''
 
     def inRange(self, rx: int, ry: int) -> bool:
-        if rx - 10 < self.sx and self.sx < rx + 10 and ry - 10 < self.sy and self.sy < ry + 10: return True
+        if rx - 50 < self.sx and self.sx < rx + 50 and ry - 50 < self.sy and self.sy < ry + 50: return True
         return False
 
     '''
@@ -68,16 +74,20 @@ class BaseCommand:
     '''
     def correctOrientation(self, rx: int, ry: int):
         direction = self.getDirection((self.sx, self.sy), (rx, ry))
-        print(self.angle, " ",direction)
         self.comms.stop()
         # time.sleep(0.3)
-        while not (direction - 15 < self.angle and self.angle < direction + 15):
-            self.comms.turnRight()
-            time.sleep(0.2)
+        while not (direction - 30 < self.angle and self.angle < direction + 30):
+            if self.isTurnLeft(self.angle, direction):
+                self.comms.turnLeft()
+            else:
+                self.comms.turnRight()
+            time.sleep(0.3)
             self.comms.stop()
-            time.sleep(0.4)
             self.getPos()
+            time.sleep(.3)
+            print(self.angle, " ", direction)
             self.angle = self.calcOrientation()
+            time.sleep(0.2)
 
         # while not (direction - 45 < self.angle and self.angle < direction + 45):
         #     self.comms.turnRight()
@@ -89,6 +99,12 @@ class BaseCommand:
 
         print("Corrected angle")
         self.comms.stop()
+
+    def isTurnLeft(self, angle, touchAngle):
+        if ((touchAngle - angle) + 360) % 360 < 180:
+           return False
+        else:
+            return True
 
     def getDistCurTarget(self, rx: int, ry: int) -> float:
         return math.sqrt((rx - self.sy)**2 + (ry - self.sy)**2)
