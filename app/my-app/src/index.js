@@ -164,6 +164,19 @@ class EditorView extends React.Component{
         this.setState({positions: positions});
     }
 
+    onDragEnd(e, id){
+        let positions = this.state.positions;
+
+        for (let i=0; i<positions.length; i++){
+            if (positions[i].id === id){
+                positions[i].x = e.target.x();
+                positions[i].y = e.target.y();
+            }
+        }
+
+        this.setState({positions: positions});
+    }
+
     handleAddPos(){
         const positions = this.state.positions;
         //get highest id
@@ -213,6 +226,7 @@ class EditorView extends React.Component{
                         )
                     }
                 </ul>
+                <EditorBox positions = {this.state.positions} onDragEnd = {this.onDragEnd.bind(this)}/>
                 <button onClick={this.handleAddPos.bind(this)}>More Positions</button>
                 <button onClick={this.handleSubmit.bind(this)}>Submit Layout</button>
             </div>
@@ -230,9 +244,6 @@ class SettingsView extends React.Component{
 
 
 
-//Input line for test editor
-//Based on Controlled Text Example from React website
-//work in progress!!
 class PositionForm extends React.Component{
     constructor(props){
         super(props);
@@ -282,9 +293,62 @@ class EditorBox extends React.Component{
     constructor(props){
         super(props);
 
-        this.state = {
-            rects : [{id:0, x: 0, y: 0, r:0}],
+        //this.state = {
+        //   rects : [{id:0, x: 0, y: 0, r:0}],
+        //}
+    }
+
+    /*
+    handleAddTable(){
+        let rects = this.state.rects;
+
+        let highestID = 0;
+        rects.forEach(function({id,x,y,r}){
+            if (id>=highestID) highestID = id; 
+        })
+
+        this.setState({rects: rects.concat([{id: highestID+1, x: 0, y: 0, r: 0}])})
+    }
+    */
+    /*
+    onDragEnd(e, id){
+        let rects = this.state.rects;
+        for (let i=0; i<rects.length; i++){
+            if (rects[i].id = id){
+                rects[i].x = e.target.x;
+                rects[i].y = e.target.y;
+            }
         }
+
+        this.setState({rects: rects});
+    }
+    */
+
+    render(){
+        let bounds = {x: window.innerWidth/2, y: window.innerHeight/2};
+
+        const positions = this.props.positions;
+
+        return(
+            <div>
+                <Stage width={bounds.x} height={bounds.y}>
+                    <Layer>
+                        <Rect x={0} y={0} width={bounds.x} height={bounds.y} stroke="black" />
+                        {positions.map(({id,x,y,r}) => 
+                            <Table id={id} x={x} y={y} bounds={bounds}
+                                onDragEnd={this.props.onDragEnd}
+                            />
+                        )}   
+                    </Layer>
+                </Stage>
+            </div>
+        )
+    }
+}
+
+class Table extends React.Component{
+    constructor(props){
+        super(props)
     }
 
     dragBoundFunc(pos, bounds, dimensions){
@@ -303,67 +367,15 @@ class EditorBox extends React.Component{
         }
     }
 
-    handleAddTable(){
-        let rects = this.state.rects;
-
-        let highestID = 0;
-        rects.forEach(function({id,x,y,r}){
-            if (id>=highestID) highestID = id; 
-        })
-
-        this.setState({rects: rects.concat([{id: highestID+1, x: 0, y: 0, r: 0}])})
-    }
-
-    onDragEnd(e, id){
-        let rects = this.state.rects;
-        for (let i=0; i<rects.length; i++){
-            if (rects[i].id = id){
-                rects[i].x = e.target.x;
-                rects[i].y = e.target.y;
-            }
-        }
-
-        this.setState({rects: rects});
-    }
-
     render(){
-        let bounds = {x: window.innerWidth/2, y: window.innerHeight/2};
-
-        const rects = this.state.rects;
-        return(
-            <div>
-                <Stage width={bounds.x} height={bounds.y}>
-                    <Layer>
-                        <Rect x={0} y={0} width={bounds.x} height={bounds.y} stroke="black" />
-                        <Text text={"Rectangle x: " + rects[0].x} fontSize={15} />
-                        {rects.map(({id,x,y,r}) => 
-                            <Table id={id} x={x} y={y} bound={bounds}
-                                dragBoundFunc = {this.dragBoundFunc.bind(this)}
-                                onDragEnd={this.onDragEnd.bind(this)}
-                            />
-                        )}   
-                    </Layer>
-                </Stage>
-                <button onClick={this.handleAddTable.bind(this)}>More Tables</button>
-            </div>
-        )
-    }
-}
-
-class Table extends React.Component{
-    constructor(props){
-        super(props)
-    }
-
-    render(){
-        let width = 70;
-        let height = 100;
+        const width = 70;
+        const height = 100;
 
         return(
             <Rect x={this.props.x} y={this.props.y} 
                 width={width} height={height} fill="blue" shadowBlur={5} draggable={true} 
-                dragBoundFunc = {(pos) => this.props.dragBoundFunc(pos, this.props.bounds, {x: width, y:height})}
-                onDragEnd={((e) => this.props.onDragEnd(e, this.props.id))}
+                dragBoundFunc = {(pos) => this.dragBoundFunc(pos, this.props.bounds, {x: width, y:height})}
+                onDragEnd={(e) => this.props.onDragEnd(e, this.props.id)}
             />
         )
     }
