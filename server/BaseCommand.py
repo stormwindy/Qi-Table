@@ -29,7 +29,13 @@ class BaseCommand:
         cap = self.cam.capture
         fp, frame = cap.read()
         while fp:
-            cv2.polylines(frame, np.array([self.room.obsts]), False, (0, 255, 0), thickness=3)
+            print(np.int32([list(zip(self.rx, self.ry))]))
+            print(type(np.int32([list(zip(self.rx, self.ry))])))
+            cv2.polylines(frame, np.int32([list(zip(self.rx, self.ry))]), False, (0, 255, 0), thickness=3)
+            for pts in self.room.obsts.values():
+                pts = np.array(pts)
+                print(pts)
+                cv2.rectangle(frame, tuple(pts[0]), tuple(pts[1]), (0, 0, 255), thickness=3)
             cv2.imshow('fame', frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
@@ -69,8 +75,8 @@ class BaseCommand:
         self.marker = markerDict[1]
         # self.leftMarker = (1920 - self.leftMarker[0], self.leftMarker[1])
         # self.rightMarker = (1920 - sself.rightMarker[0], self.rightMarker[1])
-        self.sx = (self.marker[0][0] + self.marker[3][0]) / 2
-        self.sy = (self.marker[2][1] + self.marker[2][1]) / 2
+        self.sx = (self.marker[0][0] + self.marker[2][0]) / 2
+        self.sy = (self.marker[0][1] + self.marker[2][1]) / 2
 
     '''
     Checks if the target is in acceptable range. If so returns true.
