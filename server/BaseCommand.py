@@ -1,6 +1,7 @@
 import sys
 sys.path.append("../")
 import math
+import time
 from typing import Tuple
 from server.vision.camera import Camera
 from server.vision.room import Room
@@ -25,15 +26,11 @@ class BaseCommand:
         for i in range(len(rx)):
             minDist = self.getDistCurTarget(rx[i], ry[i])
             self.correctOrientation(rx[i], ry[i])
-            self.comms.stop()
 
             while not self.inRange(rx[i], ry[i]):
                 self.getPos()
                 distance = self.getDistCurTarget(rx[i], ry[i])
-
-                if distance > minDist:
-                    self.correctOrientation()
-                    self.comms.stop()
+                self.correctOrientation()
 
                 minDist = distance
                 self.comms.goForward()
@@ -49,8 +46,10 @@ class BaseCommand:
         markerDict = self.cam.get_pos(1, True)
         self.leftMarker = markerDict[0][0]
         self.rightMarker = markerDict[0][1]
-        self.sx = (1920 - self.leftMarker[0]) + (1920 - self.rightMarker[0])
-        self.sy = self.leftMarker[1] + self.rightMarker[1]
+        self.leftMarker = (1920 - self.leftMarker[0], self.leftMarker[1])
+        self.rightMarker = (1920 - self.rightMarker[0], self.rightMarker[1])
+        self.sx = (self.leftMarker[0] + self.rightMarker[0]) / 2
+        self.sy = (self.leftMarker[1] + self.rightMarker[1]) / 2
 
     '''
     Checks if the target is in acceptable range. If so returns true.
@@ -65,17 +64,21 @@ class BaseCommand:
     '''
     def correctOrientation(self, rx: int, ry: int):
         direction = self.getDirection((self.sx, self.sy), (rx, ry))
+        self.comms.stop()
+        time.sleep(0.3)
         while direction - 2 > self.angle and self.angle > direction + 2:
+            self.comms.turnRight()
             self.getPos()
             self.angle = self.calcOrientation()
-            self.comms.turnRight()
+            
+        self.comms.stop()
 
     def getDistCurTarget(self, rx: int, ry: int) -> float:
         return math.sqrt((rx - self.sy)**2 + (ry - self.sy)**2)
 
     def calcOrientation(self) -> float:
-        #TODO check if this works.
-        return self.getDirection(self.leftMarker, self.rightMarker) - 90
+        #TODO check if this works. Might have to change it to negative.
+        return self.getDirection(self.leftMarker, self.rightMarker) + 90
 
 
     '''
