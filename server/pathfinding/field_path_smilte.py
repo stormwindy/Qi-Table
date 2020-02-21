@@ -21,16 +21,16 @@ from server.pathfinding.table_functions import *
 
 sys.path.append("..\\..\\")
 from base import Table, Point2, Rectangle
-from server.vision.camera import Camera
+# from server.vision.camera import Camera
 
 # TO DO: set up these as command line arguments
 # Parameters
 KP = 5.0  # attractive potential gain
-ETA = 100.0  # repulsive potential gain
+ETA = 1000000000.0  # repulsive potential gain
 
 # TO DO: set up these as command line arguments
-ROOM_WIDTH = 70;
-ROOM_HEIGHT = 50;
+ROOM_WIDTH = 50;
+ROOM_HEIGHT = 70;
 
 camera = Camera(0)
 
@@ -55,7 +55,6 @@ def calc_repulsive_potential(x, y, ox, oy, rr):
     if dq <= rr:
         if dq <= 0.1:
             dq = 0.1
-
         return 0.5 * ETA * (1.0 / dq - 1.0 / rr) ** 2
     else:
         return 0.0
@@ -73,6 +72,9 @@ def my_get_motion_model():
               (1, -1),  # diagonal up-right
               (1, 1)]  # diagonal down-right
 
+    # reordered to match the pmap if it is read row by row
+    motion2 = [(-1, -1), (0, -1), (1, -1), (-1, 0), (1, 0), (-1, 1), (0, 1), (1, 1)]
+
     # direction of movements depending on which motion is selected for the next step
     # probably will need to change values!!! also values depend on the reference frame we will be using
     # I have selected these assuming angle zero means the table's width is parallel to the x axis
@@ -81,21 +83,25 @@ def my_get_motion_model():
     angles = [0.0, 90.0, 0.0, 90.0, 45.0, -45.0, -45.0, 45.0]
     motion_angles = dict(zip(motion, angles))
 
-    return motion, motion_angles
+    return motion2, motion_angles
 
 
 # sx = current x position of table centre
 # sy = current y position of table centre
-def calc_potential_field_for_table(sx, sy, gx, gy, ox, oy, rr):
+def calc_potential_field_for_table(sx, sy, gx, gy, ox, oy, reso, rr):
 
     # create 3 x 3 matrix to only represent the gird cells around the table centre position
     pmap = np.zeros((3, 3))
+    ix = sx - reso
     for x in range(3):
+        iy = sy - reso
         for y in range(3):
-            ug = calc_attractive_potential(sx, sy, gx, gy)
-            uo = calc_repulsive_potential(sx, sy, ox, oy, rr)
+            ug = calc_attractive_potential(ix, iy, gx, gy)
+            uo = calc_repulsive_potential(ix, iy, ox, oy, rr)
             uf = ug + uo
-            pmap[x][y] = uf
+            pmap[y][x] = uf
+            iy += reso
+        ix += reso
 
     return pmap
 
@@ -120,21 +126,26 @@ def my_potential_field_planning(ar1, ar2, gx, gy, ox, oy, reso):
 
     rx, ry = [sx], [sy]
     motion, angles = my_get_motion_model()
+    count = 0
 
     while d >= reso:
         minp = float("inf")
         minix, miniy = -1, -1
         dir = (0, 0)
+        # calc potential field
+        pmap = calc_potential_field_for_table(sx, sy, gx, gy, ox, oy, reso, rr)
+        # indexing for following the pmap
+        px = 0
+        py = 0
         for i, _ in enumerate(motion):
             inx = int(ix + motion[i][0])
             iny = int(iy + motion[i][1])
-            # calc potential field
-            pmap = calc_potential_field_for_table(sx, sy, gx, gy, ox, oy, rr)
-            if inx >= grid_bound_right or inx <= grid_bound_left \
-                    or iny >= grid_bound_bottom or iny <= grid_bound_top:
+
+            if inx > grid_bound_right or inx < grid_bound_left \
+                    or iny > grid_bound_bottom or iny < grid_bound_top:
                 p = float("inf")  # outside area
             else:
-                p = pmap[motion[i][0]][motion[i][1]]
+                p = pmap[px][py]
             if minp > p:
                 # indices of minimum potentials
                 minp = p
@@ -142,6 +153,14 @@ def my_potential_field_planning(ar1, ar2, gx, gy, ox, oy, reso):
                 miniy = iny
                 # get the direction the robot needs to move to
                 dir = motion[i]
+            py += 1
+            # the last column is reached, get the first element of the new row
+            if py == 3:
+                py = 0
+                px += 1
+            # the middle element represents potential at table's current position thus needs to be skipped
+            if py == 1 and px == 1:
+                py += 1
         ix = minix
         iy = miniy
         xp = ix * reso
@@ -157,15 +176,19 @@ def my_potential_field_planning(ar1, ar2, gx, gy, ox, oy, reso):
           while not angle == orientation :
               pos = camera.get_pos(1)
               ar1, ar2 = pos[id]
-              table = form_table(ar1, ar2)
+              table = form_table(ar1, ar2, id)
               orientation = table.geometry.orientation
               # would be good to have function get_orientation() probs easy to extract that part from form_table
               orientation = get_orientation()
             # TO-DO: stop the rotation
 
+<<<<<<< HEAD
         table.orientation = angle # or new orientation
 
         if not xp == sx and yp == sy :
+=======
+        if not xp == sx or not yp == sy :
+>>>>>>> 70fd2b329948a0fb905b4e1f4bb1d317d1607701
             # TO-DO: send directions to the table to move forwards or backwards
           while not (xp > sx - 0.5 and xp < sx + 0.5 and yp > sy - 0.5 and yp < sy + 0.5) :
               pos = camera.get_pos(1)
@@ -173,17 +196,15 @@ def my_potential_field_planning(ar1, ar2, gx, gy, ox, oy, reso):
               new_centre = table_centre(ar1, ar2)
               sx = new_centre.x
               sy = new_centre.y
+              table = form_table(ar1, ar2, id)
           # TO-DO: stop the movement
 
-        # table.geometry.x = sx
-        # table.geometry.y = sy
 
-        d = np.hypot(gx - xp, gy -yp)
+        d = np.hypot(gx - xp, gy - yp)
         rx.append(xp)
         ry.append(yp)
 
-    # camera.release()
-    print (rx, ry)
+    camera.release()
     return rx, ry
 
 
@@ -195,8 +216,14 @@ def main():
     grid_size = 0.5  # potential grid size [m]
 
     # TO-DO: coordinates need to be taken from camera
-    ox = [15.0, 5.0, 20.0, 25.0]  # obstacle x position list [m]
-    oy = [25.0, 15.0, 26.0, 25.0]  # obstacle y position list [m]
+    # ox = [15.0, 5.0, 20.0, 25.0]  # obstacle x position list [m]
+    # oy = [25.0, 15.0, 26.0, 25.0]  # obstacle y position list [m]
+
+    ox = [30.0, 31.0]
+    oy = [30.0, 31.0]
+
+    # pos = camera.get_pos(1)
+    # ar1, ar2 = pos[id]
 
     ar1 = Point2(5, 15)
     ar2 = Point2(20, 15)

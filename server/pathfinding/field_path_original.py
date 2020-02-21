@@ -173,7 +173,7 @@ def main():
     _, _ = potential_field_planning(
         sx, sy, gx, gy, ox, oy, grid_size, robot_radius)
 
-    if  :
+    if  show_animation:
         plt.show()
 
 
