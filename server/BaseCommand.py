@@ -10,8 +10,8 @@ from server.BaseComms import BaseComms
 
 
 class BaseCommand:
-    def __init__(self):
-        self.cam = Camera(0)
+    def __init__(self, interface):
+        self.cam = Camera(interface)
         self.room = Room('room0')
         self.getPos()
         self.angle = self.calcOrientation()
@@ -45,8 +45,8 @@ class BaseCommand:
 
     def getPos(self):
         markerDict = self.cam.get_pos(1, True)
-        self.leftMarker = markerDict[0][0]
-        self.rightMarker = markerDict[0][1]
+        self.leftMarker = markerDict[1][0]
+        self.rightMarker = markerDict[1][1]
         # self.leftMarker = (1920 - self.leftMarker[0], self.leftMarker[1])
         # self.rightMarker = (1920 - sself.rightMarker[0], self.rightMarker[1])
         self.sx = (self.leftMarker[0] + self.rightMarker[0]) / 2
@@ -131,3 +131,7 @@ class BaseCommand:
         rx = rx[::-1]
         ry = ry[::-1]
         return (rx, ry)
+
+
+if __name__ == '__main__':
+    bc = BaseCommand(1)
