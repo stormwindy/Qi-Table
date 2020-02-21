@@ -16,7 +16,7 @@ occupied_cells = dict()
 
 room_width = 25
 room_height = 15
-cell_size = 1
+cell_size = 10
 
 """ Smilte: I've fixed y axis coordinates i think it is correct now, pls delete this afterwards """
 
@@ -183,3 +183,4 @@ def diagonal(table: Table) -> float:
 
     rectangle = table.geometry
     return rectangle.left1.distanceTo(rectangle.right2)
+
