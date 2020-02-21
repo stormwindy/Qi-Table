@@ -41,7 +41,7 @@ def main():
     ser = serial.Serial('/dev/ttyACM0')
     print(ser.name)
     while(1):
-        command = whichCommandNumber()
+        command = keyboardControl()
         print(command)
         ser.write(command)
     ser.close()
