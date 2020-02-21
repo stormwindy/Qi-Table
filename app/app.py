@@ -1,6 +1,11 @@
 from flask import Flask, g, escape, request, render_template, jsonify, make_response
 from flask_cors import CORS
 import sqlite3
+import sys
+import os
+sys.path.append(os.path.abspath(__file__ + '/../../'))
+from server import BaseComms
+#from server.BaseComms import goForward, goBackward, goLeft, goRight
 
 
 app = Flask(__name__, template_folder="")
@@ -91,7 +96,39 @@ def get_layouts():
 
     #send response
     return layouts
+
+@app.route('/demo', methods=['GET'])
+def demo():
+
+    print(request.headers)
+
+    bc = BaseComms.BaseComms()
+    if request.headers['Direction']=='forwards':
+        print('Moving forwards')
+        #DO EGE'S FORWARD MOVE THING
+        bc.goForward()
+        return {'text': 'Moving forwards'}
     
+    if request.headers['Direction']=='backwards':
+        print('Moving backwards')
+        #DO EGE'S BACKWARD MOVE THING
+        bc.goBackward()
+        return {'text': 'Moving backwards'}
+    
+    if request.headers['Direction']=='left':
+        print('Turning left')
+        #DO EGE'S LEFT TURN THING
+        bc.turnLeft()
+        return {'text': 'Turning left'}
+    
+    if request.headers['Direction']=='right':
+        print('Turning right')
+        #DO EGE'S RIGHT TURN THING
+        bc.turnRight()
+        return {'text': 'Turning right'}
+
+    return {'text': 'Error: invalid header'}
+
     
 
 

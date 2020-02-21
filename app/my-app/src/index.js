@@ -19,6 +19,7 @@ class MainView extends React.Component{
         if (this.state.view === "select") view = <SelectionView />;
         if (this.state.view === "editor") view = <EditorView />;
         if (this.state.view === "settings") view = <SettingsView />;
+        if (this.state.view === "demo") view = <DemoView />;
 
         return (
             <div>
@@ -26,6 +27,7 @@ class MainView extends React.Component{
                     <li><button onClick={() => this.setState({view: "select"})}>Selection view</button></li>
                     <li><button onClick={() => this.setState({view: "editor"})}>Editor view</button></li>
                     <li><button onClick={() => this.setState({view: "settings"})}>Settings view</button></li>
+                    <li><button onClick={() => this.setState({view: "demo"})}>ROBOT MOVEMENT DEMO</button></li>
                 </ul>
                 {view}
             </div>
@@ -256,6 +258,41 @@ class PositionForm extends React.Component{
             <button onClick={(e) => this.props.handleDelete(e, this.props.id)}>Delete</button>
           </form>
         );
+    }
+}
+
+class DemoView extends React.Component{
+    constructor(props){
+        super(props);
+    }
+
+    moveRobot(direction){
+        
+        fetch('http://127.0.0.1:5000/demo', {
+            method: 'GET',
+            headers: {
+                'Direction': direction
+            },
+        }).then(res=>res.json())
+        .then(
+           (res) => alert(res.text),
+           (error) => alert('Error')
+        )
+    }
+
+    render(){
+
+        return(
+            <div>
+                <h1>This is a demo of the communication flow from the app, through the server, to the robot.</h1>
+                <ul>
+                    <li><button onClick={() => this.moveRobot('forwards')}>Move Forwards</button></li>
+                    <li><button onClick={() => this.moveRobot('backwards')}>Move Backwards</button></li>
+                    <li><button onClick={() => this.moveRobot('left')}>Turn Left</button></li>
+                    <li><button onClick={() => this.moveRobot('right')}>Turn Right</button></li>
+                </ul>
+            </div>
+        )
     }
 }
 
