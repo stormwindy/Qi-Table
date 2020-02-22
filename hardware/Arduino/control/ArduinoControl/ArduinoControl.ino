@@ -33,7 +33,7 @@ void loop()
 {
   char commandChar = getCommand();
   //comms.showNewData();
-  setDirection(commandChar, 75);
+  setDirection(commandChar, 32);
   moveMotors();
 }
 
@@ -75,7 +75,7 @@ void recvWithEndMarker()
   }
 }
 
-int power = 35;
+int power = 32;
 void setDirection(char dir, int powerInput)
 {
   if (dir != moveDirection)
