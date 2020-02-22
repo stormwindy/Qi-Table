@@ -17,6 +17,7 @@ class BaseCommand:
         self.rx, self.ry = None, None  # Path
         self.get_path(gx, gy)
         self.comms = BaseComms()
+        self.move()
 
     def get_pos_orientation(self):
         pos = self.camera.get_pos(1)[1]
@@ -31,18 +32,20 @@ class BaseCommand:
             cur_pos = self.get_pos_orientation()
             while BaseCommand.dist(cur_pos[0], (x, y)) > 20:
                 self.move2Checkpoint(x, y, cur_pos)
+                cur_pos = self.get_pos_orientation()
 
     def move2Checkpoint(self, x, y, cur_pos):
         robot_orientation = cur_pos[1]
         target_orientation = np.array((x - cur_pos[0][0], y - cur_pos[0][1]))
         if abs(BaseCommand.angle(robot_orientation, target_orientation)) > 15:
+            print(BaseCommand.angle(robot_orientation, target_orientation), " ", BaseCommand.cross(robot_orientation, target_orientation))
             if BaseCommand.cross(robot_orientation, target_orientation) > 0:
                 self.comms.turnLeft()
             else:
                 self.comms.turnRight()
         else:
             self.comms.goForward()
-        time.sleep(0.1)
+        time.sleep(0.25)
         self.comms.stop()
         return
 
@@ -91,4 +94,4 @@ class BaseCommand:
 
 
 if __name__ == '__main__':
-    bc = BaseCommand(1, 795, 246)
+    bc = BaseCommand(0, 1400, 867)
