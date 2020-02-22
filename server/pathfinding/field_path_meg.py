@@ -12,13 +12,14 @@ ETA = 100.0  # repulsive potential gain
 #AREA_WIDTH = 30.0  # potential area width [m]
 cell_path = []  # cell_path = [ (ix1,iy1), (ix2,iy2) ... ] sequence of cell movements
 
-room_width = 25
-room_height = 15
+room_width = 45
+room_height = 45
 room_x = 0
 room_y = 0
 show_animation = True
 
-camera = Camera(0)
+# camera = Camera(0)
+
 
 
 def calc_potential_field_nextcell(cell_x, cell_y , gx, gy, ox, oy, reso , rr, nmap):
@@ -30,20 +31,21 @@ def calc_potential_field_nextcell(cell_x, cell_y , gx, gy, ox, oy, reso , rr, nm
     minix, miniy = -1, -1
     for ix in range((cell_x - 1), (cell_x+2)):
         x = ix * reso
+
         for iy in range((cell_y - 1), (cell_y+2)):
-            print(' ix iy = ', ix, iy)
             y = iy * reso
-            ug = calc_attractive_potential(x, y, gx, gy)
-            uo = calc_repulsive_potential(x, y, ox, oy, rr)
-            uf = ug + uo
-            nmap[ix][iy] = uf #adds the neighbour potentials to the room map/grid
-            nlist.append(uf)  #adds the neighbour potentials to a list  (8 elements)
             if ix >= len(nmap) or iy >= len(nmap[0]):
                 p = float("inf")  # outside area
-            else:
+            else :
+                ug = calc_attractive_potential(x, y, gx, gy)
+                uo = calc_repulsive_potential(x, y, ox, oy, rr)
+                uf = ug + uo
+                nmap[ix][iy] = uf #adds the neighbour potentials to the room map/grid
+                print('[ix][iy] = ', ix , iy )
+                nlist.append(uf)  #adds the neighbour potentials to a list  (8 elements)
                 p = nmap[ix][iy]
-                # or
-                # p = uf
+             # or
+             # p = uf
             if minp > p:
                 minp = p
                 minix = ix
@@ -110,16 +112,29 @@ def path_sequence(sx, sy, gx, gy, ox, oy, reso, rr):
     xw = int(round(room_width / reso))
     yw = int(round(room_height / reso))
     nmap = [[0.0 for i in range(yw)] for i in range(xw)]
+    print(np.shape(nmap))
+    print ('six siy gix giy' , ix , iy , gix , giy )
     d = np.hypot(sx - gx, sy - gy)
 
-    #rx, ry = [sx], [sy]
+    if show_animation:
+        draw_heatmap(nmap)
+        # for stopping simulation with the esc key.
+        plt.gcf().canvas.mpl_connect('key_release_event',
+                                     lambda event: [exit(0) if event.key == 'escape' else None])
+        plt.plot(ix, iy, "*k")
+        plt.plot(gix, giy, "*m")
+
+    rx, ry = [sx], [sy]
+
     coord_path = []  # coord_path = [ (x1,y1), (x2,y2) ...... ] sequence of coordinate movements
 
     #motion = get_motion_model()
     while d >= reso:
         #ox and oy represent static obstacles
         #tx and ty represent the centre coordinates of the tables (dynamic)
-        tx , ty = get_table_centres()
+        tx = []
+        ty = []
+        # tx , ty = get_table_centres()
         otx = ox + tx
         oty = oy + ty
         newmap, _, minix, miniy =  calc_potential_field_nextcell(ix, iy, gx, gy, otx, oty, reso, rr, nmap)
@@ -127,18 +142,19 @@ def path_sequence(sx, sy, gx, gy, ox, oy, reso, rr):
         xp = minix * reso
         yp = miniy * reso
         coord_path.append(Point2(xp, yp))
+        print('coordinates x and y ' , xp, yp )
         d = np.hypot(gx - xp, gy - yp)
         nmap = newmap
         #rx and ry are the same as coord_path = [ (x1,y1), (x2,y2) ... ]
-        # rx.append(xp)
-        # ry.append(yp)
-        # plt.plot(ix, iy, ".r")
-        # plt.pause(0.01)
-    print(coord_path)
+        rx.append(xp)
+        ry.append(yp)
+        plt.plot(ix, iy, ".r")
+        plt.pause(0.01)
+
     print("Goal!!")
 
 
-    return coord_path
+    return coord_path , rx , ry
 
 
 def draw_heatmap(data):
@@ -174,24 +190,38 @@ def main():
     grid_size = 0.5  # potential grid size [m]
     robot_radius = 5.0  # robot radius [m] (1/2 of the table_width)
 
+
     #static obstacles
     ox = [15.0, 5.0, 20.0, 25.0]  # obstacle x position list [m]
     oy = [25.0, 15.0, 26.0, 25.0]  # obstacle y position list [m]
+
+
+
+    if show_animation:
+        plt.grid(True)
+        plt.axis("equal")
+
+    pltox = []
+    pltoy = []
+    for oix in ox:
+        pltox.append(oix/grid_size)
+
+    for oiy in oy:
+
+        pltoy.append(oiy / grid_size)
+
+    plt.plot(pltox, pltoy, 'ro',  markersize = robot_radius)
+
+
+
     #path_generation
-    path = path_sequence(sx,sy,gx,gy,ox,oy,grid_size,robot_radius)
+    path , rx , ry  = path_sequence(sx,sy,gx,gy,ox,oy,grid_size,robot_radius)
 
     # find a way to move table to final goal position)
     #if(np.hypot(path[-1] , goal) > 0.0)
     # do something
 
-
-    print(path)
-
-    #
-    # if show_animation:
-    #     plt.grid(True)
-    #     plt.axis("equal")
-
+    print(rx , ry )
 
 
     if show_animation:

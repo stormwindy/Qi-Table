@@ -160,10 +160,11 @@ def main():
     gx = 30.0  # goal x position [m]
     gy = 30.0  # goal y position [m]
     grid_size = 0.5  # potential grid size [m]
-    robot_radius = 5.0  # robot radius [m]
+    robot_radius = 20.0  # robot radius [m]
 
     ox = [15.0, 5.0, 20.0, 25.0]  # obstacle x position list [m]
     oy = [25.0, 15.0, 26.0, 25.0]  # obstacle y position list [m]
+
 
     if show_animation:
         plt.grid(True)
