@@ -3,7 +3,6 @@ import os
 sys.path.append(os.path.abspath(__file__ + '/../../..'))
 import cv2
 import numpy as np
-from ar_markers import detect_markers
 import time
 from typing import Dict, Tuple
 
@@ -29,7 +28,7 @@ class Camera:
     Do NOT use this method outside this module, use the get_pos() method instead.
     For testing, set the display flag to True to display a live video feed.
     '''
-    def get_pos(self, num_of_markers: int, display: bool = False) -> Dict[int, Tuple[int]]:
+    def get_pos(self, num_of_markers: int, display: bool = False) -> Dict[int, np.ndarray]:
         cap = self.capture
         # Check if the camera is opened and try to get the first frame
         if cap.isOpened():
