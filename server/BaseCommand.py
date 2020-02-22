@@ -21,25 +21,26 @@ class BaseCommand:
         self.gy = 246
         self.comms = BaseComms()
         self.rx, self.ry = self.getPath(self.sx, self.sy, self.gx, self.gy)
-        if show:
-            self.show()
+        # if show:
+        #     self.show()
+        time.sleep(1)
         self.move()
 
-    def show(self):
-        cap = self.cam.capture
-        fp, frame = cap.read()
-        while fp:
-            print(np.int32([list(zip(self.rx, self.ry))]))
-            print(type(np.int32([list(zip(self.rx, self.ry))])))
-            cv2.polylines(frame, np.int32([list(zip(self.rx, self.ry))]), False, (0, 255, 0), thickness=3)
-            for pts in self.room.obsts.values():
-                pts = np.array(pts)
-                print(pts)
-                cv2.rectangle(frame, tuple(pts[0]), tuple(pts[1]), (0, 0, 255), thickness=3)
-            cv2.imshow('fame', frame)
-            if cv2.waitKey(1) & 0xFF == ord('q'):
-                break
-            fp, frame = cap.read()
+    # def show(self):
+    #     cap = self.cam.capture
+    #     fp, frame = cap.read()
+    #     while fp:
+    #         print(np.int32([list(zip(self.rx, self.ry))]))
+    #         print(type(np.int32([list(zip(self.rx, self.ry))])))
+    #         cv2.polylines(frame, np.int32([list(zip(self.rx, self.ry))]), False, (0, 255, 0), thickness=3)
+    #         for pts in self.room.obsts.values():
+    #             pts = np.array(pts)
+    #             print(pts)
+    #             cv2.rectangle(frame, tuple(pts[0]), tuple(pts[1]), (0, 0, 255), thickness=3)
+    #         cv2.imshow('fame', frame)
+    #         if cv2.waitKey(1) & 0xFF == ord('q'):
+    #             break
+    #         fp, frame = cap.read()
 
 
     '''
@@ -47,22 +48,20 @@ class BaseCommand:
     '''
     def move(self):
         rx, ry = self.rx, self.ry
-        print(len(rx))
         for i in range(len(rx)):
-            minDist = self.getDistCurTarget(rx[i], ry[i])
             #print(self.getDirection((self.sx, self.sy), (rx[i], ry[i])))
             self.correctOrientation(rx[i], ry[i])
 
-            while not self.inRange(rx[i], ry[i]):
-                self.getPos()
-                distance = self.getDistCurTarget(rx[i], ry[i])
-                # self.correctOrientation(rx[i], ry[i])
-                time.sleep(0.3)
-                minDist = distance
-                self.comms.goForward()
-                time.sleep(0.5)
-                self.comms.stop()
-            self.comms.stop()
+            # while not self.inRange(rx[i], ry[i]):
+            #     self.getPos()
+            #     self.vector = self.getVector(self.marker[0], self.marker[2])
+            #     self.distance = self.getDistCurTarget(rx[i], ry[i])
+            #     # self.correctOrientation(rx[i], ry[i])
+            #     time.sleep(0.3)
+            #     self.comms.goForward()
+            #     time.sleep(0.5)
+            #     self.comms.stop()
+            # self.comms.stop()
 
             #self.correctOrientation(rx[i], ry[i])
 
@@ -83,7 +82,7 @@ class BaseCommand:
     '''
 
     def inRange(self, rx: int, ry: int) -> bool:
-        if rx - 50 < self.sx and self.sx < rx + 50 and ry - 50 < self.sy and self.sy < ry + 50: return True
+        if self.distance < 35: return True
         return False
 
     '''
@@ -91,37 +90,35 @@ class BaseCommand:
     '''
     def correctOrientation(self, rx: int, ry: int):
         direction = self.getDirection((self.sx, self.sy), (rx, ry))
-        self.comms.stop()
-        # time.sleep(0.3)
-        while not (direction - 30 < self.angle and self.angle < direction + 30):
-            if self.isTurnLeft(self.angle, direction):
+        anglediff = self.getAngleDiff(self.angle, direction)
+        while not (abs(anglediff < 10)):
+            if anglediff < 0:
                 self.comms.turnLeft()
-            else:
+            elif anglediff > 0:
                 self.comms.turnRight()
-            time.sleep(0.3)
+            time.sleep(abs(anglediff) / 180 if abs(anglediff) > 55 else 0.3)
             self.comms.stop()
-            self.getPos()
-            time.sleep(.3)
-            print(self.angle, " ", direction)
-            self.angle = self.calcOrientation()
             time.sleep(0.2)
-
-        # while not (direction - 45 < self.angle and self.angle < direction + 45):
-        #     self.comms.turnRight()
-        #     time.sleep(0.2)
-        #     self.comms.stop()
-        #     time.sleep(0.4)
-        #     self.getPos()
-        #     self.angle = self.calcOrientation()
+            self.getPos()
+            self.angle = self.calcOrientation()
+            direction = self.getDirection((self.sx, self.sy), (rx, ry))
+            anglediff = self.getAngleDiff(self.angle, direction)
 
         print("Corrected angle")
         self.comms.stop()
 
-    def isTurnLeft(self, angle, touchAngle):
-        if ((touchAngle - angle) + 360) % 360 < 180:
-           return False
-        else:
-            return True
+    def getAngleDiff(self, source, target) -> float:
+        diff = (math.degrees(target) - math.degrees(source) + 180) % 360 - 180
+        return diff + 350 if diff < -180 else diff
+
+    # def isTurnLeft(self, angle, touchAngle):
+    #     diff = touchAngle - angle
+    #     if diff < 0:
+    #         diff += 360
+    #     if diff < 180:
+    #        return False
+    #     else:
+    #         return True
 
     def getDistCurTarget(self, rx: int, ry: int) -> float:
         return math.sqrt((rx - self.sy)**2 + (ry - self.sy)**2)
@@ -135,11 +132,7 @@ class BaseCommand:
     Gets direction of an object/target given two points with respect to principle axis. 0 points to "EAST"/"Right"
     '''
     def getDirection(self, source: Tuple[int], target: Tuple[int]) -> float :
-        # x = math.cos(latRight) * math.sin(math.radians(target[0] - source[0]))
-        # y = math.cos(latLeft) * math.sin(latRight) - math.sin(latLeft) *\
-        #     math.cos(latRight) * math.cos(math.radians(target[0] - source[0]))
-        # angle = (math.degrees(math.atan2(x, y))+360)%360
-        return (math.degrees(math.atan2(target[1] - source[1], target[0] - source[0]))+360)%360
+        return (math.atan2(target[1] - source[1], target[0] - source[0]))
 
     def getPath(self, sx: int, sy: int, gx: int, gy: int) -> Tuple[list, list]:
         ox, oy = [], []
