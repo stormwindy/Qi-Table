@@ -115,7 +115,7 @@ Custom exception to catch.
 '''
 class MarkerRecognitionFailure(Exception):
     def __str__(self):
-        return 'Method vision.camera.get_markers() failed, make sure ' \
+        return 'Method vision.camera.get_pos() failed, make sure ' \
                'the arguments are correct and re-run the method.'
 
 
