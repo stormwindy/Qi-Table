@@ -1,5 +1,6 @@
 import sys
 import serial
+import platform
 
 # def whichCommand(key):
 #     switcher = {
@@ -14,7 +15,14 @@ import serial
 class BaseComms:
 
     def __init__(self):
-        self.ser = serial.Serial('/dev/cu.usbmodem0000011', 115200)
+        self.ser = None
+        if platform.system() == 'Linux':
+            self.ser = serial.Serial('/dev/ttyACM0', 115200)
+        elif platform.system() == 'Darwin':
+            self.ser = serial.Serial('/dev/cu.usbmodem0000011', 115200)
+        else:
+            exit(1)
+
 
     def _whichCommandNumber(key) -> chr:
         switcher = {
@@ -50,6 +58,16 @@ class BaseComms:
                 command += '\n'
                 self.ser.write(command)
 
+    def _test_transmit(self, command):
+        if command:
+            command += '\n'
+            self.ser.write(command.encode())
+        else:
+            while(1):
+                command = self.whichCommandNumber()
+                command += '\n'
+                self.ser.write(command)
+
     '''
     Interfacing methods for turning. If you are planning to transmit something other than following, add your own 
     public method. DO NOT use previous methods in this file outside of this class.
@@ -69,3 +87,8 @@ class BaseComms:
 
     def stop(self):
         self._transmit('5')
+
+    def read_packet(self):
+        line = self.ser.readline()
+        return line
+

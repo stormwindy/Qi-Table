@@ -1,6 +1,7 @@
 from unittest import TestCase
 from server.BaseComms import BaseComms
 import time
+import random, string
 
 
 class TestBaseComms(TestCase):
@@ -57,3 +58,20 @@ class TestBaseComms(TestCase):
         comms.goBackward()
         time.sleep(4)
         comms.stop()
+
+    def test_packet_success(self):
+        comms = BaseComms()
+        wrongPacket = 0
+        for i in range(1000):
+            def randString(length):
+                return''.join(random.choice(string.ascii_lowercase) for i in range(length))
+
+            max_length = 31 #bytes
+            randomStr = randString(random.randint(1, max_length))
+            with open('somefile.txt', 'a') as the_file:
+                the_file.write(randomStr + "\n")
+            comms._test_transmit(randomStr)
+            retPacket = comms.read_packet()
+            if retPacket != randomStr:
+                wrongPacket += 1
+        assert (wrongPacket, 0)
