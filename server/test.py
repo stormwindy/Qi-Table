@@ -65,7 +65,7 @@ def draw_rect(pt1, pt2):
 for pt1, pt2 in r.obsts.values():
     draw_rect(pt1, pt2)
 # start, goal
-sx, sy, gx, gy = 1150.0, 560.0, 750.0, 875.0
+sx, sy, gx, gy = 460.0, 530.0, 1430.0, 800.0
 
 
 grid_size = 32.0
@@ -90,7 +90,7 @@ print(t3 - t2)
 plt.plot(rx, ry, "-r")
 plt.show()
 
-r.draw_path(np.array([[[500, 100], [500, 600], [600, 600]]]))
+# r.draw_path(np.array([[[500, 100], [500, 600], [600, 600]]]))
 # r.show(True)
 
 

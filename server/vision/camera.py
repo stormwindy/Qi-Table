@@ -124,7 +124,7 @@ Test run.
 '''
 if __name__ == '__main__':
     t1 = time.time()
-    c = Camera(0)
+    c = Camera(1)
     t2 = time.time()
     print(t2 - t1)
     print(c.get_pos(2, True))
