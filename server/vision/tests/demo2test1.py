@@ -16,7 +16,6 @@ def get_pos(num_of_markers, display=False):
     # Init a dictionary to store positions of AR markers.
     # Format: {marker's ID: marker's location}
     pos = dict()
-    print('Vision: start markers recognition.')
     taken = 0
     while frame_captured and len(pos) < num_of_markers:  # Break when all markers are recognized.
         taken += 1

@@ -41,7 +41,6 @@ class BaseComms:
         return self.whichCommandNumber(key)
 
     def _transmit(self, command : chr = None):
-        print(self.ser.name)
         if command:
             command += '\n'
             self.ser.write(command.encode())
