@@ -68,8 +68,9 @@ class TestBaseComms(TestCase):
 
             max_length = 31 #bytes
             randomStr = randString(random.randint(1, max_length))
+            with open('somefile.txt', 'a') as the_file:
+                the_file.write(randomStr + "\n")
             comms._test_transmit(randomStr)
-            time.sleep(0.2)
             retPacket = comms.read_packet()
             if retPacket != randomStr:
                 wrongPacket += 1
