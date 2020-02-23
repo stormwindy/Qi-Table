@@ -4,7 +4,7 @@ sys.path.append(os.path.abspath(__file__ + '/../../..'))
 import cv2
 import numpy as np
 import time
-from typing import Dict, Tuple
+from typing import Dict
 
 '''
 See README for usage.
@@ -39,7 +39,6 @@ class Camera:
         # Init a dictionary to store positions of AR markers.
         # Format: {marker's ID: marker's location}
         pos = dict()
-        print('Vision: start markers recognition.')
         while frame_captured and len(pos) < num_of_markers:  # Break when all markers are recognized.
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             corners, ids, rejectedImgPoints = cv2.aruco.detectMarkers(frame, self.dictionary)
@@ -115,7 +114,7 @@ Custom exception to catch.
 '''
 class MarkerRecognitionFailure(Exception):
     def __str__(self):
-        return 'Method vision.camera.get_markers() failed, make sure ' \
+        return 'Method vision.camera.get_pos() failed, make sure ' \
                'the arguments are correct and re-run the method.'
 
 
@@ -124,7 +123,7 @@ Test run.
 '''
 if __name__ == '__main__':
     t1 = time.time()
-    c = Camera(0)
+    c = Camera(1)
     t2 = time.time()
     print(t2 - t1)
     print(c.get_pos(2, True))

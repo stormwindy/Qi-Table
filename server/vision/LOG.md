@@ -5,3 +5,38 @@ Tested 4x4, 6x6, 8x8, and 10x10 cm AR markers in 3.11, with the markers a on the
 <img src="markers/tag_sizes_test.png" alt="Table with ID 1" width="400"/> 
 
 
+Demo 2 test 1 static recognition:
+place marker on every section (with random orientation) of the 3.11 area, measure the amount of frames
+it takes to recognize the marker and how long does it take
+frame, avg seconds
+1,0.06
+1,0.06
+1,0.07
+1,0.22 - outlier
+1,0.09
+1,0.06
+1,0.07
+1,0.06
+1,0.07
+1,0.06
+1,0.07
+1,0.07
+1,0.16 - outlier
+1,0.06
+1,0.07
+1,0.07
+1,0.05
+1,0.07
+1,0.06
+1,0.06
+
+20 * 3 = 60 trials
+
+Demo 2, markers moving with robot in an autonomous setting:
+results in d2t2res
+analysed in d2t2res_sanitize.py
+
+
+
+
+
