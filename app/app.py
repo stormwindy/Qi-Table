@@ -126,6 +126,11 @@ def demo():
         #DO EGE'S RIGHT TURN THING
         bc.turnRight()
         return {'text': 'Turning right'}
+    
+    if request.headers['Direction']=='stop':
+        bc.stop()
+        return {'text': 'Stop'}
+
 
     return {'text': 'Error: invalid header'}
 

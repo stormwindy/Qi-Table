@@ -290,6 +290,8 @@ class DemoView extends React.Component{
                     <li><button onClick={() => this.moveRobot('backwards')}>Move Backwards</button></li>
                     <li><button onClick={() => this.moveRobot('left')}>Turn Left</button></li>
                     <li><button onClick={() => this.moveRobot('right')}>Turn Right</button></li>
+                    <li><button onClick={() => this.moveRobot('stop')}>Stop</button></li>
+
                 </ul>
             </div>
         )
