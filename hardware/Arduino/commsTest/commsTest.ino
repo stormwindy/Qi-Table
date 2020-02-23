@@ -28,6 +28,7 @@ void loop()
   char *packet = receivedChars;
   Serial.write(packet);
   Serial.write("\n");
+  newData = false;
   //comms.showNewData();
 }
 
