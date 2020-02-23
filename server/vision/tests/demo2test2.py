@@ -1,5 +1,5 @@
 import sys
-sys.path.append("../")
+sys.path.append("../../../")
 import math
 import time
 import numpy as np
@@ -7,7 +7,6 @@ from server.vision.camera import Camera
 from server.vision.room import Room
 from server.pathfinding.planner import AStarPlanner
 from server.BaseComms import BaseComms
-import cv2
 
 class BaseCommand:
 
@@ -20,7 +19,10 @@ class BaseCommand:
         self.move()
 
     def get_pos_orientation(self):
+        t1 = time.time()
         pos = self.camera.get_pos(1)[1]
+        t2 = time.time()
+        print(t2-t1)
         return (pos[0] + pos[2]) / 2, pos[0] - pos[3]
 
     @ staticmethod
@@ -30,7 +32,7 @@ class BaseCommand:
     def move(self):
         for x, y in zip(self.rx, self.ry):
             cur_pos = self.get_pos_orientation()
-            while BaseCommand.dist(cur_pos[0], (x, y)) > 18:
+            while BaseCommand.dist(cur_pos[0], (x, y)) > 15:
                 self.move2Checkpoint(x, y, cur_pos)
                 cur_pos = self.get_pos_orientation()
 
@@ -38,7 +40,6 @@ class BaseCommand:
         robot_orientation = cur_pos[1]
         target_orientation = np.array((x - cur_pos[0][0], y - cur_pos[0][1]))
         if abs(BaseCommand.angle(robot_orientation, target_orientation)) > 15:
-            print(BaseCommand.angle(robot_orientation, target_orientation), " ", BaseCommand.cross(robot_orientation, target_orientation))
             if BaseCommand.cross(robot_orientation, target_orientation) > 0:
                 self.comms.turnRight()
             else:
@@ -94,4 +95,8 @@ class BaseCommand:
 
 
 if __name__ == '__main__':
-    bc = BaseCommand(1, 964, 929)
+    # p = (525, 564)  #left
+    # p = (936, 296)  #top
+    # p = (1337, 551)  #right occupied now
+    p = (977,920)  #bottom
+    bc = BaseCommand(1, p[0], p[1])

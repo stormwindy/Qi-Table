@@ -35,7 +35,7 @@ class Visualizer:
                     ox.append(point0[0] + base - 1)
             for pt1, pt2 in self.obsts.values():
                 drawRect(pt1, pt2)
-            grid_size, robot_radius = 50.0, 140.0
+            grid_size, robot_radius = 30.0, 115.0
             a_star = AStarPlanner(ox, oy, grid_size, robot_radius)
             rx, ry = a_star.planning(int(np.around(sx)), int(np.around(sy)), gx, gy)
             rx, ry = rx[::-1], ry[::-1]
@@ -75,6 +75,10 @@ class Visualizer:
         cv2.arrowedLine(frame, tuple(center), tuple(center + direction), (255, 0, 0), thickness=2)
 
 if __name__ == '__main__':
-    v = Visualizer(1, 795, 246)
+    # p = (525, 564)  #left
+    # p = (936, 296)  #top
+    # p = (1337, 551)  #right occupied now
+    p = (977, 920)  # bottom
+    v = Visualizer(1, p[0], p[1])
     v.show()
 

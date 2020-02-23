@@ -32,6 +32,9 @@ frame, avg seconds
 
 20 * 3 = 60 trials
 
+Demo 2, markers moving with robot in an autonomous setting:
+results in d2t2res
+analysed in d2t2res_sanitize.py
 
 
 
