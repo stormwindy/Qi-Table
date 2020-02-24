@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Konva from 'konva';
+import { Stage, Layer, Rect, Circle} from 'react-konva';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
@@ -264,6 +266,15 @@ class PositionForm extends React.Component{
 class DemoView extends React.Component{
     constructor(props){
         super(props);
+        this.state = ({x:-100, y:-100});
+    }
+
+    onMouseDown(e, bounds){
+        let stage = e.target.getStage();
+        let pos = stage.getPointerPosition();
+        let x = (pos.x/(bounds.x*2))*1920
+        let y = (pos.y/(bounds.y*2))*1080
+        this.setState({x:x, y:y});
     }
 
     moveRobot(direction){
@@ -280,7 +291,23 @@ class DemoView extends React.Component{
         )
     }
 
+    moveToTarget(){
+        fetch('http://127.0.0.1:5000/demopathfinding', {
+            method: 'GET',
+            headers: {
+                'x': this.state.x*2,
+                'y': this.state.y*2
+            },
+        }).then(res=>res.json())
+        .then(
+           (res) => alert(res.text),
+           (error) => alert('Error')
+        )
+    }
+
     render(){
+
+        let bounds = {x: window.innerWidth/2, y: (window.innerWidth/32)*9};
 
         return(
             <div>
@@ -293,6 +320,14 @@ class DemoView extends React.Component{
                     <li><button onClick={() => this.moveRobot('stop')}>Stop</button></li>
 
                 </ul>
+
+                <Stage width={bounds.x} height={bounds.y} onMouseDown = {(e) => this.onMouseDown(e, bounds)}>
+                    <Layer>
+                        <Rect x={0} y={0} width={bounds.x} height={bounds.y} onClick = {this.onClick} stroke="black" />
+                        <Circle x={(this.state.x/1920)*bounds.x*2} y={(this.state.y/1080)*bounds.y*2} fill={'red'} radius={10}/>
+                    </Layer>
+                </Stage>
+                <button onClick = {this.moveToTarget.bind(this)}>Move to target</button>
             </div>
         )
     }
