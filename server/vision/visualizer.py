@@ -14,6 +14,7 @@ class Visualizer:
         self.obsts = Room('room0').obsts
         self.camera = Camera(interface)
         self.rx, self.ry = None, None  #Path
+        self.a_star = None
         self.get_path(gx, gy)
 
     def get_path(self, gx, gy):
@@ -21,8 +22,8 @@ class Visualizer:
             nonlocal gx, gy
             ox, oy = [], []
             def drawRect(point0, point1) -> None:
-                side = abs(point0[0] - point1[0])
-                base = abs(point0[1] - point1[1])
+                base = abs(point0[0] - point1[0])
+                side = abs(point0[1] - point1[1])
                 for xx in range(base):
                     ox.append(point0[0] + xx)
                     oy.append(point0[1])
@@ -35,9 +36,9 @@ class Visualizer:
                     ox.append(point0[0] + base - 1)
             for pt1, pt2 in self.obsts.values():
                 drawRect(pt1, pt2)
-            grid_size, robot_radius = 30.0, 115.0
-            a_star = AStarPlanner(ox, oy, grid_size, robot_radius)
-            rx, ry = a_star.planning(int(np.around(sx)), int(np.around(sy)), gx, gy)
+            grid_size, robot_radius = 10.0, 105.0
+            self.a_star = AStarPlanner(ox, oy, grid_size, robot_radius, True)
+            rx, ry = self.a_star.planning(int(np.around(sx)), int(np.around(sy)), gx, gy)
             rx, ry = rx[::-1], ry[::-1]
             return rx, ry
         pos = self.camera.get_pos(1)[1]
@@ -50,6 +51,7 @@ class Visualizer:
         fp, frame = cap.read()
         while fp:
             self.draw_path(frame)
+            self.draw_grid(frame)
             self.draw_obsts(frame)
             self.draw_arrow(frame)
             self.draw_arrow(frame)
@@ -58,10 +60,17 @@ class Visualizer:
                 break
             fp, frame = cap.read()
 
+    def draw_grid(self, frame):
+        for x, y, b in self.a_star.get_grid():
+            if b:
+                cv2.circle(frame, (int(x), int(y)), 1, (0, 0, 255))
+            else:
+                cv2.circle(frame, (int(x), int(y)), 1, (0, 255, 0))
+
     def draw_path(self, frame):
         # cv2.polylines(frame, np.int32([list(zip(self.rx, self.ry))]), False, (0, 255, 0), thickness=3)
         for x, y in zip(self.rx, self.ry):
-            cv2.circle(frame, (int(x), int(y)), 3, (0, 255, 0))
+            cv2.circle(frame, (int(x), int(y)), 4, (255, 0, 0))
 
     def draw_obsts(self, frame):
         for pts in self.obsts.values():
@@ -75,10 +84,9 @@ class Visualizer:
         cv2.arrowedLine(frame, tuple(center), tuple(center + direction), (255, 0, 0), thickness=2)
 
 if __name__ == '__main__':
-    # p = (525, 564)  #left
-    # p = (936, 296)  #top
-    # p = (1337, 551)  #right occupied now
-    p = (977, 920)  # bottom
+    # p = (570, 256)  # top
+    # p = (1235, 563) # right
+    p = (603, 889)  # bottom
     v = Visualizer(1, p[0], p[1])
     v.show()
 
