@@ -144,7 +144,12 @@ def demo_pathfinding():
     #MOVE TO TARGET HERE
     #robot.moveToTarget(x,y)
     #or something like that
-    baseCommand = BaseCommand.BaseCommand()
+    try:
+        print(x, " ", y)
+        BaseCommand.BaseCommand(1, x, y)
+    except Exception:
+        print("In progress. Wait until process ends")
+        return {'text': "Ongoing progress continuing."}
 
     return {'text': 'Moving to position x: ' + str(x) + ' y: ' + str(y)}
     
