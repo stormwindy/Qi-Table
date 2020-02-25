@@ -68,8 +68,8 @@ class BaseCommand:
             nonlocal gx, gy
             ox, oy = [], []
             def drawRect(point0, point1) -> None:
-                side = abs(point0[0] - point1[0])
-                base = abs(point0[1] - point1[1])
+                base = abs(point0[0] - point1[0])
+                side = abs(point0[1] - point1[1])
                 for xx in range(base):
                     ox.append(point0[0] + xx)
                     oy.append(point0[1])
