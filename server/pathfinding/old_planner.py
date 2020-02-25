@@ -9,14 +9,15 @@ author: Atsushi Sakai(@Atsushi_twi)
 
 import math
 import matplotlib.pyplot as plt
-import pickle
-import os
+from typing import Dict, Tuple, List
+from bresenham import bresenham
+
 show_animation = False
 
 
 class AStarPlanner:
 
-    def __init__(self, ox, oy, reso, rr, obst_map=None):
+    def __init__(self, ox, oy, reso, rr):
         """
         Initialize grid map for a star planning
 
@@ -28,15 +29,7 @@ class AStarPlanner:
 
         self.reso = reso
         self.rr = rr
-        if not obst_map:
-            self.calc_obstacle_map(ox, oy)
-        else:
-            dirname = os.path.abspath(__file__ + "/..")
-            saved = pickle.load(open(os.path.join(dirname, 'saved/room0' + '.p'), "rb"))
-            self.obmap = saved[0]
-            self.minx, self.miny = saved[1] ,saved[2]
-            self.maxx, self.maxy = saved[3], saved[4]
-            self.xwidth, self.ywidth = saved[5], saved[6]
+        self.calc_obstacle_map(ox, oy)
         self.motion = self.get_motion_model()
 
     class Node:
@@ -216,18 +209,6 @@ class AStarPlanner:
                     if d <= self.rr:
                         self.obmap[ix][iy] = True
                         break
-        # Uncomment to save
-        dirname = os.path.abspath(__file__ + "/..")
-        toSave = [self.obmap, self.minx, self.miny, self.maxx, self.maxy, self.xwidth, self.ywidth]
-        pickle.dump(toSave, open(os.path.join(dirname, 'saved/room0' + '.p'), "wb"))
-
-    def get_grid(self):
-        res = []
-        for i in range(self.xwidth):
-            for j in range(self.ywidth):
-                x, y = self.calc_grid_position(i, self.minx), self.calc_grid_position(j, self.miny)
-                res.append((x, y, self.obmap[i][j]))
-        return res
 
     @staticmethod
     def get_motion_model():
@@ -243,21 +224,21 @@ class AStarPlanner:
 
         return motion
 
-    # @staticmethod
-    # def vertices_to_lines(vertices: Dict) -> Tuple[List, List]:
-    #     ox = []
-    #     oy = []
-    #     for o in vertices.values():
-    #         for i in range(len(o) - 1):
-    #             xy = list(bresenham(o[i][0], o[i][1], o[i+1][0], o[i+1][1]))
-    #             for x, y in xy:
-    #                 ox.append(x)
-    #                 oy.append(y)
-    #         xy = list(bresenham(o[-1][0], o[-1][1], o[0][0], o[0][1]))
-    #         for x, y in xy:
-    #             ox.append(x)
-    #             oy.append(y)
-    #     return ox, oy
+    @staticmethod
+    def vertices_to_lines(vertices: Dict) -> Tuple[List, List]:
+        ox = []
+        oy = []
+        for o in vertices.values():
+            for i in range(len(o) - 1):
+                xy = list(bresenham(o[i][0], o[i][1], o[i+1][0], o[i+1][1]))
+                for x, y in xy:
+                    ox.append(x)
+                    oy.append(y)
+            xy = list(bresenham(o[-1][0], o[-1][1], o[0][0], o[0][1]))
+            for x, y in xy:
+                ox.append(x)
+                oy.append(y)
+        return ox, oy
 
 
 
@@ -301,7 +282,7 @@ def main():
         plt.grid(True)
         plt.axis("equal")
 
-    a_star = AStarPlanner(ox, oy, grid_size, robot_radius, True)
+    a_star = AStarPlanner(ox, oy, grid_size, robot_radius)
     rx, ry = a_star.planning(sx, sy, gx, gy)
 
     if show_animation:  # pragma: no cover

@@ -5,6 +5,7 @@ import sys
 import os
 sys.path.append(os.path.abspath(__file__ + '/../../'))
 from server import BaseComms
+from server import BaseCommand
 #from server.BaseComms import goForward, goBackward, goLeft, goRight
 
 
@@ -143,6 +144,7 @@ def demo_pathfinding():
     #MOVE TO TARGET HERE
     #robot.moveToTarget(x,y)
     #or something like that
+    baseCommand = BaseCommand.BaseCommand()
 
     return {'text': 'Moving to position x: ' + str(x) + ' y: ' + str(y)}
     

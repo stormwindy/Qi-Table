@@ -104,7 +104,7 @@ class Room:
         dirname = os.path.abspath(__file__ + "/..")
         cv2.imwrite(os.path.join(dirname, 'saved', 'room' + str(index) + '.png'), self.frame_orig)
         cv2.imwrite(os.path.join(dirname, 'saved', 'room' + str(index) + '_obst.png'), self.frame_obst)
-        pickle.dump(self.obsts, open('saved/room' + str(index) + '.p', "wb"))
+        pickle.dump(self.obsts, open(os.path.join(dirname, 'saved/room' + str(index) + '.p'), "wb"))
 
     '''
     Show the frame (turn on with_obstacles flag to show with obstacles)
@@ -127,10 +127,10 @@ Test code.
 '''
 if __name__ == '__main__':
     t1 = time.time()
-    r = Room('room0')  # Load saved room and obstacles
-    # r = Room(0)        # Take a picture of the room and mark obstacles manually
+    # r = Room('room0')  # Load saved room and obstacles
+    r = Room(1)        # Take a picture of the room and mark obstacles manually
     t2 = time.time()
-    r.draw_path(np.array([[[500,100],[500,600], [600,600]]]))
+    # r.draw_path(np.array([[[500,100],[500,600], [600,600]]]))
     print(t2-t1)
     r.show(True)
     t3 = time.time()
