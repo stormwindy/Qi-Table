@@ -13,7 +13,7 @@ import cv2
 class BaseCommand:
     __instance = None
     def __init__(self, interface, gx, gy):
-        if self.__instance is None:
+        if self.__instance is not None:
             raise Exception("Singelton class")
         else:
             self.__instance = self
