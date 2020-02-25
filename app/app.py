@@ -138,8 +138,8 @@ def demo():
 @app.route('/demopathfinding', methods=['GET'])
 def demo_pathfinding():
     #get target coordinates from headers
-    x = request.headers['x']
-    y = request.headers['y']
+    x = int(float(request.headers['x']))
+    y = int(float(request.headers['y']))
 
     #MOVE TO TARGET HERE
     #robot.moveToTarget(x,y)
@@ -147,8 +147,9 @@ def demo_pathfinding():
     try:
         print(x, " ", y)
         BaseCommand.BaseCommand(1, x, y)
-    except Exception:
+    except Exception as e:
         print("In progress. Wait until process ends")
+        print(e)
         return {'text': "Ongoing progress continuing."}
 
     return {'text': 'Moving to position x: ' + str(x) + ' y: ' + str(y)}
