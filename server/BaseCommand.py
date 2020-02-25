@@ -46,7 +46,7 @@ class BaseCommand:
             time.sleep(0.15)
         else:
             self.comms.goForward()
-            time.sleep(0.5)
+            time.sleep(0.35)
         self.comms.stop()
         return
 
@@ -96,6 +96,6 @@ class BaseCommand:
 
 if __name__ == '__main__':
     # p = (570, 256)  # top
-    p = (1235, 563) # right
-    # p = (603, 889)  # bottom
+    # p = (1235, 563) # right
+    p = (603, 889)  # bottom
     bc = BaseCommand(1, p[0], p[1])
