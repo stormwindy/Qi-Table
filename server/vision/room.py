@@ -104,7 +104,7 @@ class Room:
         dirname = os.path.abspath(__file__ + "/..")
         cv2.imwrite(os.path.join(dirname, 'saved', 'room' + str(index) + '.png'), self.frame_orig)
         cv2.imwrite(os.path.join(dirname, 'saved', 'room' + str(index) + '_obst.png'), self.frame_obst)
-        pickle.dump(self.obsts, open('saved/room' + str(index) + '.p', "wb"))
+        pickle.dump(self.obsts, open(os.path.join(dirname, 'saved/room' + str(index) + '.p'), "wb"))
 
     '''
     Show the frame (turn on with_obstacles flag to show with obstacles)

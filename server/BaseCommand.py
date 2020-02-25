@@ -43,9 +43,10 @@ class BaseCommand:
                 self.comms.turnRight()
             else:
                 self.comms.turnLeft()
+            time.sleep(0.15)
         else:
             self.comms.goForward()
-        time.sleep(0.25)
+            time.sleep(0.5)
         self.comms.stop()
         return
 
@@ -67,8 +68,8 @@ class BaseCommand:
             nonlocal gx, gy
             ox, oy = [], []
             def drawRect(point0, point1) -> None:
-                side = abs(point0[0] - point1[0])
-                base = abs(point0[1] - point1[1])
+                base = abs(point0[0] - point1[0])
+                side = abs(point0[1] - point1[1])
                 for xx in range(base):
                     ox.append(point0[0] + xx)
                     oy.append(point0[1])
@@ -81,8 +82,8 @@ class BaseCommand:
                     ox.append(point0[0] + base - 1)
             for pt1, pt2 in self.obsts:
                 drawRect(pt1, pt2)
-            grid_size, robot_radius = 30.0, 115.0
-            a_star = AStarPlanner(ox, oy, grid_size, robot_radius)
+            grid_size, robot_radius = 10.0, 105.0
+            a_star = AStarPlanner(ox, oy, grid_size, robot_radius, True)
             rx, ry = a_star.planning(int(np.around(sx)), int(np.around(sy)), gx, gy)
             rx, ry = rx[::-1], ry[::-1]
             return rx, ry
@@ -94,4 +95,7 @@ class BaseCommand:
 
 
 if __name__ == '__main__':
-    bc = BaseCommand(1, 964, 929)
+    # p = (570, 256)  # top
+    p = (1235, 563) # right
+    # p = (603, 889)  # bottom
+    bc = BaseCommand(1, p[0], p[1])
