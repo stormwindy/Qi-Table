@@ -23,8 +23,8 @@ class Planner:
         # self.ox, self.oy, self.orad = self.get_static_obstacles(Room(0).obsts)
         self.ox, self.oy, self.orad = self.get_static_obstacles(self.set_static_obstacles())
         self.tables = self.set_table_centres()
-        goals = self.set_goal_coords()
-        self.tables_to_goals(goals)
+        self.goals = self.tables_to_goals(self.set_goal_coords())
+        self.plan()
         self.path = []
         print(self.path)
         # self.draw()
@@ -132,7 +132,7 @@ class Planner:
     #     self.update_table(id, x, y, cx, cy, orientation)
 
 
-    def multi_path(self, goals):
+    def multi_path(self):
 
         # goals = dictionary which maps table id with its goal
 
@@ -148,8 +148,8 @@ class Planner:
             sy = cy
             ix = round(sx / reso)
             iy = round(sy / reso)
-            gx = goals[id][0]
-            gy = goals[id][1]
+            gx = self.goals[id][0]
+            gy = self.goals[id][1]
 
             # distance to goal
             d = np.hypot(sx - gx, sy - gy)
@@ -167,7 +167,7 @@ class Planner:
             else:
                 self.path.append((gx, gy))
                 self.update_table(id, gx, gy, cx, cy, orientation)
-                goals.pop(id) # remove entry from the goals as table is in the goal position
+                self.goals.pop(id) # remove entry from the goals as table is in the goal position
 
 
     def tables_to_goals(self, goals):
@@ -190,8 +190,12 @@ class Planner:
             tables_with_goals[id] = optimal_goal
             goals.remove(goal)
 
-        while bool(tables_with_goals):
-            self.multi_path(tables_with_goals)
+        return tables_with_goals
+
+    def plan(self):
+
+        while bool(self.goals):
+            self.multi_path()
         print("Goal!")
 
     def get_static_obstacles(self, obstacles):
@@ -271,7 +275,7 @@ class Planner:
 
         return obstacles
 
-    def set_goal_cords(self):
+    def set_goal_coords(self):
 
         goal1 = (1235, 563)  # (x, y)
         return [goal1]
