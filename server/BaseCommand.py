@@ -2,6 +2,7 @@ import sys
 sys.path.append("../")
 import math
 import time
+from typing import Tuple
 import numpy as np
 from server.vision.camera import Camera
 from server.vision.room import Room
@@ -10,8 +11,13 @@ from server.BaseComms import BaseComms
 import cv2
 
 class BaseCommand:
-
+    __instance = None
     def __init__(self, interface, gx, gy):
+        if self.__instance is not None:
+            raise Exception("Singelton class")
+        else:
+            self.__instance = self
+
         self.obsts = Room('room0').obsts.values()
         self.camera = Camera(interface)
         self.rx, self.ry = None, None  # Path
@@ -34,6 +40,8 @@ class BaseCommand:
                 self.move2Checkpoint(x, y, cur_pos)
                 cur_pos = self.get_pos_orientation()
 
+        return True
+
     def move2Checkpoint(self, x, y, cur_pos):
         robot_orientation = cur_pos[1]
         target_orientation = np.array((x - cur_pos[0][0], y - cur_pos[0][1]))
@@ -46,7 +54,7 @@ class BaseCommand:
             time.sleep(0.15)
         else:
             self.comms.goForward()
-            time.sleep(0.5)
+            time.sleep(0.35)
         self.comms.stop()
         return
 
@@ -98,4 +106,7 @@ if __name__ == '__main__':
     # p = (570, 256)  # top
     p = (1235, 563) # right
     # p = (603, 889)  # bottom
-    bc = BaseCommand(1, p[0], p[1])
+    try:
+        bc = BaseCommand(1, p[0], p[1])
+    except Exception:
+        print("In progress. Wait until process ends")
