@@ -49,13 +49,15 @@ class Visualizer:
     def show(self):
         cap = self.camera.capture
         fp, frame = cap.read()
+        cv2.namedWindow('frame', cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('frame', 1280, 720)
         while fp:
             self.draw_path(frame)
             self.draw_grid(frame)
             self.draw_obsts(frame)
             self.draw_arrow(frame)
             self.draw_arrow(frame)
-            cv2.imshow('fame', frame)
+            cv2.imshow('frame', frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
             fp, frame = cap.read()
