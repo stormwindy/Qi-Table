@@ -47,7 +47,7 @@ for pt1, pt2 in r.obsts.values():
 sx, sy, gx, gy = 460.0, 530.0, 1430.0, 800.0
 
 
-grid_size = 32.0
+grid_size = 20.0
 robot_radius = 130.0
 
 ###
@@ -61,7 +61,7 @@ plt.axis("equal")
 obstacles = r.obsts
 room_width, room_height = obstacles[0][1]
 obstacles.pop(0) #remove room bounds
-potential_field = FieldPlanner(room_width, room_height, obstacles, grid_size, robot_radius)
+potential_field = FieldPlanner(room_width, room_height, obstacles, grid_size, robot_radius, 1, 10000)
 potential_field.set_table_centres([(sx, sy)])
 paths = potential_field.plan([(gx, gy)])
 rx, ry = paths[1]

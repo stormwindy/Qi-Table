@@ -12,11 +12,13 @@ import matplotlib.pyplot as plt
 class FieldPlanner:
 
     KP = 5
-    ETA = 100000000
+    ETA = 100
 
-    def __init__(self, room_width, room_height, obstacles, grid_size, robot_radius):
+    def __init__(self, room_width, room_height, obstacles, grid_size, robot_radius, KP, ETA):
         # self.number_of_tables = None
         # self.camera = Camera(0)
+        self.ETA = ETA
+        self.KP = KP
         self.room_width = room_width
         self.room_height = room_height
         self.grid_size = grid_size
@@ -64,44 +66,59 @@ class FieldPlanner:
     def calc_repulsive_potential(self, x, y, tx, ty):
 
         safe_radius = self.robot_radius
+        potential = 0
+
+        def add_potential(p, d, radius):
+            if d <= safe_radius + 2:
+                if d <= 0.1:
+                    d = 0.1
+                p += 0.5 * self.ETA * (1.0 / d - 1.0 / radius) ** 2
+            return p
 
         # search nearest dynamic obstacle
-        minid_d = -1
-        dmin_d = float("inf")
+        # minid_d = -1
+        # dmin_d = float("inf")
+        safe_radius = self.robot_radius * 2
         for i, _ in enumerate(tx):
             d = np.hypot(x - tx[i], y - ty[i])
-            if dmin_d >= d:
-                dmin_d = d
-                minid_d = i
+            potential = add_potential(potential, d, safe_radius)
+            # if dmin_d >= d:
+            #     dmin_d = d
+            #     minid_d = i
 
         # search nearest static obstacle
-        minid_s = -1
-        dmin_s = float("inf")
+        # minid_s = -1
+        # dmin_s = float("inf")
         for i, _ in enumerate(self.ox):
             d = np.hypot(x - self.ox[i], y - self.oy[i])
-            if dmin_s >= d:
-                dmin_s = d
-                minid_s = i
+            safe_radius = self.orad[i] + self.robot_radius
+            potential = add_potential(potential, d, safe_radius)
+            # if dmin_s >= d:
+            #     dmin_s = d
+            #     minid_s = i
 
-        # dynamic obstacle is closer
-        if dmin_s >= dmin_d:
-            # calc repulsive potential
-            dq = np.hypot(x - tx[minid_d], y - ty[minid_d])
-            # safe distance between tables (distance between tables is the distance btw their centres)
-            safe_radius = self.robot_radius * 2
-        # static obstacle is closer
-        else:
-            # calc repulsive potential
-            dq = np.hypot(x - self.ox[minid_s], y - self.oy[minid_s])
-            # safe distance = obstacle radius + robot radius
-            safe_radius = self.orad[minid_s] + self.robot_radius
+        # # dynamic obstacle is closer
+        # if dmin_s >= dmin_d:
+        #     # calc repulsive potential
+        #     dq = np.hypot(x - tx[minid_d], y - ty[minid_d])
+        #     # safe distance between tables (distance between tables is the distance btw their centres)
+        #     safe_radius = self.robot_radius * 2
+        # # static obstacle is closer
+        # else:
+        #     # calc repulsive potential
+        #     dq = np.hypot(x - self.ox[minid_s], y - self.oy[minid_s])
+        #     # safe distance = obstacle radius + robot radius
+        #     safe_radius = self.orad[minid_s] + self.robot_radius
 
-        if dq <= (safe_radius):
-            if dq <= 0.1:
-                dq = 0.1
-            return 0.5 * self.ETA * (1.0 / dq - 1.0 / safe_radius) ** 2
-        else:
-            return 0.0
+        return potential
+
+        # if dq <= safe_radius + 2:
+        #     print(dq, safe_radius)
+        #     # if dq <= 0.1:
+        #     #     dq = 0.1
+        #     return 0.5 * self.ETA * (1.0 / dq - 1.0 / safe_radius) ** 2
+        # else:
+        #     return 0.0
 
     def next_cell(self, cell_x, cell_y, gx, gy, ox, oy):
 
@@ -122,6 +139,9 @@ class FieldPlanner:
 
         minix, miniy = -1, -1
         minuf = float("inf")
+
+        # print("new cell ", cell_x, cell_y)
+
         # check all 8 cells around the table centre
         for ix in range((cell_x - 1), (cell_x + 2)):
             x = ix * self.grid_size
@@ -136,10 +156,12 @@ class FieldPlanner:
                     ug = self.calc_attractive_potential(x, y, gx, gy)
                     uo = self.calc_repulsive_potential(x, y, ox, oy)
                     uf = ug + uo
+                    # print("uf = ", uf)
                 else:
                     uf = float("inf")
                 # find the cell that minimizes potential
                 if minuf > uf:
+                    # print("chosen uf ", uf)
                     minuf = uf
                     minix = ix
                     miniy = iy
@@ -344,6 +366,53 @@ class FieldPlanner:
         sin_a = la.norm(np.cross(v1, v2))
         return np.arctan2(sin_a, cos_a)
 
+    def compute_grid(self, goal):
+
+        gx, gy = goal
+
+        grid_size = 10
+
+        width = int(round(self.room_width / grid_size))
+        height = int(round(self.room_height / grid_size))
+        pmap = np.zeros((width, height))
+        print(width, height)
+
+        grid_bound_left = int(round(self.robot_radius / grid_size))  # number of cells the radius takes
+        grid_bound_right = int(round(self.room_width / grid_size - self.robot_radius / grid_size))
+        grid_bound_top = int(round(self.robot_radius / grid_size))
+        grid_bound_bottom = int(round(self.room_height / grid_size - self.robot_radius / grid_size))
+
+
+        print(grid_bound_left, grid_bound_right, grid_bound_top, grid_bound_bottom)
+
+        # no other tables
+        tx = []
+        ty = []
+
+        for ix in range(width):
+            x = ix * grid_size
+            for iy in range(height):
+                y = iy * grid_size
+                uf = 1000000000000.0
+                if ix <= grid_bound_right and ix >= grid_bound_left \
+                        and iy <= grid_bound_bottom and iy >= grid_bound_top:
+                    ug = self.calc_attractive_potential(x, y, gx, gy)
+                    uo = self.calc_repulsive_potential(x, y, tx, ty)
+                    uf = ug + uo
+                    # print(ix, iy, x, y, ug, uo, uf)
+                pmap[ix][iy] = uf
+
+        return pmap
+
+    def draw_3d_gradient(self, grid):
+        pass
+
+    def draw_heat_map(self, grid):
+
+        # plt.plot(ix, iy, "*k")
+        # plt.plot(gix, giy, "*m")
+        plt.pcolor(grid.T, vmax=400.0, cmap=plt.cm.Blues)
+        plt.show()
 
 if __name__ == '__main__':
 
@@ -370,24 +439,39 @@ if __name__ == '__main__':
 
         return obstacles
 
-    obstacles = set_static_obstacles()
+    # obstacles = set_static_obstacles()
+    r = Room('room0')
+    obstacles = r.obsts
+    obstacles.pop(0)
+    print(obstacles)
 
     grid_size = 32.0
     robot_radius = 130.0
 
+    KP = 1
+    ETA = 100000000
+
     # initialize the planner
-    field_planner = FieldPlanner(room_width, room_height, obstacles, grid_size, robot_radius)
+    field_planner = FieldPlanner(room_width, room_height, obstacles, grid_size, robot_radius, KP, ETA)
 
     # if not using a camera then you need to manually create a dictionary of tables
     table_pos = [(460.0, 530.0)] # add more table centre coordinates to the list for more tables
     field_planner.set_table_centres(table_pos)
 
     # can add more goals to the list if we have more tables
-    goals = [(1235, 563)]
+    goals = [(1235.0, 563.0)]
 
     paths = field_planner.plan(goals)
+
+    grid = field_planner.compute_grid((1235.0, 563.0))
+    field_planner.draw_heat_map(grid)
 
     # to print a path for each table
     for id in paths:
 
         print("Path for table ", id, paths[id])
+        x = paths[id][0]
+        y = paths[id][1]
+        # plt.plot(x, y)
+        # plt.show()
+        # plt.close()
