@@ -2,15 +2,12 @@ import sys
 import os
 sys.path.append(os.path.abspath(__file__ + '/../..'))
 from server.vision.room import Room
-import numpy as np
-from server.pathfinding.planner import AStarPlanner
 from server.pathfinding.field_path import FieldPlanner
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
-import time
 
 KPs = [1, 3, 5, 10]
-ETAs = [100, 1000, 10000, 50000, 100000, 500000, 750000, 10000000]
+ETAs = [100000, 500000, 700000 ,750000, 8000000, 8500000, 9000000, 9500000, 10000000]
 
 for kp in KPs:
     print("kp = ", kp)
@@ -80,6 +77,7 @@ for kp in KPs:
             circle = Circle((potential_field.ox[i], potential_field.oy[i]), radius[i], color="gold", fill=False)
             ax.add_patch(circle)
         plt.plot(rx, ry, "-r")
-        plt.savefig("pathfinding\\test_output\\potential_field_path2_kp_" + str(kp) + "_eta_" + str(eta) + ".png")
+        steps = str(len(rx) - 1)
+        plt.savefig("pathfinding\\test_output\\potential_field_path2_kp_" + str(kp) + "_eta_" + str(eta) + "_" + steps + ".png")
         plt.close()
         # plt.show()
