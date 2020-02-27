@@ -344,7 +344,17 @@ class FieldPlanner:
         sin_a = la.norm(np.cross(v1, v2))
         return np.arctan2(sin_a, cos_a)
 
-    def set_static_obstacles(self):
+
+if __name__ == '__main__':
+
+    # if you want to run it for testing
+    room_width = 1574.0
+    room_height = 1073.0
+
+    # setting up obstacles
+    # coordinates -> 2 corners of the rectangle bounding the obstacle
+    # can add more/less obstacles; change position or size
+    def set_static_obstacles():
 
         p1 = np.array([333, 400])
         p2 = np.array([400, 466])
@@ -360,10 +370,24 @@ class FieldPlanner:
 
         return obstacles
 
-    def set_goal_coords(self):
+    obstacles = set_static_obstacles()
 
-        goal1 = (1235, 563)  # (x, y)
-        return [goal1]
+    grid_size = 32.0
+    robot_radius = 130.0
 
-if __name__ == '__main__':
-    
+    # initialize the planner
+    field_planner = FieldPlanner(room_width, room_height, obstacles, grid_size, robot_radius)
+
+    # if not using a camera then you need to manually create a dictionary of tables
+    table_pos = [(460.0, 530.0)] # add more table centre coordinates to the list for more tables
+    field_planner.set_table_centres(table_pos)
+
+    # can add more goals to the list if we have more tables
+    goals = [(1235, 563)]
+
+    paths = field_planner.plan(goals)
+
+    # to print a path for each table
+    for id in paths:
+
+        print("Path for table ", id, paths[id])
