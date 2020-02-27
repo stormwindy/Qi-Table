@@ -62,7 +62,7 @@ obstacles = r.obsts
 room_width, room_height = obstacles[0][1]
 obstacles.pop(0) #remove room bounds
 potential_field = FieldPlanner(room_width, room_height, obstacles, grid_size, robot_radius)
-potential_field.set_table_centres(460.0, 530.0)
+potential_field.set_table_centres([(sx, sy)])
 paths = potential_field.plan([(gx, gy)])
 rx, ry = paths[1]
 

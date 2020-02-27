@@ -270,30 +270,33 @@ class FieldPlanner:
 # these are functions I have used for testing, most of them irrelevant to you
 
     # creates a dictionary tables manually instead of using a camera
-    def set_table_centres(self, cx, cy):
+    def set_table_centres(self, centres):
 
 
         ar_diagonal = sqrt(19 * 19 * 2)
         radius = round(ar_diagonal / 2)
 
-        table1_id = 1
-        center1 = (cx, cy)
-        rotation = pi / 6
-        tag1 = Polygon(center1, radius, rotation, n=4)
-        vertices = tag1.vertices
-        vertices = self.order_coords(vertices)
-        p1 = np.array([vertices[0][0], vertices[0][1]], dtype=float)
-        p2 = np.array([vertices[1][0], vertices[1][1]], dtype=float)
-        p3 = np.array([vertices[2][0], vertices[2][1]], dtype=float)
-        p4 = np.array([vertices[3][0], vertices[3][1]], dtype=float)
-        ar1_coords = np.array([p1, p2, p3, p4])
+        table_id = 1
+        for c in centres:
+            cx, cy = c
+            rotation = pi / 6
+            tag1 = Polygon(c, radius, rotation, n=4)
+            vertices = tag1.vertices
+            vertices = self.order_coords(vertices)
+            p1 = np.array([vertices[0][0], vertices[0][1]], dtype=float)
+            p2 = np.array([vertices[1][0], vertices[1][1]], dtype=float)
+            p3 = np.array([vertices[2][0], vertices[2][1]], dtype=float)
+            p4 = np.array([vertices[3][0], vertices[3][1]], dtype=float)
+            ar_coords = np.array([p1, p2, p3, p4])
 
-        tables = {table1_id: ar1_coords}
+            # add initial coordinates to the path
+            self.paths[table_id] = [[cx], [cy]]
 
-        self.tables = tables
-        self.paths[table1_id] = [[cx], [cy]]
+            self.tables[table_id] = ar_coords
 
-        return tables
+            table_id += 1
+
+        return self.tables
 
     def order_coords(self, coords):
 
@@ -363,4 +366,4 @@ class FieldPlanner:
         return [goal1]
 
 if __name__ == '__main__':
-    FieldPlanner(1590, 1072)
+    
