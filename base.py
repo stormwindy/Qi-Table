@@ -3,6 +3,7 @@
 import math
 import numpy as np
 from typing import List
+from random import random, randint
 
 class Point2:
     """
@@ -98,8 +99,9 @@ class Table:
     Base table class, including geometry information, world pos, device ID, etc.
     """
     geometry = None
+    name     = None
 
-    def __init__(self, geometry: Rectangle):
+    def __init__(self, geometry: Rectangle, name=None):
         """
         Initialize the table.
 
@@ -107,6 +109,30 @@ class Table:
         :type geometry: Rectangle
         """
         self.geometry = geometry
+        self.name = name
+        if name is None:
+            print('unnamed table created!')
+
+class Layout:
+    """
+    Layout class, containing a mapping Table name -> Point2
+    """
+    mapping = {}
+
+    def __init__(self, mapping={}):
+        """
+        Initialize the layout mapping, with an optional premade layout
+
+        :param mapping: Optional pre-made mapping
+        """
+
+        self.mapping = mapping
+
+    def get(self, name: str) -> Point2:
+        return self.mapping[name]
+
+    def set(self, name: str, goal: Point2):
+        self.mapping[name] = goal
 
 
 class Room:
@@ -142,14 +168,19 @@ class Room:
         if self.__win is not None:
             self.__win.close()
 
-    def draw(self):
+    def draw(self, waitForMouse=True, colorMap={}, frame_extra=None, scale_factor=25):
         """
         Draw the current room for debugging purposes.
+
+        Add extras in the frame_extra call--calls with the window, graphics obj, and 
+
+        :param waitForMouse: Whether or not to wait for the mouse
+        :param colorMap: dict of colors for table names (default blue)
+        :param frame_extras: extension function
         """
         from server.common import graphics as g
 
         # helper fn: scale m to cm for display (+ margin)
-        scale_factor = 25
         scale = lambda s: s * scale_factor
 
 
@@ -218,43 +249,63 @@ class Room:
 
         # draw the tables
         for table in self.tables:
-            drawRect(table, outline='blue')
+            if table.name in colorMap:
+                drawRect(table.geometry, outline=colorMap[table.name])
+            else:
+                drawRect(table.geometry, outline='blue')
+
+        if frame_extra is not None:
+            frame_extra(self.__win, g, scale)
 
         # update the view
         self.__win.update()
-        self.__win.getMouse()
+
+        if waitForMouse:
+            self.__win.getMouse()
 
         # (hackily) clear the view
         for item in self.__win.items:
             item.undraw()
 
+def randomRects(xbound, ybound, rotated=True, count_bounds=None):
+
+    # little hack to remove rotation
+    rotated = 1 if rotated else 0
+
+    # create N random rectangles
+    if count_bounds is None:
+        rect_count = randint(3, 7)
+    else:
+        rect_count = randint(*count_bounds)
+
+    out = []
+    for i in range(rect_count):
+        out.append(
+            Rectangle(
+                random() * (ybound / 4),
+                random() * (xbound / 4),
+                Point2(
+                    xbound * random(),
+                    ybound * random()
+                ),
+                random() * (math.pi * 2) * rotated
+            )
+        )
+    return out
+
+def randomTables(xbound, ybound):
+    # wrap in a table constructor
+    rects = randomRects(xbound, ybound)
+    return list(map(lambda r: Table(r), rects))
 
 if __name__ == "__main__":
-    from random import random, randint
 
-    def randomRects(xbound, ybound):
-        # create N random rectangles
-        rect_count = randint(3, 7)
-        out = []
-        for i in range(rect_count):
-            out.append(
-                Rectangle(
-                    random() * (ybound / 4),
-                    random() * (xbound / 4),
-                    Point2(
-                        xbound * random(),
-                        ybound * random()
-                    ),
-                    random() * (math.pi * 2)
-                )
-            )
-        return out
 
     while True:
         r1 = Room(
             Rectangle(10,20, Point2(0, 0), 0),
             randomRects(10,20),
-            randomRects(10,20)
+            randomTables(10,20)
         )
 
         r1.draw()
