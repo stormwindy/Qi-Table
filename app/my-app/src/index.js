@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Konva from 'konva';
-import { Stage, Layer, Rect, Text} from 'react-konva';
+import { Stage, Layer, Rect, Text, Transformer} from 'react-konva';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -20,7 +20,6 @@ class MainView extends React.Component{
         let view;
         if (this.state.view === "select") view = <SelectionView />;
         if (this.state.view === "editor") view = <EditorView />;
-        if (this.state.view === "wip_editor") view = <VisualEditorView />;
         if (this.state.view === "settings") view = <SettingsView />;
 
         return (
@@ -28,7 +27,6 @@ class MainView extends React.Component{
                 <ul>
                     <li><button onClick={() => this.setState({view: "select"})}>Selection view</button></li>
                     <li><button onClick={() => this.setState({view: "editor"})}>Editor view</button></li>
-                    <li><button onClick={() => this.setState({view: "wip_editor"})}>WIP Visual Editor</button></li>
                     <li><button onClick={() => this.setState({view: "settings"})}>Settings view</button></li>
                 </ul>
                 {view}
@@ -164,13 +162,18 @@ class EditorView extends React.Component{
         this.setState({positions: positions});
     }
 
-    onDragEnd(e, id){
+    onChange(id, x, y, r){
         let positions = this.state.positions;
 
+        //normalize r to <0,360>
+        if (r<360) r = 360+r%360
+        if (r>=360) r = r%360;
+        
         for (let i=0; i<positions.length; i++){
             if (positions[i].id === id){
-                positions[i].x = e.target.x();
-                positions[i].y = e.target.y();
+                positions[i].x = x;
+                positions[i].y = y;
+                positions[i].r = r;
             }
         }
 
@@ -226,7 +229,7 @@ class EditorView extends React.Component{
                         )
                     }
                 </ul>
-                <EditorBox positions = {this.state.positions} onDragEnd = {this.onDragEnd.bind(this)}/>
+                <EditorBox positions = {this.state.positions} onChange = {this.onChange.bind(this)}/>
                 <button onClick={this.handleAddPos.bind(this)}>More Positions</button>
                 <button onClick={this.handleSubmit.bind(this)}>Submit Layout</button>
             </div>
@@ -274,55 +277,13 @@ class PositionForm extends React.Component{
     }
 }
 
-class VisualEditorView extends React.Component{
-    constructor(props){
-        super(props);
-    }
-
-    render(){
-        return(
-            <div>
-                <h1>This is the editor view. Create a new layout.</h1>
-                <EditorBox></EditorBox>
-            </div>
-        )
-    }
-}
-
+//adapted from https://konvajs.org/docs/react/Transformer.html
 class EditorBox extends React.Component{
     constructor(props){
         super(props);
 
-        //this.state = {
-        //   rects : [{id:0, x: 0, y: 0, r:0}],
-        //}
+        this.state = {selectedID: null};
     }
-
-    /*
-    handleAddTable(){
-        let rects = this.state.rects;
-
-        let highestID = 0;
-        rects.forEach(function({id,x,y,r}){
-            if (id>=highestID) highestID = id; 
-        })
-
-        this.setState({rects: rects.concat([{id: highestID+1, x: 0, y: 0, r: 0}])})
-    }
-    */
-    /*
-    onDragEnd(e, id){
-        let rects = this.state.rects;
-        for (let i=0; i<rects.length; i++){
-            if (rects[i].id = id){
-                rects[i].x = e.target.x;
-                rects[i].y = e.target.y;
-            }
-        }
-
-        this.setState({rects: rects});
-    }
-    */
 
     render(){
         let bounds = {x: window.innerWidth/2, y: window.innerHeight/2};
@@ -330,13 +291,26 @@ class EditorBox extends React.Component{
         const positions = this.props.positions;
 
         return(
+            //the border rect might get removed once CSS is implemented
             <div>
-                <Stage width={bounds.x} height={bounds.y}>
+                <Stage width={bounds.x} height={bounds.y} 
+                    onMouseDown = {e => {
+                        if (e.target === e.target.getStage()) {
+                            this.setState({selectedID: null});
+                        }
+                    }}
+                >
                     <Layer>
-                        <Rect x={0} y={0} width={bounds.x} height={bounds.y} stroke="black" />
+                        <Rect x={0} y={0} width={bounds.x} height={bounds.y} stroke="black"
+                            onClick = {(e) => {
+                                this.setState({selectedID:null});
+                            }}
+                        />
                         {positions.map(({id,x,y,r}) => 
                             <Table id={id} x={x} y={y} bounds={bounds}
-                                onDragEnd={this.props.onDragEnd}
+                                onChange={this.props.onChange}
+                                onSelect={() => {this.setState({selectedID: id})}} 
+                                selected={this.state.selectedID === id}
                             />
                         )}   
                     </Layer>
@@ -349,6 +323,26 @@ class EditorBox extends React.Component{
 class Table extends React.Component{
     constructor(props){
         super(props)
+
+        this.shapeRef = React.createRef();
+        this.trRef = React.createRef();
+    }
+
+    componentDidMount() {
+        if (this.props.selected) {
+            // we need to attach transformer manually
+            this.trRef.current.setNode(this.shapeRef.current);
+            this.trRef.current.getLayer().batchDraw();
+        }
+
+    }
+
+    componentDidUpdate(){
+        if (this.props.selected) {
+            // we need to attach transformer manually
+            this.trRef.current.setNode(this.shapeRef.current);
+            this.trRef.current.getLayer().batchDraw();
+        }
     }
 
     dragBoundFunc(pos, bounds, dimensions){
@@ -372,11 +366,20 @@ class Table extends React.Component{
         const height = 100;
 
         return(
-            <Rect x={this.props.x} y={this.props.y} 
-                width={width} height={height} fill="blue" shadowBlur={5} draggable={true} 
-                dragBoundFunc = {(pos) => this.dragBoundFunc(pos, this.props.bounds, {x: width, y:height})}
-                onDragEnd={(e) => this.props.onDragEnd(e, this.props.id)}
-            />
+            <React.Fragment>
+                <Rect x={this.props.x} y={this.props.y} rotation={this.props.r}
+                    width={width} height={height} fill="blue" shadowBlur={5} draggable={true} 
+                    ref={this.shapeRef}
+                    dragBoundFunc = {(pos) => this.dragBoundFunc(pos, this.props.bounds, {x: width, y:height})}
+                    onDragEnd={(e) => this.props.onChange(this.props.id, e.target.x(), e.target.y(), this.props.r)}
+                    onClick={this.props.onSelect}
+                    onTransformEnd={(e)=> {
+                        const node = this.shapeRef.current;
+                        this.props.onChange(this.props.id, this.props.x, this.props.y, e.target.rotation())
+                    }}
+                />
+                {this.props.selected && <Transformer ref={this.trRef} resizeEnabled={false}/>}
+            </React.Fragment>
         )
     }
 }
