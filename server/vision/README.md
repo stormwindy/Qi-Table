@@ -3,6 +3,7 @@ The vision sub-system consists of 3 modules:
  - generate_marker.py
  - camera.py
  - room.py
+ - visualizer.py
 
 
 
@@ -95,3 +96,13 @@ You can:
 
 See the module for more details.
 
+## visualizer.py
+
+As the name suggests, this module provides a visualization of:
+
+ - the obstacles
+ - the safe/unsafe areas
+ - robot's orientation
+ - the path planned 
+
+The file can be run directly, assuming that the robot is in the safe area and a valid destination coordinate is set.
