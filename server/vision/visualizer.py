@@ -52,6 +52,7 @@ class Visualizer:
         cv2.namedWindow('frame', cv2.WINDOW_NORMAL)
         cv2.resizeWindow('frame', 1280, 720)
         while fp:
+            frame = cv2.undistort(frame, self.camera.mtx, self.camera.dist)
             self.draw_path(frame)
             self.draw_grid(frame)
             self.draw_obsts(frame)

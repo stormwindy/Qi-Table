@@ -2,12 +2,16 @@ import cv2
 import os
 import glob
 import numpy as np
-import time
 import pickle
 
+'''
+Please DO NOT execute this file.
+'''
 
 # If set to true, display all the valid checkerboards
 SHOW = False
+# If set to true, load serialized camera parameters
+LOAD = True
 
 # Using a 5x7 checkerboard, see checkerboards/board9.png for an example
 CHECKERBOARD = (5,7)
@@ -47,26 +51,21 @@ for fname in images:
 
 cv2.destroyAllWindows()
 
-t1 = time.time()
 # Calibrate the camera using captured results
-ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, (1920, 1080), None, None)
-dirname = os.path.abspath(__file__ + "/..")
-pickle.dump([mtx, dist, rvecs, tvecs], open(os.path.join(dirname, 'camera_param' + '.p'), "wb"))
-t2 = time.time()
-print(t2 - t1)
-# print("Camera matrix : \n")
-# print(mtx)
-# print("dist : \n")
-# print(dist)
-# print("rvecs : \n")
-# print(rvecs)
-# print("tvecs : \n")
-# print(tvecs)
+if LOAD:
+    dirname = os.path.abspath(__file__ + "/..")
+    param = pickle.load(open(os.path.join(dirname, 'camera_param' + '.p'), "rb"))
+    mtx, dist, rvecs, tvecs = param[0], param[1], param[2], param[3]
+else:
+    ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, (1920, 1080), None, None)
+    dirname = os.path.abspath(__file__ + "/..")
+    # pickle.dump([mtx, dist, rvecs, tvecs], open(os.path.join(dirname, 'camera_param' + '.p'), "wb"))
 
 
+# Calculate reporjection error
 mean_error = 0
 for i in range(len(objpoints)):
     imgpoints2, _ = cv2.projectPoints(objpoints[i], rvecs[i], tvecs[i], mtx, dist)
     error = cv2.norm(imgpoints[i], imgpoints2, cv2.NORM_L2)/len(imgpoints2)
     mean_error += error
-print( "total error: {}".format(mean_error/len(objpoints)) )
+print( "total error in pixels: {}".format(mean_error/len(objpoints)) )
