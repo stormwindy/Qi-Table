@@ -105,4 +105,7 @@ As the name suggests, this module provides a visualization of:
  - robot's orientation
  - the path planned 
 
-The file can be run directly, assuming that the robot is in the safe area and a valid destination coordinate is set.
+The file can be run directly, assuming that the robot is in the safe area and a valid destination coordinate is set. Below is an example frame:
+
+<img src="saved/visualizer_example.png" width="400"/>
+
