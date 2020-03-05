@@ -107,7 +107,7 @@ class Camera:
         for _ in range(5):
             frame_captured, frame = cap.read()
         if frame_captured:
-            return frame
+            return cv2.undistort(frame, self.mtx, self.dist)
         else:
             return np.nan
 

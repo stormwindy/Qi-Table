@@ -36,7 +36,7 @@ class Visualizer:
                     ox.append(point0[0] + base - 1)
             for pt1, pt2 in self.obsts.values():
                 drawRect(pt1, pt2)
-            grid_size, robot_radius = 10.0, 105.0
+            grid_size, robot_radius = 20.0, 111.0
             self.a_star = AStarPlanner(ox, oy, grid_size, robot_radius, True)
             rx, ry = self.a_star.planning(int(np.around(sx)), int(np.around(sy)), gx, gy)
             rx, ry = rx[::-1], ry[::-1]

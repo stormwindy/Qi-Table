@@ -1,3 +1,4 @@
+RAW:
 floor area 280x360cm (not whole frame, left and right was tables)
 so 1080x(some dim) px
 
@@ -21,6 +22,15 @@ test2:
 \[87.474 89.17  90.    87.436 88.34  90.    87.436 89.145 90.   \] avg = 88.77784402717273
 pattern left to right
 
+PROCESSED:
+dist
+106.156px/25cm   var=2.575, std=1.605 
+4.246px/cm ~ 1.605/4.246 = 0.378cm error / every 25cm
 
+deg
+89.017 var=0.977 std=0.988
+expect about 2 degrees of difference at most
+
+reprojection error: 9.79px, quite high, checkerboard not rigid/big enough, camera distortion quite bad
 
 
