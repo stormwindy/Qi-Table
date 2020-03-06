@@ -134,6 +134,61 @@ class Layout:
     def set(self, name: str, goal: Point2):
         self.mapping[name] = goal
 
+class Path:
+    """
+    Generic class to store a path
+    """
+    points = []
+
+    def __init__(self, points):
+        self.points = points
+
+    def trim_to(self, distance):
+        """
+        Trim the path to some distance.
+
+        :param distance: distance to trim to
+        """
+        raise NotImplementedError("TODO: implement path trimming")
+
+
+class PathMapping:
+    """
+    Pathfinding meta class, containing a mapping Table name -> Path
+    """
+    mapping = {}
+
+    def __init__(self, mapping={}):
+        """
+        Initialize the path mapping, with an optional premade path
+
+        :param mapping: Optional pre-made mapping
+        """
+
+        self.mapping = mapping
+
+    def get(self, name: str) -> Path:
+        return self.mapping[name]
+
+    def set(self, name: str, goal: Path):
+        self.mapping[name] = goal
+
+
+class GenericPathfinder:
+    """
+    Generic pathfinding class
+    """
+
+    def create_plans(self, room: Room, goals: Layout) -> PathMapping:
+        """
+        Create a path (override)
+
+        :param room: the current room
+        :param goals: the goal layout
+        :returns: path mapping
+        """
+        pass
+
 
 class Room:
     """
