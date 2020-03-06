@@ -1,8 +1,9 @@
 The vision sub-system consists of 3 modules:
 
- - generate_marker.py
- - camera.py
- - room.py
+ - [generate_marker.py](#generate_markerpy)
+ - [camera.py](#camerapy)
+ - [room.py](#roompy)
+ - [visualizer.py](#visualizerpy)
 
 
 
@@ -94,4 +95,17 @@ You can:
  - use **draw_path** to draw a path from vertices
 
 See the module for more details.
+
+## visualizer.py
+
+As the name suggests, this module provides a visualization of:
+
+ - the obstacles
+ - the safe/unsafe areas
+ - robot's orientation
+ - the path planned 
+
+The file can be run directly, assuming that the robot is in the safe area and a valid destination coordinate is set. Below is an example frame:
+
+<img src="saved/visualizer_example.png" width="400"/>
 

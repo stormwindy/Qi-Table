@@ -4,7 +4,8 @@ sys.path.append(os.path.abspath(__file__ + '/../../..'))
 import cv2
 import numpy as np
 import time
-from typing import Dict, Tuple
+from typing import Dict
+import pickle
 
 '''
 See README for usage.
@@ -23,6 +24,10 @@ class Camera:
         self.capture.set(4, 1080)
         # 0 = cv2.aruco.DICT_4X4_50
         self.dictionary = cv2.aruco.getPredefinedDictionary(0)
+        # Load camera parameters
+        dirname = os.path.abspath(__file__ + "/..")
+        param = pickle.load(open(os.path.join(dirname, 'camera_param' + '.p'), "rb"))
+        self.mtx, self.dist = param[0], param[1]
 
     '''
     Do NOT use this method outside this module, use the get_pos() method instead.
@@ -39,9 +44,9 @@ class Camera:
         # Init a dictionary to store positions of AR markers.
         # Format: {marker's ID: marker's location}
         pos = dict()
-        print('Vision: start markers recognition.')
         while frame_captured and len(pos) < num_of_markers:  # Break when all markers are recognized.
             frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            frame = cv2.undistort(frame, self.mtx, self.dist)
             corners, ids, rejectedImgPoints = cv2.aruco.detectMarkers(frame, self.dictionary)
             if ids is not None:
                 for i in range(len(ids)):
@@ -102,7 +107,7 @@ class Camera:
         for _ in range(5):
             frame_captured, frame = cap.read()
         if frame_captured:
-            return frame
+            return cv2.undistort(frame, self.mtx, self.dist)
         else:
             return np.nan
 
@@ -127,7 +132,7 @@ if __name__ == '__main__':
     c = Camera(1)
     t2 = time.time()
     print(t2 - t1)
-    print(c.get_pos(2, True))
+    print(c.get_pos(11, True))
     t3 = time.time()
     print(t3 - t2)
     print(c.capture.isOpened())

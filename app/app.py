@@ -1,6 +1,12 @@
 from flask import Flask, g, escape, request, render_template, jsonify, make_response
 from flask_cors import CORS
 import sqlite3
+import sys
+import os
+sys.path.append(os.path.abspath(__file__ + '/../../'))
+from server import BaseComms
+from server import BaseCommand
+#from server.BaseComms import goForward, goBackward, goLeft, goRight
 
 
 app = Flask(__name__, template_folder="")
@@ -91,7 +97,62 @@ def get_layouts():
 
     #send response
     return layouts
+
+@app.route('/demo', methods=['GET'])
+def demo():
+
+    print(request.headers)
+
+    bc = BaseComms.BaseComms()
+    if request.headers['Direction']=='forwards':
+        print('Moving forwards')
+        
+        bc.goForward()
+        return {'text': 'Moving forwards'}
     
+    if request.headers['Direction']=='backwards':
+        print('Moving backwards')
+        
+        bc.goBackward()
+        return {'text': 'Moving backwards'}
+    
+    if request.headers['Direction']=='left':
+        print('Turning left')
+        
+        bc.turnLeft()
+        return {'text': 'Turning left'}
+    
+    if request.headers['Direction']=='right':
+        print('Turning right')
+        
+        bc.turnRight()
+        return {'text': 'Turning right'}
+    
+    if request.headers['Direction']=='stop':
+        bc.stop()
+        return {'text': 'Stop'}
+
+
+    return {'text': 'Error: invalid header'}
+
+@app.route('/demopathfinding', methods=['GET'])
+def demo_pathfinding():
+    #get target coordinates from headers
+    x = int(float(request.headers['x']))
+    y = int(float(request.headers['y']))
+
+    #MOVE TO TARGET HERE
+    #robot.moveToTarget(x,y)
+    #or something like that
+    try:
+        print(x, " ", y)
+        BaseCommand.BaseCommand(1, x, y)
+    except Exception as e:
+        print("In progress. Wait until process ends")
+        print(e)
+        return {'text': "Ongoing progress continuing."}
+
+    return {'text': 'Moving to position x: ' + str(x) + ' y: ' + str(y)}
     
 
 
