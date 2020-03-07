@@ -13,6 +13,7 @@ char moveDirection = '5';
 char curDir = '5';
 bool newData = false;
 int lastIndex = 0;
+String table_id = "01";
 String commands = "012345";
 //SoftwareSerial ss(10, 11);
 //Comms comms;
@@ -33,6 +34,7 @@ void loop()
 {
   char commandChar = getCommand();
   //comms.showNewData();
+  if (commandChar == nullptr) {return;}
   setDirection(commandChar, 32);
   moveMotors();
 }
@@ -43,6 +45,10 @@ char getCommand()
   //if (packet == NULL) {return NULL;}
   //showNewData();
   newData = false;
+  if (table_id != receivedChars.substring(0, 2))
+  {
+    return nullptr;
+  }
   return receivedChars[lastIndex - 1];
 }
 

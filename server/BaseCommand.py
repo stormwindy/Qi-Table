@@ -1,15 +1,14 @@
 import sys
 sys.path.append("../")
-import math, collections, concurrent
-import time
-from typing import Tuple
+import math, collections, concurrent, time, cv2
 import numpy as np
+
+from typing import Tuple
 from server.vision.camera import Camera
 from server.vision.room import Room
 from server.pathfinding.planner import AStarPlanner
 from server.BaseComms import BaseComms
 from multiprocessing import Process, Manager, Pool
-import cv2
 
 class BaseCommand:
     __instance = None
@@ -132,8 +131,6 @@ class BaseCommand:
         pos = self.camera.get_pos(1)[1]
         sx, sy = (pos[0] + pos[2]) / 2  #center
         self.rx, self.ry = getPath(sx, sy)
-
-
 
 
 if __name__ == '__main__':

@@ -30,7 +30,7 @@ class BaseComms:
         else:
             exit(1)
 
-
+    @staticmethod
     def _whichCommandNumber(key) -> chr:
         switcher = {
             'w':1,
@@ -108,4 +108,3 @@ class BaseComms:
         line = self.ser.readline()
         return line
 
-        
