@@ -1,6 +1,6 @@
 import sys
 sys.path.append("../")
-import math
+import math, collections, concurrent
 import time
 from typing import Tuple
 import numpy as np
@@ -22,7 +22,12 @@ class BaseCommand:
         self.camera = Camera(interface)
         self.rx, self.ry = None, None  # Path
         self.get_path(gx, gy)
+        #Dummy path dictionary
+        self.paths = {}
         self.comms = BaseComms()
+        self.tableMoveStage = collections.defaultdict(lambda : 0)
+        # executer = concurrent.futures.ProcessPoolExecutor(10)
+        # futures = [executer.submit(self.move, group) for group in grouper(5, )]
         self.move()
 
     def get_pos_orientation(self):
@@ -33,14 +38,30 @@ class BaseCommand:
     def dist(pt1, pt2):
         return math.sqrt((pt1[0]-pt2[0])**2+(pt1[1]-pt2[1])**2)
 
-    def move(self):
-        for x, y in zip(self.rx, self.ry):
-            cur_pos = self.get_pos_orientation()
-            while BaseCommand.dist(cur_pos[0], (x, y)) > 18:
-                self.move2Checkpoint(x, y, cur_pos)
-                cur_pos = self.get_pos_orientation()
+    # def move(self):
+    #     for x, y in zip(self.rx, self.ry):
+    #         cur_pos = self.get_pos_orientation()
+    #         while BaseCommand.dist(cur_pos[0], (x, y)) > 36:
+    #             self.move2Checkpoint(x, y, cur_pos)
+    #             cur_pos = self.get_pos_orientation()
 
-        return True
+    #     return True
+
+    def move(self):
+        while self.paths:
+            for table, checkpoint in self.paths.items():
+                cur_pos_dict = self.get_pos_orientation()
+                cur_pos = cur_pos_dict[table]
+                x, y = checkpoint[self.tableMoveStage[table]]
+                while BaseCommand.dist(cur_pos[0], (x, y)) < 36 and self.tableMoveStage[table] < len(checkpoint):
+                    self.tableMoveStage[table] += 1
+                if self.tableMoveStage[table] == len(checkpoint):
+                    del self.tableMoveStage[table]
+                    del self.paths[table]
+                self.move2Checkpoint(x, y, cur_pos, table)
+
+
+
 
     def move2Checkpoint(self, x, y, cur_pos):
         robot_orientation = cur_pos[1]
@@ -71,6 +92,7 @@ class BaseCommand:
         denom = np.linalg.norm(v1)*np.linalg.norm(v2)
         return math.degrees(math.asin(nom/denom))
 
+    #Gavin edited to be a dictionary. Key (tableID) -> Value (List of checkpoints.)
     def get_path(self, gx, gy):
         def getPath(sx, sy):
             nonlocal gx, gy
@@ -104,9 +126,9 @@ class BaseCommand:
 
 if __name__ == '__main__':
     # p = (570, 256)  # top
-    p = (1235, 563) # right
-    # p = (603, 889)  # bottom
+    # p = (1235, 563) # right
+    p = (603, 889)  # bottom
     try:
-        bc = BaseCommand(1, p[0], p[1])
+        bc = BaseCommand(0, p[0], p[1])
     except Exception:
         print("In progress. Wait until process ends")
