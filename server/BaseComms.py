@@ -1,6 +1,7 @@
 import sys
 import serial
 import platform
+from multiprocessing import Process, Manager
 
 # def whichCommand(key):
 #     switcher = {
@@ -13,8 +14,14 @@ import platform
 #     numb = switcher.get(key)
 #     return "echo -ne '{0}/n' > /dev/ttyACM0".format(numb)
 class BaseComms:
-
+    __instance = None
     def __init__(self):
+        if self.__instance:
+            raise Exception("Singelton class")
+        else:
+            self.__instance = self
+        with Manager as manager:
+            self.packetQueue = manager.list()
         self.ser = None
         if platform.system() == 'Linux':
             self.ser = serial.Serial('/dev/ttyACM0', 115200)
@@ -48,15 +55,24 @@ class BaseComms:
         key = self.getKey()
         return self.whichCommandNumber(key)
 
-    def _transmit(self, command : chr = None):
+    def transmit(self):
+        if not self.packetQueue:
+            time.sleep(0.1)
+        while self.packetQueue:
+            self.ser.write(self.packetQueue.pop(0))
+
+    def __addToQueue(self, table_id : int, command : chr = None):
         if command:
-            command += '\n'
-            self.ser.write(command.encode())
-        else:
-            while(1):
-                command = self.whichCommandNumber()
-                command += '\n'
-                self.ser.write(command)
+            str_table_id = str(table_id)
+            if len(str_table_id) == 1:
+                str_table_id = '0' + str_table_id
+            packet = str_table_id + command + '\n'
+            self.packetQueue.append(packet)
+        # else:
+        #     while(1):
+        #         command = self.whichCommandNumber()
+        #         command += '\n'
+        #         self.ser.write(command)
 
     def _test_transmit(self, command):
         if command:
@@ -73,22 +89,23 @@ class BaseComms:
     public method. DO NOT use previous methods in this file outside of this class.
     '''
 
-    def turnRight(self):
-        self._transmit('4')
+    def turnRight(self, table_id : int):
+        self.__addToQueue(table_id, '4')
 
-    def turnLeft(self):
-        self._transmit('3')
+    def turnLeft(self, table_id : int):
+        self.__addToQueue(table_id, '3')
 
-    def goForward(self):
-        self._transmit('2')
+    def goForward(self, table_id : int):
+        self.__addToQueue(table_id, '2')
 
-    def goBackward(self):
-        self._transmit('1')
+    def goBackward(self, table_id : int):
+        self.__addToQueue(table_id, '1')
 
-    def stop(self):
-        self._transmit('5')
+    def stop(self, table_id : int):
+        self.__addToQueue(table_id, '5')
 
     def read_packet(self):
         line = self.ser.readline()
         return line
 
+        

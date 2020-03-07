@@ -8,10 +8,12 @@ from server.vision.camera import Camera
 from server.vision.room import Room
 from server.pathfinding.planner import AStarPlanner
 from server.BaseComms import BaseComms
+from multiprocessing import Process, Manager, Pool
 import cv2
 
 class BaseCommand:
     __instance = None
+    manager = Manager() 
     def __init__(self, interface, gx, gy):
         if self.__instance is not None:
             raise Exception("Singelton class")
@@ -23,12 +25,15 @@ class BaseCommand:
         self.rx, self.ry = None, None  # Path
         self.get_path(gx, gy)
         #Dummy path dictionary
-        self.paths = {}
+        self.paths = self.manager.dict()
         self.comms = BaseComms()
         self.tableMoveStage = collections.defaultdict(lambda : 0)
         # executer = concurrent.futures.ProcessPoolExecutor(10)
         # futures = [executer.submit(self.move, group) for group in grouper(5, )]
-        self.move()
+        pool = Pool()
+        result_move = pool.map(self.move)
+        result_transmit = pool.apply_async(self.comms.transmit())
+        # self.move()
 
     def get_pos_orientation(self):
         pos = self.camera.get_pos(1)[1]
@@ -49,34 +54,41 @@ class BaseCommand:
 
     def move(self):
         while self.paths:
-            for table, checkpoint in self.paths.items():
-                cur_pos_dict = self.get_pos_orientation()
-                cur_pos = cur_pos_dict[table]
-                x, y = checkpoint[self.tableMoveStage[table]]
-                while BaseCommand.dist(cur_pos[0], (x, y)) < 36 and self.tableMoveStage[table] < len(checkpoint):
+            def helper_move():
+                for table, checkpoint in self.paths.items():
+                    cur_pos_dict = self.get_pos_orientation()
+                    cur_pos = cur_pos_dict[table]
+                    x, y = checkpoint[self.tableMoveStage[table]]
+
+                    while BaseCommand.dist(cur_pos[0], (x, y)) < 36 and self.tableMoveStage[table] < len(checkpoint):
+                        self.tableMoveStage[table] += 1
+                        x, y = checkpoint[self.tableMoveStage[table]]
+
+                    if self.tableMoveStage[table] == len(checkpoint):
+                        # del self.tableMoveStage[table]
+                        del self.paths[table]
+                        continue
+
+                    self.move2Checkpoint(x, y, cur_pos, table)
                     self.tableMoveStage[table] += 1
-                if self.tableMoveStage[table] == len(checkpoint):
-                    del self.tableMoveStage[table]
-                    del self.paths[table]
-                self.move2Checkpoint(x, y, cur_pos, table)
+            pool = Pool()
+            result = pool.map(helper_move)
 
-
-
-
-    def move2Checkpoint(self, x, y, cur_pos):
+    def move2Checkpoint(self, table_id, x, y, cur_pos):
         robot_orientation = cur_pos[1]
         target_orientation = np.array((x - cur_pos[0][0], y - cur_pos[0][1]))
         if abs(BaseCommand.angle(robot_orientation, target_orientation)) > 15:
-            print(BaseCommand.angle(robot_orientation, target_orientation), " ", BaseCommand.cross(robot_orientation, target_orientation))
+            print(BaseCommand.angle(robot_orientation, target_orientation), " ", 
+            BaseCommand.cross(robot_orientation, target_orientation))
             if BaseCommand.cross(robot_orientation, target_orientation) > 0:
-                self.comms.turnRight()
+                self.comms.turnRight(table_id)
             else:
-                self.comms.turnLeft()
+                self.comms.turnLeft(table_id)
             time.sleep(0.15)
         else:
-            self.comms.goForward()
+            self.comms.goForward(table_id)
             time.sleep(0.35)
-        self.comms.stop()
+        self.comms.stop(table_id)
         return
 
 
