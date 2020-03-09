@@ -1,4 +1,4 @@
-#include "SDPArduino.h"
+#include "SDPArduino.h" //TODO: delete irrelevent part of SDPArduino.h
 //#include "Comms.h"
 //#include "NxtControl.h"
 #include <Wire.h>
@@ -7,14 +7,25 @@
 #define rxPin 10
 #define txPin 11
 
-const byte numChars = 3;
+//TODO: depreciate numChars in future iteration, use EOF like char
+const byte numChars = 3; //Defines max number of chars
 char receivedChars[numChars]; // an array to store the received data
-char moveDirection = '5';
-char curDir = '5';
+
+/*1 - Reverse
+ *2 - Forward
+ *3 - Left
+ *4 - Right
+ *5 - Stop
+ */
+char moveDirection = '5'; //set initial move direction
+char curDir = '5'; //current direction
+
 bool newData = false;
 int lastIndex = 0;
-String table_id = "01";
-String commands = "012345";
+//TODO using String in C is not really prefered use char[]
+//TODO: this should be automatic via handshake
+String table_id = "01"; //used for mash communication
+String commands = "012345"; //TODO: could use enum if rewritten
 //SoftwareSerial ss(10, 11);
 //Comms comms;
 //NxtControl nxt(&ss);
@@ -34,9 +45,13 @@ void loop()
 {
   char commandChar = getCommand();
   //comms.showNewData();
-  if (commandChar == nullptr) {return;}
-  setDirection(commandChar, 32);
-  moveMotors();
+
+  //TEST IT
+  //if (commandChar == nullptr) {return;}
+  if (commandChar != nullptr) {
+    setDirection(commandChar, 32);
+    moveMotors();
+  }
 }
 
 char getCommand()
@@ -52,26 +67,26 @@ char getCommand()
   return receivedChars[lastIndex - 1];
 }
 
-void recvWithEndMarker() 
+void recvWithEndMarker()
 {
   static byte ndx = 0;
   char endMarker = '\n';
   char rc;
-  
+
   while (Serial.available() > 0 && newData == false) {
     rc = Serial.read();
-    
-    if (rc != endMarker && commands.indexOf(rc) != -1 ) 
+
+    if (rc != endMarker && commands.indexOf(rc) != -1 )
     {
       receivedChars[ndx] = rc;
       ndx++;
-      if (ndx >= numChars) 
+      if (ndx >= numChars)
       {
         Serial.write("Exceeded packet size limit.");
         ndx = 0;
       }
     }
-    else 
+    else
     {
       receivedChars[ndx] = '\0'; // terminate the string
       lastIndex = ndx;
@@ -81,6 +96,7 @@ void recvWithEndMarker()
   }
 }
 
+
 int power = 32;
 void setDirection(char dir, int powerInput)
 {
@@ -88,12 +104,12 @@ void setDirection(char dir, int powerInput)
   {
     moveDirection = dir;
   }
-  
+
   if (power != powerInput)
   {
-    power = powerInput; 
+    power = powerInput;
   }
-  
+
   //if (curDir == moveDirection) {return;}
   curDir = moveDirection;
   //Letter W/w. Move forward
@@ -101,7 +117,7 @@ void setDirection(char dir, int powerInput)
   {
     motorForward(0, power);
     motorForward(1, power);
-  } 
+  }
   //Letter a/A. Left turn.
   else if (moveDirection == '3')
   {
@@ -125,9 +141,11 @@ void setDirection(char dir, int powerInput)
   {
     motorAllStop();
   }
+  //TODO: handle unknown direction being recieved with else (just to be safe)
 }
 
-void moveMotors() 
+//TODO: merge setDirection and moveMotors
+void moveMotors()
 {
   if (curDir == moveDirection) {return;}
   curDir = moveDirection;
@@ -136,7 +154,7 @@ void moveMotors()
   {
     motorForward(0, power);
     motorForward(1, power);
-  } 
+  }
   //Letter a/A. Left turn.
   else if (moveDirection == '3')
   {
