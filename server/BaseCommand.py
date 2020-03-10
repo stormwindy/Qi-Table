@@ -24,6 +24,7 @@ class BaseCommand:
         self.rx, self.ry = None, None  # Path
         self.get_path(gx, gy)
         #Dummy path dictionary
+        #TODO: This needs to be populated before use.
         self.paths = self.manager.dict()
         self.comms = BaseComms()
         self.tableMoveStage = collections.defaultdict(lambda : 0)
@@ -70,8 +71,9 @@ class BaseCommand:
 
                     self.move2Checkpoint(x, y, cur_pos, table)
                     self.tableMoveStage[table] += 1
-            pool = Pool()
-            result = pool.map(helper_move)
+            helper_move()
+            # pool = Pool()
+            # result = pool.map(helper_move)
 
     def move2Checkpoint(self, table_id, x, y, cur_pos):
         robot_orientation = cur_pos[1]

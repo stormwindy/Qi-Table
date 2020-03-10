@@ -2,6 +2,7 @@ import sys
 import serial
 import platform
 from multiprocessing import Process, Manager
+from socket import socket, gethostbyname, AF_INET, SOCK_DGRAM
 
 # def whichCommand(key):
 #     switcher = {
@@ -13,6 +14,9 @@ from multiprocessing import Process, Manager
 #     }
 #     numb = switcher.get(key)
 #     return "echo -ne '{0}/n' > /dev/ttyACM0".format(numb)
+
+UDP_PORT = 5005
+
 class BaseComms:
     __instance = None
     def __init__(self):
@@ -29,6 +33,9 @@ class BaseComms:
             self.ser = serial.Serial('/dev/cu.usbmodem0000011', 115200)
         else:
             exit(1)
+
+        self.hostIP = gethostbyname('bellsprout.inf.ed.ac.uk')
+        self.mySocket = socket(AF_INET, SOCK_DGRAM)
 
     @staticmethod
     def _whichCommandNumber(key) -> chr:
@@ -59,7 +66,10 @@ class BaseComms:
         if not self.packetQueue:
             time.sleep(0.1)
         while self.packetQueue:
-            self.ser.write(self.packetQueue.pop(0))
+            packet = self.packetQueue.pop(0)            
+            self.ser.write(packet)
+            self.mySocket.sendto(packet, (self.hostIP, UDP_PORT))
+
 
     def __addToQueue(self, table_id : int, command : chr = None):
         if command:
