@@ -1,4 +1,0 @@
-Demo1 vision specific feedback:
-  - Give details. The experts talked about this mostly in connection to Gavin. In general, present how you tested something, and the results. The how includes describing the choice of most relevant metric and procedure (e.g. hit rate, repeating 15x for each setting), as well as the actual set up (e.g. using the ceiling camera 3.5m above the floor, AR tags 5x5cm 10cm above the floor), and also why this set up is relevant (e.g. the AR tags were about as high above the floor as they would be if placed on a prototype table in the future). Then the results are also not just the numbers themselves, but also some comments on whether that means that the system is reliable/accurate enough, etc.
-  - As Traiko mentioned, just noting down how testing was carried out is really useful.
-
