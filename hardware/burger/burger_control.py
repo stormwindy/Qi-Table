@@ -1,13 +1,11 @@
 import rospy
 from geometry_msgs.msg import Twist
 from time import time
+import hardware.burger.burger_comms as burger_comms
 
 class burger_control:
     def __init__(self):
         self.move_direction = '5'
-
-    def read_udp_packet():
-        pass
 
     def motors_stop(self) -> Twist:
         vel_msg = Twist()
@@ -38,3 +36,11 @@ class burger_control:
         elif command == '5':
             mc = self.motors_stop()
         publisher.publish(mc)
+
+if __name__ == "__main__":
+    control = burger_control()
+    comms = burger_comms.Burger_Comms()
+    while True:
+        command = comms.get_payload()
+        if command:
+            control.move_motor(command)
