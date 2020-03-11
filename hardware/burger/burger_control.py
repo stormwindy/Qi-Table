@@ -24,18 +24,22 @@ class burger_control:
         if command == self.move_direction:
             return
         publisher.publish(self.motors_stop())
-        self.move_direction = '5'
 
         if command == '1':
             mc.linear.x = -fwd
+            self.move_direction = '1'
         elif command == '2':
             mc.linear.x = fwd
+            self.move_direction = '2'
         elif command == '3':
             mc.angular.z = ang
+            self.move_direction = '3'
         elif command == '4':
             mc.angular.z = -ang
+            self.move_direction = '4'
         elif command == '5':
             mc = self.motors_stop()
+            self.move_direction = '5'
         publisher.publish(mc)
 
 if __name__ == "__main__":
