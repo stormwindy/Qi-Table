@@ -1,13 +1,14 @@
+#!/usr/bin/env python
 import rospy
 from geometry_msgs.msg import Twist
 from time import time
-import hardware.burger.burger_comms as burger_comms
+import burger_comms
 
 class burger_control:
     def __init__(self):
         self.move_direction = '5'
 
-    def motors_stop(self) -> Twist:
+    def motors_stop(self):
         vel_msg = Twist()
         vel_msg.linear.x=0
         vel_msg.linear.y=0
@@ -22,7 +23,7 @@ class burger_control:
         mc = Twist()
         if command == self.move_direction:
             return
-        publisher.publish(self.motors_stop)
+        publisher.publish(self.motors_stop())
         self.move_direction = '5'
 
         if command == '1':
@@ -38,8 +39,10 @@ class burger_control:
         publisher.publish(mc)
 
 if __name__ == "__main__":
+    rospy.init_node("control_script", anonymous=True)
     control = burger_control()
     comms = burger_comms.Burger_Comms()
+    print('initialized')
     while True:
         command = comms.get_payload()
         if command:

@@ -1,5 +1,5 @@
 import sys, socket
-from hardware.burger.config import DEVICE_ID
+from config import DEVICE_ID
 UDP_PORT = 5005
 class Burger_Comms:
     def __init__(self):
