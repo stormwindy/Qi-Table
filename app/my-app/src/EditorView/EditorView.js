@@ -95,7 +95,7 @@ class EditorView extends React.Component{
 
         return(
             <div>
-                <h1>This is the editor view. Create a new layout.</h1>
+                <h1>Layout Editor</h1>
                 <form>
                     <label>Layout Name:</label>
                     <input type="text" value={this.state.name} onChange={(e) => this.setState({name: e.target.value})} />

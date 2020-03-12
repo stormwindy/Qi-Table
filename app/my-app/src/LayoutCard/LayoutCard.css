@@ -1,0 +1,91 @@
+.layoutcard {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+
+    transition: box-shadow 0.25s cubic-bezier(0,0,0.3,1),
+                transform  0.25s cubic-bezier(0,0,0.3,1);
+    
+}
+
+.layoutcard:not(.layoutcard--flipped) > .layoutcard__back {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.layoutcard--flipped > .layoutcard__front {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.layoutcard--flipped {
+    transform: rotateY(180deg);
+}
+
+.layoutcard:hover {
+    box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14),
+                0 3px 14px 2px rgba(0,0,0,0.12),
+                0 5px 5px -3px rgba(0, 0, 0, 0.2);
+}
+
+.layoutcard__preview {
+    height: 200px;
+    background-color: #d6d6d6;
+}
+
+.layoutcard__info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 2rem 10px 2rem;
+}
+
+.layoutcard__front {
+    backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    cursor: pointer;
+}
+
+.layoutcard__back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+
+    transform: rotateY(180deg);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    /*backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;*/
+}
+
+.layoutcard__execute {
+    color: #0cce6b;
+}
+
+.layoutcard__flipback {
+    position: absolute;
+    font-size: 2em;
+    top: 5px;
+    right: 1rem;
+    color: var(--color_accent);
+    cursor: pointer;
+
+    transition: color 0.25s cubic-bezier(0,0,0.3,1);
+}
+
+.layoutcard__flipback:hover {
+    color: var(--color_link);
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import LayoutCard from '../LayoutCard/LayoutCard'
 
+import './SelectionView.css'
 
 class SelectionView extends React.Component{
     constructor(props){
@@ -20,8 +21,9 @@ class SelectionView extends React.Component{
             body: JSON.stringify({name: this.state.name, positions: this.state.positions})
         }*/).then(res => res.json())
         .then(
-           (result) => this.setState({loaded: true, layouts: result.layouts}),
-           (error) => this.setState({loaded: true, error})
+            result => this.setState({loaded: true, layouts: result.layouts}))
+        .catch(
+           error => this.setState({loaded: true, error})
         )
     }
 
@@ -40,16 +42,21 @@ class SelectionView extends React.Component{
             layoutDisplay = "Error: could not load layouts"
         }
         else {
-            layoutDisplay = (<ul>
-                {layouts.map((l) => 
-                <li><LayoutCard id = {l.id} name = {l.name} positions = {l.positions}/></li>)}
-            </ul>);
+            layoutDisplay = layouts.map(l => (
+                <LayoutCard
+                    id={l.id}
+                    key={l.id}
+                    name={l.name}
+                    positions={l.positions}/>
+            ))
         }
 
         return(
             <div>
-                <h1>This is the selection view. Choose a layout.</h1>
-                {layoutDisplay}
+                <h1>Available Layouts</h1>
+                <div className="layouts__container">
+                    {layoutDisplay}
+                </div>
             </div>
         );
     }
