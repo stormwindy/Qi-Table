@@ -1,6 +1,5 @@
 import React from 'react'
-import Konva from 'konva';
-import { Stage, Layer, Rect, Text, Transformer} from 'react-konva';
+import { Stage, Layer, Rect } from 'react-konva';
 import Table from './Table'
 
 //adapted from https://konvajs.org/docs/react/Transformer.html

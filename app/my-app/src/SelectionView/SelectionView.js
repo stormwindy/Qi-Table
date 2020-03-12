@@ -11,7 +11,6 @@ class SelectionView extends React.Component{
 
     fetchLayouts(){
 
-        let layouts;
         fetch('http://127.0.0.1:5000/getlayouts', /*{
             
             method: 'GET',

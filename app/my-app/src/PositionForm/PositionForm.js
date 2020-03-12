@@ -2,11 +2,6 @@ import React from 'react';
 
 
 class PositionForm extends React.Component{
-    constructor(props){
-        super(props);
-
-    }
-
     render() {
         return (
           <form>

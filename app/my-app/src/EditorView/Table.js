@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Stage, Layer, Rect, Text, Transformer} from 'react-konva';
+import { Rect, Transformer } from 'react-konva';
 import { TABLE_HEIGHT, TABLE_WIDTH } from '../constants'
-import {resolveCollision, getVertices, getEdges} from '../lib/collision.js';
+import { resolveCollision, getVertices } from '../lib/collision.js';
 
 
 class Table extends React.Component{
@@ -111,7 +111,7 @@ class Table extends React.Component{
                     onDragEnd={(e) => this.handleChange(e.target.x(), e.target.y(), this.props.r)}
                     onClick={this.props.onSelect}
                     onTransformEnd={(e)=> {
-                        const node = this.shapeRef.current;
+                        //const node = this.shapeRef.current;
                         this.handleChange(this.props.x, this.props.y, e.target.rotation())
                     }}
                 />
