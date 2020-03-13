@@ -64,9 +64,10 @@ class BaseComms:
 
     def transmit(self):
         if not self.packetQueue:
-            time.sleep(0.1)
+            time.sleep(0.3)
         while self.packetQueue:
-            packet = self.packetQueue.pop(0)            
+            packet = self.packetQueue.pop(0)
+            print(packet)            
             self.ser.write(packet)
             self.mySocket.sendto(packet, (self.hostIP, UDP_PORT))
 

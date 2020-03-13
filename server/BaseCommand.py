@@ -9,6 +9,8 @@ from server.vision.room import Room
 from server.pathfinding.planner import AStarPlanner
 from server.BaseComms import BaseComms
 from multiprocessing import Process, Manager, Pool
+from multiprocessing import Process
+# from cbs_mapf.planner import Planner
 
 class BaseCommand:
     __instance = None
@@ -23,17 +25,21 @@ class BaseCommand:
         self.camera = Camera(interface)
         self.rx, self.ry = None, None  # Path
         self.get_path(gx, gy)
-        #Dummy path dictionary
+        self.path = [list(zip(self.rx, self.ry))]
+        #Dummy path list of lists
         #TODO: This needs to be populated before use.
-        self.paths = self.manager.dict()
+        # planner = Planner()
+        # self.paths = [[[345, 166], [375, 196], [405, 226], [435, 256], [465, 286], [465, 316], [465, 346], [465, 376], [465, 406], [465, 436], [465, 406], [465, 376], [465, 376], [465, 376], [465, 376], [465, 376], [465, 376], [465, 376], [465, 376], [465, 376], [465, 376], [465, 376], [465, 376], [465, 376], [465, 376], [465, 376], [465, 376], [465, 376], [465, 406], [465, 436], [495, 466], [525, 496], [555, 526], [585, 556], [585, 556], [585, 556], [585, 556], [585, 556], [585, 556], [585, 556], [585, 556], [585, 556], [585, 556], [585, 556], [585, 556]]]
+        #, [[1545, 166], [1515, 196], [1485, 226], [1455, 256], [1455, 286], [1455, 316], [1455, 346], [1455, 376], [1425, 406], [1425, 436], [1425, 406], [1425, 406], [1425, 406], [1425, 406], [1425, 406], [1455, 406], [1485, 406], [1485, 406], [1485, 406], [1485, 406], [1485, 406], [1485, 406], [1485, 406], [1455, 376], [1455, 376], [1455, 376], [1455, 376], [1455, 376], [1455, 376], [1455, 376], [1455, 376], [1455, 376], [1455, 376], [1455, 376], [1455, 376], [1455, 376], [1455, 376], [1455, 376], [1485, 406], [1455, 436], [1425, 466], [1395, 496], [1365, 526], [1335, 556], [1335, 556]], [[315, 946], [345, 916], [375, 886], [405, 856], [435, 826], [465, 796], [465, 766], [465, 736], [465, 706], [465, 676], [465, 646], [495, 616], [525, 616], [555, 586], [585, 586], [615, 556], [645, 556], [675, 556], [705, 556], [735, 556], [765, 556], [795, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556], [825, 556]], [[1545, 946], [1515, 916], [1485, 886], [1455, 856], [1455, 826], [1455, 796], [1455, 766], [1455, 736], [1455, 706], [1425, 676], [1425, 646], [1425, 646], [1425, 646], [1425, 646], [1425, 646], [1425, 646], [1395, 616], [1395, 616], [1395, 616], [1395, 616], [1395, 616], [1395, 616], [1395, 616], [1365, 586], [1335, 586], [1305, 556], [1275, 556], [1245, 556], [1215, 556], [1185, 556], [1155, 556], [1125, 556], [1095, 556], [1095, 556], [1095, 556], [1095, 556], [1095, 556], [1095, 556], [1095, 556], [1095, 556], [1095, 556], [1095, 556], [1095, 556], [1095, 556], [1095, 556]]
         self.comms = BaseComms()
         self.tableMoveStage = collections.defaultdict(lambda : 0)
-        # executer = concurrent.futures.ProcessPoolExecutor(10)
-        # futures = [executer.submit(self.move, group) for group in grouper(5, )]
-        pool = Pool()
-        result_move = pool.map(self.move)
-        result_transmit = pool.apply_async(self.comms.transmit())
-        # self.move()
+        # result_move = self.pool.map(self.move)
+        # self.executor = concurrent.futures.ProcessPoolExecutor(10)
+        # result_transmit = self.executor.submit(self.comms.transmit)
+        Process(target=comms.transmit).start()
+        while self.path:
+            for idx in range(len(self.path)):
+                Process(target=self.move, args=(idx)).start()
 
     def get_pos_orientation(self):
         pos = self.camera.get_pos(1)[1]
@@ -52,43 +58,41 @@ class BaseCommand:
 
     #     return True
 
-    def move(self):
-        while self.paths:
-            def helper_move():
-                for table, checkpoint in self.paths.items():
-                    cur_pos_dict = self.get_pos_orientation()
-                    cur_pos = cur_pos_dict[table]
-                    x, y = checkpoint[self.tableMoveStage[table]]
+    def move(self, idx):
+        cur_pos_dict = self.get_pos_orientation()
+        cur_pos = cur_pos_dict[idx]
+        x, y = self.path[idx][self.tableMoveStage[idx]]
 
-                    while BaseCommand.dist(cur_pos[0], (x, y)) < 36 and self.tableMoveStage[table] < len(checkpoint):
-                        self.tableMoveStage[table] += 1
-                        x, y = checkpoint[self.tableMoveStage[table]]
+        if BaseCommand.dist(cur_pos[0], (x, y)) < 36:
+            time.sleep(0.20)
+            self.tableMoveStage[idx] += 1
+            return
 
-                    if self.tableMoveStage[table] == len(checkpoint):
-                        # del self.tableMoveStage[table]
-                        del self.paths[table]
-                        continue
+        if self.tableMoveStage[idx] == len(self.paths[idx]):
+            # del self.tableMoveStage[table]
+            del self.paths[idx]
+            return
 
-                    self.move2Checkpoint(x, y, cur_pos, table)
-                    self.tableMoveStage[table] += 1
-            helper_move()
+        self.move2Checkpoint(x, y, cur_pos, idx)
+        self.tableMoveStage[idx] += 1
             # pool = Pool()
             # result = pool.map(helper_move)
 
     def move2Checkpoint(self, table_id, x, y, cur_pos):
         robot_orientation = cur_pos[1]
         target_orientation = np.array((x - cur_pos[0][0], y - cur_pos[0][1]))
-        if abs(BaseCommand.angle(robot_orientation, target_orientation)) > 15:
-            print(BaseCommand.angle(robot_orientation, target_orientation), " ", 
-            BaseCommand.cross(robot_orientation, target_orientation))
-            if BaseCommand.cross(robot_orientation, target_orientation) > 0:
-                self.comms.turnRight(table_id)
-            else:
-                self.comms.turnLeft(table_id)
-            time.sleep(0.15)
-        else:
-            self.comms.goForward(table_id)
-            time.sleep(0.35)
+        # if abs(BaseCommand.angle(robot_orientation, target_orientation)) > 15:
+        #     print(BaseCommand.angle(robot_orientation, target_orientation), " ", 
+        #     BaseCommand.cross(robot_orientation, target_orientation))
+        #     if BaseCommand.cross(robot_orientation, target_orientation) > 0:
+        #         self.comms.turnRight(table_id)
+        #     else:
+        #         self.comms.turnLeft(table_id)
+        #     time.sleep(0.15)
+        # else:
+        #     self.comms.goForward(table_id)
+        #     time.sleep(0.35)
+        self.comms.goForward(table_id)
         self.comms.stop(table_id)
         return
 
