@@ -45,6 +45,7 @@ To start the app:
 ```
 $ cd app
 $ cd my-app
+$ npm install    //only need to do this the first time around
 $ npm start
 ```
 To connect, open localhost:3000 in your browser, though it should open automatically. For the app to function correctly, you need to also start the server:
