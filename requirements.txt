@@ -1,5 +1,5 @@
 ar-markers==0.5.0
-bleach==3.1.1
+bleach==3.1.2
 bresenham==0.2.1
 build-utils==0.3.2
 certifi==2019.11.28
