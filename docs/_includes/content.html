@@ -1,0 +1,27 @@
+<div class="content__container">
+    <section class="content" id="system">
+        {% capture system_page %}{% include pages/system.md %}{% endcapture %}
+        {{ system_page | markdownify }}
+        <a class="backtotop" href="#">back to top&nbsp;<i class="fas fa-chevron-up"></i></a>
+    </section>
+    <section class="content" id="how_it_works">
+        {% capture how_it_works_page %}{% include pages/how_it_works.md %}{% endcapture %}
+        {{ how_it_works_page | markdownify }}
+        <a class="backtotop" href="#">back to top&nbsp;<i class="fas fa-chevron-up"></i></a>
+    </section>
+    <section class="content" id="evaluation">
+        {% capture evaluation_page %}{% include pages/evaluation.md %}{% endcapture %}
+        {{ evaluation_page | markdownify }}
+        <a class="backtotop" href="#">back to top&nbsp;<i class="fas fa-chevron-up"></i></a>
+    </section>
+    <section class="content" id="budget">
+        {% capture budget_page %}{% include pages/budget.md %}{% endcapture %}
+        {{ budget_page | markdownify }}
+        <a class="backtotop" href="#">back to top&nbsp;<i class="fas fa-chevron-up"></i></a>
+    </section>
+    <section class="content" id="team">
+        {% capture team_page %}{% include pages/team.md %}{% endcapture %}
+        {{ team_page | markdownify }}
+        <a class="backtotop" href="#">back to top&nbsp;<i class="fas fa-chevron-up"></i></a>
+    </section>
+</div>

@@ -1,0 +1,14 @@
+// from bootstrap's (now defacto) default:
+$mobile-breakpoint: 768px;
+
+@mixin media-desktop {
+    @media (min-width: $mobile-breakpoint) {
+        @content;
+    }
+}
+
+@mixin media-mobile {
+    @media (max-width: $mobile-breakpoint) {
+        @content;
+    }
+}

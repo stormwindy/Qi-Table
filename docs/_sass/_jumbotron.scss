@@ -1,0 +1,16 @@
+@import 'util/media';
+
+section.jumbotron {
+    min-height: 90vh; // gross magic value
+
+    @include media-desktop {
+        min-height: 100vh;
+    }
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 2;
+}

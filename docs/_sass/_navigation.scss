@@ -1,0 +1,62 @@
+@import 'util/media';
+
+nav.navigation {
+    padding: 0 0 1rem 0;
+    @include media-desktop {
+        z-index: 1;
+        position: absolute;
+        top: 2rem;
+        max-width: 20em;
+        padding-top: 1rem;
+
+
+        background-color: rgba(255,255,255,0.95);
+    }
+}
+
+.nav__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    > img {
+        height: 120px;
+    }
+
+    @include media-desktop {
+        justify-content: center;
+
+        > .nav__titles {
+            padding: 0 1rem 0 1rem;
+        }
+    }
+}
+
+.nav__links {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding-top: 1rem;
+    
+    > a {
+        padding: 0 1rem 0 1rem; 
+        
+        color: $accent1;
+        background-color: none;
+
+        text-decoration: none;
+
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+
+        transition: color 0.25s cubic-bezier(0,0,0.3,1),
+                    background-color 0.25s cubic-bezier(0,0,0.3,1);
+
+        &:hover {
+            color: white;
+            background-color: $accent1;
+        }
+    }
+}

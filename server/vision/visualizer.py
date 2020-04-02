@@ -36,7 +36,7 @@ class Visualizer:
                     ox.append(point0[0] + base - 1)
             for pt1, pt2 in self.obsts.values():
                 drawRect(pt1, pt2)
-            grid_size, robot_radius = 10.0, 105.0
+            grid_size, robot_radius = 20.0, 111.0
             self.a_star = AStarPlanner(ox, oy, grid_size, robot_radius, True)
             rx, ry = self.a_star.planning(int(np.around(sx)), int(np.around(sy)), gx, gy)
             rx, ry = rx[::-1], ry[::-1]
@@ -49,13 +49,16 @@ class Visualizer:
     def show(self):
         cap = self.camera.capture
         fp, frame = cap.read()
+        cv2.namedWindow('frame', cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('frame', 1280, 720)
         while fp:
+            frame = cv2.undistort(frame, self.camera.mtx, self.camera.dist)
             self.draw_path(frame)
             self.draw_grid(frame)
             self.draw_obsts(frame)
             self.draw_arrow(frame)
             self.draw_arrow(frame)
-            cv2.imshow('fame', frame)
+            cv2.imshow('frame', frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
             fp, frame = cap.read()

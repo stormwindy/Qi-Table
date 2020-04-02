@@ -32,7 +32,7 @@ class AStarPlanner:
             self.calc_obstacle_map(ox, oy)
         else:
             dirname = os.path.abspath(__file__ + "/..")
-            saved = pickle.load(open(os.path.join(dirname, 'saved/room0' + '.p'), "rb"))
+            saved = pickle.load(open(os.path.join(dirname, 'saved/room0_grid' + '.p'), "rb"))
             self.obmap = saved[0]
             self.minx, self.miny = saved[1] ,saved[2]
             self.maxx, self.maxy = saved[3], saved[4]

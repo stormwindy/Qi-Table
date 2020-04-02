@@ -3,6 +3,12 @@ env_*/
 .idea/
 # PYTHON
 
+# Jekyll files
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

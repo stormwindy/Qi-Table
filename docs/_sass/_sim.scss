@@ -1,0 +1,13 @@
+@import 'util/media';
+
+canvas#c {
+    width: 100vw;
+    height: 70vh;
+    @include media-desktop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        height: 100vh;
+    }
+}

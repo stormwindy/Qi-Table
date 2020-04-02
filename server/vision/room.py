@@ -33,8 +33,8 @@ class Room:
         # str param should be file names to read in
         elif isinstance(param, str):
             dirname = os.path.abspath(__file__ + "/..")
-            self.frame_orig = cv2.imread(os.path.join(dirname, 'saved/', param +'.png'))
-            self.obsts = pickle.load(open(os.path.join(dirname, 'saved/', param +'.p'), "rb"))
+            self.frame_orig = cv2.imread(os.path.join(dirname, 'saved', param +'.png'))
+            self.obsts = pickle.load(open(os.path.join(dirname, 'saved', param +'.p'), "rb"))
             self.frame_obst = self.frame_orig.copy()
             # Uncomment the line below to draw polygons instead
             # self.draw_poly(np.array([np.array(v) for v in self.obsts.values()]))

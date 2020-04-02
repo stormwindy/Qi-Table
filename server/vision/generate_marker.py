@@ -19,4 +19,5 @@ for i in range(5, 21):
     generate_marker(i)
 '''
 if __name__ == '__main__':
-    generate_marker(2)
+    for i in range(3, 21):
+        generate_marker(i)
