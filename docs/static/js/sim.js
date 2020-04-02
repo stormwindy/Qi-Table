@@ -28,7 +28,7 @@ class Simulator {
 
         // load the floor texture
         this.texture_loader = new THREE.TextureLoader()
-        const floor_texture = this.texture_loader.load('/static/textures/grid.png')
+        const floor_texture = this.texture_loader.load('static/textures/grid.png')
         floor_texture.wrapS = floor_texture.wrapT = THREE.RepeatMapping
         floor_texture.repeat.set(1024,1024) // must match plane size for 1-1 mapping
         floor_texture.encode = THREE.sRGBEncoding
