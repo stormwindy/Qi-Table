@@ -1,6 +1,6 @@
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+from http.server import  BaseHTTPRequestHandler, HTTPServer
 from cbs_mapf.planner import Planner
-import SocketServer
+import socketserver
 import numpy
 import pickle
 import json
@@ -54,8 +54,7 @@ class Server(BaseHTTPRequestHandler):
     def do_GET(self):
         self._set_headers()
         self.wfile.write(json.dumps({'hello': 'world', 'received': 'ok'}))
-        
-    # POST echoes the message adding a JSON field
+
     def do_POST(self):
         ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
         
