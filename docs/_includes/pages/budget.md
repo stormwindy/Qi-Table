@@ -1,9 +1,50 @@
-# Budget
+---
+title: Budget
+subtitle: How Much Does it Cost?
+comments: false
+---
 
-Activated charcoal retro succulents kogi bespoke, squid iceland fam. Chillwave yr thundercats, PBR&B retro farm-to-table air plant brunch slow-carb. Listicle cornhole meditation bitters glossier poke tousled shabby chic. Keffiyeh forage fixie jianbing poutine selvage. Franzen tattooed 8-bit austin vice. Irony chia microdosing tumeric, woke literally green juice before they sold out VHS butcher gluten-free asymmetrical aesthetic celiac messenger bag. Austin schlitz quinoa, hammock gastropub whatever chia.
+## Budget
 
-Seitan microdosing cronut bushwick messenger bag portland craft beer PBR&B photo booth echo park. Man bun microdosing shoreditch banh mi. Leggings roof party keytar fixie, swag unicorn blog. Twee pinterest literally air plant knausgaard shaman, palo santo occupy wayfarers lo-fi. Artisan cornhole woke kombucha single-origin coffee. Paleo succulents lo-fi VHS slow-carb 3 wolf moon biodiesel.
+Summarise how your spent your budget and how the cost affects certain use cases. 
 
-Meggings venmo kogi small batch pork belly. Sustainable 90's semiotics humblebrag, vaporware chicharrones jianbing crucifix wayfarers DIY swag cliche snackwave yuccie gluten-free. Mumblecore woke vice ugh you probably haven't heard of them. Edison bulb craft beer vape raclette sriracha twee flexitarian art party cold-pressed swag ugh. Deep v stumptown flannel pickled.
+Are there different costs associated with different use cases? Are there any other considerations to be taken with regards to cost?
 
-Chicharrones leggings gentrify, jianbing mlkshk selfies bushwick raclette palo santo squid hammock messenger bag authentic. Before they sold out salvia whatever, scenester letterpress vegan seitan raclette tumblr organic trust fund 3 wolf moon lumbersexual normcore pour-over. XOXO quinoa farm-to-table slow-carb, listicle DIY tattooed polaroid la croix. Ethical photo booth squid typewriter single-origin coffee adaptogen fashion axe franzen unicorn mumblecore pitchfork VHS slow-carb. Etsy master cleanse authentic coloring book whatever tumblr microdosing food truck cardigan schlitz cliche lumbersexual bicycle rights. Cred intelligentsia enamel pin echo park mustache, meh bicycle rights heirloom leggings pop-up locavore asymmetrical vexillologist. Salvia copper mug cronut try-hard, mustache iceland banh mi cornhole unicorn raclette vexillologist messenger bag.
+You should include the costs taken from your budget and the cost of your equipment.
+
+Tables could be useful in presenting this data. An example table is shown below:
+
+|  Item | Quantity | Cost Per Unit | Total |
+|:-----:|:--------:|:-------------:|:-----:|
+| thing |     2    |       £5      |  £10  |
+| stuff |    45    |       £2      |  £90  |
+
+## Example HTML Usage
+
+<p style="text-align: center;"><strong>Using HTML</strong></p>
+<p style="text-align: center;">You can also embed html to your site as needed.</p>
+<p style="text-align: center;">Small example of the code</p>
+<table style="margin-left: auto; margin-right: auto;"><caption>Table 1: Our costs during the project</caption>
+<thead>
+<tr>
+<th align="center">Item</th>
+<th align="center">Quantity</th>
+<th align="center">Cost Per Unit</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">thing</td>
+<td align="center">2</td>
+<td align="center">&pound;5</td>
+<td align="center">&pound;10</td>
+</tr>
+<tr>
+<td align="center">stuff</td>
+<td align="center">45</td>
+<td align="center">&pound;2</td>
+<td style="text-align: center;" align="center">&pound;90</td>
+</tr>
+</tbody>
+</table>

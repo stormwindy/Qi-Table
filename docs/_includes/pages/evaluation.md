@@ -1,7 +1,17 @@
-# Evaluation
+---
+title: Evaluation
+subtitle: How Well Does Our System Perform?
+comments: false
+---
 
-Chambray yuccie palo santo twee poke green juice affogato artisan prism meh hashtag normcore raclette. VHS 90's occupy, whatever synth pabst forage you probably haven't heard of them fanny pack try-hard. Ugh waistcoat squid tbh typewriter. Sartorial food truck kinfolk selfies, hell of jean shorts brooklyn marfa whatever. Shabby chic kale chips gochujang, fashion axe dreamcatcher gluten-free pour-over readymade lyft etsy blue bottle. Hot chicken distillery organic, banjo iPhone hammock sriracha blue bottle viral.
+## Evaluation Tests
 
-Shaman gastropub small batch, 3 wolf moon you probably haven't heard of them art party pok pok normcore tofu try-hard etsy chia live-edge. La croix vinyl fanny pack, irony hella humblebrag lo-fi adaptogen banjo vaporware lumbersexual hot chicken listicle salvia. Hoodie coloring book everyday carry post-ironic pug offal wayfarers waistcoat fanny pack tattooed asymmetrical mixtape vaporware flannel. Banh mi leggings next level, forage vegan synth jean shorts unicorn salvia migas hexagon. Helvetica tote bag flannel semiotics. Migas truffaut narwhal ethical. Listicle try-hard copper mug sriracha, chambray tattooed food truck chillwave.
+Show the results of testing where available. This can include tables, graphs, videos etc. Be careful to present data in an appropriate manner and be clear about the conclusions drawn from whatever it is you present
 
-3 wolf moon fixie authentic tilde, photo booth godard lumbersexual drinking vinegar direct trade hell of ugh chartreuse. Artisan austin twee, offal selfies edison bulb next level kale chips. Jean shorts trust fund next level, mustache pitchfork four loko tousled. Gluten-free williamsburg jianbing umami, shaman meh shabby chic actually pork belly pok pok direct trade fam sartorial. Adaptogen hot chicken jianbing, vegan you probably haven't heard of them mumblecore cray man bun +1 jean shorts bushwick live-edge migas ramps synth. Affogato freegan pok pok, celiac cornhole plaid cray polaroid selvage ethical etsy godard trust fund jianbing bespoke. Poutine messenger bag ugh gentrify post-ironic skateboard, gochujang glossier slow-carb wayfarers before they sold out.
+### User Tests
+
+Present any user testing you have performed for your product. The same advice about presenting data should be used as above
+
+## Main Areas of Improvement
+
+What did you learn from your testing? How did your evaluation/user testing change your system?

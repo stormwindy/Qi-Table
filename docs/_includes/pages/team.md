@@ -1,11 +1,17 @@
-# Team
+---
+title: Team
+subtitle: Meet the Team Members
+comments: false
+---
 
-Blog vinyl viral kinfolk, sriracha trust fund ugh echo park adaptogen taiyaki. Readymade kinfolk scenester poke ramps everyday carry vegan cold-pressed. Occupy food truck poke humblebrag leggings brooklyn pitchfork pop-up fanny pack lo-fi wolf kogi kinfolk mlkshk keffiyeh. DIY 90's selfies, shoreditch iceland you probably haven't heard of them succulents tattooed locavore single-origin coffee wolf YOLO hot chicken normcore banjo. Yr palo santo hot chicken hexagon.
+## Team Members and Roles
 
-Cray fingerstache sriracha forage crucifix vape. Gochujang hammock poke, church-key neutra food truck iPhone knausgaard affogato shoreditch. Truffaut cloud bread asymmetrical sriracha pok pok echo park direct trade authentic synth fashion axe bicycle rights farm-to-table gentrify kinfolk tumeric. Blog bicycle rights sriracha pickled you probably haven't heard of them cray. Enamel pin raw denim chicharrones bitters listicle migas venmo kickstarter craft beer kogi unicorn tumblr selfies. Humblebrag polaroid art party banh mi activated charcoal chia food truck forage intelligentsia messenger bag retro.
+|   |    Name  |       Role      |
+|:-:|:--------:|:---------------:|
+| <img src="/images/placeholder_face.png" alt="person" width="100"/>  | Person 1 | Software Person |
+| <img src="/images/placeholder_face.png" alt="person" width="100"/>  | Person 2 | Hardware Person |
+| <img src="/images/placeholder_face.png" alt="person" width="100"/>  | Person 3 | Project Manager |
 
-Hashtag chicharrones sriracha, distillery master cleanse kale chips hella. Helvetica waistcoat chillwave plaid narwhal roof party. Copper mug heirloom locavore man braid. Plaid williamsburg man bun pickled. Shaman tote bag yr, ugh bitters kitsch YOLO art party.
+## Team Management
 
-Trust fund food truck YOLO, +1 tumeric coloring book selfies. Kickstarter four loko put a bird on it, bitters sriracha everyday carry activated charcoal snackwave leggings. Mlkshk beard before they sold out, poke chartreuse typewriter hoodie craft beer bicycle rights narwhal farm-to-table cornhole neutra. Kale chips health goth kogi sartorial viral fashion axe drinking vinegar messenger bag butcher. Hexagon flannel sartorial, coloring book letterpress beard butcher lumbersexual yr bespoke lomo hell of craft beer tofu. Craft beer meggings retro, edison bulb offal williamsburg salvia hella hell of succulents heirloom.
-
-Squid skateboard chillwave, beard freegan austin venmo shaman pop-up vape vinyl. Cornhole mustache occupy VHS 3 wolf moon lo-fi quinoa crucifix single-origin coffee la croix freegan. Direct trade pop-up XOXO umami, yuccie readymade street art hashtag godard meditation asymmetrical pug shoreditch gochujang yr. Williamsburg messenger bag semiotics heirloom tbh bitters, cray unicorn migas copper mug keffiyeh kogi actually shabby chic. Butcher succulents knausgaard retro wayfarers.
+Use this section to demonstrate how your team was organised. How did you distribute your work? Which development tools did you use? Did you use git? Asana etc? This section might contain your Gantt chart or other similar diagrams. 

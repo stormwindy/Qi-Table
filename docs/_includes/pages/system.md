@@ -1,7 +1,37 @@
-# System
+---
+title: System
+subtitle: What does our system do?
+comments: false
+---
 
-Fanny pack blog shabby chic, flannel VHS asymmetrical cold-pressed normcore kickstarter yr 8-bit small batch pabst before they sold out. Asymmetrical 8-bit typewriter truffaut succulents godard cornhole distillery forage art party. Hell of godard meh cloud bread truffaut polaroid palo santo sustainable tumeric butcher fingerstache flexitarian biodiesel. Shaman aesthetic pour-over, dreamcatcher poke banh mi prism. VHS whatever next level schlitz kitsch ennui. Adaptogen ugh drinking vinegar humblebrag cliche schlitz narwhal banh mi brunch.
+## Concept
 
-Microdosing wolf you probably haven't heard of them trust fund glossier iPhone kinfolk green juice chartreuse chillwave palo santo mixtape unicorn. Kogi unicorn aesthetic palo santo mlkshk deep v PBR&B art party photo booth truffaut messenger bag. Typewriter lomo waistcoat tousled brooklyn, hashtag affogato try-hard lo-fi vice health goth shabby chic artisan hexagon. Portland health goth biodiesel af, letterpress kombucha hexagon leggings celiac kitsch cold-pressed whatever DIY trust fund. Paleo bitters swag celiac marfa ugh. Beard master cleanse taiyaki hot chicken godard mlkshk raclette tumblr try-hard cornhole shaman readymade small batch ramps.
+Summarise what your system does, its target market and uses cases here
 
-Helvetica dreamcatcher leggings hot chicken activated charcoal pop-up adaptogen tofu raclette health goth organic keytar narwhal. Tofu hot chicken beard bitters single-origin coffee locavore. Af typewriter marfa unicorn iPhone kale chips chartreuse scenester schlitz normcore try-hard. Taiyaki polaroid food truck williamsburg dreamcatcher portland keytar poke brunch subway tile bitters vexillologist authentic mixtape.
+### Functionality
+
+What features does your system have? Why should a viewer/investor be interested?
+
+## Videos/Images/Interactive Interfaces
+
+Throughout this page, you should add videos/interactive apps/images to your sections if available/appropriate
+
+Examples: 
+
+Link to youtube video
+
+<iframe width="764" height="430" src="https://www.youtube.com/embed/_sBBaNYex3E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+
+Link embedded video from source
+
+<video width="764" height="430" controls>
+  <source src="/videos/test_video_atlas.mp4" type="video/mp4">
+</video>
+
+## Market Research
+
+Add any market research you've done to this page
+
+## Potential for Future Development 
+
+What features could you add to your system? How could you change it to reach new people/adapt to new 
