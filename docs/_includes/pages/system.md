@@ -1,8 +1,5 @@
----
-title: System
-subtitle: What does our system do?
-comments: false
----
+<h1 align="center">System</h1>
+<h3 align="center">What does our system do?</h3>
 
 ## Concept
 

@@ -1,8 +1,6 @@
----
-title: Evaluation
-subtitle: How Well Does Our System Perform?
-comments: false
----
+<h1 align="center">Evaluation</h1>
+<h3 align="center">How Well Does Our System Perform?</h3>
+
 
 ## Evaluation Tests
 

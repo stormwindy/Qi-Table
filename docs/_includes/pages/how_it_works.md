@@ -1,8 +1,5 @@
----
-title: System
-subtitle: How does our System Work?
-comments: false
----
+<h1 align="center">How it Works</h1>
+<h3 align="center">How does our System Work?</h3>
 
 ## Methods
 

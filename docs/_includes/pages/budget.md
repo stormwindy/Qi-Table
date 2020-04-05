@@ -1,8 +1,6 @@
----
-title: Budget
-subtitle: How Much Does it Cost?
-comments: false
----
+<h1 align="center">Budget</h1>
+<h3 align="center">How Much Does it Cost?</h3>
+
 
 ## Budget
 
