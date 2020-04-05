@@ -12,7 +12,7 @@ class Server(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'application/json')
         self.end_headers()
     
-    def _get_JSON_str(room : str) -> str:
+    def _get_JSON_str(self, room : str) -> str:
         filename = room + '.pkl'
         with open(filename, 'rb') as f:
             content = pickle.load(f)
@@ -56,7 +56,7 @@ class Server(BaseHTTPRequestHandler):
         self.wfile.write(json.dumps({'hello': 'world', 'received': 'ok'}))
 
     def do_POST(self):
-        ctype, pdict = cgi.parse_header(self.headers.getheader('content-type'))
+        ctype, pdict = cgi.parse_header(self.headers['content-type'])
         
         # refuse to receive non-json content
         if ctype != 'application/json':
@@ -65,14 +65,14 @@ class Server(BaseHTTPRequestHandler):
             return
             
         # read the message and convert it into a python dictionary
-        length = int(self.headers.getheader('content-length'))
+        length = int(self.headers['content-length'])
         message = json.loads(self.rfile.read(length))
         
         # add a property to the object, just to mess with data
         # message['received'] = 'ok'
         
         room = message['room']
-        JSON_str = _get_JSON_path(room)
+        JSON_str = self._get_JSON_str(room)
 
         
         self._set_headers()
