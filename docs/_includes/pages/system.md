@@ -22,7 +22,7 @@ Link to youtube video
 Link embedded video from source
 
 <video width="764" height="430" controls>
-  <source src="/videos/test_video_atlas.mp4" type="video/mp4">
+  <source src="static/videos/test_video_atlas.mp4" type="video/mp4">
 </video>
 
 ## Market Research
