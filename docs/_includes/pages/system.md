@@ -21,7 +21,7 @@ We created a web application which is fully functional and more importantly easy
 
 Throughout this page, you should add videos/interactive apps/images to your sections if available/appropriate
 
-Examples: 
+Examples:
 
 Link to youtube video
 
@@ -37,9 +37,10 @@ Link embedded video from source
 
 Add any market research you've done to this page
 
-## Potential for Future Development 
+## Potential for Future Development
 
 *What features could you add to your system? How could you change it to reach new people/adapt to new*
 
-As Qi grows we expect to expand beyond the Infinitables. The software we created has potential to be extended and used for wider applications where autonomous movement may be useful: ranging from complimentary chairs for Infinitables or better storage units to self-moving hospital bed.
+The largest improvement planned for a next generation table design is the inclusion of multi-wireless charging feature. This would allow multiple tables to charge from a same wireless charging point. These charging times would be predicted via learnt usage, pre-booked calendar appointments and the amount of charge remaining
 
+As Qi grows we expect to expand beyond the Infinitables. The software we created has potential to be extended and used for wider applications where autonomous movement may be useful: ranging from complimentary chairs for Infinitables or better storage units to self-moving hospital bed.
