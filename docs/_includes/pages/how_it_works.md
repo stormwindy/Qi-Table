@@ -17,7 +17,19 @@ Below is a system diagram that shows how different parts interact with each othe
 
 ## Tables
 
-what material? dimension? what motors? how are motors controlled?
+The structure of our current product is built from an extremely low weight medium-density fibreboard. This allowed our engineering team to size the power of the motor down, which drastically reduces the price of the product. Our high efficiency, low cost motors are controlled by a costume motor controller, which in reverse controlled by an Arduino Uno. One of the many pros of choosing Qi's Infinitables is the infinite dimension selection, as for our partners, we can manufacture uniquely sized tables.
+
+Please find one of our table designs below:
+
+<p align="center">
+
+  <img width="325" src="static/imgs/table_drawing.jpg">
+
+  <video width="325" style="height: 100%" controls>
+    <source src="static/videos/table_3d.mp4" type="video/mp4">
+  </video>
+
+</p>
 
 ## Web Application
 
@@ -27,7 +39,7 @@ what framework? how to use?
 
 ### Vision
 
-The vision module uses an overhead camera to recognize the tables' position and orientation. 
+The vision module uses an overhead camera to recognize the tables' position and orientation.
 
 <p align="center">
   <img width="650" src="static/imgs/vision1.png">
