@@ -7,6 +7,24 @@
 
 Here at Qi we found a solution that will revolutionize the way conference centres work. We created Infinitables: motorized tables which autonomously organize themselves into desired layouts. Our goal is to help you save time, human resources and money. With the help of our system you will be able to create your own layouts at the touch of a button.
 
+## Videos/Images/Interactive Interfaces
+
+Throughout this page, you should add videos/interactive apps/images to your sections if available/appropriate
+
+Examples:
+
+Link embedded video from source
+
+<video width="764" height="430" controls>
+  <source src="static/videos/value_prop.mp4" type="video/mp4">
+</video>
+
+Link to youtube video
+
+<iframe width="764" height="430" src="https://www.youtube.com/embed/_sBBaNYex3E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+
+
+
 ### Functionality
 
 *What features does your system have? Why should a viewer/investor be interested?*
@@ -17,21 +35,7 @@ We implemented fully autonomous multi-agent path finding algorithm with conflict
 
 We created a web application which is fully functional and more importantly easy to use. User friendly interface allows you to add new designs and remove or reuse the old ones, execute the layouts and terminate the operation.
 
-## Videos/Images/Interactive Interfaces
 
-Throughout this page, you should add videos/interactive apps/images to your sections if available/appropriate
-
-Examples:
-
-Link to youtube video
-
-<iframe width="764" height="430" src="https://www.youtube.com/embed/_sBBaNYex3E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
-
-Link embedded video from source
-
-<video width="764" height="430" controls>
-  <source src="static/videos/test_video_atlas.mp4" type="video/mp4">
-</video>
 
 ## Market Research
 
@@ -41,6 +45,6 @@ Add any market research you've done to this page
 
 *What features could you add to your system? How could you change it to reach new people/adapt to new*
 
-The largest improvement planned for a next generation table design is the inclusion of multi-wireless charging feature. This would allow multiple tables to charge from a same wireless charging point. These charging times would be predicted via learnt usage, pre-booked calendar appointments and the amount of charge remaining
+One of the largest improvement planned for a next generation table design is the inclusion of the multi-wireless charging feature. This would allow multiple tables to charge from the same wireless charging point. The charging times for each individual table would be predicted via learnt usage, pre-booked calendar appointments and the amount of charge remaining
 
-As Qi grows we expect to expand beyond the Infinitables. The software we created has potential to be extended and used for wider applications where autonomous movement may be useful: ranging from complimentary chairs for Infinitables or better storage units to self-moving hospital bed.
+As Qi grows we expect to expand beyond the Infinitables product line. The software we created has potential to be extended and used for wider applications where autonomous movement may be useful: ranging from complimentary chairs for Infinitables or better storage units to self-moving hospital bed.
