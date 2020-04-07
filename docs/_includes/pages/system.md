@@ -45,6 +45,6 @@ Add any market research you've done to this page
 
 *What features could you add to your system? How could you change it to reach new people/adapt to new*
 
-One of the largest improvement planned for a next generation table design is the inclusion of the multi-wireless charging feature. This would allow multiple tables to charge from the same wireless charging point. The charging times for each individual table would be predicted via learnt usage, pre-booked calendar appointments and the amount of charge remaining
+One of the largest planned improvements for the next generation of Infinitables is the inclusion of the multi-wireless charging feature. This would allow multiple tables to charge from the same wireless charging point. The charging times for each individual table would be predicted via learnt usage, pre-booked calendar appointments and the quantity of charge remaining.
 
-As Qi grows we expect to expand beyond the Infinitables product line. The software we created has potential to be extended and used for wider applications where autonomous movement may be useful: ranging from complimentary chairs for Infinitables or better storage units to self-moving hospital bed.
+As Qi grows we expect to expand beyond the Infinitables product line. The software we created has the potential to be extended and used within wider applications where autonomous movement may be useful: ranging from complimentary chairs for Infinitables and smart, portable storage units to self-moving hospital beds.
