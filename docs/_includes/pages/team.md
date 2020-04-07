@@ -16,6 +16,22 @@ We have planned our work with the help of the Gantt chart below and this clear p
 
 ## Team Members and Roles
 
+<style type="text/css">
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:2px solid #000000;
+}	
+
+th{
+    border:2px solid #000000;
+}
+
+td{
+    border:2px solid #000000;
+}
+</style>
+
 |   |    Name  |       Role      |
 |:-:|:--------:|:---------------:|
 | <img src="static/imgs/turkey.jpeg" width="100"/>  | Ege Elgun | Hardware Manager |
