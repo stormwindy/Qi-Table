@@ -55,18 +55,19 @@ class Server(BaseHTTPRequestHandler):
                 obs_positions.extend(rect)
                 
         n_agents = len(start_positions)
-        print(obs_positions)
+        #print(obs_positions)
         planner = Planner(grid_size = 60, robot_radius = 60, static_obstacles = obs_positions)
         paths : numpy.ndarray = planner.plan(start_positions, goal_positions)
-        
+        print("foundPath")        
         dump_list = []
 
         #JSON dump Agents
         for p in paths:
+            print(p)
             agent = {
                 "type" : "agent",
                 "pathFound": True if len(p) != 0 else False,
-#                "path" : p #List[Tuple[int, int]]
+                "path" : p.tolist() #List[Tuple[int, int]]
             }
             dump_list.append(agent)
         
@@ -112,7 +113,7 @@ class Server(BaseHTTPRequestHandler):
 
         
         self._set_headers()
-        self.wfile.write(JSON_str)
+        self.wfile.write(JSON_str.encode('utf-8'))
         
 def run(server_class=HTTPServer, handler_class=Server, port=8008):
     server_address = ('', port)
