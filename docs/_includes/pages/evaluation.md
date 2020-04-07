@@ -19,7 +19,7 @@ The four pairs of markers were placed equidistant from each other and perfectly 
 The standard error for each of the tests is presented in the table below. On average the standard error for computing the angle is 0.2° whereas for distance it is 0.3px.
 
 
-| Test number | Standard error\for the **angle** (°) | Standard error\for the **distance** (px) |
+| Test number | Standard error <br> for the **angle** (°) | Standard error <br> for the **distance** (px) |
 |:-----------:|:------------------------------------:|:----------------------------------------:|
 | 1 | 0.144 | 0.315 |
 | 2 | 0.260 | 0.270 |
