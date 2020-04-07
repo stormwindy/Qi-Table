@@ -7,7 +7,7 @@ The Infinitables system consists of mainly 3 parts:
 
 - Physical tables equipped with Arduino-controlled motors.
 - A web application that users interact with.
-- A server that recieves, processes, and sends user commands to the physical tables.
+- A server that receives, processes, and sends user commands to the physical tables.
 
 Below is a system diagram that shows how different parts interact with each other:
 
@@ -33,7 +33,7 @@ Please find one of our table designs below:
 
 ## Web Application
 
-what framework? how to use?
+The users control the system through a web application which allows them to design and edit room layouts (building up a library of reusable setups), execute them and interrupt the operation should any problems arise. It's web based and hosted on the control server, so it can be used both on mobile and desktop, with no installation required! The app features a simple interface built in JavaScript using React that can be easily used without any extensive training and an intuitive visual editor (using the konva.js library) for layout creation.
 
 ## Server
 
