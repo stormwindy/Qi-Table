@@ -74,7 +74,7 @@ Qi's intelligent safety sub-systems makes sure that no accidents or damages happ
 The integration code ties all the software modules together. Below is a common excution flow of the entire system:
 
 <p align="center">
-  <img width="550" src="static/imgs/system2.png">
+  <img width="550" src="static/imgs/system3.png">
 </p>
 
 You can see that integration serves as a messenger that calls and returns to other modules.
