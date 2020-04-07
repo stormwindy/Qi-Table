@@ -34,7 +34,7 @@ According to the report on the UK’s event industry by eventbrite, the UK has o
 
 Professionals are anticipating growth in the industry but for budgets to remain the same, which implies that there is a potential market for technology that could reduce costs and drive up revenues. 
 
-<img src="static/imgs/market_research2.png" width="300"/> 
+<img src="static/imgs/market_research2.png" width="400"/> 
 
 ### Competitors :
 
