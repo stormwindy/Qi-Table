@@ -11,12 +11,10 @@ import yaml
 class Server(BaseHTTPRequestHandler):
     def _set_headers(self):
         self.send_response(200)
-        self.send_header(
-            'Content-type', 'application/json',
-            'Access-Control-Allow-Origin', '*',
-            'Access-Control-Allow-Headers', 'Authorization, Content-Type',
-            'Access-Control-Allow-Methods', 'POST'
-            )
+        self.send_header('Content-type', 'application/json')
+        self.send_header('Access-Control-Allow-Origin', '*',)
+        self.send_header('Access-Control-Allow-Headers', 'Authorization, Content-Type')
+        self.send_header('Access-Control-Allow-Methods', 'POST')
         self.end_headers()
 
     @staticmethod
