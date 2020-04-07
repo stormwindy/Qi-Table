@@ -14,10 +14,10 @@ It is even more vital that the vision module is as accurate as possible to avoid
 
 Tables were placed equidistant from each other and facing the same direction. We then recorded the position and orientation information returned by vision. In an ideal system, distances between the tables and orientations of the tables should be equal.
 
-The standard error for each of the tests is presented in the table below. On average the standard error for the orientation is about 0.2° whereas for distance it is about 4cm.
+The standard error for each of the tests is presented in the table below. On average the standard error is about 0.2° for table orientations and about 4cm for distances.
 
 
-| Test number | Standard error for the **orientation** (°) | Standard error for the **distance** (cm) |
+| Test number | Standard error<br>for **orientation** (°) | Standard error<br>for **distance** (cm) |
 |:-----------:|:------------------------------------:|:----------------------------------------:|
 | 1 | 0.144 | 3.15 |
 | 2 | 0.260 | 2.70 |
