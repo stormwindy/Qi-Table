@@ -4,7 +4,19 @@
 
 ## Evaluation Tests
 
-Show the results of testing where available. This can include tables, graphs, videos etc. Be careful to present data in an appropriate manner and be clear about the conclusions drawn from whatever it is you present
+### Speed and Accuracy of the Vision Module
+
+It is vital that the vision module can run quickly because it can be called several hundred times in a complete usage cycle. 
+
+[Insert a short description of the test and findings (possibly in table format) here]
+
+It is even more vital that the vision module is as accurate as possible to avoid any chance of collision.
+
+[Insert a short description of the test and findings (possibly in table format) here]
+
+### Speed and Success Rate of the Path Finding Module
+
+
 
 ### User Tests
 
