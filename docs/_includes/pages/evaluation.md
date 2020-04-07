@@ -12,13 +12,15 @@ It is vital that the vision module can run quickly because it can be called seve
 
 It is even more vital that the vision module is as accurate as possible to avoid any chance of collision.
 
-The Vision system was tested by placing eight AR markers in a 4-by-2 formations in different positions and orientations within the operation area with the elevation of 0.2m as it is the height of Infinitables prototype. The four pairs of markers were placed equidistant from each other and perfectly aligned. The test results’ analysis was based on comparing the angles returned for all markers and comparing the distances between the centres for each of the four pairs. In an ideal system angles should be equal for all eight markers after each trial and the distances should the same for all trials.
+The Vision system was tested by placing eight AR markers in a 4-by-2 formations in different positions and orientations within the operation area with the elevation of 0.2m as it is the height of Infinitables prototype. 
 
-The standard error for each of the tests is presented in the table below. However, on average the standard error for computing the angle is 0.2° whereas for distance it is 0.3px.
+The four pairs of markers were placed equidistant from each other and perfectly aligned. The test results’ analysis was based on comparing the angles returned for all markers and comparing the distances between the centres for each of the four pairs. In an ideal system angles should be equal for all eight markers after each trial and the distances should the same for all trials.
+
+The standard error for each of the tests is presented in the table below. On average the standard error for computing the angle is 0.2° whereas for distance it is 0.3px.
 
 
-| Test | Standard error for the **angle** (°) | Standard error for the **distance** (px) |
-|:----:|:------------------------------------:|:----------------------------------------:|
+| Test number | Standard error for the **angle** (°) | Standard error for the **distance** (px) |
+|:-----------:|:------------------------------------:|:----------------------------------------:|
 | 1 | 0.144 | 0.315 |
 | 2 | 0.260 | 0.270 |
 | 3 | 0.168 | 0.422 |
