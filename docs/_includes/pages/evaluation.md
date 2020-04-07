@@ -17,7 +17,6 @@ Tables were placed equidistant from each other and facing the same direction. We
 The standard error for each of the tests is presented in the table below. On average the standard error is about 0.2° for table orientations and about 4cm for distances.
 
 
-<<<<<<< HEAD
 | Test number | Standard error<br>for **orientation** (°) | Standard error<br>for **distance** (cm) |
 |:-----------:|:------------------------------------:|:----------------------------------------:|
 | 1 | 0.144 | 3.15 |
