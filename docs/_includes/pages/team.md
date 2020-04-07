@@ -3,11 +3,11 @@
 
 ## Team Management
 
-Our team is split into a software team with 6 people and a hardware team with 4 people. While it might seem like there is a clear cut between the two teams, our organization is in fact very organic. Each team member carries out the work they are passionate about and have expertise in. It is also not uncommon that a software team member does hardware work, or vice versa.
+Our team is split into a software team with 6 people and a hardware team with 4 people. While it might seem like there is a clear division between the two teams, our organization is in fact very organic. Each team member carries out the work they are passionate about and have expertise in. It is also not uncommon that a software team member does hardware work, or vice versa.
 
-Throughout the developement process, team members share their updates and findings continuously on Slack. To track progress and to ensure that our work is accessible to everyone, we have used GitHub's pipeline extensively - all the work are carefully reviewed by other team members and have well-written documentations accompanied.
+Throughout the developement process, team members share their updates and findings continuously on Slack. To track progress and to ensure that our work is accessible to everyone, we have used GitHub's pipeline extensively - every individual's work is carefully reviewed by other team members and have well written documentation explaining and justifying each new piece of content.
 
-We have planned our work with the help of the Gantt chart below and this clear plan has proven to be very successful.
+We have planned our work with the help of the Gantt chart below which has proven to be very successful.
 
 <p align="center">
   <img width="550" src="static/imgs/gantt.png">
