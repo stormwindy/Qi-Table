@@ -53,8 +53,8 @@ class Server(BaseHTTPRequestHandler):
             obs_map = map_info['RECT_OBSTACLES']
             obs_positions = []
             for values in obs_map.values():
-                rect = _draw_rect(values[0], values[1])
-                obs_positions.append(rect)
+                rect = self._draw_rect(values[0], values[1])
+                obs_positions.extend(rect)
                 
         n_agents = len(start_positions)
         print(obs_positions)
@@ -68,7 +68,7 @@ class Server(BaseHTTPRequestHandler):
             agent = {
                 "type" : "agent",
                 "pathFound": True if len(p) != 0 else False,
-                "path" : p #List[Tuple[int, int]]
+#                "path" : p #List[Tuple[int, int]]
             }
             dump_list.append(agent)
         
@@ -80,7 +80,7 @@ class Server(BaseHTTPRequestHandler):
             }
             dump_list.append(obstacle)
 
-        return json.dump(dump_list)
+        return json.dumps(dump_list)
 
 
 
