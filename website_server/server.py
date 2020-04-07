@@ -20,24 +20,26 @@ class Server(BaseHTTPRequestHandler):
         self.end_headers()
     
     def _get_JSON_str(self, room : str) -> str:
-        if os.path.filename(room + '.pkl'):
+        if os.path.isfile(room + '.pkl'):
             filename = room + '.pkl'
-            with open(os.path.join(system[0],filename), 'rb') as f:
+            with open(os.path.join(os.path.dirname(__file__),filename), 'rb') as f:
                 content = pickle.load(f)
             start_positions = content[0]
             goal_positions = content[1]
             obs_positions = content[2]
-        elif os.path.filename(room = '.yaml'):
+        elif os.path.isfile(room + '.yaml'):
             filename = room + '.yaml'
-            with open (os.path.join(system[0],filename), 'rb') as f:
+            with open (os.path.join(os.path.dirname(__file__),filename), 'rb') as f:
                 map_info = yaml.load(f, Loader=yaml.FullLoader)
             start_positions = map_info['START']
             goal_positions = map_info['GOAL']
             obs_map = map_info['RECT_OBSTACLES']
+            obs_positions = []
             for values in obs_map.values():
                 obs_positions.append(values)
         
         n_agents = len(start_positions)
+        print(obs_positions)
         planner = Planner(grid_size = 60, robot_radius = 60, static_obstacles = obs_positions)
         paths : numpy.ndarray = planner.plan(start_positions, goal_positions)
         
