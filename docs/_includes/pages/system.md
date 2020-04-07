@@ -42,12 +42,7 @@ We do not face much direct competition because there are currently no companies 
 Our competitors are companies who go out on contract bases to do the set up. The venues may also allocate the task to their own team of people. In either case, manual labour would be engaged. 
 
 
-## Potential for Future Development
-
-One of the largest planned improvements for the next generation of Infinitables is the inclusion of the multi-wireless charging feature. This would allow multiple tables to charge from the same wireless charging point. The charging times for each individual table would be predicted via learnt usage, pre-booked calendar appointments and the quantity of charge remaining. This means the tables decide themselves when and how to charge!
-As Qi grows we expect to expand beyond the Infinitables product line. The software we created has the potential to be extended and used within wider applications where autonomous movement may be useful: ranging from complimentary chairs for Infinitables and smart, portable storage units to self-moving hospital beds.
-
-### Value
+### Value to Customer :
 To understand why the customer would want our product, let's assume a scenario where a team of 5 people spends 3 hrs to set up an average sized venue (which according to the report has a capacity of 258). Given the minimum wage per hour in the UK is £8, the cost would equate to at least £120 for one event set up. 
 Our product would replace these recurring expenses with a one time purchase.  Once the system is in place, there would be no incremental purchases required apart from maintenance costs, in case there is any damage. 
 The usual prices as found online for tables depending on material and size ranges from £50 - £200. We would customise our tables according to the customer’s wish, so the price would vary accordingly. The number of tables required also vary according to the capacity of the venue, but economy of scale should reduce the cost per entity. 
