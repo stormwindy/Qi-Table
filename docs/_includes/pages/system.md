@@ -33,8 +33,7 @@ Qi offers more than a solution for making your daily operations more efficient. 
 
 We implemented fully autonomous multi-agent path finding algorithm with conflict based search and space time A* which allows Infinitables to move simultaneously and effortlessly, thus saving you time and manual labour.
 
-We created a web application which is fully functional and more importantly easy to use. User friendly interface allows you to add new designs and remove or reuse the old ones, execute the layouts and terminate the operation.
-
+Our easy to use web application allows the user to design new room layouts, remove or reuse old ones, execute them and terminate the operation, all through a visual, user friendly interface.
 
 
 ## Market Research
@@ -45,6 +44,6 @@ Add any market research you've done to this page
 
 *What features could you add to your system? How could you change it to reach new people/adapt to new*
 
-One of the largest planned improvements for the next generation of Infinitables is the inclusion of the multi-wireless charging feature. This would allow multiple tables to charge from the same wireless charging point. The charging times for each individual table would be predicted via learnt usage, pre-booked calendar appointments and the quantity of charge remaining.
+One of the largest planned improvements for the next generation of Infinitables is the inclusion of the multi-wireless charging feature. This would allow multiple tables to charge from the same wireless charging point. The charging times for each individual table would be predicted via learnt usage, pre-booked calendar appointments and the quantity of charge remaining. This means the tables decide themselves when and how to charge!
 
 As Qi grows we expect to expand beyond the Infinitables product line. The software we created has the potential to be extended and used within wider applications where autonomous movement may be useful: ranging from complimentary chairs for Infinitables and smart, portable storage units to self-moving hospital beds.
