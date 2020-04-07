@@ -18,6 +18,23 @@ class Server(BaseHTTPRequestHandler):
             'Access-Control-Allow-Methods', 'POST'
             )
         self.end_headers()
+
+    @staticmethod
+    def _draw_rect(v0, v1):
+            o = []
+            base = abs(v0[0] - v1[0])
+            side = abs(v0[1] - v1[1])
+            for xx in range(0, base, 30):
+                o.append((v0[0] + xx, v0[1]))
+                o.append((v0[0] + xx, v0[1] + side - 1))
+            o.append((v0[0] + base, v0[1]))
+            o.append((v0[0] + base, v0[1] + side - 1))
+            for yy in range(0, side, 30):
+                o.append((v0[0], v0[1] + yy))
+                o.append((v0[0] + base - 1, v0[1] + yy))
+            o.append((v0[0], v0[1] + side))
+            o.append((v0[0] + base - 1, v0[1] + side))
+            return o
     
     def _get_JSON_str(self, room : str) -> str:
         if os.path.isfile(room + '.pkl'):
@@ -36,8 +53,9 @@ class Server(BaseHTTPRequestHandler):
             obs_map = map_info['RECT_OBSTACLES']
             obs_positions = []
             for values in obs_map.values():
-                obs_positions.append(values)
-        
+                rect = _draw_rect(values[0], values[1])
+                obs_positions.append(rect)
+                
         n_agents = len(start_positions)
         print(obs_positions)
         planner = Planner(grid_size = 60, robot_radius = 60, static_obstacles = obs_positions)
