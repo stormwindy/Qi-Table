@@ -8,30 +8,28 @@
 
 It is vital that the vision module can run quickly because it can be called several hundred times in a complete usage cycle. 
 
-[Insert a short description of the test and findings (possibly in table format) here]
-
-It is even more vital that the vision module is as accurate as possible to avoid any chance of collision.
-
-The Vision system was tested by placing eight AR markers in a 4-by-2 formations in different positions and orientations within the operation area with the elevation of 0.2m as it is the height of Infinitables prototype. 
-
-The four pairs of markers were placed equidistant from each other and perfectly aligned. The test results’ analysis was based on comparing the angles returned for all markers and comparing the distances between the centres for each of the four pairs. In an ideal system angles should be equal for all eight markers after each trial and the distances should the same for all trials.
-
-The standard error for each of the tests is presented in the table below. On average the standard error for computing the angle is 0.2° whereas for distance it is 0.3px.
 
 
-| Test number | Standard error for the **angle** (°) | Standard error for the **distance** (px) |
+It is even more vital that the vision module is as accurate as possible to avoid any chance of collision. We tested vision's accuracy by placing 8 tables in a 4-by-2 formations in different positions and orientations within the operation area. 
+
+Tables were placed equidistant from each other and facing the same direction. We then recorded the position and orientation information returned by vision. In an ideal system, distances between the tables and orientations of the tables should be equal.
+
+The standard error for each of the tests is presented in the table below. On average the standard error for the orientation is about 0.2° whereas for distance it is about 4cm.
+
+
+| Test number | Standard error for the **orientation** (°) | Standard error for the **distance** (cm) |
 |:-----------:|:------------------------------------:|:----------------------------------------:|
-| 1 | 0.144 | 0.315 |
-| 2 | 0.260 | 0.270 |
-| 3 | 0.168 | 0.422 |
-| 4 | 0.140 | 0.387 |
-| 5 | 0.141 | 0.266 |
-| 6 | 0.313 | 0.295 |
-| 7 | 0.223 | 0.241 |
-| 8 | 0.190 | 0.547 |
-| 9 | 0.322 | 0.652 |
-| 10 | 0.216 | 0.066 |
-| 11 | 0.342 | 0.446 |
+| 1 | 0.144 | 3.15 |
+| 2 | 0.260 | 2.70 |
+| 3 | 0.168 | 4.22 |
+| 4 | 0.140 | 3.87 |
+| 5 | 0.141 | 2.66 |
+| 6 | 0.313 | 2.95 |
+| 7 | 0.223 | 2.41 |
+| 8 | 0.190 | 5.47 |
+| 9 | 0.322 | 6.52 |
+| 10 | 0.216 | 0.66 |
+| 11 | 0.342 | 4.46 |
 
 ### Speed and Success Rate of the Path Finding Module
 

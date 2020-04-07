@@ -42,7 +42,7 @@ The users control the system through a web application which allows them to desi
 The vision module uses an overhead camera to recognize the tables' position and orientation.
 
 <p align="center">
-  <img width="650" src="static/imgs/vision1.png">
+  <img width="550" src="static/imgs/vision1.png">
 </p>
 
 The position and orientation information is captured continuously which enables:
@@ -60,7 +60,7 @@ The path finding module plans collision-free paths for the tables using the posi
   <img width="650" src="https://raw.githubusercontent.com/GavinPHR/Multi-Agent-Path-Finding/master/fig/visualization2.gif">
 </p>
 
-The path finding module is powered by a robust hierarchical algorithm with a high-level conflict-based search <a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI12/paper/viewFile/5062/5239">[Sharon et al. 2012]</a> and a low-level space-time A* search.
+The path finding module is powered by a robust hierarchical algorithm with a high-level conflict-based search <a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI12/paper/viewFile/5062/5239">[Sharon et al. 2012]</a> and a low-level space-time A* search. The module is available on <a href="https://github.com/GavinPHR/Multi-Agent-Path-Finding">GitHub</a> and listed on <a href="https://pypi.org/project/cbs-mapf/">PyPI</a>.
 
 
 ### Hardware Controller
