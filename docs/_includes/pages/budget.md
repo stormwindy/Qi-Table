@@ -235,6 +235,8 @@ The following costs are only estimates, based on the retail prices of the indivi
 
 <br>
 We estimate the total cost for a complete setup, a camera and 3 complete table products then would be: £655.83  
-In general, the total cost of a complete setup, a camera and n complete tables is: £75 + n(193.61)
+
+In general, the total cost of a complete setup, a camera and n complete tables is: £75 + n(193.61)  
+
 
 &#42;Pre-installed cameras may also be used instead of buying new ones. But the coverage, may need to be extended.
