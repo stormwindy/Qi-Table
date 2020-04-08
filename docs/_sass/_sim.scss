@@ -2,7 +2,19 @@
 
 canvas#c {
     width: 100vw;
-    height: 70vh;
+    height: 50vh;
+    @include media-desktop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        height: 100vh;
+    }
+}
+
+video#myVideo {
+    width: 100vw;
+    height: 100vh;
     @include media-desktop {
         position: absolute;
         top: 0;

@@ -9,6 +9,11 @@ class DesktopController {
             .forEach(el => {
                 el.addEventListener('click', () => this.handleNavLink(el.dataset.link))
             })
+
+        document.querySelector('[data-livedemo-start]')
+            .addEventListener('click', () => this.hideNavigation())
+        document.querySelector('.nav__header')
+            .addEventListener('click', () => this.hideNavigation())
     }
 
     handleNavLink(target) {
@@ -18,6 +23,10 @@ class DesktopController {
             .forEach(el => el.classList.add('content--hidden'))
 
         document.querySelector(`#${target}`).classList.remove('content--hidden')
+    }
+
+    hideNavigation() {
+        document.querySelector('.content__container').classList.remove('content__container--ready')
     }
 }
 
