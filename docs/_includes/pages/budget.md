@@ -72,6 +72,8 @@ Tables could be useful in presenting this data. An example table is shown below:
 </tbody>
 </table>
 
+</br></br>
+
 <table style="margin-left: auto; margin-right: auto;"><caption>Table 2: One time cost for prototype</caption>
 <thead>
 <tr>
@@ -87,6 +89,12 @@ Tables could be useful in presenting this data. An example table is shown below:
 <td align="center">1</td>
 <td align="center">&pound;5</td>
 <td align="center">&pound;5</td>
+</tr>
+<tr>
+<td align="center">Camera</td>
+<td align="center">1</td>
+<td align="center">&pound;20</td>
+<td style="text-align: center;" align="center">&pound;20</td>
 </tr>
 <tr>
 <td align="center">Base Server (AD/DC adapter, SD card, Pi and Case)</td>
@@ -174,14 +182,9 @@ Tables could be useful in presenting this data. An example table is shown below:
 </table>
 
 
+</br></br>
+
 <table style="margin-left: auto; margin-right: auto;"><caption>Table 4: One time cost for costumer table</caption>
-<thead>
-<tr>
-<th align="center">Item</th>
-<th align="center">Quantity</th>
-<th align="center">Cost Per Unit</th>
-<th align="center">Total</th>
-</tr>
 <thead>
 <tr>
 <th align="center">Item</th>
@@ -198,22 +201,28 @@ Tables could be useful in presenting this data. An example table is shown below:
 <td align="center">&pound;5</td>
 </tr>
 <tr>
-<td align="center">Base Server on site</td>
-<td align="center">1</td>
-<td align="center">&pound;50</td>
-<td style="text-align: center;" align="center">&pound;50</td>
-</tr>
-<tr>
 <td align="center">Charging Station</td>
 <td align="center">?</td>
 <td align="center">&pound;???</td>
 <td style="text-align: center;" align="center">&pound;??</td>
 </tr>
 <tr>
+<td align="center">Cameras</td>
+<td align="center">0.5/m2</td>
+<td align="center">&pound;10</td>
+<td style="text-align: center;" align="center">&pound;?</td>
+</tr>
+<tr>
+<td align="center">Base Server on site</td>
+<td align="center">1</td>
+<td align="center">&pound;50</td>
+<td style="text-align: center;" align="center">&pound;50</td>
+</tr>
+<tr>
 <td align="center"><b>TOTAL</b></td>
 <td align="center"></td>
 <td align="center"></td>
-<td style="text-align: center;" align="center"><b>&pound;55</b></td>
+<td style="text-align: center;" align="center"><b>&pound;55 + Camera</b></td>
 </tr>
 </tbody>
 </table>
