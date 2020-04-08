@@ -27,8 +27,8 @@
 </tr>
 <tr>
 <td align="center">9mm MDF Structure</td>
-<td align="center">0.3636 $m^2$</td>
-<td align="center">&pound;6 per $m^2$</td>
+<td align="center">0.3636 m^2</td>
+<td align="center">&pound;6 per m^2</td>
 <td style="text-align: center;" align="center">&pound;2.19</td>
 </tr>
 <tr>
