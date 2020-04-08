@@ -34,16 +34,16 @@ td{
 
 |   |    Name  |       Role      |
 |:-:|:--------:|:---------------:|
-| <img src="static/imgs/turkey.jpeg" width="100"/>  | Ege Elgun | Hardware Manager |
-| <img src="static/imgs/india.jpg" width="100"/>  | Megha Garg | Software Engineer|
-| <img src="static/imgs/us.jpg" width="100"/>  | Patrick Kage | Software Manager |
-| <img src="static/imgs/uk.jpg" width="100"/>  | Sean Mohan| Software Engineer - Tester|
-| <img src="static/imgs/poland.jpg" width="100"/>  | Maciek Niedziela | Implemented the web app features |
-| <img src="static/imgs/china.jpg" width="100"/>  | Haoran Peng | Software Engineer|
-| <img src="static/imgs/lithuania.jpg" width="100"/>  | Smiltė Petronytė | Software Engineer|
-| <img src="static/imgs/uk.jpg" width="100"/>  | Saad Sharif| Hardware Engineer |
-| <img id="1" src="static/imgs/hungary.jpg" width="100"/>  | Marcell Uzonyi | Hardware Engineer|
-| <img src="static/imgs/china.jpg" width="100"/>  | Kaiwen Xue| Hardware Engineer|
+| <img src="static/imgs/placeholder_face.png" width="100"/>  | Ege Elgun | Hardware Manager |
+| <img src="static/imgs/placeholder_face.png" width="100"/>  | Megha Garg | Software Engineer|
+| <img src="static/imgs/placeholder_face.png" width="100"/>  | Patrick Kage | Software Manager |
+| <img src="static/imgs/placeholder_face.png" width="100"/>  | Sean Mohan| Software Engineer - Tester|
+| <img src="static/imgs/placeholder_face.png" width="100"/>  | Maciek Niedziela | Implemented the web app features |
+| <img src="static/imgs/placeholder_face.png" width="100"/>  | Haoran Peng | Software Engineer|
+| <img src="static/imgs/placeholder_face.png" width="100"/>  | Smiltė Petronytė | Software Engineer|
+| <img src="static/imgs/placeholder_face.png" width="100"/>  | Saad Sharif| Hardware Engineer |
+| <img id="1" src="static/imgs/placeholder_face.png" width="100"/>  | Marcell Uzonyi | Hardware Engineer|
+| <img src="static/imgs/placeholder_face.png" width="100"/>  | Kaiwen Xue| Hardware Engineer|
 
 
 <script>
