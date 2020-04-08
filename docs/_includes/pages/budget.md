@@ -196,9 +196,9 @@ In later iterations of the product, packages containing the base components and 
 </tr>
 <tr>
 <td align="center">Charging Station</td>
-<td align="center">1</td>
+<td align="center">1 per 10 tables&#42;&#42;</td>
 <td align="center">&pound;12</td>
-<td style="text-align: center;" align="center">&pound;12</td>
+<td style="text-align: center;" align="center">&pound;12++</td>
 </tr>
 <tr>
 <td align="center">Cameras&#42;</td>
@@ -216,7 +216,7 @@ In later iterations of the product, packages containing the base components and 
 <td align="center"><b>TOTAL</b></td>
 <td align="center"></td>
 <td align="center"></td>
-<td style="text-align: center;" align="center"><b>&pound;55 + camera</b></td>
+<td style="text-align: center;" align="center"><b>&pound;55 + camera + extra chargers</b></td>
 </tr>
 </tbody>
 </table>
@@ -230,3 +230,5 @@ This may sound like a lot of money, but a quick search reveals that a standard s
 
 
 &#42;Pre-installed cameras may also be used instead of buying new ones. But the coverage, may need to be extended.
+
+&#42;&#42;It is recommended to buy one wireless charger per 10 tables, to allow all tables to be able to maintain their charge. 
