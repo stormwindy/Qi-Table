@@ -18,9 +18,9 @@ Here at Qi we found a solution that will revolutionize the way conference centre
   <img width="600" src="static/imgs/functionality.png">
 </p>
 
-Qi offers more than a solution for making your daily operations more efficient. We designed Infinitables to look just like regular tables with the aim of making your company’s switch to our system seamless. Infinitables will add more functionality to your space while the **minimalistic and sleek personalized design** will transform and modernize it even further.
+Qi offers more than a solution for making your daily operations more efficient. We designed Infinitables to look just like a well polished, easy on the eye table with the aim of making your company’s switch to our system seamless. Infinitables will add more functionality to your space while the **minimalistic and sleek personalized design** will transform and modernize it even further.
 
-We implemented **fully autonomous multi-agent path finding algorithm** with conflict based search and space time A* which allows Infinitables to move simultaneously and effortlessly, thus saving you time and manual labour.
+We implemented **fully autonomous multi-agent path finding algorithm** with conflict-based search and space time A* which allows Infinitables to move simultaneously and effortlessly, thus saving you time and manual labour.
 
 Our **easy to use web application** allows the user to design new room layouts, remove or reuse old ones, execute them and terminate the operation, all through a visual, user friendly interface.
 
@@ -30,7 +30,7 @@ Our **easy to use web application** allows the user to design new room layouts, 
 
 ### Target Customer Segment :
 
-Our product is useful in places that require frequent rearrangement of table layouts, thus suited for events such as business meetings, seminars, conferences, workshops, wedding receptions, dinner parties, etc and the use case could be extended to classrooms and office spaces. Our customer segment would essentially then be business and community centres, event venues, banquet halls, hotels and schools in the UK.
+Our product is essential in places that require frequent rearrangement of table layouts, thus suited for events such as business meetings, seminars, conferences, workshops, wedding receptions, dinner parties and more. This use case could easily be extended to classrooms and theatre. Our customer segment would essentially then be business and community centres, event venues, banquet halls, hotels and schools in the UK.
 
 ### Scope in Industry :
 
@@ -38,13 +38,16 @@ According to the report on the UK’s event industry by eventbrite, the UK has o
 
 <img align="center" src="static/imgs/market_reseach1.png" width="700"/>
 
-Professionals are anticipating growth in the industry but for budgets to remain the same, which implies that there is a potential market for technology that could reduce costs and drive up revenues.
+Professionals are anticipating growth in the industry but for budgets to remain the same, implying that there is a potential market for technology that could reduce costs and drive up revenues.
 
 <img align="center" src="static/imgs/market_research2.png" width="600"/>
 
 ### Competitors :
 
-We do not face much direct competition because there are currently no companies in the UK manufacturing automated table systems for our target segments. Nissan launched its Intelligent Parking Chairs, which parks the chairs in its original position with the sound of a clap. Our product differs in two major aspects. They mostly targeted workspaces such as offices and the chairs would tuck themselves back into set positions. Our target segment is wider and the user can change the layouts by selecting from an existing menu or designing one on their own!
+We do not face much direct competition because there are currently no companies in the UK manufacturing automated table systems for our target segments. Nissan launched its Intelligent Parking Chairs, which parks the chairs in its original position with the sound of a clap. Our niche differs in two major aspects: 
+- They mostly targeted workspaces such as offices and the chairs would tuck themselves back into set positions. 
+- Our target segment is wider and the user can change the layouts by selecting from an existing menu or designing one on their own.  
+
 Our competitors are companies who go out on contract bases to do the set up. The venues may also allocate the task to their own team of people. In either case, manual labour would be engaged.
 
 
