@@ -113,10 +113,10 @@ In later iterations of the product, packages containing the base components and 
 </thead>
 <tbody>
 <tr>
-<td align="center">Arduino Uno</td>
+<td align="center">Custom Board</td>
 <td align="center">1</td>
-<td align="center">&pound;20</td>
-<td align="center">&pound;20</td>
+<td align="center">&pound;30</td>
+<td align="center">&pound;30</td>
 </tr>
 <tr>
 <td align="center">nRF24L01+PA+LNA Wireless Transceiver</td>
@@ -184,9 +184,9 @@ In later iterations of the product, packages containing the base components and 
 </tr>
 <tr>
 <td align="center">Charging Station</td>
-<td align="center">?</td>
-<td align="center">&pound;???</td>
-<td style="text-align: center;" align="center">&pound;??</td>
+<td align="center">1</td>
+<td align="center">&pound;12</td>
+<td style="text-align: center;" align="center">&pound;12</td>
 </tr>
 <tr>
 <td align="center">Cameras&#42;</td>
