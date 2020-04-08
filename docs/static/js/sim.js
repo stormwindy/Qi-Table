@@ -149,11 +149,9 @@ class Simulator {
         for (let path of this.paths) {
             if (path.type !== 'agent' || path.pathFound === false) {continue}
 
-            console.log(path)
             if (path.path.length <= step) {continue}
 
             let loc = path.path[step]
-            console.log(path, loc, step)
 
             path.obj.position.x = loc[0]
             path.obj.position.z = loc[1]
@@ -220,11 +218,9 @@ class WebAPIController {
         this._anim_timer = null
         this._anim_step  = 0
     }
-    async load_room(room_name) {
-        console.log(`loading '${room_name}' from ${API_URL}`)
 
-
-        let path = await fetch(
+    async get_live_room() {
+        const path = await fetch(
             API_URL,
             {
                 method: 'POST',
@@ -233,7 +229,21 @@ class WebAPIController {
             }
         )
 
-        path = await path.json()
+        return await path.json()
+    }
+
+    async get_mocked_room() {
+        const path = await fetch('static/mock/room0.json')
+
+        return await path.json()
+    }
+
+    async load_room(room_name) {
+        console.log(`loading '${room_name}' from ${API_URL}`)
+
+
+        //let path = await this.get_live_room()
+        let path = await this.get_mocked_room()
 
         console.log(path)
 
