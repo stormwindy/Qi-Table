@@ -216,13 +216,13 @@ In later iterations of the product, packages containing the base components and 
 <td align="center"><b>TOTAL</b></td>
 <td align="center"></td>
 <td align="center"></td>
-<td style="text-align: center;" align="center"><b>&pound;77 + camera + extra chargers</b></td>
+<td style="text-align: center;" align="center"><b>&pound;67 + extra camera + extra chargers</b></td>
 </tr>
 </tbody>
 </table>
 
 <br>
-We estimate the total cost for a complete setup, a camera and 3 complete table products then would be: £97.83  
+We estimate the total cost for a complete setup, a camera and 3 complete table products then would be: £697.83  
 
 In general, the total cost of a complete setup, a camera and n complete tables is: £67 + n(203.61)  
 
