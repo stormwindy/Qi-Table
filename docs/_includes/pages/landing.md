@@ -1,1 +1,1 @@
-We provide a revolutionary hardware and software for self-organising 'furnitures'
+We provide revolutionary hardware and software for self-organising furniture

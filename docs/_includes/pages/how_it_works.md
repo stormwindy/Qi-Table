@@ -17,7 +17,7 @@ Below is a system diagram that shows how different parts interact with each othe
 
 ## Tables
 
-The structure of our current product is built from an extremely low weight medium-density fibreboard. This allowed our engineering team to size the power of the motor down, which drastically reduces the price of the product. Our high efficiency, low cost motors are controlled by a costume motor controller, which in reverse controlled by an Arduino Uno. One of the many pros of choosing Qi's Infinitables is the infinite dimension selection, as for our partners, we can manufacture uniquely sized tables.
+The structure of our current product is built from an extremely low weight, medium-density fibreboard. This allowed our engineering team to size the power of the motor down, which drastically reduces the price of the product. Our high efficiency, low cost motors are controlled by a custom motor controller, which is reverse controlled by an Arduino Uno. This allows our tables to arrange themselves into an almost limitless number of configurations and orientations.
 
 Please find one of our table designs below:
 
@@ -33,7 +33,9 @@ Please find one of our table designs below:
 
 ## Web Application
 
-The users control the system through a web application which allows them to design and edit room layouts (building up a library of reusable setups), execute them and interrupt the operation should any problems arise. It's web based and hosted on the control server, so it can be used both on mobile and desktop, with no installation required! The app features a simple interface built in JavaScript using React that can be easily used without any extensive training and an intuitive visual editor (using the konva.js library) for layout creation.
+The users control the system through a web application which allows them to design and edit room layouts (building up a library of reusable setups), execute them and interrupt the operation should any problems arise. It's web based and hosted on the control server, so it can be used both on mobile and desktop, with no installation required!  
+
+The app features a simple interface, built in JavaScript using React, that can be easily used without any previous knowledge of the underlying workings and an intuitive visual editor (using the konva.js library) for layout creation.
 
 ## Server
 
@@ -65,9 +67,9 @@ The path finding module is powered by a robust hierarchical algorithm with a hig
 
 ### Hardware Controller
 
-Qi's Infinitables was developed with a proprietary security protocol including a handshake method. At the initial startup, the tables will initiate a handshake request with the base computer. This will result in the secure storage of a table identification in the Electrically Erasable Programmable Read-only Memory, which allows a seamless operation at a power failure scenario. The high standard security protocol is merged with each handshake, which ensures a secure communication. To further advance the level of security, the secure keys are regenerated and reassigned periodically.
+Qi's "Infinitables" was developed with a proprietary security protocol including a handshake method. At the initial start-up, the tables will initiate a handshake request with the base computer. This results in the secure storage of a table's identification number in the Electrically Erasable Programmable Read-only Memory, which is safely retained should a power failure occur. The high standard security protocol is merged with each handshake, which ensures a secure communication. To further advance the level of security, the secure keys are regenerated and reassigned periodically.
 
-Qi's intelligent safety sub-systems makes sure that no accidents or damages happens, with the use of a custom-made vision system and a possibility to request the integration of external systems (e.g.: alarm systems)
+Qi's intelligent safety sub-systems makes sure that no accidents or damages occur, with the use of a custom-made vision system and the possibility to request the integration of external systems (e.g.: alarm systems)
 
 ### Integration
 
@@ -77,5 +79,5 @@ The integration code ties all the software modules together. Below is a common e
   <img width="550" src="static/imgs/system3.png">
 </p>
 
-You can see that integration serves as a messenger that calls and returns to other modules.
+You can see that integration module serves as a messenger, calling and returning to other modules.
 
