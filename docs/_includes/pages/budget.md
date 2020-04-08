@@ -117,7 +117,9 @@ In general, the total cost for a complete setup with n tables is: £75 + n(129.5
 
 ## Estimated Cost of Mass Production
 
-The following costs are only estimates, based on the retail prices of the individual components. This means they factor in the cost of production, research & development, shipping and quality guarantees. In later iterations of the product, packages containing the base components and a collection of tables could be made available to customers. Small percentage discounts that increase with alongside the nubmer of tables in the package would incentivise the customer to buy more tables and all the necessary pieces from Infinitables.
+The following costs are only estimates, based on the retail prices of the individual components. This means they factor in the cost of production, research & development, shipping and quality guarantees.  
+
+In later iterations of the product, packages containing the base components and a collection of tables could be made available to customers. Small percentage discounts that increase alongside the nubmer of tables in the package would incentivize the customer to buy more tables and all the necessary pieces from Infinitables.
 
 
 <table style="margin-left: auto; margin-right: auto;"><caption>Table 3: Cost for each costumer table</caption>
