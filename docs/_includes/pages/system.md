@@ -14,11 +14,15 @@ Here at Qi we found a solution that will revolutionize the way conference centre
 
 ### Functionality
 
-Qi offers more than a solution for making your daily operations more efficient. We designed Infinitables to look just like regular tables with the aim of making your company’s switch to our system seamless. Infinitables will add more functionality to your space while the minimalistic and sleek design will transform and modernize it even further.
+<p align="center">
+  <img width="600" src="static/imgs/functionality.png">
+</p>
 
-We implemented fully autonomous multi-agent path finding algorithm with conflict based search and space time A* which allows Infinitables to move simultaneously and effortlessly, thus saving you time and manual labour.
+Qi offers more than a solution for making your daily operations more efficient. We designed Infinitables to look just like regular tables with the aim of making your company’s switch to our system seamless. Infinitables will add more functionality to your space while the **minimalistic and sleek personalized design** will transform and modernize it even further.
 
-Our easy to use web application allows the user to design new room layouts, remove or reuse old ones, execute them and terminate the operation, all through a visual, user friendly interface.
+We implemented **fully autonomous multi-agent path finding algorithm** with conflict based search and space time A* which allows Infinitables to move simultaneously and effortlessly, thus saving you time and manual labour.
+
+Our **easy to use web application** allows the user to design new room layouts, remove or reuse old ones, execute them and terminate the operation, all through a visual, user friendly interface.
 
 
 ## Market Research
@@ -32,11 +36,11 @@ Our product is useful in places that require frequent rearrangement of table lay
 
 According to the report on the UK’s event industry by eventbrite, the UK has over 10,000 venues with 1.3 billion business events being held each year. The conference and meetings segment is worth £19.9 billion in terms of direct spend to the UK economy.
 
-<img src="static/imgs/market_reseach1.png" width="700"/>
+<img align="center" src="static/imgs/market_reseach1.png" width="700"/>
 
 Professionals are anticipating growth in the industry but for budgets to remain the same, which implies that there is a potential market for technology that could reduce costs and drive up revenues.
 
-<img src="static/imgs/market_research2.png" width="600"/>
+<img align="center" src="static/imgs/market_research2.png" width="600"/>
 
 ### Competitors :
 

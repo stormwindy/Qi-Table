@@ -3,9 +3,9 @@
 
 ## Team Management
 
-Our team is split into a software team with 6 people and a hardware team with 4 people. While it might seem like there is a clear division between the two teams, our organization is in fact very organic. Each team member carries out the work they are passionate about and have expertise in. It is also not uncommon that a software team member does hardware work, or vice versa.
+Our team is split into a software team composed of six people and a hardware team with four. While it might seem like there is a clear division between the two teams, our structure is in fact very organic. Each team member carries out the work they are passionate about and have expertise in. It is not uncommon that a software team member contributes to a hardware task, and vice versa.
 
-Throughout the developement process, team members share their updates and findings continuously on Slack. To track progress and to ensure that our work is accessible to everyone, we have used GitHub's pipeline extensively - every individual's work is carefully reviewed by other team members and have well written documentation explaining and justifying each new piece of content.
+Throughout the developement process, team members share their updates and findings continuously on Slack. To track progress and to ensure that our work is accessible to everyone, we have used GitHub's pipeline extensively - every individual's work is accompanied with well written documentation explaining and justifying each new piece of content; this is then carefully reviewed by other team members.  
 
 We have planned our work with the help of the Gantt chart below which has proven to be very successful.
 
@@ -37,7 +37,7 @@ td{
 | <img src="static/imgs/turkey.jpeg" width="100"/>  | Ege Elgun | Hardware Manager |
 | <img src="static/imgs/india.jpg" width="100"/>  | Megha Garg | Software Engineer|
 | <img src="static/imgs/us.jpg" width="100"/>  | Patrick Kage | Software Manager |
-| <img src="static/imgs/uk.jpg" width="100"/>  | Sean Mohan| Software Engineer|
+| <img src="static/imgs/uk.jpg" width="100"/>  | Sean Mohan| Software Engineer - Tester|
 | <img src="static/imgs/poland.jpg" width="100"/>  | Maciek Niedziela | Implemented the web app features |
 | <img src="static/imgs/china.jpg" width="100"/>  | Haoran Peng | Software Engineer|
 | <img src="static/imgs/lithuania.jpg" width="100"/>  | Smiltė Petronytė | Software Engineer|
