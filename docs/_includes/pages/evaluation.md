@@ -73,11 +73,17 @@ We can see that the time it takes increases faster and faster as the number of a
 
 ### User Tests
 
-Present any user testing you have performed for your product. The same advice about presenting data should be used as above
+While the current global circumstances have made testing the whole integrated system impossible, presenting the web app to a few testers revealed a number of places for improvement. 
+
+Firstly, most users had trouble realising that rotation of tables in the editor was possible, or figuring out how to perform it once they learned about it. This has been alleviated by making the rotation handle appear when tables are dragged around and not just when clicked on, so that users will be more likely to be exposed to it and investigate. The handle was also changed from a square to a circular arrow, similar to ones in slideshow editors, to make its functionality more intuitive.
+
+In addition, to allow for very precise alignment of tables a few collision prevention methods (i.e. what happens when a user puts a table on top of another one) were considered, including snapping back to the original location, and not allowing tables to be dragged over one another altogether. The one that users found most intuitive was snapping back to the closest non-overlapping location when dragging is finished, using an implementation of the Separating Axis Theorem. This has the benefit of making close alignment of tables very simple.
+
+
 
 ## Main Areas of Improvement
 
-The path finidng module needs more work to be viable in much more complex settings. The problems and the solutions are as follows:
+The path finding module needs more work to be viable in much more complex settings. The problems and the solutions are as follows:
 
 -  The module's parallelization is currently done by multi-processing only. But we can and should take advantage of threading because some jobs are too small for a new process.
 - The module is currently written in Python and a part of it  is non-optimized native Python. This definitely impact the performance and we are considering porting the module to a low level language instead.
