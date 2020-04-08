@@ -27,9 +27,9 @@
 </tr>
 <tr>
 <td align="center">9mm MDF Structure</td>
-<td align="center">???kg/m2</td>
-<td align="center">&pound;6 ???kg/m2</td>
-<td style="text-align: center;" align="center">&pound;2</td>
+<td align="center">0.3636 $m^2$</td>
+<td align="center">&pound;6 per $m^2$</td>
+<td style="text-align: center;" align="center">&pound;2.19</td>
 </tr>
 <tr>
 <td align="center">Batteries (AA)</td>
@@ -132,8 +132,8 @@ In later iterations of the product, packages containing the base components and 
 </tr>
 <tr>
 <td align="center">Material (plastic and wood)</td>
-<td align="center">???</td>
-<td align="center">&pound;10</td>
+<td align="center">4.108 m^2</td>
+<td align="center">&pound;10 per m^2</td>
 <td style="text-align: center;" align="center">&pound;41.08</td>
 </tr>
 <tr>
