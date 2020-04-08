@@ -7,7 +7,7 @@ The Infinitables system consists of mainly 3 parts:
 
 - Physical tables equipped with Arduino-controlled motors.
 - A web application that users interact with.
-- A server that recieves, processes, and sends user commands to the physical tables.
+- A server that receives, processes, and sends user commands to the physical tables.
 
 Below is a system diagram that shows how different parts interact with each other:
 
@@ -33,7 +33,7 @@ Please find one of our table designs below:
 
 ## Web Application
 
-what framework? how to use?
+The users control the system through a web application which allows them to design and edit room layouts (building up a library of reusable setups), execute them and interrupt the operation should any problems arise. It's web based and hosted on the control server, so it can be used both on mobile and desktop, with no installation required! The app features a simple interface built in JavaScript using React that can be easily used without any extensive training and an intuitive visual editor (using the konva.js library) for layout creation.
 
 ## Server
 
@@ -42,7 +42,7 @@ what framework? how to use?
 The vision module uses an overhead camera to recognize the tables' position and orientation.
 
 <p align="center">
-  <img width="650" src="static/imgs/vision1.png">
+  <img width="550" src="static/imgs/vision1.png">
 </p>
 
 The position and orientation information is captured continuously which enables:
@@ -60,12 +60,22 @@ The path finding module plans collision-free paths for the tables using the posi
   <img width="650" src="https://raw.githubusercontent.com/GavinPHR/Multi-Agent-Path-Finding/master/fig/visualization2.gif">
 </p>
 
-The path finding module is powered by a robust hierarchical algorithm with a high-level conflict-based search <a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI12/paper/viewFile/5062/5239">[Sharon et al. 2012]</a> and a low-level space-time A* search.
+The path finding module is powered by a robust hierarchical algorithm with a high-level conflict-based search <a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI12/paper/viewFile/5062/5239">[Sharon et al. 2012]</a> and a low-level space-time A* search. The module is available on <a href="https://github.com/GavinPHR/Multi-Agent-Path-Finding">GitHub</a> and listed on <a href="https://pypi.org/project/cbs-mapf/">PyPI</a>.
 
-### Integration
 
 ### Hardware Controller
 
 Qi's Infinitables was developed with a proprietary security protocol including a handshake method. At the initial startup, the tables will initiate a handshake request with the base computer. This will result in the secure storage of a table identification in the Electrically Erasable Programmable Read-only Memory, which allows a seamless operation at a power failure scenario. The high standard security protocol is merged with each handshake, which ensures a secure communication. To further advance the level of security, the secure keys are regenerated and reassigned periodically.
 
 Qi's intelligent safety sub-systems makes sure that no accidents or damages happens, with the use of a custom-made vision system and a possibility to request the integration of external systems (e.g.: alarm systems)
+
+### Integration
+
+The integration code ties all the software modules together. Below is a common excution flow of the entire system:
+
+<p align="center">
+  <img width="550" src="static/imgs/system3.png">
+</p>
+
+You can see that integration serves as a messenger that calls and returns to other modules.
+
