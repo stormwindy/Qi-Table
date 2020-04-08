@@ -54,7 +54,7 @@ class Simulator {
         this.pathgroup = new THREE.Group()
         this.scene.add(this.pathgroup)
 
-        this.init_cubes()
+        //this.init_cubes()
 
     }
 
@@ -180,6 +180,7 @@ class Simulator {
             antialias: true
         })
 
+        this.camera.position.x = 5
         this.camera.lookAt(0, 0, 0)
 
         // controls config
@@ -188,7 +189,7 @@ class Simulator {
         this.controls.dampingFactor = 0.01;
         this.controls.autoRotate = true
 		this.controls.object.position.y += 4
-        this.controls.target = this.cubes[2][2].position.clone()
+        this.controls.target = new THREE.Vector3(0,0,0)
 
         this.el.addEventListener('mouseup', () => this.controls.autoRotate = false)
         this.el.addEventListener('dblclick', () => this.controls.autoRotate = true)
@@ -208,7 +209,6 @@ class Simulator {
 
         this.controls.update()
 
-        this.animate_cubes()
         requestAnimationFrame( () => this.render() )
     }
 }
@@ -263,7 +263,7 @@ class WebAPIController {
             clearInterval(this._anim_timer)
         }
         
-        sim.remove_cubes()
+        //sim.remove_cubes()
         sim.load_computed_paths(path)
         sim.apply_paths(0)
         sim.pathgroup.translateX(-8)
