@@ -10,7 +10,9 @@ Throughout the developement process, team members share their updates and findin
 We have planned our work with the help of the Gantt chart below which has proven to be very successful.
 
 <p align="center">
-  <img width="550" src="static/imgs/gantt.png">
+  <img width="550" src="static/imgs/gantt_sprint1.png">
+  <img width="550" src="static/imgs/gantt_sprint2.png">
+  <img width="550" src="static/imgs/gantt_sprint3.png">
 </p>
 
 
