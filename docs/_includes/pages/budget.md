@@ -238,5 +238,7 @@ We estimate the total cost for a complete setup, a camera and 3 complete table p
 
 In general, the total cost of a complete setup, a camera and n complete tables is: £75 + n(193.61)  
 
+This may sound like a lot of money, but a quick search reveals that a standard school desk will cost you between £120 - £200.  
+
 
 &#42;Pre-installed cameras may also be used instead of buying new ones. But the coverage, may need to be extended.
