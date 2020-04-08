@@ -59,7 +59,7 @@
 <td align="center"><b>TOTAL</b></td>
 <td align="center"></td>
 <td align="center"></td>
-<td style="text-align: center;" align="center"><b>&pound;129.5</b></td>
+<td style="text-align: center;" align="center"><b>&pound;143.69</b></td>
 </tr>
 </tbody>
 </table>
@@ -103,9 +103,9 @@
 </tbody>
 </table>
 
-Total cost for a complete prototype setup plus 3 tables then is £463.50.  
+Total cost for a complete prototype setup plus 3 tables then is £506.07.  
 
-In general, the total cost for a complete setup with n tables is: £75 + n(129.5)
+In general, the total cost for a complete setup with n tables is: £75 + n(143.69)
 
 ## Estimated Cost of Mass Production
 
@@ -170,7 +170,7 @@ In later iterations of the product, packages containing the base components and 
 <td align="center"><b>TOTAL</b></td>
 <td align="center"></td>
 <td align="center"></td>
-<td style="text-align: center;" align="center"><b>&pound;193.61</b></td>
+<td style="text-align: center;" align="center"><b>&pound;203.61</b></td>
 </tr>
 </tbody>
 </table>
@@ -204,7 +204,7 @@ In later iterations of the product, packages containing the base components and 
 <td align="center">Cameras&#42;</td>
 <td align="center">0.5/m2</td>
 <td align="center">&pound;10</td>
-<td style="text-align: center;" align="center">&pound;?</td>
+<td style="text-align: center;" align="center">&pound;10++</td>
 </tr>
 <tr>
 <td align="center">Base Server on site</td>
@@ -216,7 +216,7 @@ In later iterations of the product, packages containing the base components and 
 <td align="center"><b>TOTAL</b></td>
 <td align="center"></td>
 <td align="center"></td>
-<td style="text-align: center;" align="center"><b>&pound;55 + camera + extra chargers</b></td>
+<td style="text-align: center;" align="center"><b>&pound;77 + camera + extra chargers</b></td>
 </tr>
 </tbody>
 </table>
@@ -224,7 +224,7 @@ In later iterations of the product, packages containing the base components and 
 <br>
 We estimate the total cost for a complete setup, a camera and 3 complete table products then would be: £655.83  
 
-In general, the total cost of a complete setup, a camera and n complete tables is: £75 + n(193.61)  
+In general, the total cost of a complete setup, a camera and n complete tables is: £67 + n(203.61)  
 
 This may sound like a lot of money, but a quick search reveals that a standard school desk will cost you between £120 - £200.  
 
