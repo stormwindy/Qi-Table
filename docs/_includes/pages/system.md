@@ -46,22 +46,23 @@ Professionals are anticipating growth in the industry but for budgets to remain 
 
 We do not face much direct competition because there are currently no companies in the UK manufacturing automated table systems for our target segments. Nissan launched its Intelligent Parking Chairs, which parks the chairs in its original position with the sound of a clap. Our niche differs in two major aspects: 
 - They mostly targeted workspaces such as offices and the chairs would tuck themselves back into set positions. 
-- Our target segment is wider and the user can change the layouts by selecting from an existing menu or designing one on their own.  
+- Our target segment is wider, and the user can change the layouts by selecting from an existing menu or designing one on their own.  
 
-Our competitors are companies who go out on contract bases to do the set up. The venues may also allocate the task to their own team of people. In either case, manual labour would be engaged.
+Our competitors are companies who go out on contract bases to do the set up and rearrange the layout. The venues may also allocate the task to their own team of people. In either case, manual labour, risk assessment and wages will be required.
 
 
 ### Value to Customer :
-To understand why the customer would want our product, let's assume a scenario illustrated bellow.
+To understand why the customer would want our product, let's assume a scenario illustrated bellow:
 
 <img align="center" src="static/imgs/event_cost.png" width="600"/>
 
-Our product would replace these recurring expenses with a one time purchase.  Once the system is in place, there would be no incremental purchases required apart from maintenance costs, in case there is any damage.
-The usual prices as found online for tables depending on material and size ranges from £50 - £200. We would customise our tables according to the customer’s wish, so the price would vary accordingly. The number of tables required also vary according to the capacity of the venue, but economy of scale should reduce the cost per entity.
-Our team has discussed the health and safety concerns and implemented safeguards. We have emergency system shutdowns in place to avoid possible collisions invoked by the vision system or manually through the app.
+Our product would replace these recurring expenses with a one-time purchase.  Once the system is in place, there would be no incremental purchases required apart from very occasional maintenance costs, in the case there is any serious damage inflicted on our product.
+The usual prices as found online for tables, depending on material and size, ranges from £50 - £200. We would customise our tables according to the customer’s wish, so the price would vary accordingly. The number of tables required also vary according to the capacity of the venue, but economy of scale should reduce the cost per entity.  
+
+Our team has discussed the health and safety concerns and implemented safeguards. We have emergency system shutdown procedures in place to avoid possible collisions invoked by the vision system or manually through the app.  
 
 
-The big size and growth in the events industry, along with low competition to our product, makes the target market attractive to us. The man power and money saved along with the simple set up, flexibility in the layout designs and easy to use app interface makes our product cost-effective and attractive to our customer. Considering the above factors in our market research, infinitables have good potential for success.
+The large size and growth in the events industry, along with low competition in our niche, paints the target market very attractively to us. The manpower and money saved along with the simple set up; flexibility in the layout designs; easy to use, fire-and-forget nature of our app interface makes Infinitables both cost-effective and appealing to our customer. Considering the above factors in our market research, Infinitables have huge potential for success.
 
 
 
@@ -69,4 +70,4 @@ The big size and growth in the events industry, along with low competition to ou
 
 One of the largest planned improvements for the next generation of Infinitables is the inclusion of the multi-wireless charging feature. This would allow multiple tables to charge from the same wireless charging point. The charging times for each individual table would be predicted via learnt usage, pre-booked calendar appointments and the quantity of charge remaining. This means the tables decide themselves when and how to charge!
 
-As Qi grows we expect to expand beyond the Infinitables product line. The software we created has the potential to be extended and used within wider applications where autonomous movement may be useful: ranging from complimentary chairs for Infinitables and smart, portable storage units to self-moving hospital beds.
+As Qi grows, we expect to expand beyond the Infinitables product line. The software we created has the potential to be extended and used within wider applications where autonomous movement may be useful: ranging from complimentary chairs for Infinitables and smart, portable storage units to self-moving hospital beds.
