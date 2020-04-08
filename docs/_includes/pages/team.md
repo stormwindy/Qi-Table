@@ -7,7 +7,7 @@ Our team is split into a software team composed of six people and a hardware tea
 
 Throughout the developement process, team members share their updates and findings continuously on Slack. To track progress and to ensure that our work is accessible to everyone, we have used GitHub's pipeline extensively - every individual's work is accompanied with well written documentation explaining and justifying each new piece of content; this is then carefully reviewed by other team members.  
 
-We have planned our work with the help of the Gantt chart below which has proven to be very successful.
+We have planned our work with the help of the Gantt charts below which has proven to be very successful.
 
 <p align="center">
   <img width="550" src="static/imgs/gantt_sprint1.png">
