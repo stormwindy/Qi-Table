@@ -1,3 +1,6 @@
+const API_URL = 'http://qi-api.kage.dev/'
+const DEFAULT_ROOM = 'room0'
+
 class Simulator {
     constructor() {
         this.el = document.querySelector('#c')
@@ -14,7 +17,7 @@ class Simulator {
         // add fog
         const fogColor = new THREE.Color( 0xFFFFFF )
         this.scene.background = fogColor
-        this.scene.fog = new THREE.Fog(fogColor, 10, 20)
+        this.scene.fog = new THREE.Fog(fogColor, 100, 200)
 
         // let there be light
         const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.6)
@@ -46,22 +49,13 @@ class Simulator {
         this.floor = floor_mesh
         this.scene.add(floor_mesh)
 
-        
 
-        // test mesh
-        const cube_geo = new THREE.BoxGeometry()
-        const cube_mat = new THREE.MeshLambertMaterial({ color: 0xFF0000, shininess: 20, specular: 0xFFFFFF })
-        const cube = new THREE.Mesh( cube_geo, cube_mat )
-        cube.position.z = -5
-        cube.position.y = 0
-        cube.position.x = -1
-        cube.castShadow = true
-
-        //this.scene.add(cube)
-        this.cube = cube
+        // create the path group
+        this.pathgroup = new THREE.Group()
+        this.scene.add(this.pathgroup)
 
         this.init_cubes()
-        
+
     }
 
     init_cubes() {
@@ -80,7 +74,7 @@ class Simulator {
         }
 
         this.cubes = []
-        
+
         for (let i = 0; i < 5; i++) {
             this.cubes.push([])
             for (let j = 0; j < 5; j++) {
@@ -93,7 +87,6 @@ class Simulator {
         this._cube_anim = 0
     }
 
-
     animate_cubes() {
         const scale = v => v * (Math.PI/180)
         for (let i = 0; i < 5; i++) {
@@ -104,7 +97,68 @@ class Simulator {
         this._cube_anim += 1
     }
 
-    
+    remove_cubes() {
+        for (let i = 0; i < 5; i++) {
+            for (let j = 0; j < 5; j++) {
+                this.scene.remove(this.cubes[i][j])
+            }
+        }
+    }
+
+    load_computed_paths(paths) {
+        // helpers
+        const cube_geo = new THREE.BoxGeometry()
+        const makeCube = (x,z,color) => {
+            const cube_mat = new THREE.MeshStandardMaterial({
+                color,
+                roughness: 0.5,
+                metalness: 0.2,
+                specular: color })
+            const cube = new THREE.Mesh( cube_geo, cube_mat )
+            cube.position.set(x, 0, z)
+            cube.castShadow = true
+            return cube
+        }
+
+        // TODO: clean up list if one is already loaded
+        if (this.paths) {
+            for (let path of paths) {
+                if (path.obj) {
+                    this.pathgroup.remove(path.obj)
+                }
+            }
+        }
+
+        this._max_path_length = 0
+
+        this.paths = paths.map(path => {
+            if (path.type === 'agent') {
+                path.obj = makeCube(0,0,0x4BC6B9)
+                this._max_path_length = Math.max(path.path.length, this._max_path_length) // hax
+                path.obj.name = 'Agent'
+                this.pathgroup.add(path.obj)
+            } else if (path.type === 'obstacle') {
+                path.obj = makeCube(path.loc[0],path.loc[1],0xe76F51)
+                this.pathgroup.add(path.obj)
+            }
+            return path
+        })
+    }
+
+    apply_paths(step) {
+        for (let path of this.paths) {
+            if (path.type !== 'agent' || path.pathFound === false) {continue}
+
+            console.log(path)
+            if (path.path.length <= step) {continue}
+
+            let loc = path.path[step]
+            console.log(path, loc, step)
+
+            path.obj.position.x = loc[0]
+            path.obj.position.z = loc[1]
+        }
+    }
 
     resize_window() {
         this.el.style.height = window.innerHeight + 'px'
@@ -119,7 +173,7 @@ class Simulator {
 
     init_pipeline() {
         let bbox = this.el.getBoundingClientRect()
-        
+
         // set up a camera
         this.camera = new THREE.PerspectiveCamera( 75, bbox.width / bbox.height, 0.1, 1000 )
 
@@ -128,8 +182,8 @@ class Simulator {
             antialias: true
         })
 
-        this.camera.lookAt(this.cube.position.x, this.cube.position.y, this.cube.position.z)
-    
+        this.camera.lookAt(0, 0, 0)
+
         // controls config
         this.controls = new THREE.OrbitControls( this.camera, this.renderer.domElement )
         this.controls.enableDamping = false; // an animation loop is required when either damping or auto-rotation are enabled
@@ -161,7 +215,67 @@ class Simulator {
     }
 }
 
+class WebAPIController {
+    constructor() {
+        this._anim_timer = null
+        this._anim_step  = 0
+    }
+    async load_room(room_name) {
+        console.log(`loading '${room_name}' from ${API_URL}`)
+
+
+        let path = await fetch(
+            API_URL,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body:   JSON.stringify({room: room_name})
+            }
+        )
+
+        path = await path.json()
+
+        console.log(path)
+
+        const scalePoint = l => [l[0]/60,l[1]/60]
+
+        path = path.map(obj => {
+            if (obj.type === 'agent' && obj.pathFound) {
+                obj.path = obj.path.map(scalePoint)
+            } else if (obj.type === 'obstacle') {
+                obj.loc = scalePoint(obj.loc)
+            }
+            return obj
+        })
+
+        
+        if (this._anim_timer !== null) {
+            clearInterval(this._anim_timer)
+        }
+        
+        sim.remove_cubes()
+        sim.load_computed_paths(path)
+        sim.apply_paths(0)
+        sim.pathgroup.translateX(-8)
+        sim.pathgroup.translateZ(-4.5)
+        sim.pathgroup.scale.x = 0.5
+        sim.pathgroup.scale.z = 0.5
+
+        this._anim_step = 0
+        this._anim_timer = setInterval(() => {
+            sim.apply_paths(this._anim_step)
+            this._anim_step = ((1 + this._anim_step) % sim._max_path_length)
+        }, 500)
+
+    }
+
+
+}
+
 window.addEventListener('load', () => {
     window.sim = new Simulator()
     window.sim.render()
+
+    window.api = new WebAPIController()
+    window.api.load_room(DEFAULT_ROOM)
 })
