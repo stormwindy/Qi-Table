@@ -5,9 +5,11 @@
 
 Here at Qi we found a solution that will revolutionize the way conference centres work. We created Infinitables: motorized tables which autonomously organize themselves into desired layouts. Our goal is to help you save time, human resources and money. With the help of our system you will be able to create your own layouts at the touch of a button.
 
-<video width="500" style="height: auto" controls>
-  <source src="static/videos/value_prop2.mp4" type="video/mp4">
-</video>
+<p align="center">
+  <video width="600" style="height: auto" controls>
+    <source src="static/videos/value_prop3.mp4" type="video/mp4">
+  </video>
+</p>
 
 
 ### Functionality
