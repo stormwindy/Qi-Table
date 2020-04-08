@@ -74,7 +74,7 @@ Tables could be useful in presenting this data. An example table is shown below:
 
 <br><br>
 
-<table style="margin-left: auto; margin-right: auto;"><caption>Table 2: One-time cost for prototype</caption>
+<table style="margin-left: auto; margin-right: auto;"><caption>Table 2: Base setup cost for the prototype. This is a one-off cost that contains the base server and its dependencies.</caption>
 <thead>
 <tr>
 <th align="center">Item</th>
@@ -111,6 +111,8 @@ Tables could be useful in presenting this data. An example table is shown below:
 </tbody>
 </table>
 
+Total cost for a complete prototype setup plus 3 tables then is £463.50.
+In general, the total cost for a complete setup with n tables is: £75 + n(129.5)
 
 ## Estimated Cost of Mass Production
 
