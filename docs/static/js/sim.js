@@ -1,4 +1,4 @@
-const API_URL = 'http://qi-api.kage.dev/'
+const API_URL = 'https://qi-api.kage.dev/'
 const DEFAULT_ROOM = 'room0'
 
 class Simulator {
