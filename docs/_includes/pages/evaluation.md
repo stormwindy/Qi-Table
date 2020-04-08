@@ -5,11 +5,11 @@
 
 ## Evaluation Tests
 
-All the tests relating to process makespan were done on a laptop with i7-7700HQ and 16GB of RAM.
+All the tests relating to process makespan were run on a laptop with i7-7700HQ and 16GB of RAM.
 
 ### Speed and Accuracy of the Vision Module
 
-It is vital that the vision module can run quickly because it can be called several hundred times in a complete usage cycle. We wrapped the exposed function (which other modules call to get position and orientation information) in a timer and timed its makespan with respect to the number of tables present. 5 trials were run for each configuration.
+It is vital that the vision module can run quickly because it can be called several hundred times in a complete usage cycle. We wrapped the exposed function (which other modules call to get position and orientation information) in a timer and timed its makespan with respect to the number of tables present. Five trials were run for each configuration.
 
 | # of Tables | Makespan (s) |
 |:--------:|:------------:|
@@ -24,11 +24,11 @@ It is vital that the vision module can run quickly because it can be called seve
 | 9 | 0.094 |
 | 10 | 0.094 |
 
-The results indicate that the vision module is plenty fast in our system and it will in no way bottleneck our system's performance.
+The results indicate that the vision module is more than fast enough for our system and it will in no way bottleneck our system's performance.
 
-It is even more vital that the vision module is as accurate as possible to avoid any chance of collision. We tested vision's accuracy by placing 8 tables in a 4-by-2 formations in different positions and orientations within the operation area. 
+More vital still is that the vision module be as accurate as possible to avoid any chance of collision. We tested vision's accuracy by placing 8 AR tags representing tables in a 4-by-2 formation in different positions and orientations within the operation area. 
 
-Tables were placed equidistant from each other and facing the same direction. We then recorded the position and orientation information returned by vision. In an ideal system, distances between the tables and orientations of the tables should be equal.
+Tags were placed equidistant from each other and facing the same direction. We then recorded the position and orientation information returned by vision. In an ideal system, distances between the tables and orientations of the tables should be equal.
 
 The standard error for each of the tests is presented in the table below. On average the standard error is about 0.2° for table orientations and about 0.08cm for distances.
 
@@ -50,7 +50,7 @@ The results are better than expected as a standard error of 0.2° and 0.08 cm is
 
 ### Speed of the Path Finding Module
 
-Path finding module was tested in simulated environments because we do not have access to any large area yet. The simulated environments are obstacle-free maps of different sizes with different number of tables present. The layouts are randomized and we are interested in the makespan of paths calculation so users would not need to wait too long.
+The path finding module was tested in simulated environments because we do not have access to any large area yet. The simulated environments are obstacle-free maps of different sizes with different numbers of tables present and a randomised goal layout. We are interested in the makespan of the paths' calculation to test how long a user would be waiting.
 
  | Map Size | # of Tables | Makespan (s) |
 |:-----------:|:-----------------:|:----------------------------------------:|
@@ -74,7 +74,7 @@ We can see that the time it takes increases faster and faster as the number of a
 
 While the current global circumstances have made testing the whole integrated system impossible, presenting the web app to a few testers revealed a number of places for improvement. 
 
-Firstly, most users had trouble realising that rotation of tables in the editor was possible, or figuring out how to perform it once they learned about it. This has been alleviated by making the rotation handle appear when tables are dragged around and not just when clicked on, so that users will be more likely to be exposed to it and investigate. The handle was also changed from a square to a circular arrow, similar to ones in slideshow editors, to make its functionality more intuitive.
+Firstly, most users had trouble realising that rotation of tables in the editor was possible or figuring out how to perform it once they had learned about it. This has been alleviated by making the rotation handle appear when tables are dragged around and not just when clicked on, so that users will be more likely to be exposed to it and investigate. The handle was also changed from a square to a circular arrow, similar to ones in slideshow editors, to make its intended functionality more intuitive.  
 
 In addition, to allow for very precise alignment of tables a few collision prevention methods (i.e. what happens when a user puts a table on top of another one) were considered, including snapping back to the original location, and not allowing tables to be dragged over one another altogether. The one that users found most intuitive was snapping back to the closest non-overlapping location when dragging is finished, using an implementation of the Separating Axis Theorem. This has the benefit of making close alignment of tables very simple.
 
@@ -85,4 +85,4 @@ In addition, to allow for very precise alignment of tables a few collision preve
 The path finding module needs more work to be viable in much more complex settings. The problems and the solutions are as follows:
 
 -  The module's parallelization is currently done by multi-processing only. But we can and should take advantage of threading because some jobs are too small for a new process.
-- The module is currently written in Python and a part of it  is non-optimized native Python. This definitely impact the performance and we are considering porting the module to a low level language instead.
+- The module is currently written in Python and a part of it is non-optimized native Python. This definitely impacts the performance and we are considering porting the module to a low level language instead.

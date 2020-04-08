@@ -54,7 +54,7 @@ class Simulator {
         this.pathgroup = new THREE.Group()
         this.scene.add(this.pathgroup)
 
-        this.init_cubes()
+        //this.init_cubes()
 
     }
 
@@ -149,11 +149,9 @@ class Simulator {
         for (let path of this.paths) {
             if (path.type !== 'agent' || path.pathFound === false) {continue}
 
-            console.log(path)
             if (path.path.length <= step) {continue}
 
             let loc = path.path[step]
-            console.log(path, loc, step)
 
             path.obj.position.x = loc[0]
             path.obj.position.z = loc[1]
@@ -182,6 +180,7 @@ class Simulator {
             antialias: true
         })
 
+        this.camera.position.x = 5
         this.camera.lookAt(0, 0, 0)
 
         // controls config
@@ -190,7 +189,7 @@ class Simulator {
         this.controls.dampingFactor = 0.01;
         this.controls.autoRotate = true
 		this.controls.object.position.y += 4
-        this.controls.target = this.cubes[2][2].position.clone()
+        this.controls.target = new THREE.Vector3(0,0,0)
 
         this.el.addEventListener('mouseup', () => this.controls.autoRotate = false)
         this.el.addEventListener('dblclick', () => this.controls.autoRotate = true)
@@ -210,7 +209,6 @@ class Simulator {
 
         this.controls.update()
 
-        this.animate_cubes()
         requestAnimationFrame( () => this.render() )
     }
 }
@@ -220,11 +218,9 @@ class WebAPIController {
         this._anim_timer = null
         this._anim_step  = 0
     }
-    async load_room(room_name) {
-        console.log(`loading '${room_name}' from ${API_URL}`)
 
-
-        let path = await fetch(
+    async get_live_room() {
+        const path = await fetch(
             API_URL,
             {
                 method: 'POST',
@@ -233,7 +229,21 @@ class WebAPIController {
             }
         )
 
-        path = await path.json()
+        return await path.json()
+    }
+
+    async get_mocked_room() {
+        const path = await fetch('static/mock/room0.json')
+
+        return await path.json()
+    }
+
+    async load_room(room_name) {
+        console.log(`loading '${room_name}' from ${API_URL}`)
+
+
+        //let path = await this.get_live_room()
+        let path = await this.get_mocked_room()
 
         console.log(path)
 
@@ -253,7 +263,7 @@ class WebAPIController {
             clearInterval(this._anim_timer)
         }
         
-        sim.remove_cubes()
+        //sim.remove_cubes()
         sim.load_computed_paths(path)
         sim.apply_paths(0)
         sim.pathgroup.translateX(-8)

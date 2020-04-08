@@ -16,8 +16,20 @@
 <tr>
 <td align="center">Arduino Uno (built in SRF chip)</td>
 <td align="center">1</td>
-<td align="center">&pound;20</td>
-<td align="center">&pound;20</td>
+<td align="center">&pound;19</td>
+<td align="center">&pound;19</td>
+</tr>
+<tr>
+<td align="center">Motor Board</td>
+<td align="center">1</td>
+<td align="center">&pound;10</td>
+<td align="center">&pound;10</td>
+</tr>
+<tr>
+<td align="center">Encoder Board</td>
+<td align="center">1</td>
+<td align="center">&pound;10</td>
+<td align="center">&pound;10</td>
 </tr>
 <tr>
 <td align="center">LEGO EV3 Motors</td>
@@ -27,9 +39,9 @@
 </tr>
 <tr>
 <td align="center">9mm MDF Structure</td>
-<td align="center">???kg/m2</td>
-<td align="center">&pound;6 ???kg/m2</td>
-<td style="text-align: center;" align="center">&pound;2</td>
+<td align="center">0.3636 m<sup>2</sup></td>
+<td align="center">&pound;6 per m<sup>2</sup></td>
+<td style="text-align: center;" align="center">&pound;2.19</td>
 </tr>
 <tr>
 <td align="center">Batteries (AA)</td>
@@ -47,7 +59,7 @@
 <td align="center"><b>TOTAL</b></td>
 <td align="center"></td>
 <td align="center"></td>
-<td style="text-align: center;" align="center"><b>&pound;129.5</b></td>
+<td style="text-align: center;" align="center"><b>&pound;143.69</b></td>
 </tr>
 </tbody>
 </table>
@@ -91,9 +103,9 @@
 </tbody>
 </table>
 
-Total cost for a complete prototype setup plus 3 tables then is £463.50.  
+Total cost for a complete prototype setup plus 3 tables then is £506.07.  
 
-In general, the total cost for a complete setup with n tables is: £75 + n(129.5)
+In general, the total cost for a complete setup with n tables is: £75 + n(143.69)
 
 ## Estimated Cost of Mass Production
 
@@ -113,10 +125,10 @@ In later iterations of the product, packages containing the base components and 
 </thead>
 <tbody>
 <tr>
-<td align="center">Arduino Uno</td>
+<td align="center">Custom Board</td>
 <td align="center">1</td>
-<td align="center">&pound;20</td>
-<td align="center">&pound;20</td>
+<td align="center">&pound;30</td>
+<td align="center">&pound;30</td>
 </tr>
 <tr>
 <td align="center">nRF24L01+PA+LNA Wireless Transceiver</td>
@@ -132,8 +144,8 @@ In later iterations of the product, packages containing the base components and 
 </tr>
 <tr>
 <td align="center">Material (plastic and wood)</td>
-<td align="center">???</td>
-<td align="center">&pound;10</td>
+<td align="center">4.108 m<sup>2</sup></td>
+<td align="center">&pound;10 per m<sup>2</sup></td>
 <td style="text-align: center;" align="center">&pound;41.08</td>
 </tr>
 <tr>
@@ -158,7 +170,7 @@ In later iterations of the product, packages containing the base components and 
 <td align="center"><b>TOTAL</b></td>
 <td align="center"></td>
 <td align="center"></td>
-<td style="text-align: center;" align="center"><b>&pound;193.61</b></td>
+<td style="text-align: center;" align="center"><b>&pound;203.61</b></td>
 </tr>
 </tbody>
 </table>
@@ -184,15 +196,15 @@ In later iterations of the product, packages containing the base components and 
 </tr>
 <tr>
 <td align="center">Charging Station</td>
-<td align="center">?</td>
-<td align="center">&pound;???</td>
-<td style="text-align: center;" align="center">&pound;??</td>
+<td align="center">1 per 10 tables&#42;&#42;</td>
+<td align="center">&pound;12</td>
+<td style="text-align: center;" align="center">&pound;12++</td>
 </tr>
 <tr>
 <td align="center">Cameras&#42;</td>
-<td align="center">0.5/m2</td>
+<td align="center">0.5/m<sup>2</sup></td>
 <td align="center">&pound;10</td>
-<td style="text-align: center;" align="center">&pound;?</td>
+<td style="text-align: center;" align="center">&pound;10++</td>
 </tr>
 <tr>
 <td align="center">Base Server on site</td>
@@ -204,17 +216,19 @@ In later iterations of the product, packages containing the base components and 
 <td align="center"><b>TOTAL</b></td>
 <td align="center"></td>
 <td align="center"></td>
-<td style="text-align: center;" align="center"><b>&pound;55 + camera</b></td>
+<td style="text-align: center;" align="center"><b>&pound;67 + extra camera + extra chargers</b></td>
 </tr>
 </tbody>
 </table>
 
 <br>
-We estimate the total cost for a complete setup, a camera and 3 complete table products then would be: £655.83  
+We estimate the total cost for a complete setup, a camera and 3 complete table products then would be: £697.83  
 
-In general, the total cost of a complete setup, a camera and n complete tables is: £75 + n(193.61)  
+In general, the total cost of a complete setup, a camera and n complete tables is: £67 + n(203.61)  
 
 This may sound like a lot of money, but a quick search reveals that a standard school desk will cost you between £120 - £200.  
 
 
 &#42;Pre-installed cameras may also be used instead of buying new ones. But the coverage, may need to be extended.
+
+&#42;&#42;It is recommended to buy one wireless charger per 10 tables, to allow all tables to be able to maintain their charge.
