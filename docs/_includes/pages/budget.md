@@ -39,8 +39,8 @@
 </tr>
 <tr>
 <td align="center">9mm MDF Structure</td>
-<td align="center">0.3636 m^2</td>
-<td align="center">&pound;6 per m^2</td>
+<td align="center">0.3636 m<sup>2</sup></td>
+<td align="center">&pound;6 per m<sup>2</sup></td>
 <td style="text-align: center;" align="center">&pound;2.19</td>
 </tr>
 <tr>
@@ -144,8 +144,8 @@ In later iterations of the product, packages containing the base components and 
 </tr>
 <tr>
 <td align="center">Material (plastic and wood)</td>
-<td align="center">4.108 m^2</td>
-<td align="center">&pound;10 per m^2</td>
+<td align="center">4.108 m<sup>2</sup></td>
+<td align="center">&pound;10 per m<sup>2</sup></td>
 <td style="text-align: center;" align="center">&pound;41.08</td>
 </tr>
 <tr>
@@ -202,7 +202,7 @@ In later iterations of the product, packages containing the base components and 
 </tr>
 <tr>
 <td align="center">Cameras&#42;</td>
-<td align="center">0.5/m2</td>
+<td align="center">0.5/m<sup>2</sup></td>
 <td align="center">&pound;10</td>
 <td style="text-align: center;" align="center">&pound;10++</td>
 </tr>
@@ -222,13 +222,13 @@ In later iterations of the product, packages containing the base components and 
 </table>
 
 <br>
-We estimate the total cost for a complete setup, a camera and 3 complete table products then would be: £687.83  
+We estimate the total cost for a complete setup, a camera and 3 complete table products then would be: £655.83  
 
-In general, the total cost of a complete setup, a camera and n complete tables is: £77 + n(203.61)  
+In general, the total cost of a complete setup, a camera and n complete tables is: £67 + n(203.61)  
 
 This may sound like a lot of money, but a quick search reveals that a standard school desk will cost you between £120 - £200.  
 
 
 &#42;Pre-installed cameras may also be used instead of buying new ones. But the coverage, may need to be extended.
 
-&#42;&#42;It is recommended to buy one wireless charger per 10 tables, to allow all tables to be able to maintain their charge. 
+&#42;&#42;It is recommended to buy one wireless charger per 10 tables, to allow all tables to be able to maintain their charge.
