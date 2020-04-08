@@ -11,6 +11,7 @@ All the tests relating to process makespan were done on a laptop with i7-7700HQ 
 
 It is vital that the vision module can run quickly because it can be called several hundred times in a complete usage cycle. We wrapped the exposed function (which other modules call to get position and orientation information) in a timer and timed its makespan with respect to the number of tables present. 5 trials were run for each configuration.
 
+<center>
 | # of Tables | Makespan (s) |
 |:--------:|:------------:|
 | 1 | 0.057 | 
@@ -23,6 +24,7 @@ It is vital that the vision module can run quickly because it can be called seve
 | 8 | 0.092 |
 | 9 | 0.094 |
 | 10 | 0.094 |
+</center>
 
 The results indicate that the vision module is plenty fast in our system and it will in no way bottleneck our system's performance.
 
@@ -32,7 +34,7 @@ Tables were placed equidistant from each other and facing the same direction. We
 
 The standard error for each of the tests is presented in the table below. On average the standard error is about 0.2° for table orientations and about 0.08cm for distances.
 
-
+<center>
 | Test number | Standard error<br>for **orientation** (°) | Standard error<br>for **distance** (cm)|
 |:-----------:|:------------------------------------:|:----------------------------------------:|
 | 1 | 0.144 | 0.080 |
@@ -46,6 +48,7 @@ The standard error for each of the tests is presented in the table below. On ave
 | 9 | 0.322 | 0.148 |
 | 10 | 0.216 | 0.015 |
 | 11 | 0.342 | 0.101 |
+</center>
 
 The results are better than expected as a standard error of 0.2° and 0.08 cm is indistinguishable by eye and small enough to not cause any accidents.
 
@@ -53,6 +56,7 @@ The results are better than expected as a standard error of 0.2° and 0.08 cm is
 
 Path finding module was tested in simulated environments because we do not have access to any large area yet. The simulated environments are obstacle-free maps of different sizes with different number of tables present. The layouts are randomized and we are interested in the makespan of paths calculation so users would not need to wait too long.
 
+<center>
  | Map Size | # of Tables | Makespan (s) |
 |:-----------:|:-----------------:|:----------------------------------------:|
 | 10x10 | 4 | 0.04 |
@@ -67,6 +71,7 @@ Path finding module was tested in simulated environments because we do not have 
 | 30x30 | 22 | 1.16 |
 | 35x35 | 24 | 2.09 |
 | 35x35 | 26 | 2.20 |
+</center>
 
 We can see that the time it takes increases faster and faster as the number of agent increases and the maps becomes larger. The time is acceptable for our prototype system at the moment but we will improve upon this results.
 
