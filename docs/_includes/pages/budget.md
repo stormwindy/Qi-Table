@@ -111,7 +111,8 @@ Tables could be useful in presenting this data. An example table is shown below:
 </tbody>
 </table>
 
-Total cost for a complete prototype setup plus 3 tables then is £463.50.
+Total cost for a complete prototype setup plus 3 tables then is £463.50.  
+
 In general, the total cost for a complete setup with n tables is: £75 + n(129.5)
 
 ## Estimated Cost of Mass Production
