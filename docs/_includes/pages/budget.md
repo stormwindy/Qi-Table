@@ -16,8 +16,20 @@
 <tr>
 <td align="center">Arduino Uno (built in SRF chip)</td>
 <td align="center">1</td>
-<td align="center">&pound;20</td>
-<td align="center">&pound;20</td>
+<td align="center">&pound;19</td>
+<td align="center">&pound;19</td>
+</tr>
+<tr>
+<td align="center">Motor Board</td>
+<td align="center">1</td>
+<td align="center">&pound;10</td>
+<td align="center">&pound;10</td>
+</tr>
+<tr>
+<td align="center">Encoder Board</td>
+<td align="center">1</td>
+<td align="center">&pound;10</td>
+<td align="center">&pound;10</td>
 </tr>
 <tr>
 <td align="center">LEGO EV3 Motors</td>
