@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+
 from http.server import  BaseHTTPRequestHandler, HTTPServer
 from cbs_mapf.planner import Planner
 import socketserver
@@ -14,7 +16,7 @@ class Server(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'application/json')
         self.send_header('Access-Control-Allow-Origin', '*',)
         self.send_header('Access-Control-Allow-Headers', 'Authorization, Content-Type')
-        self.send_header('Access-Control-Allow-Methods', 'POST')
+        self.send_header('Access-Control-Allow-Methods', 'POST,GET,OPTIONS')
         self.end_headers()
 
     @staticmethod
@@ -86,11 +88,14 @@ class Server(BaseHTTPRequestHandler):
 
     def do_HEAD(self):
         self._set_headers()
+
+    def do_OPTIONS(self):
+        self._set_headers()
         
     # GET sends back a Hello world message
     def do_GET(self):
         self._set_headers()
-        self.wfile.write(json.dumps({'hello': 'world', 'received': 'ok'}))
+        self.wfile.write(json.dumps({'hello': 'world', 'received': 'ok'}).encode('ascii'))
 
     def do_POST(self):
         ctype, pdict = cgi.parse_header(self.headers['content-type'])
