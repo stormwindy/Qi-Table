@@ -26,9 +26,9 @@ It is vital that the vision module can run quickly because it can be called seve
 
 The results indicate that the vision module is more than fast enough for our system and it will in no way bottleneck our system's performance.
 
-More vital still is that the vision module be as accurate as possible to avoid any chance of collision. We tested vision's accuracy by placing 8 tables in a 4-by-2 formation in different positions and orientations within the operation area. 
+More vital still is that the vision module be as accurate as possible to avoid any chance of collision. We tested vision's accuracy by placing 8 AR tags representing tables in a 4-by-2 formation in different positions and orientations within the operation area. 
 
-Tables were placed equidistant from each other and facing the same direction. We then recorded the position and orientation information returned by vision. In an ideal system, distances between the tables and orientations of the tables should be equal.
+Tags were placed equidistant from each other and facing the same direction. We then recorded the position and orientation information returned by vision. In an ideal system, distances between the tables and orientations of the tables should be equal.
 
 The standard error for each of the tests is presented in the table below. On average the standard error is about 0.2° for table orientations and about 0.08cm for distances.
 
