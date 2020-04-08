@@ -114,7 +114,7 @@ Tables could be useful in presenting this data. An example table is shown below:
 
 ## Estimated Cost of Mass Production
 
-The following costs are only estimates, based on the retail prices. This means the prices also include the cost of the workforce, research and development, shipping and guarantees. In later iterations of the software, it can be sold as a service with subscriptions.
+The following costs are only estimates, based on the retail prices of the individual components. This means they also factor in the cost of production, research & development, shipping and quality guarantees. In later iterations of the software, it can be sold as a service with subscriptions.
 
 <table style="margin-left: auto; margin-right: auto;"><caption>Table 3: Cost for each costumer table</caption>
 <thead>
