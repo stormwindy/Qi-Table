@@ -119,10 +119,10 @@ In general, the total cost for a complete setup with n tables is: £75 + n(129.5
 
 The following costs are only estimates, based on the retail prices of the individual components. This means they factor in the cost of production, research & development, shipping and quality guarantees.  
 
-In later iterations of the product, packages containing the base components and a collection of tables could be made available to customers. Small percentage discounts that increase alongside the nubmer of tables in the package would incentivize the customer to buy more tables and all the necessary pieces from Infinitables.
+In later iterations of the product, packages containing the base components and a collection of tables could be made available to customers. Small percentage discounts that increase alongside the nubmer of tables in the package would incentivize the consumer to buy more tables and all the necessary pieces from Infinitables.
 
 
-<table style="margin-left: auto; margin-right: auto;"><caption>Table 3: Cost for each costumer table</caption>
+<table style="margin-left: auto; margin-right: auto;"><caption>Table 3: Cost for each consumer table</caption>
 <thead>
 <tr>
 <th align="center">Item</th>
@@ -149,12 +149,6 @@ In later iterations of the product, packages containing the base components and 
 <td align="center">2</td>
 <td align="center">&pound;30</td>
 <td style="text-align: center;" align="center">&pound;60</td>
-</tr>
-<tr>
-<td align="center">Batteries (AA)</td>
-<td align="center">8</td>
-<td align="center">&pound;0.32</td>
-<td style="text-align: center;" align="center">&pound;2.52</td>
 </tr>
 <tr>
 <td align="center">Material (plastic and wood)</td>
@@ -192,7 +186,7 @@ In later iterations of the product, packages containing the base components and 
 
 <br><br>
 
-<table style="margin-left: auto; margin-right: auto;"><caption>Table 4: One time cost for costumer table</caption>
+<table style="margin-left: auto; margin-right: auto;"><caption>Table 4: One time cost for consumer table</caption>
 <thead>
 <tr>
 <th align="center">Item</th>
