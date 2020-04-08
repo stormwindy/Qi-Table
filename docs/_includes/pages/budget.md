@@ -63,10 +63,42 @@ Tables could be useful in presenting this data. An example table is shown below:
 <td align="center">&pound;12</td>
 <td style="text-align: center;" align="center">&pound;48</td>
 </tr>
+<tr>
 <td align="center"><b>TOTAL</b></td>
 <td align="center"></td>
 <td align="center"></td>
 <td style="text-align: center;" align="center"><b>&pound;129.5</b></td>
+</tr>
+</tbody>
+</table>
+
+<table style="margin-left: auto; margin-right: auto;"><caption>Table 1: One time cost for prototype</caption>
+<thead>
+<tr>
+<th align="center">Item</th>
+<th align="center">Quantity</th>
+<th align="center">Cost Per Unit</th>
+<th align="center">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Arduino Nano (built in SRF chip)</td>
+<td align="center">1</td>
+<td align="center">&pound;5</td>
+<td align="center">&pound;5</td>
+</tr>
+<tr>
+<td align="center">Base Server (AD/DC adapter, SD card, Pi and Case)</td>
+<td align="center">1</td>
+<td align="center">&pound;50</td>
+<td style="text-align: center;" align="center">&pound;50</td>
+</tr>
+<tr>
+<td align="center"><b>TOTAL</b></td>
+<td align="center"></td>
+<td align="center"></td>
+<td style="text-align: center;" align="center"><b>&pound;55</b></td>
 </tr>
 </tbody>
 </table>
