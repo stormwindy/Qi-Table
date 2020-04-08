@@ -1,11 +1,56 @@
-# Team
+<h1 align="center">Team</h1>
+<h3 align="center">Meet the Team Members</h3>
 
-Blog vinyl viral kinfolk, sriracha trust fund ugh echo park adaptogen taiyaki. Readymade kinfolk scenester poke ramps everyday carry vegan cold-pressed. Occupy food truck poke humblebrag leggings brooklyn pitchfork pop-up fanny pack lo-fi wolf kogi kinfolk mlkshk keffiyeh. DIY 90's selfies, shoreditch iceland you probably haven't heard of them succulents tattooed locavore single-origin coffee wolf YOLO hot chicken normcore banjo. Yr palo santo hot chicken hexagon.
+## Team Management
 
-Cray fingerstache sriracha forage crucifix vape. Gochujang hammock poke, church-key neutra food truck iPhone knausgaard affogato shoreditch. Truffaut cloud bread asymmetrical sriracha pok pok echo park direct trade authentic synth fashion axe bicycle rights farm-to-table gentrify kinfolk tumeric. Blog bicycle rights sriracha pickled you probably haven't heard of them cray. Enamel pin raw denim chicharrones bitters listicle migas venmo kickstarter craft beer kogi unicorn tumblr selfies. Humblebrag polaroid art party banh mi activated charcoal chia food truck forage intelligentsia messenger bag retro.
+Our team is split into a software team with 6 people and a hardware team with 4 people. While it might seem like there is a clear division between the two teams, our organization is in fact very organic. Each team member carries out the work they are passionate about and have expertise in. It is also not uncommon that a software team member does hardware work, or vice versa.
 
-Hashtag chicharrones sriracha, distillery master cleanse kale chips hella. Helvetica waistcoat chillwave plaid narwhal roof party. Copper mug heirloom locavore man braid. Plaid williamsburg man bun pickled. Shaman tote bag yr, ugh bitters kitsch YOLO art party.
+Throughout the developement process, team members share their updates and findings continuously on Slack. To track progress and to ensure that our work is accessible to everyone, we have used GitHub's pipeline extensively - every individual's work is carefully reviewed by other team members and have well written documentation explaining and justifying each new piece of content.
 
-Trust fund food truck YOLO, +1 tumeric coloring book selfies. Kickstarter four loko put a bird on it, bitters sriracha everyday carry activated charcoal snackwave leggings. Mlkshk beard before they sold out, poke chartreuse typewriter hoodie craft beer bicycle rights narwhal farm-to-table cornhole neutra. Kale chips health goth kogi sartorial viral fashion axe drinking vinegar messenger bag butcher. Hexagon flannel sartorial, coloring book letterpress beard butcher lumbersexual yr bespoke lomo hell of craft beer tofu. Craft beer meggings retro, edison bulb offal williamsburg salvia hella hell of succulents heirloom.
+We have planned our work with the help of the Gantt chart below which has proven to be very successful.
 
-Squid skateboard chillwave, beard freegan austin venmo shaman pop-up vape vinyl. Cornhole mustache occupy VHS 3 wolf moon lo-fi quinoa crucifix single-origin coffee la croix freegan. Direct trade pop-up XOXO umami, yuccie readymade street art hashtag godard meditation asymmetrical pug shoreditch gochujang yr. Williamsburg messenger bag semiotics heirloom tbh bitters, cray unicorn migas copper mug keffiyeh kogi actually shabby chic. Butcher succulents knausgaard retro wayfarers.
+<p align="center">
+  <img width="550" src="static/imgs/gantt.png">
+</p>
+
+
+## Team Members and Roles
+
+<style type="text/css">
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border:2px solid #000000;
+}	
+
+th{
+    border:2px solid #000000;
+}
+
+td{
+    border:2px solid #000000;
+}
+</style>
+
+|   |    Name  |       Role      |
+|:-:|:--------:|:---------------:|
+| <img src="static/imgs/turkey.jpeg" width="100"/>  | Ege Elgun | Hardware Manager |
+| <img src="static/imgs/india.jpg" width="100"/>  | Megha Garg | Software Engineer|
+| <img src="static/imgs/us.jpg" width="100"/>  | Patrick Kage | Software Manager |
+| <img src="static/imgs/uk.jpg" width="100"/>  | Sean Mohan| Software Engineer|
+| <img src="static/imgs/poland.jpg" width="100"/>  | Maciek Niedziela | Software Engineer|
+| <img src="static/imgs/china.jpg" width="100"/>  | Haoran Peng | Software Engineer|
+| <img src="static/imgs/lithuania.jpg" width="100"/>  | Smiltė Petronytė | Software Engineer|
+| <img src="static/imgs/uk.jpg" width="100"/>  | Saad Sharif| Hardware Engineer |
+| <img id="1" src="static/imgs/hungary.jpg" width="100"/>  | Marcell Uzonyi | Hardware Engineer|
+| <img src="static/imgs/china.jpg" width="100"/>  | Kaiwen Xue| Hardware Engineer|
+
+
+<script>
+  function randImg() {
+    var x = document.getElementById("1");
+    x.src= "https://randomuser.me/api/portraits/men/" + Math.floor((Math.random() * 91) + 1) + ".jpg";
+  }
+
+  window.onload=randImg();
+</script>

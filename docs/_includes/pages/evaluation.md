@@ -1,7 +1,44 @@
-# Evaluation
+<h1 align="center">Evaluation</h1>
+<h3 align="center">How Well Does Our System Perform?</h3>
 
-Chambray yuccie palo santo twee poke green juice affogato artisan prism meh hashtag normcore raclette. VHS 90's occupy, whatever synth pabst forage you probably haven't heard of them fanny pack try-hard. Ugh waistcoat squid tbh typewriter. Sartorial food truck kinfolk selfies, hell of jean shorts brooklyn marfa whatever. Shabby chic kale chips gochujang, fashion axe dreamcatcher gluten-free pour-over readymade lyft etsy blue bottle. Hot chicken distillery organic, banjo iPhone hammock sriracha blue bottle viral.
 
-Shaman gastropub small batch, 3 wolf moon you probably haven't heard of them art party pok pok normcore tofu try-hard etsy chia live-edge. La croix vinyl fanny pack, irony hella humblebrag lo-fi adaptogen banjo vaporware lumbersexual hot chicken listicle salvia. Hoodie coloring book everyday carry post-ironic pug offal wayfarers waistcoat fanny pack tattooed asymmetrical mixtape vaporware flannel. Banh mi leggings next level, forage vegan synth jean shorts unicorn salvia migas hexagon. Helvetica tote bag flannel semiotics. Migas truffaut narwhal ethical. Listicle try-hard copper mug sriracha, chambray tattooed food truck chillwave.
+## Evaluation Tests
 
-3 wolf moon fixie authentic tilde, photo booth godard lumbersexual drinking vinegar direct trade hell of ugh chartreuse. Artisan austin twee, offal selfies edison bulb next level kale chips. Jean shorts trust fund next level, mustache pitchfork four loko tousled. Gluten-free williamsburg jianbing umami, shaman meh shabby chic actually pork belly pok pok direct trade fam sartorial. Adaptogen hot chicken jianbing, vegan you probably haven't heard of them mumblecore cray man bun +1 jean shorts bushwick live-edge migas ramps synth. Affogato freegan pok pok, celiac cornhole plaid cray polaroid selvage ethical etsy godard trust fund jianbing bespoke. Poutine messenger bag ugh gentrify post-ironic skateboard, gochujang glossier slow-carb wayfarers before they sold out.
+### Speed and Accuracy of the Vision Module
+
+It is vital that the vision module can run quickly because it can be called several hundred times in a complete usage cycle. 
+
+
+
+It is even more vital that the vision module is as accurate as possible to avoid any chance of collision. We tested vision's accuracy by placing 8 tables in a 4-by-2 formations in different positions and orientations within the operation area. 
+
+Tables were placed equidistant from each other and facing the same direction. We then recorded the position and orientation information returned by vision. In an ideal system, distances between the tables and orientations of the tables should be equal.
+
+The standard error for each of the tests is presented in the table below. On average the standard error is about 0.2° for table orientations and about 0.08cm for distances.
+
+
+| Test number | Standard error<br>for **orientation** (°) | Standard error<br>for **distance** (cm) |
+|:-----------:|:------------------------------------:|:----------------------------------------:|
+| 1 | 0.144 | 0.080 |
+| 2 | 0.260 | 0.061 |
+| 3 | 0.168 | 0.096 |
+| 4 | 0.140 | 0.088 |
+| 5 | 0.141 | 0.061 |
+| 6 | 0.313 | 0.067 |
+| 7 | 0.223 | 0.055 |
+| 8 | 0.190 | 0.124 |
+| 9 | 0.322 | 0.148 |
+| 10 | 0.216 | 0.015 |
+| 11 | 0.342 | 0.101 |
+
+### Speed and Success Rate of the Path Finding Module
+
+
+
+### User Tests
+
+Present any user testing you have performed for your product. The same advice about presenting data should be used as above
+
+## Main Areas of Improvement
+
+What did you learn from your testing? How did your evaluation/user testing change your system?
