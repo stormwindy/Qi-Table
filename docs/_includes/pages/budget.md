@@ -72,7 +72,7 @@ Tables could be useful in presenting this data. An example table is shown below:
 </tbody>
 </table>
 
-</br></br>
+<br><br>
 
 <table style="margin-left: auto; margin-right: auto;"><caption>Table 2: One time cost for prototype</caption>
 <thead>
@@ -106,13 +106,15 @@ Tables could be useful in presenting this data. An example table is shown below:
 <td align="center"><b>TOTAL</b></td>
 <td align="center"></td>
 <td align="center"></td>
-<td style="text-align: center;" align="center"><b>&pound;55</b></td>
+<td style="text-align: center;" align="center"><b>&pound;75</b></td>
 </tr>
 </tbody>
 </table>
 
 
 ## Estimated Cost of Mass Production
+
+The following costs are only estimates, based on the retail prices. This mean that the prices also includes the cost of the workforce, R&D, shipping and guarantees. In later iteration of the software, it can be sold as a service with a subscriptions.
 
 <table style="margin-left: auto; margin-right: auto;"><caption>Table 3: Cost for each costumer table</caption>
 <thead>
@@ -182,7 +184,7 @@ Tables could be useful in presenting this data. An example table is shown below:
 </table>
 
 
-</br></br>
+<br><br>
 
 <table style="margin-left: auto; margin-right: auto;"><caption>Table 4: One time cost for costumer table</caption>
 <thead>
@@ -207,7 +209,7 @@ Tables could be useful in presenting this data. An example table is shown below:
 <td style="text-align: center;" align="center">&pound;??</td>
 </tr>
 <tr>
-<td align="center">Cameras</td>
+<td align="center">Cameras&#42;</td>
 <td align="center">0.5/m2</td>
 <td align="center">&pound;10</td>
 <td style="text-align: center;" align="center">&pound;?</td>
@@ -222,7 +224,11 @@ Tables could be useful in presenting this data. An example table is shown below:
 <td align="center"><b>TOTAL</b></td>
 <td align="center"></td>
 <td align="center"></td>
-<td style="text-align: center;" align="center"><b>&pound;55 + Camera</b></td>
+<td style="text-align: center;" align="center"><b>&pound;55 + camera</b></td>
 </tr>
 </tbody>
 </table>
+
+<br>
+
+&#42;Pre-installed cameras may also be used instead of buying new ones. But the coverage, may need to be extended.
