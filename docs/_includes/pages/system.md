@@ -1,7 +1,6 @@
 <h1 align="center">System</h1>
 <h3 align="center">What does our system do?</h3>
 
-## Concept
 
 Here at Qi we found a solution that will revolutionize the way conference centres work. We created Infinitables: motorized tables which autonomously organize themselves into desired layouts. Our goal is to help you save time, human resources and money. With the help of our system you will be able to create your own layouts at the touch of a button.
 
@@ -12,13 +11,11 @@ Here at Qi we found a solution that will revolutionize the way conference centre
 </p>
 
 
-### Functionality
-
 <p align="center">
   <img width="600" src="static/imgs/functionality.png">
 </p>
 
-Qi offers more than a solution for making your daily operations more efficient. We designed Infinitables to look just like a well polished, easy on the eye table with the aim of making your company’s switch to our system seamless. Infinitables will add more functionality to your space while the **minimalistic and sleek personalized design** will transform and modernize it even further.
+Qi offers more than a solution for making your daily operations more efficient. We designed Infinitables to look just like a well polished, easy on the eye table with the aim of making your company’s switch to our system easier. Infinitables will add more functionality to your space while the **minimalistic and sleek personalized design** will transform and modernize it even further.
 
 We implemented **fully autonomous multi-agent path finding algorithm** with conflict-based search and space time A* which allows Infinitables to move simultaneously and effortlessly, thus saving you time and manual labour.
 
@@ -27,12 +24,9 @@ Our **easy to use web application** allows the user to design new room layouts, 
 
 ## Market Research
 
-
-### Target Customer Segment :
-
 Our product is essential in places that require frequent rearrangement of table layouts, thus suited for events such as business meetings, seminars, conferences, workshops, wedding receptions, dinner parties and more. This use case could easily be extended to classrooms and theatre. Our customer segment would essentially then be business and community centres, event venues, banquet halls, hotels and schools in the UK.
 
-### Scope in Industry :
+### Scope in Industry
 
 According to the report on the UK’s event industry by eventbrite, the UK has over 10,000 venues with 1.3 billion business events being held each year. The conference and meetings segment is worth £19.9 billion in terms of direct spend to the UK economy.
 
@@ -42,7 +36,7 @@ Professionals are anticipating growth in the industry but for budgets to remain 
 
 <img align="center" src="static/imgs/market_research2.png" width="600"/>
 
-### Competitors :
+### Competitors
 
 We do not face much direct competition because there are currently no companies in the UK manufacturing automated table systems for our target segments. Nissan launched its Intelligent Parking Chairs, which parks the chairs in its original position with the sound of a clap. Our niche differs in two major aspects: 
 - They mostly targeted workspaces such as offices and the chairs would tuck themselves back into set positions. 
@@ -51,7 +45,7 @@ We do not face much direct competition because there are currently no companies 
 Our competitors are companies who go out on contract bases to do the set up and rearrange the layout. The venues may also allocate the task to their own team of people. In either case, manual labour, risk assessment and wages will be required.
 
 
-### Value to Customer :
+### Value to Customer
 To understand why the customer would want our product, let's assume a scenario illustrated bellow:
 
 <img align="center" src="static/imgs/event_cost.png" width="600"/>
