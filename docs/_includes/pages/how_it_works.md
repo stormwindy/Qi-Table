@@ -34,7 +34,7 @@ Please find one of our table designs below:
 Table's internal structure allows easy access and maintanance to the user. Table includes 2 motorized wheels and 4 support wheels to keep table in balance, and steer the table in the desired direction. Connection graph of the table with significant components highlighted can be found below. 
 
 <p align="center">
-  <img width="650" src="static/imgs/system_diagram.png">
+  <img width="650" src="static/imgs/system_diagram_v1.png">
 </p>
 
 ## Web Application
