@@ -1,27 +1,21 @@
 ---
 GOAL:
-- !!python/tuple [350, 150]
-- !!python/tuple [450, 150]
-- !!python/tuple [750, 150]
-- !!python/tuple [1050, 150]
+- !!python/tuple [1300, 150]
+- !!python/tuple [1300, 900]
+- !!python/tuple [1100, 150]
+- !!python/tuple [1100, 900]
 GRID_SIZE: 30
 RECT_OBSTACLES:
   0:
   - [0, 0]
   - [1919, 1079]
   1:
-  - [300,240]
-  - [1620, 300]
-  2:
-  - [300, 300]
-  - [360, 600]
-  3:
-  - [1560, 300]
-  - [1620, 660]
+  - [500,500]
+  - [1620, 750]
 ROBOT_RADIUS: 60
 START:
-- !!python/tuple [350, 400]
-- !!python/tuple [450, 400]
-- !!python/tuple [750, 400]
-- !!python/tuple [1050, 400]
+- !!python/tuple [100, 900]
+- !!python/tuple [100, 1100]
+- !!python/tuple [1800, 900]
+- !!python/tuple [1800, 1100]
 
