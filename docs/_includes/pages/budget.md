@@ -3,7 +3,7 @@
 
 ## Cost of Prototype (400 x 260 x 300 mm)
 
-<table style="margin-left: auto; margin-right: auto;"><caption>Table 1: Cost for each prototype table</caption>
+<table style="margin-left: auto; margin-right: auto;"><caption>Table 1: Cost for each miniaturised prototype table</caption>
 <thead>
 <tr>
 <th align="center">Item</th>
