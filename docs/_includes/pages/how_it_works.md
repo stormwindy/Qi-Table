@@ -37,6 +37,8 @@ Table's internal structure allows easy access and maintanance to the user. Table
   <img width="650" src="static/imgs/system_diagram_v1.png">
 </p>
 
+You can easily charge the tables by using the charging cable provided and the port located right next to the battery 'drawer' which can be seen in the above image right under the battery.
+
 ## Web Application
 
 The users control the system through a web application which allows them to design and edit room layouts (building up a library of reusable setups), execute them and interrupt the operation should any problems arise. It's web based and hosted on the control server, so it can be used both on mobile and desktop, with no installation required!  
