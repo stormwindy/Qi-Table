@@ -15,7 +15,7 @@ Here at Qi we found a solution that will revolutionize the way conference centre
   <img width="600" src="static/imgs/functionality.png">
 </p>
 
-Qi offers more than a solution for making your daily operations more efficient. We designed Infinitables to look just like a well polished, easy on the eye table with the aim of making your company’s switch to our system and replacement of your old tables easier. Infinitables will add more functionality to your space while the **minimalistic and sleek personalized design** will transform and modernize it even further.
+Qi offers more than a solution for making your daily operations more efficient. We designed Infinitables to look just like a well polished, easy on the eye table with the aim of making your company’s switch to our system easier. Infinitables will add more functionality to your space while the **minimalistic and sleek personalized design** will transform and modernize it even further.
 
 We implemented **fully autonomous multi-agent path finding algorithm** with conflict-based search and space time A* which allows Infinitables to move simultaneously and effortlessly, thus saving you time and manual labour.
 
@@ -28,13 +28,18 @@ Our product is essential in places that require frequent rearrangement of table 
 
 ### Scope in Industry
 
-According to the report on the UK’s event industry by eventbrite, the UK has over 10,000 venues with 1.3 billion business events being held each year. The conference and meetings segment is worth £19.9 billion in terms of direct spend to the UK economy.
+The UK's event industry is evidently massive and blooming, according to the facts gatherered from <a href="https://www.eventbrite.co.uk/blog/academy/uk-event-industry-in-numbers-ds00/"> eventbrite </a>.   
 
-<img align="center" src="static/imgs/market_reseach1.png" width="600"/>
+<img align="center" src="static/imgs/event_industry_numbers.png" width="700"/>
 
-Professionals are anticipating growth in the industry but for budgets to remain the same, implying that there is a potential market for technology that could reduce costs and drive up revenues.
 
-<img align="center" src="static/imgs/market_research2.png" width="600"/>
+The conference and meetings segment is worth £19.9 billion in terms of direct spend to the UK economy.
+Professionals are anticipating growth in the industry. 
+
+<img align="center" src="static/imgs/market_research_update.png" width="600"/>
+
+One of the main purposes for an event was to generate revenue, which implies that there is a potential market for technology that could reduce costs and increase efficiency.
+
 
 ### Competitors
 
