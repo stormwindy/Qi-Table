@@ -73,7 +73,7 @@ We can see that the time it takes increases faster and faster as the number of a
 
 
 ### Motor Tests
-The motors were tested in two ways: Their consistency in movement (linear and rotation) and carrying capacity. Movement consistency tests are made by using the vision system where cameras check diversion of the table from a desired travel line. You can find an example of this test in the below picture. During the movement consistency tests it has been found that the weight distribution of components create a diversion from the linear expected movement. This has been countered by implementing a clibration option to our web app where the pwoers of the motors are callibrated to travel same distances. 
+The motors were tested in movement (linear and rotation). Movement consistency tests are made by using the vision system where cameras check diversion of the table from a desired travel line. You can find an example of this test in the below picture. During the movement consistency tests it has been found that the weight distribution of components create a diversion from the linear expected movement. This has been countered by implementing a clibration option to our web app where the pwoers of the motors are callibrated to travel same distances. 
 
 Even if the callibration is correct a 7% diversion in distance travelled between wheels was observed in straight line travel tests. This means the difference from the desired orientation was on average 7% of the total distance that was supposed to be taken in optimal case. In order to counter this problem we have used the vision system to assist and continoulsy command tables so that they get closer to the target.
 
@@ -81,7 +81,10 @@ Even if the callibration is correct a 7% diversion in distance travelled between
   <img width="650" src="static/imgs/orientation_tests.png">
 </p>
 
-Moreover, in rotation tests, it has been shown that long movement durations end up causing huge variations in the ending orientation of the table. It has been tested that powering periouds under 1 second provide an accurate turn with less than 5 degrees difference between desired orientation and actual resultant orientation. However, long powering periods (>5 seconds) end up causing having as high as 20 degrees of difference. One main reason for this is found to be rotational momentum. To counter this central server sends stop command before table gets to desired rotation. Moreover, vision system is again used to get the table closer to the desired rotation.
+Moreover, in rotation tests, it has been shown that long movement durations end up causing huge variations in the ending orientation of the table. It has been tested that powering periods under 1 second provide an accurate turn with less than 5 degrees difference between desired orientation and actual resultant orientation. However, long powering periods (>5 seconds) end up causing having as high as 20 degrees of difference. One main reason for this is found to be rotational momentum. To counter this central server sends stop command before table gets to desired rotation. Moreover, vision system is again used to get the table closer to the desired rotation by dynamically changing the commands.
+
+### Future Testing for Motors
+In light of the current situation all around the world regarding COVID-19, we were not able to test the hardware to the extent we have desired. If situations allowed it was planned to test the acceleration curve of motors at different weights. Moreover, it was desired to test the correlation of weight and oreintation divergence.
 
 ### User Tests
 
