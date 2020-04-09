@@ -52,6 +52,8 @@ class Simulator {
 
         // create the path group
         this.pathgroup = new THREE.Group()
+        this.pathgroup.translateX(-8)
+        this.pathgroup.translateZ(-4.5)
         this.scene.add(this.pathgroup)
 
         //this.init_cubes()
@@ -120,7 +122,14 @@ class Simulator {
             return cube
         }
 
-        // TODO: clean up list if one is already loaded
+        // clean up list if one is already loaded
+        this.scene.remove(this.pathgroup)
+        this.pathgroup = new THREE.Group()
+        this.pathgroup.translateX(-8)
+        this.pathgroup.translateZ(-4.5)
+        this.scene.add(this.pathgroup)
+
+
         if (this.paths) {
             for (let path of paths) {
                 if (path.obj) {
@@ -282,7 +291,7 @@ class WebAPIController {
         this._anim_step  = 0
     }
 
-    async get_live_room() {
+    async get_live_room(room_name) {
         const path = await fetch(
             API_URL,
             {
@@ -305,8 +314,12 @@ class WebAPIController {
         console.log(`loading '${room_name}' from ${API_URL}`)
 
 
-        //let path = await this.get_live_room()
-        let path = await this.get_mocked_room()
+        let path = []
+        if (room_name === 'room0') {
+            path = await this.get_mocked_room()
+        } else {
+            path = await this.get_live_room(room_name)
+        }
 
         console.log(path)
 
@@ -329,8 +342,6 @@ class WebAPIController {
         sim.load_computed_paths(path)
         sim.draw_goals()
         sim.apply_paths(0)
-        sim.pathgroup.translateX(-8)
-        sim.pathgroup.translateZ(-4.5)
         sim.pathgroup.scale.x = 0.5
         sim.pathgroup.scale.y = 0.5
         sim.pathgroup.scale.z = 0.5

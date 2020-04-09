@@ -1,0 +1,61 @@
+@import 'util/media';
+
+.controls {
+    z-index: 1;
+
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+    background-color: white;
+
+    @include media-desktop {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+
+        position: absolute;
+        left: 0;
+        bottom: 100px;
+        width: 10em;
+        padding: 10px 0 10px 0;
+    }
+
+    padding: 0;
+
+    list-style: none;
+}
+
+.controls__control {
+    margin: 0;
+    padding: 0 1rem 0 1rem;
+    cursor: pointer;
+    
+    color: $accent1;
+    background-color: none;
+
+    @include media-mobile {
+        & > i { display: none; }
+    }
+
+    @include media-desktop {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: space-between;
+
+        transition: color 0.25s cubic-bezier(0,0,0.3,1),
+                    background-color 0.25s cubic-bezier(0,0,0.3,1);
+
+        &:hover {
+            color: white;
+            background-color: $accent1;
+        }
+    }
+}
+
+.controls__title {
+    @include media-desktop {
+        margin: 0 0 10px 1rem;
+    }
+}
