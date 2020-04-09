@@ -10,7 +10,12 @@ canvas#c {
         z-index: 0;
         height: 100vh;
     }
+
+    &.blurred {
+        opacity: 0.3;
+    }
 }
+
 
 video#myVideo {
     width: 100vw;

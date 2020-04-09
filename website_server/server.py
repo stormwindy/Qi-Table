@@ -39,9 +39,8 @@ class Server(BaseHTTPRequestHandler):
             filename = room + '.pkl'
             with open(os.path.join(os.path.dirname(__file__),filename), 'rb') as f:
                 content = pickle.load(f)
-            start_positions = content[0]
-            goal_positions = content[1]
-            obs_positions = content[2]
+                return json.dumps(content)
+            
         elif os.path.isfile(room + '.yaml'):
             filename = room + '.yaml'
             with open (os.path.join(os.path.dirname(__file__),filename), 'rb') as f:
@@ -78,6 +77,10 @@ class Server(BaseHTTPRequestHandler):
                 "loc" : obs #Tuple[int, int]
             }
             dump_list.append(obstacle)
+
+        room_name = room + '.pkl'
+        with open(room_name, 'wb') as f:
+            pickle.dump(dump_list, f, protocol=pickle.HIGHEST_PROTOCOL)
 
         return json.dumps(dump_list)
 

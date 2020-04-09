@@ -52,6 +52,8 @@ class Simulator {
 
         // create the path group
         this.pathgroup = new THREE.Group()
+        this.pathgroup.translateX(-8)
+        this.pathgroup.translateZ(-4.5)
         this.scene.add(this.pathgroup)
 
         //this.init_cubes()
@@ -64,7 +66,7 @@ class Simulator {
             color: 0x4BC6B9,
             roughness: 0.5,
             metalness: 0.2,
-            specular: 0xFFFFFF })
+        })
 
         const makeCube = (x,z) => {
             const cube = new THREE.Mesh( cube_geo, cube_mat )
@@ -113,18 +115,28 @@ class Simulator {
                 color,
                 roughness: 0.5,
                 metalness: 0.2,
-                specular: color })
+            })
             const cube = new THREE.Mesh( cube_geo, cube_mat )
             cube.position.set(x, 0, z)
             cube.castShadow = true
             return cube
         }
 
-        // TODO: clean up list if one is already loaded
+        // clean up list if one is already loaded
+        this.scene.remove(this.pathgroup)
+        this.pathgroup = new THREE.Group()
+        this.pathgroup.translateX(-8)
+        this.pathgroup.translateZ(-4.5)
+        this.scene.add(this.pathgroup)
+
+
         if (this.paths) {
             for (let path of paths) {
                 if (path.obj) {
                     this.pathgroup.remove(path.obj)
+                }
+                if (path.goal) {
+                    this.pathgroup.remove(path.goal)
                 }
             }
         }
@@ -135,7 +147,6 @@ class Simulator {
             if (path.type === 'agent') {
                 path.obj = makeCube(0,0,0x4BC6B9)
                 this._max_path_length = Math.max(path.path.length, this._max_path_length) // hax
-                path.obj.name = 'Agent'
                 this.pathgroup.add(path.obj)
             } else if (path.type === 'obstacle') {
                 path.obj = makeCube(path.loc[0],path.loc[1],0xe76F51)
@@ -145,13 +156,53 @@ class Simulator {
         })
     }
 
+    draw_goals() {
+        // create the materials
+        const goal_geo = new THREE.CircleGeometry( 0.25, 32 )
+        const goal_mat = new THREE.MeshStandardMaterial({
+            color: 0x4AAD52,
+            roughness: 0.5,
+            metalness: 0.2
+        })
+
+        // find each agent's final path point
+        for (let path of this.paths) {
+            if (path.type !== 'agent' || path.pathFound === false) {continue}
+
+            let loc = path.path[path.path.length - 1]
+
+            path.goal = new THREE.Mesh(goal_geo, goal_mat)
+            path.goal.position.x = loc[0]
+            path.goal.position.y = -0.45
+            path.goal.position.z = loc[1]
+            path.goal.rotation.x = Math.PI / -2
+            this.pathgroup.add( path.goal )
+        }
+    }
+
     apply_paths(step) {
+        const lerp = (a,b,percent) => a + (percent * (b - a))
         for (let path of this.paths) {
             if (path.type !== 'agent' || path.pathFound === false) {continue}
 
             if (path.path.length <= step) {continue}
 
-            let loc = path.path[step]
+            // lerp between two positions
+            const step_lower = Math.floor(step)
+            const step_upper = Math.ceil( step)
+
+            const step_fpart = step - Math.floor(step)
+
+            let loc_l = path.path[step_lower]
+            let loc_u = path.path[step_upper]
+
+            // hacky, if we've run off the end of the list lerp to the same pos
+            if (loc_u === undefined) { loc_u = loc_l }
+
+            let loc = [
+                lerp(loc_l[0], loc_u[0], step_fpart),
+                lerp(loc_l[1], loc_u[1], step_fpart)
+            ]
 
             path.obj.position.x = loc[0]
             path.obj.position.z = loc[1]
@@ -167,6 +218,10 @@ class Simulator {
         this.camera.aspect = bbox.width / bbox.height
         this.camera.updateProjectionMatrix()
         this.renderer.setSize(bbox.width, bbox.height)
+    }
+
+    set_blur( blurred ) {
+        this.blurred = blurred
     }
 
     init_pipeline() {
@@ -202,10 +257,27 @@ class Simulator {
         this.controls.maxPolarAngle = Math.PI / 2;
 
         this.renderer.setSize(bbox.width, bbox.height);
+
+        // for blurred cases
+        this.blur_renderer = new THREE.EffectComposer( this.renderer );
+        this.blur_renderer.addPass( new THREE.RenderPass( this.scene, this.camera ) );
+        const hblur = new THREE.ShaderPass( THREE.HorizontalBlurShader );
+        this.blur_renderer.addPass( hblur );
+
+        const vblur = new THREE.ShaderPass( THREE.VerticalBlurShader );
+        // set this shader pass to render to screen so we can see the effects
+        vblur.renderToScreen = true;
+        this.blur_renderer.addPass( vblur );
+
+        this.set_blur( false )
     }
 
     render() {
-        this.renderer.render( this.scene, this.camera );
+        if (this.blurred) {
+            this.blur_renderer.render()
+        } else {
+            this.renderer.render( this.scene, this.camera );
+        }
 
         this.controls.update()
 
@@ -219,7 +291,7 @@ class WebAPIController {
         this._anim_step  = 0
     }
 
-    async get_live_room() {
+    async get_live_room(room_name) {
         const path = await fetch(
             API_URL,
             {
@@ -232,8 +304,8 @@ class WebAPIController {
         return await path.json()
     }
 
-    async get_mocked_room() {
-        const path = await fetch('static/mock/room0.json')
+    async get_mocked_room(room_name) {
+        const path = await fetch(`static/mock/${room_name}.json`)
 
         return await path.json()
     }
@@ -242,8 +314,17 @@ class WebAPIController {
         console.log(`loading '${room_name}' from ${API_URL}`)
 
 
-        //let path = await this.get_live_room()
-        let path = await this.get_mocked_room()
+        let path = []
+        if (room_name === 'room0') {
+            path = await this.get_mocked_room(room_name)
+        } else {
+            try {
+                path = await this.get_live_room(room_name)
+            } catch (e) {
+                console.warn('room load failed, falling back', e)
+                path = await this.get_mocked_room(room_name)
+            }
+        }
 
         console.log(path)
 
@@ -258,24 +339,27 @@ class WebAPIController {
             return obj
         })
 
-        
         if (this._anim_timer !== null) {
             clearInterval(this._anim_timer)
         }
-        
+
         //sim.remove_cubes()
         sim.load_computed_paths(path)
+        sim.draw_goals()
         sim.apply_paths(0)
-        sim.pathgroup.translateX(-8)
-        sim.pathgroup.translateZ(-4.5)
         sim.pathgroup.scale.x = 0.5
+        sim.pathgroup.scale.y = 0.5
         sim.pathgroup.scale.z = 0.5
+
+        // try to run the animation within 3 seconds (180 frames)
+        const ANIM_STEP_SIZE = sim._max_path_length / (3 * 60)
+
 
         this._anim_step = 0
         this._anim_timer = setInterval(() => {
             sim.apply_paths(this._anim_step)
-            this._anim_step = ((1 + this._anim_step) % sim._max_path_length)
-        }, 500)
+            this._anim_step = ((ANIM_STEP_SIZE + this._anim_step) % sim._max_path_length)
+        }, 1000 / 60)
 
     }
 

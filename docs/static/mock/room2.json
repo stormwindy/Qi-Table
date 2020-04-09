@@ -1,0 +1,2522 @@
+[
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      30,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      30,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      60,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      60,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      90,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      90,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      120,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      120,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      150,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      150,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      180,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      180,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      210,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      210,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      240,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      240,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      270,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      270,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      330,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      330,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      360,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      360,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      390,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      390,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      420,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      420,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      450,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      450,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      480,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      480,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      510,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      510,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      540,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      540,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      570,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      570,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      600,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      600,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      630,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      630,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      660,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      660,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      690,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      690,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      720,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      720,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      750,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      750,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      780,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      780,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      810,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      810,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      840,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      840,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      870,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      870,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      900,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      900,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      930,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      930,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      960,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      960,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      990,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      990,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1020,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1020,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1050,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1050,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1080,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1080,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1110,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1110,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1140,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1140,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1170,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1170,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1200,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1200,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1230,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1230,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1260,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1260,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1290,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1290,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1320,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1320,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1350,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1350,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1380,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1380,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1410,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1410,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1440,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1440,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1470,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1470,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1500,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1500,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1530,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1530,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1590,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1590,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1620,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1620,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1650,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1650,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1680,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1680,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1710,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1710,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1740,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1740,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1770,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1770,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1800,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1800,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1830,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1830,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1860,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1860,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1890,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1890,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1919,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1919,
+      1078
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      0
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      30
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      30
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      60
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      60
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      90
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      90
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      120
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      120
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      150
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      150
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      180
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      180
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      210
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      210
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      270
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      270
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      300
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      300
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      330
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      330
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      360
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      360
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      390
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      390
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      420
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      420
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      450
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      450
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      480
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      480
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      510
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      510
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      540
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      540
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      570
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      570
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      600
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      600
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      630
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      630
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      660
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      660
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      690
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      690
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      720
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      720
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      750
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      750
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      780
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      780
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      810
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      810
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      840
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      840
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      870
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      870
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      900
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      900
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      930
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      930
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      960
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      960
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      990
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      990
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      1020
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      1020
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      1050
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      1050
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      0,
+      1079
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1918,
+      1079
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      330,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      330,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      360,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      360,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      390,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      390,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      420,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      420,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      450,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      450,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      480,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      480,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      510,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      510,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      540,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      540,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      570,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      570,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      600,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      600,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      630,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      630,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      660,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      660,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      690,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      690,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      720,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      720,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      750,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      750,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      780,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      780,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      810,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      810,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      840,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      840,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      870,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      870,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      900,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      900,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      930,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      930,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      960,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      960,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      990,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      990,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1020,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1020,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1050,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1050,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1080,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1080,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1110,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1110,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1140,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1140,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1170,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1170,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1200,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1200,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1230,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1230,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1260,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1260,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1290,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1290,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1320,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1320,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1350,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1350,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1380,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1380,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1410,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1410,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1440,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1440,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1470,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1470,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1500,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1500,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1530,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1530,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1590,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1590,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1620,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1620,
+      299
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      240
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      270
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      270
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      300
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      300
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      300
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      599
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      330,
+      300
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      330,
+      599
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      360,
+      300
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      360,
+      599
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      300
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      359,
+      300
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      330
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      359,
+      330
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      360
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      359,
+      360
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      390
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      359,
+      390
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      420
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      359,
+      420
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      450
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      359,
+      450
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      480
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      359,
+      480
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      510
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      359,
+      510
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      540
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      359,
+      540
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      570
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      359,
+      570
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      300,
+      600
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      359,
+      600
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      300
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      659
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1590,
+      300
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1590,
+      659
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1620,
+      300
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1620,
+      659
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      300
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      300
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      330
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      330
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      360
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      360
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      390
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      390
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      420
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      420
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      450
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      450
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      480
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      480
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      510
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      510
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      540
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      540
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      570
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      570
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      600
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      600
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      630
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      630
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1560,
+      660
+    ]
+  },
+  {
+    "type": "obstacle",
+    "loc": [
+      1619,
+      660
+    ]
+  }
+]

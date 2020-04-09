@@ -1,7 +1,7 @@
 <h1 align="center">Budget</h1>
 <h3 align="center">How Much Does it Cost?</h3>
 
-## Cost of Prototype
+## Cost of Prototype (400 x 260 x 300 mm)
 
 <table style="margin-left: auto; margin-right: auto;"><caption>Table 1: Cost for each prototype table</caption>
 <thead>
@@ -107,7 +107,7 @@ Total cost for a complete prototype setup plus 3 tables then is £506.07.
 
 In general, the total cost for a complete setup with n tables is: £75 + n(143.69)
 
-## Estimated Cost of Mass Production
+## Estimated Cost of Mass Production (Full Sized)
 
 The following costs are only estimates, based on the retail prices of the individual components. This means they factor in the cost of production, research & development, shipping and quality guarantees.  
 

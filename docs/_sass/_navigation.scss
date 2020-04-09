@@ -3,7 +3,7 @@
 nav.navigation {
     padding: 0 0 1rem 0;
     @include media-desktop {
-        z-index: 1;
+        z-index: 5;
         position: absolute;
         top: 2rem;
         max-width: 20em;
@@ -11,6 +11,13 @@ nav.navigation {
 
 
         background-color: rgba(255,255,255,0.95);
+    }
+}
+
+[data-livedemo-start] {
+    display: none !important;
+    @include media-desktop {
+        display: flex !important;
     }
 }
 
