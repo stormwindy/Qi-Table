@@ -23,7 +23,7 @@ table{
     border-collapse: collapse;
     border-spacing: 0;
     border:2px solid #000000;
-}	
+}
 
 th{
     border:2px solid #000000;
@@ -44,7 +44,7 @@ td{
 | <img src="static/imgs/animal6.JPG" width="100"/>  | Haoran Peng | Software Engineer|
 | <img src="static/imgs/animal7.JPG" width="100"/>  | Smiltė Petronytė | Software Engineer|
 | <img src="static/imgs/animal8.JPG" width="100"/>  | Saad Sharif| Hardware Engineer |
-| <img src="static/imgs/animal9.JPG" width="100"/>  | Marcell Uzonyi | Hardware Engineer|
+| <img src="static/imgs/animal9.JPG" width="100"/>  | Marcell Uzonyi | Hardware Engineer - Embedded Developer|
 | <img src="static/imgs/animal10.JPG" width="100"/>  | Kaiwen Xue| Hardware Engineer|
 
 
