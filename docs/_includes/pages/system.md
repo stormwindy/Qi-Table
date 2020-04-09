@@ -36,7 +36,7 @@ The UK's event industry is evidently massive and blooming, according to the fact
 The conference and meetings segment is worth £19.9 billion in terms of direct spend to the UK economy.
 The <a href="https://mkto.eventbrite.com/rs/269-CEG-133/images/The%202020%20Event%20Trends%20Report_UK.pdf?mkt_tok=eyJpIjoiWldZeU5qSTNNR1kzTldKaCIsInQiOiIxWWI2Z1pwKzhRU3VZZXJWQThlNktqTnRIdHZadGNsR1JEbmVpeTVZcHk4WmZqWm9RUzluWXlacExCcWlqQXBJdkJGSGNxZnRUVnVDSmVYSTlEQW1LTGZSSCtlbnZjTFBtTGpCZExKQTFPbFl2Vmx3MFd0dVBjVmRMNThCVWNKSyJ9">2020 event trends report</a> indicates a period of growth in the industry. 
 
-<img align="center" src="static/imgs/market_research_update.png" width="600"/>
+<img align="center" src="static/imgs/market_research_update.png" width="500"/>
 
 One of the main purposes for an event was to generate revenue, which implies that there is a potential market for technology that could reduce costs and increase efficiency.
 
