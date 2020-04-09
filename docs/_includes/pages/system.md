@@ -15,7 +15,7 @@ Here at Qi we found a solution that will revolutionize the way conference centre
   <img width="600" src="static/imgs/functionality.png">
 </p>
 
-Qi offers more than a solution for making your daily operations more efficient. We designed Infinitables to look just like a well polished, easy on the eye table with the aim of making your company’s switch to our system and replacement of your old tables easier. Infinitables will add more functionality to your space while the **minimalistic and sleek personalized design** will transform and modernize it even further.
+Qi offers more than a solution for making your daily operations more efficient. We designed Infinitables to look just like a well polished, easy on the eye table with the aim of making your company’s switch to our system easier. Infinitables will add more functionality to your space while the **minimalistic and sleek personalized design** will transform and modernize it even further.
 
 We implemented **fully autonomous multi-agent path finding algorithm** with conflict-based search and space time A* which allows Infinitables to move simultaneously and effortlessly, thus saving you time and manual labour.
 
@@ -30,11 +30,11 @@ Our product is essential in places that require frequent rearrangement of table 
 
 The UK's event industry is evidently massive and blooming, according to the facts gatherered from <a href="https://www.eventbrite.co.uk/blog/academy/uk-event-industry-in-numbers-ds00/"> eventbrite </a>.   
 
-<img align="center" src="static/imgs/event_industry_numbers.png" width="700"/>
+<img align="center" src="static/imgs/events_stats.png" width="700"/>
 
 
 The conference and meetings segment is worth £19.9 billion in terms of direct spend to the UK economy.
-Professionals are anticipating growth in the industry. 
+The <a href="https://mkto.eventbrite.com/rs/269-CEG-133/images/The%202020%20Event%20Trends%20Report_UK.pdf?mkt_tok=eyJpIjoiWldZeU5qSTNNR1kzTldKaCIsInQiOiIxWWI2Z1pwKzhRU3VZZXJWQThlNktqTnRIdHZadGNsR1JEbmVpeTVZcHk4WmZqWm9RUzluWXlacExCcWlqQXBJdkJGSGNxZnRUVnVDSmVYSTlEQW1LTGZSSCtlbnZjTFBtTGpCZExKQTFPbFl2Vmx3MFd0dVBjVmRMNThCVWNKSyJ9">2020 event trends report</a> indicates a period of growth in the industry. 
 
 <img align="center" src="static/imgs/market_research_update.png" width="600"/>
 
@@ -56,7 +56,7 @@ To understand why the customer would want our product, let's assume a scenario i
 <img align="center" src="static/imgs/event_cost.png" width="600"/>
 
 Our product would replace these recurring expenses with a one-time purchase.  Once the system is in place, there would be no incremental purchases required apart from very occasional maintenance costs, in the case there is any serious damage inflicted on our product.
-The usual prices as found online for tables, depending on material and size, ranges from £50 - £200. We would customise our tables according to the customer’s wish, so the price would vary accordingly. The number of tables required also vary according to the capacity of the venue, but economy of scale should reduce the cost per entity.  
+We would customise our tables according to the customer’s wish, so the price would vary accordingly. The number of tables required also vary according to the capacity of the venue, but economy of scale should reduce the cost per entity. More details are available on the Budget section.   
 
 Our team has discussed the health and safety concerns and implemented safeguards. We have emergency system shutdown procedures in place to avoid possible collisions invoked by the vision system or manually through the app.  
 
