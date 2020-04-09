@@ -15,7 +15,7 @@ Here at Qi we found a solution that will revolutionize the way conference centre
   <img width="600" src="static/imgs/functionality.png">
 </p>
 
-Qi offers more than a solution for making your daily operations more efficient. We designed Infinitables to look just like a well polished, easy on the eye table with the aim of making your company’s switch to our system easier. Infinitables will add more functionality to your space while the **minimalistic and sleek personalized design** will transform and modernize it even further.
+Qi offers more than a solution for making your daily operations more efficient. We designed Infinitables to look just like a well polished, easy on the eye table with the aim of making your company’s switch to our system and replacement of your old tables easier. Infinitables will add more functionality to your space while the **minimalistic and sleek personalized design** will transform and modernize it even further.
 
 We implemented **fully autonomous multi-agent path finding algorithm** with conflict-based search and space time A* which allows Infinitables to move simultaneously and effortlessly, thus saving you time and manual labour.
 
