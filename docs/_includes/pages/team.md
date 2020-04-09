@@ -39,8 +39,8 @@ td{
 | <img src="static/imgs/placeholder_face.png" width="100"/>  | Ege Elgun | Hardware Manager |
 | <img src="static/imgs/placeholder_face.png" width="100"/>  | Megha Garg | Software Engineer|
 | <img src="static/imgs/placeholder_face.png" width="100"/>  | Patrick Kage | Software Manager |
-| <img src="static/imgs/animal4.jpg" width="100"/>  | Sean Mohan| Software Engineer - Tester|
-| <img src="static/imgs/placeholder_face.png" width="100"/>  | Maciek Niedziela | Implemented the web app features |
+| <img src="static/imgs/animal4.JPG" width="100"/>  | Sean Mohan| Software Engineer |
+| <img src="static/imgs/placeholder_face.png" width="100"/>  | Maciek Niedziela | Software Engineer |
 | <img src="static/imgs/placeholder_face.png" width="100"/>  | Haoran Peng | Software Engineer|
 | <img src="static/imgs/placeholder_face.png" width="100"/>  | Smiltė Petronytė | Software Engineer|
 | <img src="static/imgs/placeholder_face.png" width="100"/>  | Saad Sharif| Hardware Engineer |
