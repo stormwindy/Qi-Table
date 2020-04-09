@@ -14,6 +14,9 @@ class DesktopController {
             .addEventListener('click', () => this.hideNavigation())
         document.querySelector('.nav__header')
             .addEventListener('click', () => this.hideNavigation())
+        document.querySelector('canvas#c')
+            .addEventListener('click', () => this.hideNavigation())
+
     }
 
     handleNavLink(target) {
@@ -23,10 +26,14 @@ class DesktopController {
             .forEach(el => el.classList.add('content--hidden'))
 
         document.querySelector(`#${target}`).classList.remove('content--hidden')
+        document.querySelector('canvas#c').classList.add('blurred')
+        sim.set_blur( true )
     }
 
     hideNavigation() {
         document.querySelector('.content__container').classList.remove('content__container--ready')
+        document.querySelector('canvas#c').classList.remove('blurred')
+        sim.set_blur( false )
     }
 }
 

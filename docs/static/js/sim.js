@@ -169,10 +169,6 @@ class Simulator {
             path.goal.rotation.x = Math.PI / -2
             this.pathgroup.add( path.goal )
         }
-
-
-        
-        
     }
 
     apply_paths(step) {
@@ -190,7 +186,7 @@ class Simulator {
 
             let loc_l = path.path[step_lower]
             let loc_u = path.path[step_upper]
-    
+
             // hacky, if we've run off the end of the list lerp to the same pos
             if (loc_u === undefined) { loc_u = loc_l }
 
@@ -213,6 +209,10 @@ class Simulator {
         this.camera.aspect = bbox.width / bbox.height
         this.camera.updateProjectionMatrix()
         this.renderer.setSize(bbox.width, bbox.height)
+    }
+
+    set_blur( blurred ) {
+        this.blurred = blurred
     }
 
     init_pipeline() {
@@ -248,10 +248,27 @@ class Simulator {
         this.controls.maxPolarAngle = Math.PI / 2;
 
         this.renderer.setSize(bbox.width, bbox.height);
+
+        // for blurred cases
+        this.blur_renderer = new THREE.EffectComposer( this.renderer );
+        this.blur_renderer.addPass( new THREE.RenderPass( this.scene, this.camera ) );
+        const hblur = new THREE.ShaderPass( THREE.HorizontalBlurShader );
+        this.blur_renderer.addPass( hblur );
+
+        const vblur = new THREE.ShaderPass( THREE.VerticalBlurShader );
+        // set this shader pass to render to screen so we can see the effects
+        vblur.renderToScreen = true;
+        this.blur_renderer.addPass( vblur );
+
+        this.set_blur( false )
     }
 
     render() {
-        this.renderer.render( this.scene, this.camera );
+        if (this.blurred) {
+            this.blur_renderer.render()
+        } else {
+            this.renderer.render( this.scene, this.camera );
+        }
 
         this.controls.update()
 
@@ -304,11 +321,10 @@ class WebAPIController {
             return obj
         })
 
-        
         if (this._anim_timer !== null) {
             clearInterval(this._anim_timer)
         }
-        
+
         //sim.remove_cubes()
         sim.load_computed_paths(path)
         sim.draw_goals()
