@@ -204,7 +204,7 @@ In later iterations of the product, packages containing the base components and 
 <td align="center">Cameras&#42;</td>
 <td align="center">1</td>
 <td align="center">&pound;20</td>
-<td style="text-align: center;" align="center">&pound;10++</td>
+<td style="text-align: center;" align="center">&pound;20++</td>
 </tr>
 <tr>
 <td align="center">Base Server on site</td>
