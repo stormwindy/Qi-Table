@@ -17,6 +17,9 @@ class Server(BaseHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Methods', 'POST')
         self.end_headers()
 
+        def do_OPTIONS(self):
+            self._set_headers()
+
     @staticmethod
     def _draw_rect(v0, v1):
             o = []
@@ -49,15 +52,17 @@ class Server(BaseHTTPRequestHandler):
             goal_positions = map_info['GOAL']
             obs_map = map_info['RECT_OBSTACLES']
             obs_positions = []
+            grid_size = map_info['GRID_SIZE']
+            robot_rad = map_info['ROBOT_RADIUS']
             for values in obs_map.values():
                 rect = self._draw_rect(values[0], values[1])
                 obs_positions.extend(rect)
                 
         n_agents = len(start_positions)
         #print(obs_positions)
-        planner = Planner(grid_size = 60, robot_radius = 60, static_obstacles = obs_positions)
+        planner = Planner(grid_size = grid_size, robot_radius = robot_rad, static_obstacles = obs_positions)
         paths : numpy.ndarray = planner.plan(start_positions, goal_positions)
-        print("foundPath")        
+        # print("foundPath")        
         dump_list = []
 
         #JSON dump Agents
