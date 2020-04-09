@@ -304,8 +304,8 @@ class WebAPIController {
         return await path.json()
     }
 
-    async get_mocked_room() {
-        const path = await fetch('static/mock/room0.json')
+    async get_mocked_room(room_name) {
+        const path = await fetch(`static/mock/${room_name}.json`)
 
         return await path.json()
     }
@@ -316,9 +316,14 @@ class WebAPIController {
 
         let path = []
         if (room_name === 'room0') {
-            path = await this.get_mocked_room()
+            path = await this.get_mocked_room(room_name)
         } else {
-            path = await this.get_live_room(room_name)
+            try {
+                path = await this.get_live_room(room_name)
+            } catch (e) {
+                console.warn('room load failed, falling back', e)
+                path = await this.get_mocked_room(room_name)
+            }
         }
 
         console.log(path)
