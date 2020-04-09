@@ -30,7 +30,7 @@ Our product is essential in places that require frequent rearrangement of table 
 
 The UK's event industry is evidently massive and blooming, according to the facts gatherered from <a href="https://www.eventbrite.co.uk/blog/academy/uk-event-industry-in-numbers-ds00/"> eventbrite </a>.   
 
-<img align="center" src="static/imgs/event_stat.png" width="700"/>
+<img align="center" src="static/imgs/event_stat.png" width="600"/>
 
 
 The conference and meetings segment is worth £19.9 billion in terms of direct spend to the UK economy.
