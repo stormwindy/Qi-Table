@@ -202,8 +202,8 @@ In later iterations of the product, packages containing the base components and 
 </tr>
 <tr>
 <td align="center">Cameras&#42;</td>
-<td align="center">0.5/m<sup>2</sup></td>
-<td align="center">&pound;10</td>
+<td align="center">1</td>
+<td align="center">&pound;20</td>
 <td style="text-align: center;" align="center">&pound;10++</td>
 </tr>
 <tr>
