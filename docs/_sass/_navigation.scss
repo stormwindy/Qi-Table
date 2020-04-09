@@ -14,6 +14,13 @@ nav.navigation {
     }
 }
 
+[data-livedemo-start] {
+    display: none !important;
+    @include media-desktop {
+        display: flex !important;
+    }
+}
+
 .nav__header {
     display: flex;
     flex-direction: row;
