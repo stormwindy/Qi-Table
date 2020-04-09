@@ -23,7 +23,7 @@ table{
     border-collapse: collapse;
     border-spacing: 0;
     border:2px solid #000000;
-}	
+}
 
 th{
     border:2px solid #000000;
@@ -36,16 +36,16 @@ td{
 
 |   |    Name  |       Role      |
 |:-:|:--------:|:---------------:|
-| <img src="static/imgs/placeholder_face.png" width="100"/>  | Ege Elgun | Hardware Manager |
-| <img src="static/imgs/placeholder_face.png" width="100"/>  | Megha Garg | Software Engineer|
-| <img src="static/imgs/placeholder_face.png" width="100"/>  | Patrick Kage | Software Manager |
-| <img src="static/imgs/placeholder_face.png" width="100"/>  | Sean Mohan| Software Engineer - Tester|
-| <img src="static/imgs/placeholder_face.png" width="100"/>  | Maciek Niedziela | Implemented the web app features |
-| <img src="static/imgs/placeholder_face.png" width="100"/>  | Haoran Peng | Software Engineer|
-| <img src="static/imgs/placeholder_face.png" width="100"/>  | Smiltė Petronytė | Software Engineer|
-| <img src="static/imgs/placeholder_face.png" width="100"/>  | Saad Sharif| Hardware Engineer |
-| <img id="1" src="static/imgs/placeholder_face.png" width="100"/>  | Marcell Uzonyi | Hardware Engineer|
-| <img src="static/imgs/placeholder_face.png" width="100"/>  | Kaiwen Xue| Hardware Engineer|
+| <img src="static/imgs/animal1.JPG" width="100"/>  | Ege Elgun | Hardware Manager |
+| <img src="static/imgs/animal2.JPG" width="100"/>  | Megha Garg | Software Engineer|
+| <img src="static/imgs/animal3.JPG" width="100"/>  | Patrick Kage | Software Manager |
+| <img src="static/imgs/animal4.JPG" width="100"/>  | Sean Mohan| Software Engineer - Tester |
+| <img src="static/imgs/animal5.JPG" width="100"/>  | Maciek Niedziela | Software Engineer - App Developer|
+| <img src="static/imgs/animal6.JPG" width="100"/>  | Haoran Peng | Software Engineer|
+| <img src="static/imgs/animal7.JPG" width="100"/>  | Smiltė Petronytė | Software Engineer|
+| <img src="static/imgs/animal8.JPG" width="100"/>  | Saad Sharif| Hardware Engineer |
+| <img src="static/imgs/animal9.JPG" width="100"/>  | Marcell Uzonyi | Hardware Engineer - Electronics|
+| <img src="static/imgs/animal10.JPG" width="100"/>  | Kaiwen Xue| Hardware Engineer|
 
 
 <script>

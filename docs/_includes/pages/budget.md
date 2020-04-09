@@ -3,7 +3,7 @@
 
 ## Cost of Prototype (400 x 260 x 300 mm)
 
-<table style="margin-left: auto; margin-right: auto;"><caption>Table 1: Cost for each prototype table</caption>
+<table style="margin-left: auto; margin-right: auto;"><caption>Table 1: Cost for each miniaturised prototype table</caption>
 <thead>
 <tr>
 <th align="center">Item</th>
@@ -202,8 +202,8 @@ In later iterations of the product, packages containing the base components and 
 </tr>
 <tr>
 <td align="center">Cameras&#42;</td>
-<td align="center">0.5/m<sup>2</sup></td>
-<td align="center">&pound;10</td>
+<td align="center">1</td>
+<td align="center">&pound;20</td>
 <td style="text-align: center;" align="center">&pound;10++</td>
 </tr>
 <tr>

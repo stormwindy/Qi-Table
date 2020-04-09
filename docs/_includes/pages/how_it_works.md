@@ -65,7 +65,7 @@ The vision module is powered by OpenCV.
 The path finding module plans collision-free paths for the tables using the position information from the vision module. It enables the tables to form any layout the user wishes. Below is an example where a grid layout is formed from a circular layout.
 
 <p align="center">
-  <img width="650" src="https://raw.githubusercontent.com/GavinPHR/Multi-Agent-Path-Finding/master/fig/visualization2.gif">
+  <img width="650" src="https://raw.githubusercontent.com/GavinPHR/Multi-Agent-Path-Finding/master/fig/visualization3.gif">
 </p>
 
 The path finding module is powered by a robust hierarchical algorithm with a high-level conflict-based search <a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI12/paper/viewFile/5062/5239">[Sharon et al. 2012]</a> and a low-level space-time A* search. The module is available on <a href="https://github.com/GavinPHR/Multi-Agent-Path-Finding">GitHub</a> and listed on <a href="https://pypi.org/project/cbs-mapf/">PyPI</a>.
