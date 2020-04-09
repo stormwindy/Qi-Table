@@ -5,7 +5,7 @@
 
 Our team is split into a software team composed of six people and a hardware team with four. While it might seem like there is a clear division between the two teams, our structure is in fact very organic. Each team member carries out the work they are passionate about and have expertise in. It is not uncommon that a software team member contributes to a hardware task, and vice versa.
 
-Throughout the developement process, team members share their updates and findings continuously on Slack. To track progress and to ensure that our work is accessible to everyone, we have used GitHub's pipeline extensively - every individual's work is accompanied with well written documentation explaining and justifying each new piece of content; this is then carefully reviewed by other team members.  
+Throughout the developement process, team members share their updates and findings continuously on Slack. To track progress and to ensure that our work is accessible to everyone, we have used GitHub's extensively - every individual's work is accompanied with well written documentation explaining and justifying each new piece of content; this is then carefully reviewed by other team members. On top of the documentation each memeber's code have to go through a code review process before the pull request to main code repositroy can be accepted. To track progress Kanban boards of GitHUb are utilized where each memeber gets assigned a detailed piece of task. For overall development we have adopted a SCRUM like agile framework. In addition, we have weekly sprint meetings to catch up with other team members and discuss future development.
 
 We have planned our work with the help of the Gantt charts below which has proven to be very successful.
 
