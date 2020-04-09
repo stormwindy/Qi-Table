@@ -14,7 +14,7 @@ RECT_OBSTACLES:
   - [1600, 750]
 ROBOT_RADIUS: 60
 START:
-- !!python/tuple [100, 900]
-- !!python/tuple [100, 200]
-- !!python/tuple [1800, 900]
-- !!python/tuple [1800, 200]
+- !!python/tuple [100, 450]
+- !!python/tuple [100, 500]
+- !!python/tuple [1800, 450]
+- !!python/tuple [1800, 500]
