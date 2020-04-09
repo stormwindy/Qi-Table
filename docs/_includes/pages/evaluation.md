@@ -5,13 +5,13 @@
 
 ## Evaluation Tests
 
-All the tests relating to process makespan were run on a laptop with i7-7700HQ and 16GB of RAM.
+All the evaluation relating to process makespan were run on a laptop with i7-7700HQ and 16GB of RAM. Vision evaluations were done in a room of size 4m x 3m with a 1080p overhead camera.
 
 ### Speed and Accuracy of the Vision Module
 
-It is vital that the vision module can run quickly because it can be called several hundred times in a complete usage cycle. We wrapped the exposed function (which other modules call to get position and orientation information) in a timer and timed its makespan with respect to the number of tables present. Five trials were run for each configuration.
+It is vital that the vision module can run quickly because it can be called several hundred times in a complete usage cycle. We wrapped the exposed function (which other modules call to get position and orientation information) in a timer, recorded the time between the calling and returning of the function with respect to the number of tables present. Five trials were run for each configuration.
 
-| # of Tables | Makespan (s) |
+| # of Tables | Time between Calling and Returning (s) |
 |:--------:|:------------:|
 | 1 | 0.057 | 
 | 2 | 0.056 | 
@@ -50,9 +50,9 @@ The results are better than expected as a standard error of 0.2° and 0.08 cm is
 
 ### Speed of the Path Finding Module
 
-The path finding module was tested in simulated environments because we do not have access to any large area yet. The simulated environments are obstacle-free maps of different sizes with different numbers of tables present and a randomised goal layout. We are interested in the makespan of the paths' calculation to test how long a user would be waiting.
+The path finding module was tested in simulated environments because we do not have access to any large area yet. The simulated environments are obstacle-free maps of different sizes with different numbers of tables present and a randomised goal layout. We are interested in the time taken to calculate the paths to gauge roughly how long a user would need to wait. 
 
- | Map Size | # of Tables | Makespan (s) |
+ | Map Size (grids) | # of Tables | Time Taken to Calculate Paths (s) |
 |:-----------:|:-----------------:|:----------------------------------------:|
 | 10x10 | 4 | 0.04 |
 | 10x10 | 6 | 0.05 |
@@ -66,6 +66,8 @@ The path finding module was tested in simulated environments because we do not h
 | 30x30 | 22 | 1.16 |
 | 35x35 | 24 | 2.09 |
 | 35x35 | 26 | 2.20 |
+
+For perspective, the simulation you just saw in the main page has a grid size of 20x30.
 
 We can see that the time it takes increases faster and faster as the number of agent increases and the maps becomes larger. The time is acceptable for our prototype system at the moment but we will improve upon this results.
 
