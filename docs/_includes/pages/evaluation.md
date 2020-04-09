@@ -73,18 +73,17 @@ We can see that the time it takes increases faster and faster as the number of a
 
 
 ### Motor Tests
-The motors were tested in movement (linear and rotation). Movement consistency tests are made by using the vision system where cameras check diversion of the table from a desired travel line. You can find an example of this test in the below picture. During the movement consistency tests it has been found that the weight distribution of components create a diversion from the linear expected movement. This has been countered by implementing a clibration option to our web app where the pwoers of the motors are callibrated to travel same distances. 
+The table's motors were tested to see whether their movement are accurate in linear and rotational motion. Linear movement consistency tests were made by using the vision module where we used the camera to check diversion of the table from the desired finish line. You can find an example of this test in the below picture. During the linear movement consistency tests, it was found that the weight distribution of components created a diversion from the desired finish line. This has been countered by implementing a clibration option to our web app where the powers of the motors are callibrated to travel same distances. 
 
-Even if the callibration is correct a 7% diversion in distance travelled between wheels was observed in straight line travel tests. This means the difference from the desired orientation was on average 7% of the total distance that was supposed to be taken in optimal case. In order to counter this problem we have used the vision system to assist and continoulsy command tables so that they get closer to the target.
+Even if the callibration is correct, a 7% diversion in distance travelled between wheels was observed in the linear movement tests. This means the difference from the desired orientation was on average 7% of the total distance that was supposed to be taken in optimal case. In order to counter this problem, we used the vision module to assist and continoulsy command tables so that they get closer to the target.
 
 <p align="center">
   <img width="650" src="static/imgs/orientation_tests.png">
 </p>
 
-Moreover, in rotation tests, it has been shown that long movement durations end up causing huge variations in the ending orientation of the table. It has been tested that powering periods under 1 second provide an accurate turn with less than 5 degrees difference between desired orientation and actual resultant orientation. However, long powering periods (>5 seconds) end up causing having as high as 20 degrees of difference. One main reason for this is found to be rotational momentum. To counter this central server sends stop command before table gets to desired rotation. Moreover, vision system is again used to get the table closer to the desired rotation by dynamically changing the commands.
+Moreover, in the rotational movement test, it has been shown that long movement durations end up causing large variations in the ending orientation of the table. It has been tested that powering periods under 1 second provided an accurate turn with less than 5 degrees difference between desired orientation and actual resultant orientation. However, long powering periods (>5 seconds) end up causing a difference as high as 20 degrees. One main reason for this was found to be rotational momentum. To counter this, central server now sends stop command before table gets to desired rotation.
 
-### Future Testing for Motors
-In light of the current situation all around the world regarding COVID-19, we were not able to test the hardware to the extent we have desired. If situations allowed it was planned to test the acceleration curve of motors at different weights. Moreover, it was desired to test the correlation of weight and oreintation divergence.
+
 
 ### User Tests
 
@@ -98,7 +97,13 @@ In addition, to allow for very precise alignment of tables a few collision preve
 
 ## Main Areas of Improvement
 
+#### Improvement for the Path Finding Module
+
 The path finding module needs more work to be viable in much more complex settings. The problems and the solutions are as follows:
 
 -  The module's parallelization is currently done by multi-processing only. But we can and should take advantage of threading because some jobs are too small for a new process.
 - The module is currently written in Python and a part of it is non-optimized native Python. This definitely impacts the performance and we are considering porting the module to a low level language instead.
+
+#### Future Testing for Motors
+
+In light of the current situation all around the world regarding COVID-19, we were not able to test the hardware to the extent we have desired. If situations allowed it was planned to test the acceleration curve of motors at different weights. Moreover, it was desirable to test the correlation of table weight and oreintation divergence.
