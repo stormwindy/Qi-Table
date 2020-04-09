@@ -30,7 +30,7 @@ Our product is essential in places that require frequent rearrangement of table 
 
 According to the report on the UK’s event industry by eventbrite, the UK has over 10,000 venues with 1.3 billion business events being held each year. The conference and meetings segment is worth £19.9 billion in terms of direct spend to the UK economy.
 
-<img align="center" src="static/imgs/market_reseach1.png" width="700"/>
+<img align="center" src="static/imgs/market_reseach1.png" width="600"/>
 
 Professionals are anticipating growth in the industry but for budgets to remain the same, implying that there is a potential market for technology that could reduce costs and drive up revenues.
 
