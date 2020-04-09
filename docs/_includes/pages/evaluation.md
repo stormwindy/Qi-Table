@@ -67,7 +67,7 @@ The path finding module was tested in simulated environments because we do not h
 | 35x35 | 24 | 2.09 |
 | 35x35 | 26 | 2.20 |
 
-For perspective, the simulation you just saw in the main page has a grid size of 20x30.
+For perspective, the simulations in the main page have a grid size of 20x30.
 
 We can see that the time it takes increases faster and faster as the number of agent increases and the maps becomes larger. The time is acceptable for our prototype system at the moment but we will improve upon this results.
 
