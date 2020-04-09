@@ -4,7 +4,7 @@
     @include media-desktop {
         position: absolute;
         top: 0;
-        right: 0;
+        right: calc(27.5vw - 3rem);
 
         height: 100vh;
         width: 45vw;
@@ -15,10 +15,14 @@
         opacity: 0;
 
         overflow: auto;
+        padding: 0 3rem 0 3rem;
+
+        pointer-events: none;
     }
 
     &.content__container--ready {
         opacity: 1;
+        pointer-events: initial;
     }
 }
 
